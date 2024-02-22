@@ -20,7 +20,11 @@ const Navbar = () => {
           </a>
         </div>
         <div className="hidden md:flex">
-          <input type="text" placeholder="Search an item" />
+          <input
+            type="text"
+            placeholder="Search an item"
+            className="outline-none"
+          />
         </div>
         <div className="flex items-end justify-between gap-4">
           <img src={cartlogo} alt="cart" className="cursor-pointer" />

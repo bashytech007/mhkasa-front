@@ -6,7 +6,7 @@ import Login from "./components/Login";
 function App() {
   return (
     <Router>
-      <div className="">
+      <div className="min-h-screen">
         <Navbar />
         <Routes>
           <Route path="/register" element={<Register />} />

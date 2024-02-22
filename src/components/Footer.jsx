@@ -1,7 +1,7 @@
 import footerlogo from "../assets/images/footerlogo.svg";
 const Footer = () => {
   return (
-    <div className="">
+    <div className="w-full h-full">
       <div className="flex items-center px-10 py-8 bg-[#000]">
         <div className="w-full ">
           <a href="#">

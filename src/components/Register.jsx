@@ -3,14 +3,14 @@ const Register = () => {
   return (
     <div className="bg-[#C4C4C4] w-full h-full pt-5 flex flex-col items-center px-2 py-10 justify-between">
       <h2 className="pt-4 text-lg font-bold text-black">Register</h2>
-      <p className="text-[#D9D9D9] pt-4">
+      <p className="text-[#555555] mt-4">
         Create Your account,Already have an account?
         <span className="text-white">
           <Link to="/login">Log in Here </Link>
         </span>
       </p>
 
-      <form className="w-full max-w-lg bg-[#FFF] overflow-hidden rounded-xl px-6 py-2 pt-4">
+      <form className="w-full max-w-lg bg-[#FFF] overflow-hidden rounded-xl px-6 py-2 mt-4 pt-4">
         <div className="flex flex-wrap mb-4 -mx-3">
           <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0">
             <input

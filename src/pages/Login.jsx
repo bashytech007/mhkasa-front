@@ -29,7 +29,9 @@ const Login = () => {
                 placeholder="Password"
               />
               <p className="text-xs italic text-[#A0A0A0] ml-96 mb-2">
-                Forgot Password
+                <Link to={"/ForgotPassword"} className="cursor-pointer">
+                  Forgot Password
+                </Link>
               </p>
             </div>
             <div className="w-full px-3 mb-4">

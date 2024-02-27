@@ -1,20 +1,20 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Register from "./components/Register";
+import Register from "./pages/Register";
 import Footer from "./components/Footer";
-import Login from "./components/Login";
+import Login from "./pages/Login";
+import ForgotPassword from "./pages/ForgotPassword";
 function App() {
   return (
-    <Router>
-      <div className="min-h-screen">
-        <Navbar />
-        <Routes>
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-        <Footer />
-      </div>
-    </Router>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/ForgotPassword" element={<ForgotPassword />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 }
 

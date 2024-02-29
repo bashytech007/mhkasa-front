@@ -16,7 +16,6 @@ const PhoneOtpPage = () => {
                 Enter the verification Code sent to
               </p>
               <span className="text-lg text-[#a40001] mt-2">
-                {" "}
                 +23491*******9
               </span>
             </div>

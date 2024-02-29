@@ -1,6 +1,7 @@
 import authimg from "../assets/images/authkeyimage.svg";
 import naija from "../assets/images/twemoji_flag-nigeria.svg";
 import group from "../assets/images/Group.svg";
+import { Link } from "react-router-dom";
 const PhoneRegistrationPage = () => {
   return (
     <div className="bg-[#c4c4c4]">
@@ -28,9 +29,11 @@ const PhoneRegistrationPage = () => {
                 className="px-4 py-2 bg-transparent outline-none appearance-none"
               />
             </div>
-            <button className="bg-[#000000] flex items-center px-24 py-2 text-white mx-auto mt-6 ml-4 rounded-full">
-              Verify Now
-            </button>
+            <Link to="/phoneotp">
+              <button className="bg-[#000000] flex items-center px-24 py-2 text-white mx-auto mt-6 ml-4 rounded-full">
+                Verify Now
+              </button>
+            </Link>
           </form>
         </div>
       </div>

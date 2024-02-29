@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+::placeholder {
+  font-weight: semi-bold;
+  font-size: 24px;
+  color: black;
+}

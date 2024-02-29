@@ -16,14 +16,14 @@ const Navbar = () => {
       <div className="flex items-center justify-between max-w-[90%] px-8 h-14 mx-auto">
         <div className="">
           <a href="#">
-            <img src={logo} alt="mhkasa-logo" className="w-24" />
+            <img src={logo} alt="mhkasa-logo" className="w-40" />
           </a>
         </div>
         <div className="hidden md:flex">
           <input
             type="text"
-            placeholder="Search an item"
-            className="outline-none"
+            placeholder="Search For item"
+            className="outline-none text-sm"
           />
         </div>
         <div className="flex items-end justify-between gap-4">

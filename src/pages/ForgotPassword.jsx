@@ -19,9 +19,9 @@ const ForgotPassword = () => {
 
         <form className="w-full max-w-lg bg-[#FFF] overflow-hidden rounded-xl px-6 mt-4 pt-4">
           <div className="flex flex-wrap mb-4 -mx-3">
-            <div className="w-full mb-6">
+            <div className="w-full mb-6 py-3">
               <input
-                className="block w-full px-9 py-3  leading-tight text-[#555] bg-[#F5F5F5] border  rounded-full appearance-none focus:outline-none focus:[#C4C4C4]"
+                className="block w-full px-9 py-3  leading-tight text-[#555] bg-[#F5F5F5]  text-xs border  rounded-full appearance-none focus:outline-none focus:[#C4C4C4]"
                 id="Email"
                 type="text"
                 placeholder="Email"

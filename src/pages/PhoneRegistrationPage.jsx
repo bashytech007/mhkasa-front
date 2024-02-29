@@ -26,7 +26,7 @@ const PhoneRegistrationPage = () => {
               <input
                 type="text"
                 placeholder="+23480*************"
-                className="px-4 py-2 bg-transparent outline-none appearance-none"
+                className="px-4 py-2 bg-transparent outline-none appearance-none placeholder-black"
               />
             </div>
             <Link to="/phoneotp">

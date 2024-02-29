@@ -1,7 +1,7 @@
 import authkey from "../assets/images/lockkey.svg";
 const PhoneOtpPage = () => {
   return (
-    <div className="bg-[#c4c4c4]">
+    <div className="bg-[#D9D9D9]">
       <div className="w-full py-32 px-28">
         <div className="grid max-w-4xl md:grid-cols-[40%,60%] md:gap-x-60 sm:grid-rows-1  place-content-between">
           <div>

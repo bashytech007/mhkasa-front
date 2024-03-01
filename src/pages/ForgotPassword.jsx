@@ -1,46 +1,49 @@
+import * as yup from "yup";
+import { useFormik } from "formik";
 import { Link } from "react-router-dom";
+import { Heading } from "../components/Heading";
+import { Wrapper } from "../components/Wrapper";
+import { Button } from "../components/Button";
+import { Input } from "../components/Input";
 
-const ForgotPassword = () => {
+export const ForgotPassword = () => {
+  const schema = yup.object().shape({
+    email: yup.string().email().required(),
+  });
+
+  const formik = useFormik({
+    initialValues: { email: "", password: "" },
+    validationSchema: schema,
+    onSubmit: async (values, {}) => {
+      console.log(values);
+    },
+  });
+
   return (
-    <div className="">
-      <div className="bg-[#D9D9D9] w-full h-full pt-5 flex flex-col items-center px-2 py-10 justify-between">
-        <h2 className="pt-4 text-lg font-bold text-[#A40001]">
-          Password Reset
-        </h2>
-        <div className="text-[#555555] mb-4 pt-4 text-center">
-          Password Reset Link will be sent to your email.{" "}
-          <span className="text-[#555555] block mt-2">
-            Know Your password?{" "}
-            <Link to="/login" className="ml-1 text-[#A0A0A0]">
-              Login Here
-            </Link>
-          </span>
-        </div>
+    <Wrapper className="max-w-lg flex flex-col items-center py-12">
+      <Heading>Password Reset</Heading>
+      <p className="pt-4 text-[#666666]">
+        Password reset link will be sent to your email address,
+      </p>
+      <p className="text-[#666666] pb-4">
+        know your password?
+        <Link to="/login" className="text-app-ash-2 ml-2">
+          Login Here
+        </Link>
+      </p>
 
-        <form className="w-full max-w-lg bg-[#FFF] overflow-hidden rounded-xl px-6 mt-4 pt-4">
-          <div className="flex flex-wrap mb-4 -mx-3">
-            <div className="w-full mb-6 py-3">
-              <input
-                className="block w-full px-9 py-3  leading-tight text-[#555] bg-[#F5F5F5]  text-xs border  rounded-full appearance-none focus:outline-none focus:[#C4C4C4]"
-                id="Email"
-                type="text"
-                placeholder="Email"
-              />
-            </div>
+      <form className="w-full max-w-lg bg-white rounded-3xl p-4">
+        <Input
+          name="email"
+          formik={formik}
+          className="bg-app-ash-1"
+          placeholder="Email"
+        />
 
-            <div className="w-full px-3 mb-4">
-              <button
-                className="shadow-sm w-full bg-[#000] hover:bg-[#000] focus:shadow-outline focus:outline-none text-white font-bold py-2 px-6 rounded-full"
-                type="button"
-              >
-                Reset Password
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
+        <Button className="w-full bg-app-black text-sm hover:bg-black text-white font-bold mt-4">
+          Reset Password
+        </Button>
+      </form>
+    </Wrapper>
   );
 };
-
-export default ForgotPassword;

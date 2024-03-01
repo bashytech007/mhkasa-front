@@ -1,58 +1,97 @@
+import { useEffect, useRef, useState } from "react";
 import authkey from "../assets/images/lockkey.svg";
-const PhoneOtpPage = () => {
+import { Button } from "../components/Button";
+import { Heading } from "../components/Heading";
+import { Wrapper } from "../components/Wrapper";
+import { ref } from "yup";
+
+export const PhoneOtpPage = () => {
   return (
-    <div className="bg-[#D9D9D9]">
-      <div className="w-full py-32 px-28">
-        <div className="grid max-w-4xl md:grid-cols-[40%,60%] md:gap-x-60 sm:grid-rows-1  place-content-between">
-          <div>
-            <img src={authkey} className="w-full max-w-md mx-auto" />
+    <Wrapper>
+      <div className="py-12 grid items-center md:grid-cols-[40%,60%]">
+        <div>
+          <div className="max-w-[420px] mx-auto">
+            <img src={authkey} className="w-full" />
           </div>
-          <form className="max-w-md">
-            <div className="mr-11">
-              <h1 className="font-bold text-4xl text-[#a40001]">
-                AUTHENTICATION
-              </h1>
-              <p className="text-lg text-[#000000] mt-2">
-                Enter the verification Code sent to
-              </p>
-              <span className="text-lg text-[#a40001] mt-2">
-                +23491*******9
-              </span>
-            </div>
-            <div className="flex items-center w-full space-x-4 mt-4">
-              <input
-                type="text"
-                className="px-5 py-2 w-8  bg-transparent appearance-none focus:#A40001 rounded-lg border-2  border-[#A40001]"
-              />
-              <input
-                type="text"
-                className="px-5 py-2 w-8  bg-transparent appearance-none  rounded-lg border-2  border-[#A40001]"
-              />
-              <input
-                type="text"
-                className="px-5 py-2 w-8  bg-transparent appearance-none  rounded-lg border-2  border-[#A40001]"
-              />
-              <input
-                type="text"
-                className="px-5 py-2 w-8  bg-transparent appearance-none  rounded-lg border-2  border-[#A40001]"
-              />
-              <input
-                type="text"
-                className="px-5 py-2 w-8  bg-transparent appearance-none  rounded-lg border-2  border-[#A40001]"
-              />
-              <input
-                type="text"
-                className="px-5 py-2 w-8  bg-transparent appearance-none  rounded-lg border-2  border-[#A40001]"
-              />
-            </div>
-            <button className="bg-[#000000] flex items-center px-24 py-2 text-white mx-auto mt-6 ml-4 rounded-full">
-              Verify Now
-            </button>
-          </form>
         </div>
+
+        <form className="flex flex-col md:items-end">
+          <div>
+            <Heading className="text-[24px] sm:text-[30px] md:text-[36px] lg:text-[42px]">
+              AUTHENTICATION
+            </Heading>
+            <p className="text-lg text-app-black  sm:text-[18px] md:text-[20px] lg:text-[24px]">
+              Enter the verification Code sent to
+            </p>
+            <span className="text-lg text-[#a40001] mt-2">+2349189394798</span>
+          </div>
+
+          <OTPInput />
+
+          <div>
+            <Button className="bg-app-black text-white px-16 md:px-20">
+              Verify Now
+            </Button>
+          </div>
+        </form>
       </div>
-    </div>
+    </Wrapper>
   );
 };
 
-export default PhoneOtpPage;
+const OTPInput = () => {
+  const boxes = [0, 1, 2, 3, 4, 5];
+  const refs = [useRef(), useRef(), useRef(), useRef(), useRef(), useRef()];
+  const [otp, setOtp] = useState(["", "", "", "", "", ""]);
+  const [canSubmit, setCanSubmit] = useState(() =>
+    otp.every((letter) => letter !== "")
+  );
+
+  const onKeyUp = (index, refs) => {
+    const keys = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    return (e) => {
+      setOtp((prev) => {
+        const newArr = prev;
+        if (keys.includes(Number(e.key))) {
+          newArr[index] = e.key;
+          refs[index + 1]?.current.focus();
+        }
+        if (e.key === "Backspace") {
+          if (newArr[index] === "") {
+            refs[index - 1]?.current.focus();
+          }
+          newArr[index] = "";
+        }
+        return [...newArr];
+      });
+    };
+  };
+
+  useEffect(() => {
+    setCanSubmit(() => otp.every((letter) => letter !== ""));
+  }, [otp]);
+
+  return (
+    <>
+      <div className="flex gap-1 py-4 sm:gap-2 md:gap-3 lg:gap-4 ">
+        {boxes.map((box) => (
+          <Box refs={refs} index={box} key={box} otp={otp} onKeyUp={onKeyUp} />
+        ))}
+      </div>
+      {canSubmit ? "Yes" : "No"}
+    </>
+  );
+};
+
+const Box = ({ index, refs, onKeyUp, otp }) => {
+  return (
+    <input
+      ref={refs[index]}
+      type="number"
+      value={otp[index]}
+      onChange={() => {}}
+      onKeyUp={onKeyUp(index, refs)}
+      className="w-10 aspect-square outline-none text-center font-bold rounded-xl border-4 bg-transparent border-app-red sm:w-12 sm:text-lg md:text-2xl md:w-14 lg:text-4xl lg:w-16"
+    />
+  );
+};

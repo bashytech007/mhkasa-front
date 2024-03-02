@@ -1,52 +1,54 @@
+import * as yup from "yup";
+import { useFormik } from "formik";
 import { Link } from "react-router-dom";
-const Login = () => {
-  return (
-    <div className="">
-      <div className="bg-[#D9D9D9] w-full h-full pt-5 flex flex-col items-center px-2 py-10 justify-between">
-        <h2 className="pt-4 text-lg font-bold text-[#A40001]">Login</h2>
-        <p className="text-[#000]  mb-4 pt-4">
-          Your Welcome back don&rsquo;t have an account?,
-          <span className="text-[#A0A0A0]">
-            <Link to="/register">Register Here </Link>
-          </span>
-        </p>
+import { Heading } from "../components/Heading";
+import { Button } from "../components/Button";
+import { Wrapper } from "../components/Wrapper";
+import { Input, PInput } from "../components/Input";
 
-        <form className="w-full max-w-lg overflow-hidden rounded-xl px-6 mt-4 pt-4">
-          <div className="flex flex-wrap mb-4 -mx-3">
-            <div className="w-full mb-6">
-              <input
-                className="block w-full px-9 py-3 text-xs leading-tight text-[#555] bg-[#FFFFFF] border  rounded-full appearance-none focus:outline-none focus:[#C4C4C4]"
-                id="Email"
-                type="text"
-                placeholder="Email"
-              />
-            </div>
-            <div className="flex flex-col items-center w-full mb-6">
-              <input
-                className="block w-full px-9 py-3 leading-tight text-xs  text-[#555] bg-[#F5F5F5] border rounded-full appearance-none focus:outline-none focus:[#C4C4C4]"
-                id="Password"
-                type="password"
-                placeholder="Password"
-              />
-              <p className="text-xs  text-[#A0A0A0] ml-96 mb-2">
-                <Link to={"/ForgotPassword"} className="cursor-pointer">
-                  Forgot Password
-                </Link>
-              </p>
-            </div>
-            <div className="w-full px-3 mb-4">
-              <button
-                className="shadow-sm w-full bg-[#000] text-sm  hover:bg-[#000] focus:shadow-outline focus:outline-none text-white font-bold py-2 px-6 rounded-full"
-                type="button"
-              >
-                Login
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
+export const Login = () => {
+  const schema = yup.object().shape({
+    email: yup.string().email().required(),
+    password: yup
+      .string()
+      .trim()
+      .required()
+      .matches(/(?=.*[A-Z])/, "must contain capital letter"),
+  });
+
+  const formik = useFormik({
+    initialValues: { email: "", password: "" },
+    validationSchema: schema,
+    onSubmit: async (values, {}) => {
+      console.log(values);
+    },
+  });
+
+  return (
+    <Wrapper className="max-w-lg flex flex-col items-center py-12">
+      <Heading>Login</Heading>
+      <p className="py-4 text-[#666666]">
+        Your Welcome back don&rsquo;t have an account?
+        <Link to="/register" className="text-app-ash-2 ml-2">
+          Register Here{" "}
+        </Link>
+      </p>
+
+      <form className="w-full">
+        <Input name="email" formik={formik} placeholder="Email" />
+        <PInput name="password" formik={formik} placeholder="Password" />
+
+        <Link
+          to={"/forgot-password"}
+          className="text-app-ash-2 pb-6 text-right w-full inline-block"
+        >
+          Forgot Password?
+        </Link>
+
+        <Button className="w-full bg-app-black text-sm hover:bg-black text-white font-bold">
+          Login
+        </Button>
+      </form>
+    </Wrapper>
   );
 };
-
-export default Login;

@@ -11,25 +11,29 @@ export const PhoneOtpPage = () => {
   const [searchParams] = useSearchParams();
   const email = searchParams.get("email");
   const [otp, setOtp] = useState(["", "", "", ""]);
+
   const [canSubmit, setCanSubmit] = useState(() =>
     otp.every((letter) => letter !== "")
   );
   const onSubmit = async (e) => {
-    e.preventDefault();
-    const response = await axios.post(
-      `${import.meta.env.VITE_BASE_URL}/user/verify`,
-      // values
-      {
-        email,
-        verificationCode: otp.join(""),
-      },
-      {
-        headers: { "Content-Type": "application/json" },
+    try {
+      e.preventDefault();
+      const response = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/confirm-otp`,
+        {
+          email,
+          otp: otp.join(""),
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      if (response.status === 200) {
+        navigate(`/`);
       }
-    );
-    if (response.status === 200) {
-      navigate(`/`);
-      // console.log(response);
+    } catch (error) {
+      alert(error.response?.data?.message);
     }
   };
 
@@ -60,7 +64,10 @@ export const PhoneOtpPage = () => {
           <OTPInput otp={otp} setOtp={setOtp} canSubmit={canSubmit} />
 
           <div>
-            <Button className="bg-app-black text-white px-16 md:px-20">
+            <Button
+              className="bg-app-black text-white px-16 md:px-20"
+              type="submit"
+            >
               Verify Now
             </Button>
           </div>

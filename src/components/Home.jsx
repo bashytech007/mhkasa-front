@@ -6,8 +6,14 @@ import perfumeOil from "../assets/images/perfume-oil.png";
 import { Product } from "./ProductCard";
 import { CategoryCard } from "./CategoryCard";
 import { Features } from "./Features";
+import { useAxiosPrivate } from "../hooks/useAxiosPrivate";
+import { useAuth } from "../hooks/useAuth";
+import { useState } from "react";
 
 export const Home = () => {
+  const { accessToken, setAccessToken, setUser, user } = useAuth();
+  const [employees, setEmployees] = useState([]);
+  const axiosPrivate = useAxiosPrivate();
   const products = [
     {
       product: "Explore Man",
@@ -66,6 +72,19 @@ export const Home = () => {
     },
   ];
 
+  const onClick = async () => {
+    try {
+      const res = await axiosPrivate.get("/employees", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      setEmployees(res?.data?.employees);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <main className="py-4">
       <Wrapper>
@@ -108,6 +127,14 @@ export const Home = () => {
       <div className="py-6">
         <Features />
       </div>
+      <button onClick={() => onClick()}>Get Employees</button>
+      <ul>
+        {employees.map((employee, i) => (
+          <li key={i}>
+            {employee.name} - {employee.age} Yrs
+          </li>
+        ))}
+      </ul>
     </main>
   );
 };

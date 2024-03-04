@@ -5,9 +5,9 @@ import { Heading } from "../components/Heading";
 import { Button } from "../components/Button";
 import { Wrapper } from "../components/Wrapper";
 import { Input, PInput } from "../components/Input";
-import axios from "axios";
+// import axios from "axios";
 import { useAuth } from "../hooks/useAuth";
-// import axios from "../utils/axios";
+import axios from "../utils/axios";
 
 export const Login = () => {
   const schema = yup.object().shape({
@@ -24,21 +24,21 @@ export const Login = () => {
   const login = async (values) => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/user/login`,
+        `${import.meta.env.VITE_BASE_URL}/login`,
         values,
         { headers: { "Content-Type": "application/json" } }
       );
       if (response.status === 200) {
         setAccessToken(response?.data?.token);
         setUser({
-          username: "chisom",
+          username: response.data?.username,
           email: response.data?.email,
         });
-        console.log(response.data);
         naigate(redirect);
       }
     } catch (error) {
       console.error(error);
+      alert(error?.response?.data?.message);
     }
   };
 

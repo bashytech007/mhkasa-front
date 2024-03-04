@@ -5,12 +5,12 @@ import { Heading } from "../components/Heading";
 import { Wrapper } from "../components/Wrapper";
 import { Button } from "../components/Button";
 import { Input, PInput } from "../components/Input";
-import axios from "axios";
+import axios from "../utils/axios";
 
 export const Register = () => {
   const navigate = useNavigate();
   const schema = yup.object().shape({
-    name: yup.string().required().min(3, "must be at least 3 characters"),
+    username: yup.string().required().min(3, "must be at least 3 characters"),
     phone: yup.string().required(),
     email: yup.string().email().required(),
     password: yup
@@ -22,23 +22,24 @@ export const Register = () => {
   });
 
   const formik = useFormik({
-    initialValues: { email: "", password: "", name: "", phone: "" },
+    initialValues: { email: "", password: "", username: "", phone: "" },
     validationSchema: schema,
     onSubmit: async (values, {}) => {
-      const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/user/send/verification`,
-        {
-          email: values.email,
-          password: values.password,
-          address: values.name,
-          phone: values.phone,
-        },
-        {
-          headers: { "Content-Type": "application/json" },
+      try {
+        const response = await axios.post(
+          `${import.meta.env.VITE_BASE_URL}/register`,
+          values,
+          {
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+        if (response.status === 201) {
+          navigate(
+            `/confirm-otp?email=${values.email}&otp=${response.data.otpCode}`
+          );
         }
-      );
-      if (response.status === 200) {
-        navigate(`/confirm-otp?email=${values.email}&otp=${response.data.otp}`);
+      } catch (error) {
+        console.error(error);
       }
     },
   });
@@ -59,7 +60,7 @@ export const Register = () => {
       >
         <div className="grid gap-x-4 sm:grid-cols-2">
           <Input
-            name="name"
+            name="username"
             formik={formik}
             className="bg-app-ash-1"
             placeholder="Full Name"

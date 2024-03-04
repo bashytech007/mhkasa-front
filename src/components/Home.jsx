@@ -5,6 +5,7 @@ import perfume from "../assets/images/perfume.png";
 import perfumeOil from "../assets/images/perfume-oil.png";
 import { Product } from "./ProductCard";
 import { CategoryCard } from "./CategoryCard";
+import { Features } from "./Features";
 
 export const Home = () => {
   const products = [
@@ -104,6 +105,9 @@ export const Home = () => {
           </ul>
         </section>
       </Wrapper>
+      <div className="py-6">
+        <Features />
+      </div>
     </main>
   );
 };

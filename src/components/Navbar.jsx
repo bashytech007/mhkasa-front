@@ -4,8 +4,10 @@ import angleDownIcon from "../assets/images/accounttoggleicon.svg";
 import { Logo } from "./Logo";
 import { Wrapper } from "./Wrapper";
 import { Button } from "./Button";
+import { useAuth } from "../hooks/useAuth";
 
 const Navbar = () => {
+  const { user, accessToken } = useAuth();
   return (
     <Wrapper className="py-4">
       <nav className="flex items-center justify-between font-monteserrat">
@@ -24,7 +26,9 @@ const Navbar = () => {
           <Button className="bg-app-ash">
             <div className="flex items-center gap-4">
               <img src={userIcon} alt="" />
-              <p className="leading-none hidden md:block">My Account</p>
+              <p className="leading-none hidden md:block">
+                {user?.username ? user.username : "My Account"}
+              </p>
               <img src={angleDownIcon} alt="" />
             </div>
           </Button>

@@ -1,6 +1,6 @@
 export const CategoryCard = ({ category, numberOfProducts, image }) => {
   return (
-    <div className="relative aspect-[5/6] w-[320px] rounded-2xl overflow-hidden">
+    <div className="relative aspect-[5/6] w-[calc(260px+1vw)] rounded-2xl overflow-hidden">
       <img
         src={image}
         alt=""

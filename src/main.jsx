@@ -8,7 +8,7 @@ import { Register } from "./pages/Register.jsx";
 import { ForgotPassword } from "./pages/ForgotPassword.jsx";
 import { PhoneOtpPage } from "./pages/PhoneOtpPage.jsx";
 import { Home } from "./components/Home.jsx";
-import { PhoneRegistrationPage } from "./pages/PhoneRegistrationPage.jsx";
+import { Auth } from "./contexts/Auth.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,16 +36,14 @@ const router = createBrowserRouter([
         path: "/confirm-otp",
         element: <PhoneOtpPage />,
       },
-      {
-        path: "/sms-otp",
-        element: <PhoneRegistrationPage />,
-      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Auth>
+      <RouterProvider router={router} />
+    </Auth>
   </React.StrictMode>
 );

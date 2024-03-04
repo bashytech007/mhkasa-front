@@ -8,7 +8,7 @@ export const Product = ({
   image,
 }) => {
   return (
-    <div className="bg-white rounded-2xl overflow-hidden min-w-[250px] h-full">
+    <div className="bg-white rounded-2xl overflow-hidden min-w-[220px] h-full">
       <div className="h-36">
         <img src={image} alt="" className="h-full mx-auto" />
       </div>

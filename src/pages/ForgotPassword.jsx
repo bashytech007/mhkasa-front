@@ -32,7 +32,10 @@ export const ForgotPassword = () => {
         </Link>
       </p>
 
-      <form className="w-full max-w-lg bg-white rounded-3xl p-4">
+      <form
+        onSubmit={formik.handleSubmit}
+        className="w-full max-w-lg bg-white rounded-3xl p-4"
+      >
         <Input
           name="email"
           formik={formik}

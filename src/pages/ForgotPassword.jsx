@@ -32,7 +32,10 @@ export const ForgotPassword = () => {
         </Link>
       </p>
 
-      <form className="w-full max-w-lg bg-white rounded-3xl p-4">
+      <form
+        onSubmit={formik.handleSubmit}
+        className="w-full max-w-lg bg-white rounded-3xl p-4"
+      >
         <Input
           name="email"
           formik={formik}
@@ -40,7 +43,10 @@ export const ForgotPassword = () => {
           placeholder="Email"
         />
 
-        <Button className="w-full bg-app-black text-sm hover:bg-black text-white font-bold mt-4">
+        <Button
+          className="w-full bg-app-black text-sm hover:bg-black text-white font-bold mt-4"
+          type="submit"
+        >
           Reset Password
         </Button>
       </form>

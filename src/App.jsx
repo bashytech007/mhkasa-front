@@ -1,27 +1,106 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import ForgotPassword from "./pages/ForgotPassword";
-import PhoneRegistrationPage from "./pages/PhoneRegistrationPage";
-import PhoneOtpPage from "./pages/PhoneOtpPage";
-import { Layout } from "./components/Layout";
-function App() {
-  return (
-    <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/forgotpassword" element={<ForgotPassword />} />
-          <Route
-            path="/phoneregistration"
-            element={<PhoneRegistrationPage />}
-          />
-          <Route path="/phoneotp" element={<PhoneOtpPage />} />
-        </Routes>
-      </Layout>
-    </BrowserRouter>
-  );
-}
+import "./index.css";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Layout } from "./components/Layout.jsx";
+import { Login } from "./pages/Login.jsx";
+import { Register } from "./pages/Register.jsx";
+import { ForgotPassword } from "./pages/ForgotPassword.jsx";
+import { PhoneOtpPage } from "./pages/PhoneOtpPage.jsx";
+import { Home } from "./components/Home.jsx";
+import { useAxiosPrivate } from "./hooks/useAxiosPrivate.js";
+import { useEffect } from "react";
+import { useAuth } from "./hooks/useAuth.js";
+import { OnlyAuthenticated } from "./components/OnlyAuthenticated.jsx";
+import { OnlyUnAuthenticated } from "./components/OnlyUnAuthenticated.jsx";
 
-export default App;
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    errorElement: <div>Error</div>,
+    children: [
+      {
+        path: "/",
+        element: <OnlyAuthenticated />,
+        children: [
+          {
+            path: "/",
+            element: <Home />,
+          },
+
+          // {
+          //   path: "/register",
+          //   element: <Register />,
+          // },
+          // {
+          //   path: "/forgot-password",
+          //   element: <ForgotPassword />,
+          // },
+          // {
+          //   path: "/confirm-otp",
+          //   element: <PhoneOtpPage />,
+          // },
+        ],
+      },
+      {
+        path: "/",
+        element: <OnlyUnAuthenticated />,
+        children: [
+          {
+            path: "/login",
+            element: <Login />,
+          },
+          {
+            path: "/register",
+            element: <Register />,
+          },
+          {
+            path: "/forgot-password",
+            element: <ForgotPassword />,
+          },
+          {
+            path: "/confirm-otp",
+            element: <PhoneOtpPage />,
+          },
+        ],
+      },
+    ],
+  },
+]);
+
+export const App = () => {
+  const { setUser } = useAuth();
+  const axiosPrivate = useAxiosPrivate();
+
+  useEffect(() => {
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    if (user && user.email && user.username) {
+      return setUser(user);
+    }
+    const abortController = new AbortController();
+    const getUser = async () => {
+      try {
+        const response = await axiosPrivate.get(
+          `${import.meta.env.VITE_BASE_URL}/user-info`,
+          { signal: abortController.signal }
+        );
+        if (response.status === 200) {
+          setUser(response.data);
+          sessionStorage.setItem("user", JSON.stringify(response.data));
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getUser();
+
+    return () => {
+      abortController.abort();
+    };
+  }, []);
+
+  return (
+    <div>
+      <RouterProvider router={router} />;
+    </div>
+  );
+};

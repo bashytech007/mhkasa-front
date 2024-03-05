@@ -1,26 +1,51 @@
 import * as yup from "yup";
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Heading } from "../components/Heading";
 import { Button } from "../components/Button";
 import { Wrapper } from "../components/Wrapper";
 import { Input, PInput } from "../components/Input";
+import { useAuth } from "../hooks/useAuth";
+import axios from "../utils/axios";
 
 export const Login = () => {
   const schema = yup.object().shape({
     email: yup.string().email().required(),
-    password: yup
-      .string()
-      .trim()
-      .required()
-      .matches(/(?=.*[A-Z])/, "must contain capital letter"),
+    password: yup.string().trim().required(),
+    // .matches(/(?=.*[A-Z])/, "must contain capital letter"),
   });
+
+  const naigate = useNavigate();
+  const { setAccessToken, setUser } = useAuth();
+  const [searchParams] = useSearchParams();
+  const redirect = searchParams.get("redirect") || "/";
+
+  const login = async (values) => {
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/login`,
+        values,
+        { headers: { "Content-Type": "application/json" } }
+      );
+      if (response.status === 200) {
+        setAccessToken(response?.data?.token);
+        setUser({
+          username: response.data?.username,
+          email: response.data?.email,
+        });
+        naigate(decodeURIComponent(redirect));
+      }
+    } catch (error) {
+      console.error(error);
+      alert(error?.response?.data?.message);
+    }
+  };
 
   const formik = useFormik({
     initialValues: { email: "", password: "" },
     validationSchema: schema,
-    onSubmit: async (values, {}) => {
-      console.log(values);
+    onSubmit: async (values, { resetForm }) => {
+      await login(values);
     },
   });
 
@@ -34,7 +59,7 @@ export const Login = () => {
         </Link>
       </p>
 
-      <form className="w-full">
+      <form onSubmit={formik.handleSubmit} className="w-full">
         <Input name="email" formik={formik} placeholder="Email" />
         <PInput name="password" formik={formik} placeholder="Password" />
 
@@ -45,7 +70,10 @@ export const Login = () => {
           Forgot Password?
         </Link>
 
-        <Button className="w-full bg-app-black text-sm hover:bg-black text-white font-bold">
+        <Button
+          className="w-full bg-app-black text-sm hover:bg-black text-white font-bold"
+          type="submit"
+        >
           Login
         </Button>
       </form>

@@ -3,9 +3,44 @@ import authkey from "../assets/images/lockkey.svg";
 import { Button } from "../components/Button";
 import { Heading } from "../components/Heading";
 import { Wrapper } from "../components/Wrapper";
-import { ref } from "yup";
+import axios from "axios";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 export const PhoneOtpPage = () => {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const email = searchParams.get("email");
+  const [otp, setOtp] = useState(["", "", "", ""]);
+
+  const [canSubmit, setCanSubmit] = useState(() =>
+    otp.every((letter) => letter !== "")
+  );
+  const onSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const response = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/confirm-otp`,
+        {
+          email,
+          otp: otp.join(""),
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      if (response.status === 200) {
+        navigate(`/`);
+      }
+    } catch (error) {
+      alert(error.response?.data?.message);
+    }
+  };
+
+  useEffect(() => {
+    setCanSubmit(() => otp.every((letter) => letter !== ""));
+  }, [otp]);
+
   return (
     <Wrapper>
       <div className="py-12 grid items-center md:grid-cols-[40%,60%]">
@@ -15,7 +50,7 @@ export const PhoneOtpPage = () => {
           </div>
         </div>
 
-        <form className="flex flex-col md:items-end">
+        <form onSubmit={onSubmit} className="flex flex-col md:items-end">
           <div>
             <Heading className="text-[24px] sm:text-[30px] md:text-[36px] lg:text-[42px]">
               AUTHENTICATION
@@ -26,10 +61,13 @@ export const PhoneOtpPage = () => {
             <span className="text-lg text-[#a40001] mt-2">+2349189394798</span>
           </div>
 
-          <OTPInput />
+          <OTPInput otp={otp} setOtp={setOtp} canSubmit={canSubmit} />
 
           <div>
-            <Button className="bg-app-black text-white px-16 md:px-20">
+            <Button
+              className="bg-app-black text-white px-16 md:px-20"
+              type="submit"
+            >
               Verify Now
             </Button>
           </div>
@@ -39,13 +77,9 @@ export const PhoneOtpPage = () => {
   );
 };
 
-const OTPInput = () => {
-  const boxes = [0, 1, 2, 3, 4, 5];
-  const refs = [useRef(), useRef(), useRef(), useRef(), useRef(), useRef()];
-  const [otp, setOtp] = useState(["", "", "", "", "", ""]);
-  const [canSubmit, setCanSubmit] = useState(() =>
-    otp.every((letter) => letter !== "")
-  );
+const OTPInput = ({ otp, setOtp, canSubmit }) => {
+  const boxes = [0, 1, 2, 3];
+  const refs = [useRef(), useRef(), useRef(), useRef()];
 
   const onKeyUp = (index, refs) => {
     const keys = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -67,10 +101,6 @@ const OTPInput = () => {
     };
   };
 
-  useEffect(() => {
-    setCanSubmit(() => otp.every((letter) => letter !== ""));
-  }, [otp]);
-
   return (
     <>
       <div className="flex gap-1 py-4 sm:gap-2 md:gap-3 lg:gap-4 ">
@@ -78,7 +108,6 @@ const OTPInput = () => {
           <Box refs={refs} index={box} key={box} otp={otp} onKeyUp={onKeyUp} />
         ))}
       </div>
-      {canSubmit ? "Yes" : "No"}
     </>
   );
 };

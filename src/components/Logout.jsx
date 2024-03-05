@@ -11,7 +11,7 @@ export const Logout = () => {
     }
   };
   return (
-    <Button className="bg-app-ash-1 w-full" onClick={onClick}>
+    <Button className="bg-app-ash-1 w-full text-nowrap" onClick={onClick}>
       Log Out
     </Button>
   );

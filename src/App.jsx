@@ -9,6 +9,8 @@ import { Home } from "./components/Home.jsx";
 import { useAxiosPrivate } from "./hooks/useAxiosPrivate.js";
 import { useEffect } from "react";
 import { useAuth } from "./hooks/useAuth.js";
+import { OnlyAuthenticated } from "./components/OnlyAuthenticated.jsx";
+import { OnlyUnAuthenticated } from "./components/OnlyUnAuthenticated.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,23 +20,48 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <OnlyAuthenticated />,
+        children: [
+          {
+            path: "/",
+            element: <Home />,
+          },
+
+          // {
+          //   path: "/register",
+          //   element: <Register />,
+          // },
+          // {
+          //   path: "/forgot-password",
+          //   element: <ForgotPassword />,
+          // },
+          // {
+          //   path: "/confirm-otp",
+          //   element: <PhoneOtpPage />,
+          // },
+        ],
       },
       {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/register",
-        element: <Register />,
-      },
-      {
-        path: "/forgot-password",
-        element: <ForgotPassword />,
-      },
-      {
-        path: "/confirm-otp",
-        element: <PhoneOtpPage />,
+        path: "/",
+        element: <OnlyUnAuthenticated />,
+        children: [
+          {
+            path: "/login",
+            element: <Login />,
+          },
+          {
+            path: "/register",
+            element: <Register />,
+          },
+          {
+            path: "/forgot-password",
+            element: <ForgotPassword />,
+          },
+          {
+            path: "/confirm-otp",
+            element: <PhoneOtpPage />,
+          },
+        ],
       },
     ],
   },

@@ -43,7 +43,10 @@ export const ForgotPassword = () => {
           placeholder="Email"
         />
 
-        <Button className="w-full bg-app-black text-sm hover:bg-black text-white font-bold mt-4">
+        <Button
+          className="w-full bg-app-black text-sm hover:bg-black text-white font-bold mt-4"
+          type="submit"
+        >
           Reset Password
         </Button>
       </form>

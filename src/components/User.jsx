@@ -11,7 +11,7 @@ export const User = ({ user }) => {
   };
   return (
     <div className="relative">
-      <Button className="bg-app-ash" onClick={toggle}>
+      <Button className="bg-app-ash text-nowrap" onClick={toggle}>
         <div className="flex items-center gap-4">
           <img src={userIcon} alt="" />
           <p className="leading-none hidden md:block">
@@ -25,7 +25,7 @@ export const User = ({ user }) => {
         </div>
       </Button>
       <div
-        className={`absolute w-full py-6 bg-white px-4 rounded-md shadow-lg top-[calc(100%+1.5rem)] ${
+        className={`absolute min-w-full right-0 py-6 bg-white px-4 rounded-md shadow-lg top-[calc(100%+1.5rem)] ${
           expand ? "" : "hidden"
         }`}
       >

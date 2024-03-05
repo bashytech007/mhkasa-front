@@ -5,7 +5,6 @@ import { Heading } from "../components/Heading";
 import { Button } from "../components/Button";
 import { Wrapper } from "../components/Wrapper";
 import { Input, PInput } from "../components/Input";
-// import axios from "axios";
 import { useAuth } from "../hooks/useAuth";
 import axios from "../utils/axios";
 
@@ -34,7 +33,7 @@ export const Login = () => {
           username: response.data?.username,
           email: response.data?.email,
         });
-        naigate(redirect);
+        naigate(decodeURIComponent(redirect));
       }
     } catch (error) {
       console.error(error);

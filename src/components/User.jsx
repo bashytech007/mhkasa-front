@@ -7,8 +7,7 @@ import { useAuth } from "../hooks/useAuth";
 import { Link } from "react-router-dom";
 
 export const User = () => {
-  // const { user } = useAuth();
-  const user = { email: "chis", username: "ugyuggyguun" };
+  const { user } = useAuth();
   const [expand, setExpand] = useState(false);
   const toggle = () => {
     setExpand((v) => !v);
@@ -36,12 +35,15 @@ export const User = () => {
             <h2 className="pb-4 font-bold font-fuzzy text-xl tracking-tight capitalize">
               {user?.username}
             </h2>
-
-            <Logout />
+            <p className="text-app-ash-2 pb-4">{user?.email}</p>
+            <Logout toggle={toggle} />
           </>
         ) : (
           <Link to="/login">
-            <Button className="text-app-red font-bold bg-app-ash w-full text-nowrap">
+            <Button
+              className="text-app-red font-bold bg-app-ash w-full text-nowrap"
+              onClick={toggle}
+            >
               Login
             </Button>
           </Link>

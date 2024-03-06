@@ -52,7 +52,7 @@ export const Register = () => {
   return (
     <Wrapper className="max-w-xl flex flex-col items-center py-12">
       <Heading>Register</Heading>
-      <p className="text-[#666666] py-4">
+      <p className="text-[#666666] py-4 text-center">
         Create Your account, Already have an account?
         <Link to="/login" className="text-app-ash-2 ml-2">
           Login Here

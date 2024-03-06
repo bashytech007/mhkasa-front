@@ -61,7 +61,7 @@ export const Login = () => {
   return (
     <Wrapper className="max-w-lg flex flex-col items-center py-12">
       <Heading>Login</Heading>
-      <p className="py-4 text-[#666666]">
+      <p className="py-4 text-[#666666] text-center">
         Your Welcome back don&rsquo;t have an account?
         <Link to="/register" className="text-app-ash-2 ml-2">
           Register Here{" "}

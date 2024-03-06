@@ -7,12 +7,20 @@ import { Wrapper } from "../components/Wrapper";
 import { Input, PInput } from "../components/Input";
 import { useAuth } from "../hooks/useAuth";
 import axios from "../utils/axios";
+import { useCanSubmitForm } from "../hooks/useCanSubmitFormik";
 
 export const Login = () => {
   const schema = yup.object().shape({
     email: yup.string().email().required(),
-    password: yup.string().trim().required(),
-    // .matches(/(?=.*[A-Z])/, "must contain capital letter"),
+    password: yup
+      .string()
+      .trim()
+      .required()
+      .matches(/(?=.*[A-Z])/, "must contain uppercase")
+      .matches(/^(?=.*[a-z])/, "Must contain lowercase")
+      .min(6, "must be at least 6 characters long")
+      .max(50, "must be at most 50 characters long"),
+    // .matches(/(?=.*[^\w\d\s])/, "must contain special character")
   });
 
   const naigate = useNavigate();
@@ -30,24 +38,25 @@ export const Login = () => {
       if (response.status === 200) {
         setAccessToken(response?.data?.token);
         setUser({
-          username: response.data?.username,
-          email: response.data?.email,
+          username: response?.data?.username,
+          email: response?.data?.email,
         });
         naigate(decodeURIComponent(redirect));
       }
     } catch (error) {
-      console.error(error);
-      alert(error?.response?.data?.message);
+      console.log(error);
     }
   };
 
   const formik = useFormik({
     initialValues: { email: "", password: "" },
     validationSchema: schema,
-    onSubmit: async (values, { resetForm }) => {
+    onSubmit: async (values) => {
       await login(values);
     },
   });
+
+  const canSubmit = useCanSubmitForm(formik);
 
   return (
     <Wrapper className="max-w-lg flex flex-col items-center py-12">
@@ -71,8 +80,9 @@ export const Login = () => {
         </Link>
 
         <Button
-          className="w-full bg-app-black text-sm hover:bg-black text-white font-bold"
+          className="w-full bg-app-black text-sm  text-white font-bold mt-4 hover:bg-black disabled:bg-[#999999]"
           type="submit"
+          disabled={!canSubmit}
         >
           Login
         </Button>

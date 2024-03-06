@@ -8,7 +8,7 @@ export const Input = ({
   ...rest
 }) => {
   return (
-    <div className="py-2">
+    <div className="py-2 w-full">
       <input
         type={type}
         className={`rounded-full w-full py-2 px-6 outline-none ${className}`}
@@ -30,6 +30,12 @@ export const PInput = ({ name, formik, className = "", ...rest }) => {
   return (
     <div className="py-2">
       <div className="relative">
+        <input
+          type={seePassword ? "text" : "password"}
+          className={`rounded-full w-full py-2 px-6 outline-none ${className}`}
+          {...formik.getFieldProps(name)}
+          {...rest}
+        />
         <button
           type="button"
           onClick={toggleVisibility}
@@ -37,12 +43,6 @@ export const PInput = ({ name, formik, className = "", ...rest }) => {
         >
           {seePassword ? "Hide" : "Show"}
         </button>
-        <input
-          type={seePassword ? "text" : "password"}
-          className={`rounded-full w-full py-2 px-6 outline-none ${className}`}
-          {...formik.getFieldProps(name)}
-          {...rest}
-        />
       </div>
       {formik.touched[name] && formik.errors[name] && (
         <p className="text-app-red"> {formik.errors[name]}</p>

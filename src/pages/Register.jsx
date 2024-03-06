@@ -6,6 +6,7 @@ import { Wrapper } from "../components/Wrapper";
 import { Button } from "../components/Button";
 import { Input, PInput } from "../components/Input";
 import axios from "../utils/axios";
+import { useCanSubmitForm } from "../hooks/useCanSubmitFormik";
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -17,8 +18,10 @@ export const Register = () => {
       .string()
       .trim()
       .required()
-      .matches(/(?=.*[A-Z])/, "must contain capital letter")
-      .min(3, "must be at least 3 characters"),
+      .matches(/(?=.*[A-Z])/, "must contain uppercase")
+      .matches(/^(?=.*[a-z])/, "Must contain lowercase")
+      .min(6, "must be at least 6 characters long")
+      .max(50, "must be at most 50 characters long"),
   });
 
   const formik = useFormik({
@@ -43,6 +46,8 @@ export const Register = () => {
       }
     },
   });
+
+  const canSubmit = useCanSubmitForm(formik);
 
   return (
     <Wrapper className="max-w-xl flex flex-col items-center py-12">
@@ -86,8 +91,9 @@ export const Register = () => {
         </div>
 
         <Button
-          className="w-full bg-app-black text-sm hover:bg-black text-white font-bold mt-4"
+          className="w-full bg-app-black text-sm  text-white font-bold mt-4 hover:bg-black disabled:bg-[#999999]"
           type="submit"
+          disabled={!canSubmit}
         >
           Register
         </Button>

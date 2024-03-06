@@ -3,8 +3,8 @@ import authkey from "../assets/images/lockkey.svg";
 import { Button } from "../components/Button";
 import { Heading } from "../components/Heading";
 import { Wrapper } from "../components/Wrapper";
-import axios from "axios";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import axios from "../utils/axios";
 
 export const PhoneOtpPage = () => {
   const navigate = useNavigate();
@@ -30,10 +30,10 @@ export const PhoneOtpPage = () => {
       );
 
       if (response.status === 200) {
-        navigate(`/`);
+        navigate(`/account-creation-success`);
       }
     } catch (error) {
-      alert(error.response?.data?.message);
+      console.error(error);
     }
   };
 
@@ -58,15 +58,18 @@ export const PhoneOtpPage = () => {
             <p className="text-lg text-app-black  sm:text-[18px] md:text-[20px] lg:text-[24px]">
               Enter the verification Code sent to
             </p>
-            <span className="text-lg text-[#a40001] mt-2">+2349189394798</span>
+            <span className="text-lg text-[#a40001] mt-2 font-medium">
+              {email}
+            </span>
           </div>
 
           <OTPInput otp={otp} setOtp={setOtp} canSubmit={canSubmit} />
 
           <div>
             <Button
-              className="bg-app-black text-white px-16 md:px-20"
+              className="w-full bg-app-black text-sm  text-white font-bold mt-4 hover:bg-black disabled:bg-[#999999]"
               type="submit"
+              disabled={!canSubmit}
             >
               Verify Now
             </Button>

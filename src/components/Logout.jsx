@@ -6,12 +6,14 @@ export const Logout = () => {
   const onClick = async () => {
     const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/logout`);
     if (response.status === 204) {
-      sessionStorage.removeItem("user");
-      setUser(null);
+      setUser(undefined);
     }
   };
   return (
-    <Button className="bg-app-ash-1 w-full text-nowrap" onClick={onClick}>
+    <Button
+      className="bg-app-ash w-full text-nowrap text-app-red font-bold"
+      onClick={onClick}
+    >
       Log Out
     </Button>
   );

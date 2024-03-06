@@ -2,12 +2,10 @@ import cartIcon from "../assets/images/shopping-cart.svg";
 import { Logo } from "./Logo";
 import { Wrapper } from "./Wrapper";
 import { Button } from "./Button";
-import { useAuth } from "../hooks/useAuth";
 import { Link } from "react-router-dom";
 import { User } from "./User";
 
 const Navbar = () => {
-  const { user } = useAuth();
   return (
     <Wrapper className="py-4">
       <nav className="flex items-center justify-between font-monteserrat">
@@ -22,16 +20,7 @@ const Navbar = () => {
 
         <div className="flex items-center justify-between gap-4">
           <CartButton />
-          {user &&
-          ["email", "username"].every((key) =>
-            Object.keys(user).includes(key)
-          ) ? (
-            <User user={user} />
-          ) : (
-            <Link to="/login">
-              <Button className="bg-app-red text-white font-bold">Login</Button>
-            </Link>
-          )}
+          <User />
         </div>
       </nav>
     </Wrapper>

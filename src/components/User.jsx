@@ -12,6 +12,7 @@ export const User = () => {
   const toggle = () => {
     setExpand((v) => !v);
   };
+
   return (
     <div className="relative">
       <Button className="bg-app-ash text-nowrap" onClick={toggle}>

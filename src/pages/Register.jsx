@@ -38,11 +38,13 @@ export const Register = () => {
         );
         if (response.status === 201) {
           navigate(
-            `/confirm-otp?email=${values.email}&otp=${response.data.otpCode}`
+            `/confirm-otp?email=${encodeURIComponent(values.email)}&otp=${
+              response.data.otpCode
+            }`
           );
         }
       } catch (error) {
-        console.error(error);
+        console.log(error.response.data.message);
       }
     },
   });

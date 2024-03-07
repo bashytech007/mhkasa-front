@@ -34,7 +34,7 @@ const Root = () => {
           setUser(response.data);
         }
       } catch (error) {
-        console.log(error);
+        console.log(error?.response?.data?.message);
       }
     };
     !user && getUser();

@@ -25,8 +25,7 @@ export const ForgotPassword = () => {
         navigate(`/reset-password?email=${encodeURIComponent(values.email)}`);
       }
     } catch (error) {
-      console.error(error);
-      alert(error?.response?.data?.message);
+      console.log(error?.response?.data?.message);
     }
   };
 

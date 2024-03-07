@@ -9,7 +9,7 @@ import axios from "../utils/axios";
 export const PhoneOtpPage = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const email = searchParams.get("email");
+  const email = decodeURIComponent(searchParams.get("email"));
   const [otp, setOtp] = useState(["", "", "", ""]);
 
   const [canSubmit, setCanSubmit] = useState(() =>
@@ -33,7 +33,7 @@ export const PhoneOtpPage = () => {
         navigate(`/account-creation-success`);
       }
     } catch (error) {
-      console.error(error);
+      console.log(error?.response?.data?.message);
     }
   };
 
@@ -80,7 +80,7 @@ export const PhoneOtpPage = () => {
   );
 };
 
-const OTPInput = ({ otp, setOtp, canSubmit }) => {
+const OTPInput = ({ otp, setOtp }) => {
   const boxes = [0, 1, 2, 3];
   const refs = [useRef(), useRef(), useRef(), useRef()];
 
@@ -104,18 +104,47 @@ const OTPInput = ({ otp, setOtp, canSubmit }) => {
     };
   };
 
+  const onPaste = (event) => {
+    event.preventDefault();
+    const keys = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    let paste = (event.clipboardData || window.clipboardData)
+      .getData("text")
+      .split("");
+    if (paste.every((num) => keys.includes(num))) {
+      setOtp(paste.slice(0, 4));
+      refs[refs.length - 1]?.current.focus();
+    }
+  };
+
   return (
     <>
       <div className="flex gap-1 py-4 sm:gap-2 md:gap-3 lg:gap-4 ">
-        {boxes.map((box) => (
-          <Box refs={refs} index={box} key={box} otp={otp} onKeyUp={onKeyUp} />
-        ))}
+        {boxes.map((box, index) =>
+          index === 0 ? (
+            <Box
+              refs={refs}
+              index={box}
+              key={box}
+              otp={otp}
+              onKeyUp={onKeyUp}
+              onPaste={onPaste}
+            />
+          ) : (
+            <Box
+              refs={refs}
+              index={box}
+              key={box}
+              otp={otp}
+              onKeyUp={onKeyUp}
+            />
+          )
+        )}
       </div>
     </>
   );
 };
 
-const Box = ({ index, refs, onKeyUp, otp }) => {
+const Box = ({ index, refs, onKeyUp, otp, ...rest }) => {
   return (
     <input
       ref={refs[index]}
@@ -124,6 +153,7 @@ const Box = ({ index, refs, onKeyUp, otp }) => {
       onChange={() => {}}
       onKeyUp={onKeyUp(index, refs)}
       className="w-10 aspect-square outline-none text-center font-bold rounded-xl border-4 bg-transparent border-app-red sm:w-12 sm:text-lg md:text-2xl md:w-14 lg:text-4xl lg:w-16"
+      {...rest}
     />
   );
 };

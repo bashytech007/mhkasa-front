@@ -11,7 +11,7 @@ import { useAuth } from "../hooks/useAuth";
 import { useState } from "react";
 
 export const Home = () => {
-  const { accessToken, setAccessToken, setUser, user } = useAuth();
+  const { accessToken } = useAuth();
   const [employees, setEmployees] = useState([]);
   const axiosPrivate = useAxiosPrivate();
   const products = [
@@ -82,7 +82,7 @@ export const Home = () => {
       });
       setEmployees(res?.data?.employees);
     } catch (error) {
-      console.error(error);
+      console.log(error?.response?.data.messaeg);
     }
   };
   return (

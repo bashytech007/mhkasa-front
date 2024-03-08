@@ -6,10 +6,11 @@ import { Button } from "../components/Button";
 import { Wrapper } from "../components/Wrapper";
 import { Input, PInput } from "../components/Input";
 import { useAuth } from "../hooks/useAuth";
-import axios from "../utils/axios";
 import { useCanSubmitForm } from "../hooks/useCanSubmitFormik";
+import { useAxios } from "../hooks/useAxios";
 
 export const Login = () => {
+  const axios = useAxios();
   const schema = yup.object().shape({
     email: yup.string().email().required(),
     password: yup
@@ -30,17 +31,22 @@ export const Login = () => {
 
   const login = async (values) => {
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/login`,
-        values,
-        { headers: { "Content-Type": "application/json" } }
-      );
+      const response = await axios.post(`login`, values, {
+        headers: { "Content-Type": "application/json" },
+      });
       if (response.status === 200) {
-        setAccessToken(response?.data?.token);
+        setAccessToken(response?.data?.accessToken);
         setUser({
           username: response?.data?.username,
           email: response?.data?.email,
         });
+        sessionStorage.setItem(
+          "user",
+          JSON.stringify({
+            username: response?.data?.username,
+            email: response?.data?.email,
+          })
+        );
         naigate(decodeURIComponent(redirect));
       }
     } catch (error) {

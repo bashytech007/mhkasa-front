@@ -5,10 +5,11 @@ import { Heading } from "../components/Heading";
 import { Wrapper } from "../components/Wrapper";
 import { Button } from "../components/Button";
 import { Input, PInput } from "../components/Input";
-import axios from "../utils/axios";
 import { useCanSubmitForm } from "../hooks/useCanSubmitFormik";
+import { useAxios } from "../hooks/useAxios";
 
 export const Register = () => {
+  const axios = useAxios();
   const navigate = useNavigate();
   const schema = yup.object().shape({
     username: yup.string().required().min(3, "must be at least 3 characters"),

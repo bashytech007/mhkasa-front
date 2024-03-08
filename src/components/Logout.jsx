@@ -7,6 +7,7 @@ export const Logout = ({ toggle }) => {
     const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/logout`);
     if (response.status === 204) {
       setUser(undefined);
+      sessionStorage.removeItem("user");
       toggle();
     }
   };

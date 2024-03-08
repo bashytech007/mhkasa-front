@@ -4,9 +4,10 @@ import { Button } from "../components/Button";
 import { Heading } from "../components/Heading";
 import { Wrapper } from "../components/Wrapper";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import axios from "../utils/axios";
+import { useAxios } from "../hooks/useAxios";
 
 export const PhoneOtpPage = () => {
+  const axios = useAxios();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const email = decodeURIComponent(searchParams.get("email"));

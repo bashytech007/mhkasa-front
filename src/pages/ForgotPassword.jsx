@@ -5,10 +5,11 @@ import { Heading } from "../components/Heading";
 import { Wrapper } from "../components/Wrapper";
 import { Button } from "../components/Button";
 import { Input, PInput } from "../components/Input";
-import axios from "../utils/axios";
 import { useCanSubmitForm } from "../hooks/useCanSubmitFormik";
+import { useAxios } from "../hooks/useAxios";
 
 export const ForgotPassword = () => {
+  const axios = useAxios();
   const navigate = useNavigate();
   const schema = yup.object().shape({
     email: yup.string().email().required(),
@@ -42,7 +43,7 @@ export const ForgotPassword = () => {
   return (
     <Wrapper className="max-w-lg flex flex-col items-center py-12">
       <Heading>Forgot Password</Heading>
-      <p className="pt-4 text-[#666666] text-center">
+      <p className="pt-4 text-[#666666] text-center pb-6">
         Password reset link will be sent to your email address, know your
         password?
         <Link to="/login" className="text-app-ash-2 ml-2">
@@ -74,6 +75,7 @@ export const ForgotPassword = () => {
 };
 
 export const ResetPassword = () => {
+  const axios = useAxios();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const email = decodeURIComponent(searchParams.get("email") || "");
@@ -97,21 +99,6 @@ export const ResetPassword = () => {
       .oneOf([yup.ref("password")], "Password Mismatch!"),
   });
 
-  const resendOtp = async () => {
-    try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/resend-otp`,
-        { email, actionType: 2 },
-        { headers: { "Content-Type": "application/json" } }
-      );
-      if (response.status === 200) {
-        navigate(`/login`);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   const formik = useFormik({
     initialValues: { password: "", otp: "", confirm_password: "" },
     validationSchema: schema,
@@ -122,8 +109,8 @@ export const ResetPassword = () => {
           { email, otp, password },
           { headers: { "Content-Type": "application/json" } }
         );
-        if (response.status === 204) {
-          console.log(response);
+        if (response.status === 200) {
+          navigate(`/login`);
         }
       } catch (error) {
         console.error(error);
@@ -132,6 +119,21 @@ export const ResetPassword = () => {
   });
 
   const canSubmit = useCanSubmitForm(formik);
+
+  const resendOtp = async () => {
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/resend-otp`,
+        { email, actionType: 2 },
+        { headers: { "Content-Type": "application/json" } }
+      );
+      if (response.status === 200) {
+        console.log(response);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <Wrapper className="max-w-lg flex flex-col items-center py-12">

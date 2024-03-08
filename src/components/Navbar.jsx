@@ -1,8 +1,6 @@
 import cartIcon from "../assets/images/shopping-cart.svg";
 import { Logo } from "./Logo";
 import { Wrapper } from "./Wrapper";
-import { Button } from "./Button";
-import { Link } from "react-router-dom";
 import { User } from "./User";
 
 const Navbar = () => {

@@ -2,14 +2,17 @@ import { useEffect } from "react";
 import { axiosPrivate } from "../utils/axios";
 import { useRefreshToken } from "./useRefreshToken";
 import { useAuth } from "./useAuth";
+import { detectIncognito } from "../utils/detectIncognito";
 
-export const useAxiosPrivate = () => {
-  const refresh = useRefreshToken();
+export const useAxiosPrivate = async () => {
   const { accessToken, setAccessToken } = useAuth();
+  const refresh = useRefreshToken();
 
   useEffect(() => {
     const requestIntercept = axiosPrivate.interceptors.request.use(
-      (config) => {
+      async (config) => {
+        const result = await detectIncognito();
+        config.headers["mode"] = result.isPrivate ? "private" : "public";
         if (!config.headers["Authorization"]) {
           config.headers["Authorization"] = `Bearer ${accessToken}`;
         }

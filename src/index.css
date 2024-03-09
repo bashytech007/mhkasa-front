@@ -1,4 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+/* @font-face {
+  font-family: "Monteserrat";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Monteserrat"),
+    url("assets/fonts/Montserrat/static/Montserrat-Black.ttf") format("woff2");
+} */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

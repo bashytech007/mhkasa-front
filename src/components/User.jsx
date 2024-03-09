@@ -1,6 +1,6 @@
 import { useState } from "react";
-import userIcon from "../assets/images/accounticon.svg";
-import angleDownIcon from "../assets/images/accounttoggleicon.svg";
+import userIcon from "../assets/images/accounticon.webp";
+import angleDownIcon from "../assets/images/accounttoggleicon.webp";
 import { Button } from "./Button";
 import { Logout } from "./Logout";
 import { useAuth } from "../hooks/useAuth";
@@ -15,14 +15,18 @@ export const User = () => {
 
   return (
     <div className="relative">
-      <Button className="bg-app-ash text-nowrap" onClick={toggle}>
+      <Button
+        className="bg-app-ash text-nowrap"
+        onClick={toggle}
+        aria-label="Profile drop down"
+      >
         <div className="flex items-center gap-4">
-          <img src={userIcon} alt="" />
+          <img src={userIcon} alt="" className="h-6 w-6" />
           <p className="leading-none hidden md:block">My Account</p>
           <img
             src={angleDownIcon}
             alt=""
-            className={`${expand ? "rotate-180" : ""}`}
+            className={`h-6 w-6 ${expand ? "rotate-180" : ""}`}
           />
         </div>
       </Button>

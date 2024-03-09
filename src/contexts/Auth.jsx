@@ -34,7 +34,7 @@ export const Auth = ({ children }) => {
         setUser(response?.data);
         sessionStorage.setItem("user", JSON.stringify(response?.data));
       } catch (error) {
-        console.error(error);
+        // console.error(error);
       }
     };
 

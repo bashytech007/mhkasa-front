@@ -9,7 +9,7 @@ import { useAuth } from "../hooks/useAuth";
 import { useCanSubmitForm } from "../hooks/useCanSubmitFormik";
 import { useAxios } from "../hooks/useAxios";
 
-export const Login = () => {
+export const Component = () => {
   const axios = useAxios();
   const schema = yup.object().shape({
     email: yup.string().email().required(),
@@ -69,7 +69,7 @@ export const Login = () => {
       <Heading>Login</Heading>
       <p className="py-4 text-[#666666] text-center">
         Your Welcome back don&rsquo;t have an account?
-        <Link to="/register" className="text-app-ash-2 ml-2">
+        <Link to="/register" className="text-app-black ml-2">
           Register Here{" "}
         </Link>
       </p>
@@ -80,7 +80,7 @@ export const Login = () => {
 
         <Link
           to={"/forgot-password"}
-          className="text-app-ash-2 pb-6 text-right w-full inline-block"
+          className="text-app-black pb-6 text-right w-full inline-block"
         >
           Forgot Password?
         </Link>

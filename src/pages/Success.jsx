@@ -1,8 +1,8 @@
-import success from "../assets/images/success_check.svg";
+import success from "../assets/images/success_check.webp";
 import { Wrapper } from "../components/Wrapper";
 import { Link } from "react-router-dom";
 
-export const Success = () => {
+export const Component = () => {
   return (
     <Wrapper className="py-8">
       <div className="mx-auto w-fit flex flex-col items-center my-10">

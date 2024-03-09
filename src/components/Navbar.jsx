@@ -1,4 +1,4 @@
-import cartIcon from "../assets/images/shopping-cart.svg";
+import cartIcon from "../assets/images/shopping-cart.webp";
 import { Logo } from "./Logo";
 import { Wrapper } from "./Wrapper";
 import { User } from "./User";
@@ -10,6 +10,7 @@ const Navbar = () => {
         <Logo collapse />
         <div className="hidden md:block">
           <input
+            id="search"
             type="text"
             placeholder="Search For item"
             className="rounded-full px-6 py-1"
@@ -30,7 +31,7 @@ export default Navbar;
 const CartButton = ({ numberOfItems = 0 }) => {
   return (
     <button className="p-2 relative">
-      <img src={cartIcon} alt="cart" className="cursor-pointer" />
+      <img src={cartIcon} alt="cart" className="cursor-pointer h-6 w-6"/>
       <p className="absolute w-4 h-4 bg-app-red text-sm leading-none grid place-items-center text-white font-bold rounded-full top-0 right-0">
         {numberOfItems}
       </p>

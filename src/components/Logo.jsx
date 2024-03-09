@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logoImg from "../assets/images/logo1.png";
+import logoImg from "../assets/images/logo.webp";
 
 export const Logo = ({
   stack = "horizontal",
@@ -8,7 +8,7 @@ export const Logo = ({
   collapse,
 }) => {
   return (
-    <Link to="/">
+    <Link to="/" aria-label="Navigate to home page">
       <div
         className={`text-[30px] flex gap-x-4 gap-y-3 ${
           stack === "horizontal" ? "flow-row items-center " : "flex-col"
@@ -17,7 +17,7 @@ export const Logo = ({
         <img
           src={logoImg}
           alt=""
-          className={`${
+          className={`aspect-[40/37] ${
             size === "sm" ? "w-14" : size === "lg" ? "w-20" : "w-16"
           }`}
         />

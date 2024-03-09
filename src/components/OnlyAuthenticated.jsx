@@ -1,7 +1,7 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
-export const OnlyAuthenticated = () => {
+export const Component = () => {
   const location = useLocation();
   const url = `${location.pathname}${location.search}${location.hash}`;
   const redirect = encodeURIComponent(url);

@@ -1,14 +1,6 @@
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Layout } from "./components/Layout.jsx";
-import { Login } from "./pages/Login.jsx";
-import { Register } from "./pages/Register.jsx";
-import { ForgotPassword, ResetPassword } from "./pages/ForgotPassword.jsx";
-import { PhoneOtpPage } from "./pages/PhoneOtpPage.jsx";
-import { Home } from "./components/Home.jsx";
-import { OnlyAuthenticated } from "./components/OnlyAuthenticated.jsx";
-import { OnlyUnAuthenticated } from "./components/OnlyUnAuthenticated.jsx";
-import { Success } from "./pages/Success.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,11 +10,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <OnlyAuthenticated />,
+        lazy: () => import("./components/OnlyAuthenticated.jsx"),
         children: [
           {
             path: "/",
-            element: <Home />,
+            lazy: () => import("./components/Home.jsx"),
           },
           {
             path: "/test",
@@ -32,33 +24,39 @@ const router = createBrowserRouter([
       },
       {
         path: "/",
-        element: <OnlyUnAuthenticated />,
+        lazy: () => import("./components/OnlyUnAuthenticated.jsx"),
         children: [
           {
             path: "/login",
-            element: <Login />,
+            lazy: () => import("./pages/Login.jsx"),
           },
           {
             path: "/register",
-            element: <Register />,
+            lazy: () => import("./pages/Register.jsx"),
           },
           {
             path: "/forgot-password",
-            element: <ForgotPassword />,
+            async lazy() {
+              let { ForgotPassword } = await import("./pages/ForgotPassword");
+              return { Component: ForgotPassword };
+            },
           },
           {
             path: "/reset-password",
-            element: <ResetPassword />,
+            async lazy() {
+              let { ResetPassword } = await import("./pages/ForgotPassword");
+              return { Component: ResetPassword };
+            },
           },
           {
             path: "/confirm-otp",
-            element: <PhoneOtpPage />,
+            lazy: () => import("./pages/PhoneOtpPage.jsx"),
           },
         ],
       },
       {
         path: "/account-creation-success",
-        element: <Success />,
+        lazy: () => import("./pages/Success.jsx"),
       },
     ],
   },

@@ -10,7 +10,13 @@ export const Product = ({
   return (
     <div className="bg-white rounded-2xl overflow-hidden min-w-[220px] h-full">
       <div className="h-36">
-        <img src={image} alt="" className="h-full mx-auto" />
+        <img
+          src={image}
+          alt=""
+          className="h-full mx-auto"
+          width={295}
+          height={170}
+        />
       </div>
 
       <div className="px-4 py-6 flex flex-col h-[calc(100%-9rem)] bg-blak">

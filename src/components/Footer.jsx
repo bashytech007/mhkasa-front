@@ -13,7 +13,7 @@ export const Footer = () => {
 
           <div className="sm:col-start-2 sm:col-end-3 sm:row-start-1 sm:row-end-3 sm:text-right md:col-start-2 md:col-end-3 md:row-start-1 md:row-end-2">
             <h2 className="text-lg font-bold text-white">Important Links</h2>
-            <ul className="flex flex-col text-app-ash-2 gap-2 mt-4">
+            <ul className="flex flex-col text-app-ash-2 gap-2 mt-4 italic">
               <li>
                 <Link to="/">About Us</Link>
               </li>

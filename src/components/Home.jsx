@@ -1,8 +1,8 @@
 import { SectionHeader } from "./SectionHeader";
 import { Wrapper } from "./Wrapper";
-import productImg from "../assets/images/product image.png";
-import perfume from "../assets/images/perfume.png";
-import perfumeOil from "../assets/images/perfume-oil.png";
+import productImg from "../assets/images/product image.webp";
+import perfume from "../assets/images/perfume.webp";
+import perfumeOil from "../assets/images/perfume-oil.webp";
 import { Product } from "./ProductCard";
 import { CategoryCard } from "./CategoryCard";
 import { Features } from "./Features";
@@ -10,7 +10,7 @@ import { useAxiosPrivate } from "../hooks/useAxiosPrivate";
 import { useAuth } from "../hooks/useAuth";
 import { useState } from "react";
 
-export const Home = () => {
+export const Component = () => {
   const { accessToken } = useAuth();
   const [employees, setEmployees] = useState([]);
   const axiosPrivate = useAxiosPrivate();

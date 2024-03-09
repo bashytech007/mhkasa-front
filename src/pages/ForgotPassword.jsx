@@ -144,7 +144,7 @@ export const ResetPassword = () => {
       </p>
       <p className="text-[#666666] pb-4 text-center">
         Remember your password?
-        <Link to="/login" className="text-app-ash-2 ml-2">
+        <Link to="/login" className="text-app-black ml-2">
           Login Here
         </Link>
       </p>

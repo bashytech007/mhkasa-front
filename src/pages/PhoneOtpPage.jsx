@@ -6,7 +6,7 @@ import { Wrapper } from "../components/Wrapper";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAxios } from "../hooks/useAxios";
 
-export const PhoneOtpPage = () => {
+export const Component = () => {
   const axios = useAxios();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();

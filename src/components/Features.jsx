@@ -1,6 +1,6 @@
-import cycle from "../assets/images/cycle.svg";
-import bus from "../assets/images/bus.svg";
-import pointer from "../assets/images/mouse-pointer.svg";
+import cycle from "../assets/images/cycle.webp";
+import bus from "../assets/images/bus.webp";
+import pointer from "../assets/images/mouse-pointer.webp";
 import { Wrapper } from "./Wrapper";
 
 export const Features = () => {

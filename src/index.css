@@ -1,19 +1,64 @@
-/* @font-face {
+@font-face {
   font-family: "Monteserrat";
   font-style: normal;
+  font-display: swap;
   font-weight: 400;
   src: local("Monteserrat"),
-    url("assets/fonts/Montserrat/static/Montserrat-Black.ttf") format("woff2");
-} */
+    url("assets/fonts/Montserrat/static/Montserrat-Regular.ttf")
+      format("embedded-opentype"),
+    url("assets/fonts/Montserrat/static/Montserrat-Regular.ttf") format("woff2"),
+    url("assets/fonts/Montserrat/static/Montserrat-Regular.ttf") format("woff"),
+    url("assets/fonts/Montserrat/static/Montserrat-Regular.ttf")
+      format("truetype"),
+    url("assets/fonts/Montserrat/static/Montserrat-Regular.ttf") format("svg");
+}
+
+@font-face {
+  font-family: "Monteserrat";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: local("Monteserrat"),
+    url("assets/fonts/Montserrat/static/Montserrat-Medium.ttf")
+      format("embedded-opentype"),
+    url("assets/fonts/Montserrat/static/Montserrat-Medium.ttf") format("woff2"),
+    url("assets/fonts/Montserrat/static/Montserrat-Medium.ttf") format("woff"),
+    url("assets/fonts/Montserrat/static/Montserrat-Medium.ttf")
+      format("truetype"),
+    url("assets/fonts/Montserrat/static/Montserrat-Medium.ttf") format("svg");
+}
+
+@font-face {
+  font-family: "Monteserrat";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: local("Monteserrat"),
+    url("assets/fonts/Montserrat/static/Montserrat-Bold.ttf")
+      format("embedded-opentype"),
+    url("assets/fonts/Montserrat/static/Montserrat-Bold.ttf") format("woff2"),
+    url("assets/fonts/Montserrat/static/Montserrat-Bold.ttf") format("woff"),
+    url("assets/fonts/Montserrat/static/Montserrat-Bold.ttf") format("truetype"),
+    url("assets/fonts/Montserrat/static/Montserrat-Bold.ttf") format("svg");
+}
+
+@font-face {
+  font-family: "Fuzzy Bubbles";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: local("Fuzzy Bubbles"),
+    url("assets/fonts/Fuzzy_Bubbles/FuzzyBubbles-Bold.ttf")
+      format("embedded-opentype"),
+    url("assets/fonts/Fuzzy_Bubbles/FuzzyBubbles-Bold.ttf") format("woff2"),
+    url("assets/fonts/Fuzzy_Bubbles/FuzzyBubbles-Bold.ttf") format("woff"),
+    url("assets/fonts/Fuzzy_Bubbles/FuzzyBubbles-Bold.ttf") format("truetype"),
+    url("assets/fonts/Fuzzy_Bubbles/FuzzyBubbles-Bold.ttf") format("svg");
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* ::placeholder-black {
-  font-weight: semi-bold;
-  font-size: 24px;
-  color: black;
-} */
 
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {

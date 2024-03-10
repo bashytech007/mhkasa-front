@@ -13,7 +13,7 @@ export const CategoryPanel = () => {
       <Icon icon="solar:perfume-outline" />
       <Icon icon="solar:perfume-outline" />
       <Icon icon="solar:perfume-outline" />
-      <Icon icon="solar:perfume-outline" />
+      <Icon icon="solar:perfume-outline" className="font-bold font"/>
     </div>
   );
 };

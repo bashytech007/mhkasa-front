@@ -13,7 +13,7 @@ export const Product = ({
         <img
           src={image}
           alt=""
-          className="h-full mx-auto"
+          className="h-full  w-full"
           width={295}
           height={170}
         />

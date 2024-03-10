@@ -9,6 +9,7 @@ import { ForgotPassword } from "./pages/ForgotPassword.jsx";
 import { PhoneOtpPage } from "./pages/PhoneOtpPage.jsx";
 import { Home } from "./components/Home.jsx";
 import { Auth } from "./contexts/Auth.jsx";
+import { ResetPassword } from "./pages/ResetPassword.jsx";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/forgot-password",
         element: <ForgotPassword />,
+      },
+      {
+        path: "/reset-password",
+        element: <ResetPassword />,
       },
       {
         path: "/confirm-otp",

@@ -32,7 +32,7 @@ export const User = () => {
         </div>
       </Button>
       <div
-        className={`absolute min-w-full right-0 pb-6 pt-3 bg-white px-4 rounded-md shadow-lg top-[calc(100%+1.5rem)] ${
+        className={`absolute min-w-full right-0 pb-6 pt-3 bg-white px-4 rounded-md shadow-lg top-[calc(100%+1.5rem)] z-50 ${
           expand ? "" : "hidden"
         }`}
       >

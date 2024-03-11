@@ -104,7 +104,7 @@ const MobileNavbar = ({ toggle }) => {
 
   return (
     <div className="bg-white fixed top-0 left-0 right-0 bottom-0 z-50 overflow-y-scroll md:hidden">
-      <nav className="pt-6">
+      <nav className="pt-6 min-h-[100vh]">
         <Wrapper>
           <div className="flex items-center justify-between pt-2 pb-6">
             <h2 className="font-bold text-2xl">Categories</h2>

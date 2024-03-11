@@ -6,14 +6,10 @@ import perfumeOil from "../assets/images/perfume-oil.webp";
 import { Product } from "./ProductCard";
 import { CategoryCard } from "./CategoryCard";
 import { Features } from "./Features";
-import { useAxiosPrivate } from "../hooks/useAxiosPrivate";
-import { useAuth } from "../hooks/useAuth";
-import { useState } from "react";
+import { SwiperElem } from "./Swiper";
+import { CategoryPanel } from "./CategoryPanel";
 
 export const Component = () => {
-  const { accessToken } = useAuth();
-  const [employees, setEmployees] = useState([]);
-  const axiosPrivate = useAxiosPrivate();
   const products = [
     {
       product: "Explore Man",
@@ -72,22 +68,13 @@ export const Component = () => {
     },
   ];
 
-  const onClick = async () => {
-    try {
-      const res = await axiosPrivate.get("/employees", {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
-      setEmployees(res?.data?.employees);
-    } catch (error) {
-      console.log(error?.response?.data.messaeg);
-    }
-  };
   return (
     <main className="py-4">
       <Wrapper>
+        <div className="flex gap-8">
+          <CategoryPanel />
+          <SwiperElem />
+        </div>
         <section className="py-8">
           <SectionHeader header="Featured Products" />
           <ul className="pt-8 grid gap-4 justify-center grid-flow-row auto-rows-fr sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -127,14 +114,6 @@ export const Component = () => {
       <div className="py-6">
         <Features />
       </div>
-      <button onClick={() => onClick()}>Get Employees</button>
-      <ul>
-        {employees.map((employee, i) => (
-          <li key={i}>
-            {employee.name} - {employee.age} Yrs
-          </li>
-        ))}
-      </ul>
     </main>
   );
 };

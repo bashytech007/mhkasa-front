@@ -25,12 +25,10 @@ export const SwiperElem = () => {
           }
           const elem = arr.map((val) => {
             return `<li style="background-color:white;height:${
-              val == current ? "12px" : "8px"
-            };width:72px;border-radius:20px"/>`;
+              val == current ? "14px" : "8px"
+            };width:64px;border-radius:20px"/>`;
           });
-          return `<ul style="display:flex;list-style:none;gap:8px;align-items:center">${elem.join(
-            ""
-          )}</ul>`;
+          return elem.join("");
         },
       },
     };
@@ -97,6 +95,7 @@ export const SwiperElem = () => {
           color="white"
         />
       </button>
+      <ul className="swiper-pagination flex gap-2 items-center absolute bottom-4 z-10 left-4 md:bottom-8"></ul>
     </div>
   );
 };

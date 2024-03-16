@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logoImg from "../assets/images/logo.webp";
+import logoImg from "../../assets/images/logo.webp";
 
 export const Logo = ({
   stack = "horizontal",

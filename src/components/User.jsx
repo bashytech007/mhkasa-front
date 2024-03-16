@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Button } from "./Button";
 import { Logout } from "./Logout";
 import { useAuth } from "../hooks/useAuth";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
+import { Button } from "./ui/Button";
 
 export const User = () => {
   const { user } = useAuth();
@@ -15,7 +15,7 @@ export const User = () => {
   return (
     <div className="relative">
       <Button
-        className="text-nowrap px-0 md:px-5 md:bg-app-ash "
+        className="text-nowrap px-0 md:px-5 md:bg-app-ash"
         onClick={toggle}
         aria-label="Profile drop down"
       >
@@ -26,6 +26,7 @@ export const User = () => {
           </p>
           <Icon
             icon="fa6-solid:angle-down"
+            vFlip={expand}
             style={{ fontSize: 32 }}
             className="hidden text-app-black min-[512px]:block"
           />

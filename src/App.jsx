@@ -15,7 +15,11 @@ const router = createBrowserRouter([
         children: [
           {
             path: "/",
-            lazy: () => import("./components/Home.jsx"),
+            lazy: () => import("./pages/home.jsx"),
+          },
+          {
+            path: "/cart",
+            lazy: () => import("./pages/cart.jsx"),
           },
           {
             path: "/test",
@@ -29,35 +33,35 @@ const router = createBrowserRouter([
         children: [
           {
             path: "/login",
-            lazy: () => import("./pages/Login.jsx"),
+            lazy: () => import("./pages/login.jsx"),
           },
           {
             path: "/register",
-            lazy: () => import("./pages/Register.jsx"),
+            lazy: () => import("./pages/register.jsx"),
           },
           {
             path: "/forgot-password",
             async lazy() {
-              let { ForgotPassword } = await import("./pages/ForgotPassword");
+              let { ForgotPassword } = await import("./pages/forgot-password");
               return { Component: ForgotPassword };
             },
           },
           {
             path: "/reset-password",
             async lazy() {
-              let { ResetPassword } = await import("./pages/ForgotPassword");
+              let { ResetPassword } = await import("./pages/forgot-password");
               return { Component: ResetPassword };
             },
           },
           {
             path: "/confirm-otp",
-            lazy: () => import("./pages/PhoneOtpPage.jsx"),
+            lazy: () => import("./pages/confirm-otp.jsx"),
           },
         ],
       },
       {
         path: "/account-creation-success",
-        lazy: () => import("./pages/Success.jsx"),
+        lazy: () => import("./pages/success.jsx"),
       },
     ],
   },

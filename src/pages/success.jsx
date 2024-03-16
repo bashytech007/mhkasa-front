@@ -1,12 +1,11 @@
-import success from "../assets/images/success_check.webp";
-import { Wrapper } from "../components/Wrapper";
+import { Success } from "../components/Success";
+import { Wrapper } from "../components/ui/Wrapper";
 import { Link } from "react-router-dom";
 
 export const Component = () => {
   return (
     <Wrapper className="py-8">
-      <div className="mx-auto w-fit flex flex-col items-center my-10">
-        <img src={success} alt="" />
+      <Success>
         <h2 className="font-bold text-xl mt-6">Successfully</h2>
         <p>your account has been created</p>
         <Link
@@ -16,7 +15,7 @@ export const Component = () => {
         >
           Okay
         </Link>
-      </div>
+      </Success>
     </Wrapper>
   );
 };

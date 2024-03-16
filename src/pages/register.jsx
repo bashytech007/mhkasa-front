@@ -2,8 +2,8 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import { Heading } from "../components/Heading";
-import { Wrapper } from "../components/Wrapper";
-import { Button } from "../components/Button";
+import { Wrapper } from "../components/ui/Wrapper";
+import { Button } from "../components/ui/Button";
 import { Input, PInput } from "../components/Input";
 import { useCanSubmitForm } from "../hooks/useCanSubmitFormik";
 import { useAxios } from "../hooks/useAxios";
@@ -94,7 +94,7 @@ export const Component = () => {
         </div>
 
         <Button
-          className="w-full bg-app-black text-sm  text-white font-bold mt-4 hover:bg-black disabled:bg-[#999999]"
+          className="w-full bg-app-red hover:bg-red-500 text-sm  text-white font-bold mt-4 disabled:bg-[#999999] hover:disabled:bg-[#999999] sm:hover:bg-black sm:bg-app-black"
           type="submit"
           disabled={!canSubmit}
         >

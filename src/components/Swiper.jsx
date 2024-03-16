@@ -25,7 +25,7 @@ export const SwiperElem = () => {
           }
           const elem = arr.map((val) => {
             return `<li style="background-color:white;height:${
-              val == current ? "14px" : "8px"
+              val == current ? "10px" : "7px"
             };width:64px;border-radius:20px"/>`;
           });
           return elem.join("");
@@ -54,8 +54,10 @@ export const SwiperElem = () => {
             overflow: "hidden",
           }}
         >
-          <div className="min-h-[240px] h-[40vw] bg-app-red rounded-3xl overflow-hidden md:h-[460px]">
-            Render your carousel slide here
+          <div className="min-h-[240px] h-[40vw] md:h-[460px]">
+            <div className="h-full bg-app-red rounded-3xl overflow-hidden">
+              Render your carousel slide here
+            </div>
           </div>
         </swiper-slide>
         <swiper-slide
@@ -64,8 +66,10 @@ export const SwiperElem = () => {
             overflow: "hidden",
           }}
         >
-          <div className="min-h-[240px] h-[40vw] bg-green-600 rounded-3xl overflow-hidden md:h-[460px]">
-            <div>It could be a div</div>
+          <div className="min-h-[240px] h-[40vw] md:h-[460px]">
+            <div className="h-full bg-green-600 rounded-3xl overflow-hidden">
+              Render your carousel slide here
+            </div>
           </div>
         </swiper-slide>
         <swiper-slide
@@ -74,13 +78,15 @@ export const SwiperElem = () => {
             overflow: "hidden",
           }}
         >
-          <div className="min-h-[240px] h-[40vw] bg-yellow-600 rounded-3xl overflow-hidden md:h-[460px]">
-            <button>Or any HTMLElement</button>
+          <div className="min-h-[240px] h-[40vw] md:h-[460px]">
+            <div className="h-full  bg-yellow-600 rounded-3xl overflow-hidden">
+              Render your carousel slide here
+            </div>
           </div>
         </swiper-slide>
       </swiper-container>
 
-      <button className="swiper-button-prev flex absolute bg-[#3333] w-12 h-12 z-50 left-8 top-1/2 items-center justify-center rounded-full">
+      <button className="swiper-button-prev flex absolute bg-[#3333] w-12 h-12 z-10 left-8 top-1/2 items-center justify-center rounded-full">
         <Icon
           icon="fa6-solid:angle-right"
           style={{ fontSize: 36 }}
@@ -88,14 +94,14 @@ export const SwiperElem = () => {
           hFlip="true"
         />
       </button>
-      <button className="swiper-button-next flex absolute bg-[#3333] w-12 h-12 z-50 right-8 top-1/2 items-center justify-center rounded-full">
+      <button className="swiper-button-next flex absolute bg-[#3333] w-12 h-12 z-10 right-8 top-1/2 items-center justify-center rounded-full">
         <Icon
           icon="fa6-solid:angle-right"
           style={{ fontSize: 36 }}
           color="white"
         />
       </button>
-      <ul className="swiper-pagination flex gap-2 items-center absolute bottom-4 z-10 left-4 md:bottom-8"></ul>
+      <ul className="swiper-pagination flex gap-2 items-end absolute bottom-4 z-10 left-4 md:bottom-8"></ul>
     </div>
   );
 };

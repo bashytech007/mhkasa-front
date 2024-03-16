@@ -2,11 +2,11 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Heading } from "../components/Heading";
-import { Wrapper } from "../components/Wrapper";
-import { Button } from "../components/Button";
+import { Button } from "../components/ui/Button";
 import { Input, PInput } from "../components/Input";
 import { useCanSubmitForm } from "../hooks/useCanSubmitFormik";
 import { useAxios } from "../hooks/useAxios";
+import { Wrapper } from "../components/ui/Wrapper";
 
 export const ForgotPassword = () => {
   const axios = useAxios();
@@ -63,7 +63,7 @@ export const ForgotPassword = () => {
         />
 
         <Button
-          className="w-full bg-app-black text-sm  text-white font-bold mt-4 hover:bg-black disabled:bg-[#999999]"
+          className="w-full bg-app-red hover:bg-red-500 text-sm  text-white font-bold mt-4 sm:hover:bg-black hover:disabled:bg-[#999999] disabled:bg-[#999999] sm:bg-app-black"
           type="submit"
           disabled={!canSubmit}
         >

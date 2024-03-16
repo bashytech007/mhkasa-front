@@ -1,5 +1,5 @@
-import { Logo } from "./Logo";
-import { Wrapper } from "./Wrapper";
+import { Logo } from "./ui/Logo";
+import { Wrapper } from "./ui/Wrapper";
 import { User } from "./User";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
@@ -54,7 +54,7 @@ const Navbar = () => {
           </button>
         </form>
 
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center justify-between gap-2 sm:gap-4">
           <CartButton />
           <User />
         </div>
@@ -137,11 +137,11 @@ const MobileNavbar = ({ toggle }) => {
 
 const CartButton = ({ numberOfItems = 0 }) => {
   return (
-    <button className="p-2 relative">
+    <Link to="/cart" className="p-2 relative">
       <Icon icon="bytesize:cart" style={{ fontSize: 32 }} />
       <p className="absolute w-4 h-4 bg-app-red text-sm leading-none grid place-items-center text-white font-bold rounded-full top-1 right-1">
         {numberOfItems}
       </p>
-    </button>
+    </Link>
   );
 };

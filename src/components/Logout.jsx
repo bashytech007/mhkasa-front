@@ -1,6 +1,6 @@
 import { useAuth } from "../hooks/useAuth";
 import axios from "../utils/axios";
-import { Button } from "./Button";
+import { Button } from "./ui/Button";
 export const Logout = ({ toggle }) => {
   const { setUser } = useAuth();
   const onClick = async () => {

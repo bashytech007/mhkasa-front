@@ -11,6 +11,7 @@ import ph_drop from "../assets/images/ph_drop.svg";
 import aroma from "../assets/images/aroma.svg";
 import freshner from "../assets/images/freshener.svg";
 import deodorant from "../assets/images/deodorant.png";
+import { useCart } from "../hooks/useCart";
 
 const Navbar = () => {
   const [expand, setExpand] = useState(false);
@@ -135,12 +136,13 @@ const MobileNavbar = ({ toggle }) => {
   );
 };
 
-const CartButton = ({ numberOfItems = 0 }) => {
+const CartButton = () => {
+  const { cart } = useCart();
   return (
     <Link to="/cart" className="p-2 relative">
       <Icon icon="bytesize:cart" style={{ fontSize: 32 }} />
-      <p className="absolute w-4 h-4 bg-app-red text-sm leading-none grid place-items-center text-white font-bold rounded-full top-1 right-1">
-        {numberOfItems}
+      <p className="absolute w-4 h-4 bg-app-red text-xs leading-none grid place-items-center text-white font-bold rounded-full top-1 right-1">
+        {cart.length}
       </p>
     </Link>
   );

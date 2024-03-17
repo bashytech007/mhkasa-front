@@ -184,17 +184,7 @@ export const Component = () => {
       </Wrapper>
       <div className="pt-6">
         <Features />
-        {/* <Modal title="Proceed To Checkout">
-          <p>
-            Click "<span className="text-app-red">NO</span>" if you will love to
-            continue shopping or "PROCEED" if you will love to complete purchase
-            now
-          </p>
-          <div className="flex gap-12 justify-center items-center pt-8">
-            <button>No</button>
-            <Button className='bg-app-black text-white font-bold'>Proceed</Button>
-          </div>
-        </Modal> */}
+       
       </div>
     </main>
   );

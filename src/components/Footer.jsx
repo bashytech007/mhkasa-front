@@ -69,7 +69,7 @@ export const Footer = () => {
               <li>
                 <Link
                   to="/"
-                  className="p-1 inline-block hover:scale-105"
+                  className="p-1 inline-block hover:scale-105 hover:text-app-red"
                   aria-label="link to Mhkasa instagram page"
                 >
                   <Icon icon="mdi:instagram" style={{ fontSize: 32 }} />
@@ -84,7 +84,7 @@ export const Footer = () => {
                   <Icon
                     icon="bi:twitter-x"
                     style={{ fontSize: 32 }}
-                    className="hover:text-blue-500"
+                    className="hover:text-app-red"
                   />
                 </Link>
               </li>
@@ -97,7 +97,7 @@ export const Footer = () => {
                   <Icon
                     icon="lucide:facebook"
                     style={{ fontSize: 32 }}
-                    className="hover:text-blue-700"
+                    className="hover:text-app-red"
                   />
                 </Link>
               </li>

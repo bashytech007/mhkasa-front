@@ -1,56 +1,3 @@
-// import cartIcon from "../assets/images/shopping-cart.svg";
-// import userIcon from "../assets/images/accounticon.svg";
-// import angleDownIcon from "../assets/images/accounttoggleicon.svg";
-// import { Logo } from "./Logo";
-// import { Wrapper } from "./Wrapper";
-// import { Button } from "./Button";
-// import { useAuth } from "../hooks/useAuth";
-
-// const Navbar = () => {
-//   const { user, accessToken } = useAuth();
-//   return (
-//     <Wrapper className="py-4">
-//       <nav className="flex items-center justify-between font-monteserrat">
-//         <Logo collapse />
-//         <div className="hidden md:block">
-//           <input
-//             type="text"
-//             placeholder="Search For item"
-//             className="px-6 py-1 rounded-full"
-//           />
-//         </div>
-
-//         <div className="flex items-center justify-between gap-4">
-//           <CartButton />
-
-//           <Button className="bg-app-ash">
-//             <div className="flex items-center gap-4">
-//               <img src={userIcon} alt="" />
-//               <p className="hidden leading-none md:block">
-//                 {user?.username ? user.username : "My Account"}
-//               </p>
-//               <img src={angleDownIcon} alt="" />
-//             </div>
-//           </Button>
-//         </div>
-//       </nav>
-//     </Wrapper>
-//   );
-// };
-
-// export default Navbar;
-
-// const CartButton = ({ numberOfItems = 0 }) => {
-//   return (
-//     <button className="relative p-2">
-//       <img src={cartIcon} alt="cart" className="cursor-pointer" />
-//       <p className="absolute top-0 right-0 grid w-4 h-4 text-sm font-bold leading-none text-white rounded-full bg-app-red place-items-center">
-//         {numberOfItems}
-//       </p>
-//     </button>
-//   );
-// };
-
 import { Logo } from "./Logo";
 import { Wrapper } from "./Wrapper";
 import { User } from "./User";
@@ -160,7 +107,9 @@ const MobileNavbar = ({ toggle }) => {
       <nav className="pt-6 min-h-[100vh]">
         <Wrapper>
           <div className="flex items-center justify-between pt-2 pb-6">
-            <h2 className="text-2xl font-bold">Categories</h2>
+            <h2 className="text-2xl font-bold" Link to="/Categories">
+              Categories
+            </h2>
             <button onClick={toggle}>
               <Icon icon="uil:times" style={{ fontSize: 32 }} />
             </button>

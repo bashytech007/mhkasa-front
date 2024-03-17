@@ -66,7 +66,7 @@ export const CategoryPanel = () => {
     <div className="rounded-2xl overflow-hidden hidden min-w-[260px] w-fit md:block">
       <nav className="">
         <div className="py-3 bg-app-red">
-          <h2 className="pl-8 text-2xl font-bold text-white">Categories</h2>
+          <h2 className="font-bold text-2xl text-white pl-8">Categories</h2>
         </div>
         <ul>
           {categories.map(({ category, icon }, index) => (

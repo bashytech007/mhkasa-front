@@ -8,12 +8,15 @@ import { CategoryCard } from "./CategoryCard";
 import { Features } from "./Features";
 import { SwiperElem } from "./Swipers";
 import { CategoryPanel } from "./CategoryPanel";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
-
+// import { Link } from "react-router-dom";
+import { Icon } from "@iconify/react";
+import useLongPress from "../hooks/useLongPress";
+import { Sort } from "../components/Sort";
 export const Home = () => {
+  const ref = useRef();
   const [featuredProducts, setFeaturedProducts] = useState([]);
-  const [topProducts, setTopProducts] = useState([]);
 
   useEffect(() => {
     async function fetchFeatures() {
@@ -65,6 +68,11 @@ export const Home = () => {
 
     fetchLatestFeatures();
   }, []);
+  const { getHandlers, setElement } = useLongPress(ref.current);
+
+  useEffect(() => {
+    setElement(ref.current);
+  }, []);
 
   const categories = [
     {
@@ -96,29 +104,54 @@ export const Home = () => {
           <CategoryPanel />
           <SwiperElem />
         </div>
+        <div className="">
+          <section className="py-8 ">
+            <div className="flex items-center justify-between">
+              <SectionHeader header="Featured Products" />
+              <Sort />
+            </div>
+            <ul className="grid justify-center grid-flow-row gap-4 pt-8 auto-rows-fr sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              {featuredProducts.map(
+                (
+                  { product, category, originalPrice, discountedPrice, image },
+                  index
+                ) => (
+                  <li key={index}>
+                    <Product
+                      product={product}
+                      category={category}
+                      originalPrice={originalPrice}
+                      discountedPrice={discountedPrice}
+                      image={image}
+                    />
+                  </li>
+                )
+              )}
+            </ul>
+          </section>
+        </div>
         <section className="py-8">
-          <SectionHeader header="Featured Products" />
-          <ul className="grid justify-center grid-flow-row gap-4 pt-8 auto-rows-fr sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {featuredProducts.map(
-              (
-                { product, category, originalPrice, discountedPrice, image },
-                index
-              ) => (
-                <li key={index}>
-                  <Product
-                    product={product}
-                    category={category}
-                    originalPrice={originalPrice}
-                    discountedPrice={discountedPrice}
-                    image={image}
-                  />
-                </li>
-              )
-            )}
-          </ul>
-        </section>
-        <section className="py-8">
-          <SectionHeader header="Top Categories" />
+          <div className="flex items-center justify-between">
+            <SectionHeader header="Top Categories" Link to="/Categoreis" />
+            <div className="flex gap-4">
+              <button
+                {...getHandlers("backward")}
+                className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
+              >
+                <Icon icon="fa6-solid:angle-left" style={{ fontSize: 28 }} />
+              </button>
+              <button
+                {...getHandlers("forward")}
+                className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
+              >
+                <Icon
+                  icon="fa6-solid:angle-left"
+                  hFlip
+                  style={{ fontSize: 28 }}
+                />
+              </button>
+            </div>
+          </div>
           <ul className="flex gap-6 pt-8 overflow-auto no-scrollbar">
             {categories.map(({ numberOfProducts, image, category }, index) => (
               <li key={index} className="grow-0 shrink-0">

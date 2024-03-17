@@ -10,7 +10,8 @@ import { PhoneOtpPage } from "./pages/PhoneOtpPage.jsx";
 import { Home } from "./components/Home.jsx";
 import { Auth } from "./contexts/Auth.jsx";
 import { ResetPassword } from "./pages/ResetPassword.jsx";
-
+import { Categories } from "./components/Categories.jsx";
+import Search from "./components/Search.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,6 +21,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/categories",
+        element: <Categories />,
+      },
+      {
+        path: "/search",
+        element: <Search />,
       },
       {
         path: "/login",

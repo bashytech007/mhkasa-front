@@ -16,7 +16,7 @@ export const Login = () => {
     // .matches(/(?=.*[A-Z])/, "must contain capital letter"),
   });
 
-  const naigate = useNavigate();
+  const navigate = useNavigate();
   const { setAccessToken, setUser } = useAuth();
   const [searchParams] = useSearchParams();
   const redirect = searchParams.get("redirect") || "/";
@@ -35,7 +35,7 @@ export const Login = () => {
           email: response.data?.email,
         });
         console.log(response.data);
-        naigate(redirect);
+        navigate(redirect);
       }
     } catch (error) {
       console.error(error);
@@ -45,7 +45,7 @@ export const Login = () => {
   const formik = useFormik({
     initialValues: { email: "", password: "" },
     validationSchema: schema,
-    onSubmit: async (values, { resetForm }) => {
+    onSubmit: async (values) => {
       await login(values);
     },
   });

@@ -38,6 +38,7 @@ export const Register = () => {
         }
       );
       if (response.status === 200) {
+        console.log(response.data);
         navigate(`/confirm-otp?email=${values.email}&otp=${response.data.otp}`);
       }
     },

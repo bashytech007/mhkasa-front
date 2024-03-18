@@ -9,11 +9,11 @@ export const Product = ({
 }) => {
   return (
     <div className="bg-white rounded-2xl overflow-hidden h-full @container">
-      <div className="h-24 pt-3">
+      <div className="h-24">
         <img
           src={image}
           alt=""
-          className="h-full w-full object-fill"
+          className="h-full w-full"
           width={295}
           height={170}
         />

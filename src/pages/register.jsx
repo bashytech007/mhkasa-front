@@ -7,8 +7,11 @@ import { Button } from "../components/ui/Button";
 import { Input, PInput } from "../components/Input";
 import { useCanSubmitForm } from "../hooks/useCanSubmitFormik";
 import { useAxios } from "../hooks/useAxios";
+import { useState } from "react";
+import { Icon } from "@iconify/react";
 
 export const Component = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const axios = useAxios();
   const navigate = useNavigate();
   const schema = yup.object().shape({
@@ -30,6 +33,7 @@ export const Component = () => {
     validationSchema: schema,
     onSubmit: async (values, {}) => {
       try {
+        setIsSubmitting(true);
         const response = await axios.post(
           `${import.meta.env.VITE_BASE_URL}/register`,
           values,
@@ -38,6 +42,7 @@ export const Component = () => {
           }
         );
         if (response.status === 201) {
+          setIsSubmitting(false);
           navigate(
             `/confirm-otp?email=${encodeURIComponent(values.email)}&otp=${
               response.data.otpCode
@@ -45,6 +50,7 @@ export const Component = () => {
           );
         }
       } catch (error) {
+        setIsSubmitting(false);
         console.log(error.response.data.message);
       }
     },
@@ -94,11 +100,15 @@ export const Component = () => {
         </div>
 
         <Button
-          className="w-full bg-app-red hover:bg-red-500 text-sm  text-white font-bold mt-4 disabled:bg-[#999999] hover:disabled:bg-[#999999] sm:hover:bg-black sm:bg-app-black"
+          className="w-full flex justify-center bg-app-red hover:bg-red-500 text-sm  text-white font-bold mt-4 sm:hover:bg-black disabled:bg-[#999999] hover:disabled:bg-[#999999] sm:bg-app-black"
           type="submit"
           disabled={!canSubmit}
         >
-          Register
+          {isSubmitting ? (
+            <Icon icon="svg-spinners:6-dots-rotate" style={{ fontSize: 20 }} />
+          ) : (
+            "Register"
+          )}
         </Button>
       </form>
     </Wrapper>

@@ -5,8 +5,10 @@ import { Heading } from "../components/Heading";
 import { Wrapper } from "../components/ui/Wrapper";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAxios } from "../hooks/useAxios";
+import { Icon } from "@iconify/react";
 
 export const Component = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const axios = useAxios();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -17,6 +19,7 @@ export const Component = () => {
     otp.every((letter) => letter !== "")
   );
   const onSubmit = async (e) => {
+    setIsSubmitting(true);
     try {
       e.preventDefault();
       const response = await axios.post(
@@ -31,9 +34,11 @@ export const Component = () => {
       );
 
       if (response.status === 200) {
+        setIsSubmitting(false);
         navigate(`/account-creation-success`);
       }
     } catch (error) {
+      setIsSubmitting(false);
       console.log(error?.response?.data?.message);
     }
   };
@@ -65,16 +70,20 @@ export const Component = () => {
           </div>
 
           <OTPInput otp={otp} setOtp={setOtp} canSubmit={canSubmit} />
-
-          <div>
-            <Button
-              className="w-full bg-app-red hover:bg-red-500 text-sm  text-white font-bold mt-4 sm:hover:bg-black hover:disabled:bg-[#999999] disabled:bg-[#999999] sm:bg-app-black"
-              type="submit"
-              disabled={!canSubmit}
-            >
-              Verify Now
-            </Button>
-          </div>
+          <Button
+            className="w-36 flex justify-center bg-app-red hover:bg-red-500 text-sm  text-white font-bold mt-4 sm:hover:bg-black disabled:bg-[#999999] hover:disabled:bg-[#999999] sm:bg-app-black"
+            type="submit"
+            disabled={!canSubmit}
+          >
+            {isSubmitting ? (
+              <Icon
+                icon="svg-spinners:6-dots-rotate"
+                style={{ fontSize: 20 }}
+              />
+            ) : (
+              "Verify Now"
+            )}
+          </Button>
         </form>
       </div>
     </Wrapper>

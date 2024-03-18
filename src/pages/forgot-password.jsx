@@ -7,8 +7,11 @@ import { Input, PInput } from "../components/Input";
 import { useCanSubmitForm } from "../hooks/useCanSubmitFormik";
 import { useAxios } from "../hooks/useAxios";
 import { Wrapper } from "../components/ui/Wrapper";
+import { Icon } from "@iconify/react";
+import { useState } from "react";
 
 export const ForgotPassword = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const axios = useAxios();
   const navigate = useNavigate();
   const schema = yup.object().shape({
@@ -16,6 +19,7 @@ export const ForgotPassword = () => {
   });
 
   const request = async (values) => {
+    setIsSubmitting(true);
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_BASE_URL}/forgot-password`,
@@ -23,9 +27,11 @@ export const ForgotPassword = () => {
         { headers: { "Content-Type": "application/json" } }
       );
       if (response.status === 200) {
+        setIsSubmitting(false);
         navigate(`/reset-password?email=${encodeURIComponent(values.email)}`);
       }
     } catch (error) {
+      setIsSubmitting(false);
       console.log(error?.response?.data?.message);
     }
   };
@@ -63,11 +69,15 @@ export const ForgotPassword = () => {
         />
 
         <Button
-          className="w-full bg-app-red hover:bg-red-500 text-sm  text-white font-bold mt-4 sm:hover:bg-black hover:disabled:bg-[#999999] disabled:bg-[#999999] sm:bg-app-black"
+          className="w-full flex justify-center bg-app-red hover:bg-red-500 text-sm  text-white font-bold mt-4 sm:hover:bg-black disabled:bg-[#999999] hover:disabled:bg-[#999999] sm:bg-app-black"
           type="submit"
           disabled={!canSubmit}
         >
-          Reset Password
+          {isSubmitting ? (
+            <Icon icon="svg-spinners:6-dots-rotate" style={{ fontSize: 20 }} />
+          ) : (
+            "Restet Password"
+          )}
         </Button>
       </form>
     </Wrapper>
@@ -75,6 +85,8 @@ export const ForgotPassword = () => {
 };
 
 export const ResetPassword = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isRequestingOtp, setIsRequestingOtp] = useState(false);
   const axios = useAxios();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -103,6 +115,7 @@ export const ResetPassword = () => {
     initialValues: { password: "", otp: "", confirm_password: "" },
     validationSchema: schema,
     onSubmit: async ({ password, otp }, {}) => {
+      setIsSubmitting(true);
       try {
         const response = await axios.post(
           `${import.meta.env.VITE_BASE_URL}/reset-password`,
@@ -110,9 +123,11 @@ export const ResetPassword = () => {
           { headers: { "Content-Type": "application/json" } }
         );
         if (response.status === 200) {
+          setIsSubmitting(false);
           navigate(`/login`);
         }
       } catch (error) {
+        setIsSubmitting(false);
         console.error(error);
       }
     },
@@ -121,6 +136,7 @@ export const ResetPassword = () => {
   const canSubmit = useCanSubmitForm(formik);
 
   const resendOtp = async () => {
+    setIsRequestingOtp(true);
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_BASE_URL}/resend-otp`,
@@ -128,9 +144,11 @@ export const ResetPassword = () => {
         { headers: { "Content-Type": "application/json" } }
       );
       if (response.status === 200) {
+        setIsRequestingOtp(false);
         console.log(response);
       }
     } catch (error) {
+      setIsRequestingOtp(false);
       console.error(error);
     }
   };
@@ -172,17 +190,35 @@ export const ResetPassword = () => {
             className="bg-app-ash-1 grow w-full"
             placeholder="OTP"
           />
-          <button onClick={resendOtp} className="px-4" type="button">
-            Resend
-          </button>
+
+          {isRequestingOtp ? (
+            <div className="w-28 flex justify-center">
+              <Icon
+                icon="svg-spinners:6-dots-rotate"
+                style={{ fontSize: 20 }}
+              />
+            </div>
+          ) : (
+            <button
+              onClick={resendOtp}
+              className="w-28 py-2 rounded hover:bg-app-ash-1"
+              type="button"
+            >
+              Resend
+            </button>
+          )}
         </div>
 
         <Button
-          className="w-full bg-app-black text-sm  text-white font-bold mt-4 hover:bg-black disabled:bg-[#999999]"
+          className="w-full flex justify-center bg-app-red hover:bg-red-500 text-sm  text-white font-bold mt-4 sm:hover:bg-black disabled:bg-[#999999] hover:disabled:bg-[#999999] sm:bg-app-black"
           type="submit"
           disabled={!canSubmit}
         >
-          Reset Password
+          {isSubmitting ? (
+            <Icon icon="svg-spinners:6-dots-rotate" style={{ fontSize: 20 }} />
+          ) : (
+            "Restet Password"
+          )}
         </Button>
       </form>
     </Wrapper>

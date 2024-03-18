@@ -8,9 +8,12 @@ import { useCanSubmitForm } from "../hooks/useCanSubmitFormik";
 import { useAxios } from "../hooks/useAxios";
 import { Wrapper } from "../components/ui/Wrapper";
 import { Button } from "../components/ui/Button";
+import { Icon } from "@iconify/react";
+import { useState } from "react";
 
 export const Component = () => {
   const axios = useAxios();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const schema = yup.object().shape({
     email: yup.string().email().required(),
     password: yup
@@ -30,11 +33,13 @@ export const Component = () => {
   const redirect = searchParams.get("redirect") || "/";
 
   const login = async (values) => {
+    setIsSubmitting(true);
     try {
       const response = await axios.post(`login`, values, {
         headers: { "Content-Type": "application/json" },
       });
       if (response.status === 200) {
+        setIsSubmitting(false);
         setAccessToken(response?.data?.accessToken);
         setUser({
           username: response?.data?.username,
@@ -51,6 +56,7 @@ export const Component = () => {
       }
     } catch (error) {
       console.log(error?.response?.data?.message);
+      setIsSubmitting(false);
     }
   };
 
@@ -86,11 +92,15 @@ export const Component = () => {
         </Link>
 
         <Button
-          className="w-full bg-app-red hover:bg-red-500 text-sm  text-white font-bold mt-4 sm:hover:bg-black disabled:bg-[#999999] hover:disabled:bg-[#999999] sm:bg-app-black"
+          className="w-full flex justify-center bg-app-red hover:bg-red-500 text-sm  text-white font-bold mt-4 sm:hover:bg-black disabled:bg-[#999999] hover:disabled:bg-[#999999] sm:bg-app-black"
           type="submit"
           disabled={!canSubmit}
         >
-          Login
+          {isSubmitting ? (
+            <Icon icon="svg-spinners:6-dots-rotate" style={{ fontSize: 20 }} />
+          ) : (
+            "Login"
+          )}
         </Button>
       </form>
     </Wrapper>

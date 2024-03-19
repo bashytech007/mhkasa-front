@@ -7,12 +7,12 @@ import { useState } from "react";
 
 export const CartItem = ({ item }) => {
   const [showModal, setShowModal] = useState(false);
-
   const { removeFromCart } = useCart();
+
   return (
-    <div className="py-2 text-sm sm:text-md">
-      <div className="grid grid-cols-12 grid-rows-2">
-        <div className="flex items-center gap-2 col-span-9 row-span-2 md:col-span-6">
+    <div className="text-sm sm:text-md">
+      <div className="grid grid-cols-12 grid-rows-3 items-center">
+        <div className="flex items-center gap-2 col-span-9 row-span-3 md:col-span-6">
           <div className="w-20 min-h-[96px] bg-app-ash-1">
             <img src="" alt="" className="w-20" />
           </div>
@@ -33,9 +33,11 @@ export const CartItem = ({ item }) => {
         <p className="hidden md:block md:row-span-2 md:text-center md:col-span-2">
           #{item.unitPrice}
         </p>
-        <div className="grid items-center justify-end col-end-13 col-start-10 md:justify-center md:items-start md:row-span-2 md:text-center md:col-start-9 md:col-end-11">
+
+        <div className="grid items-center justify-end col-end-13 col-start-10 row-span-2 md:justify-center md:items-start md:row-span-3 md:text-center md:col-start-9 md:col-end-11">
           <CartItemQuantity quantity={item.quantity} productId={item.id} />
         </div>
+        
         <p className="col-end-13 col-start-10 text-right md:row-span-2 md:text-center md:col-start-11 md:col-end-13">
           #{item.quantity * item.unitPrice}
         </p>

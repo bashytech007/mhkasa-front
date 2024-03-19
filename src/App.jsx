@@ -22,8 +22,8 @@ const router = createBrowserRouter([
             lazy: () => import("./pages/cart.jsx"),
           },
           {
-            path: "/test",
-            element: <div>Tect</div>,
+            path: "/categories/:category",
+            lazy: () => import("./pages/category.jsx"),
           },
         ],
       },

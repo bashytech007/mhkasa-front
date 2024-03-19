@@ -16,7 +16,7 @@ export const Cart = () => {
       ) : (
         <ul>
           {cart.map((item, i) => (
-            <li key={i}>
+            <li key={i} className="py-2">
               <CartItem item={item} />
             </li>
           ))}

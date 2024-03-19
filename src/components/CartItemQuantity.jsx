@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useCart } from "../hooks/useCart";
 import { Modal } from "./Modal";
 import { Button } from "./ui/Button";
+import { Icon } from "@iconify/react";
 
 export const CartItemQuantity = ({ productId, quantity }) => {
   const { cart, setItemQuantity, removeFromCart } = useCart();
@@ -20,23 +21,30 @@ export const CartItemQuantity = ({ productId, quantity }) => {
   };
 
   return (
-    <div className="flex items-center gap-4">
-      <button className="text-4xl hidden sm:block" onClick={decreaseQty}>
-        -
+    <div className="grid grid-cols-12 grid-rows-6">
+      <button
+        className="h-8 text-2xl w-6 col-start-1 col-end-7 row-start-4 row-end-7 md:h-auto md:row-start-1 md:col-end-4"
+        onClick={decreaseQty}
+      >
+        <Icon icon="tdesign:minus"/>
       </button>
       <input
         type="number"
         value={quantity}
-        className="w-8 h-8 text-center outline-none border-black border-2 text-lg rounded md:border-none"
+        className="w-8 mx-auto h-7 text-center outline-none border-black border-2 text-lg rounded col-start-1 col-end-13 row-start-1 row-end-4 md:row-end-7 md:border-none"
         onChange={(e) => {
           const val = e.target.value;
           if (Number(val) === 0) return;
           setItemQuantity(productId, Number(val));
         }}
       />
-      <button className="text-4xl hidden sm:block" onClick={increaseQty}>
-        +
+      <button
+        className="grid place-items-center h-8 text-2xl w-6 col-start-7 col-end-13 row-start-4 row-end-7 md:h-auto md:row-start-1 md:col-start-10"
+        onClick={increaseQty}
+      >
+        <Icon icon="tdesign:plus" />
       </button>
+
       {showModal && (
         <Modal title="Remove Item From Cart?">
           <p>

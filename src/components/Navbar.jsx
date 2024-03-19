@@ -68,6 +68,11 @@ const Navbar = () => {
 export default Navbar;
 
 const MobileNavbar = ({ toggle }) => {
+  const css = `
+                body {
+                      overflow: hidden;
+                    }
+              `;
   const categories = [
     {
       category: "Perfume",
@@ -132,6 +137,7 @@ const MobileNavbar = ({ toggle }) => {
           </ul>
         </Wrapper>
       </nav>
+      <style>{css}</style>
     </div>
   );
 };

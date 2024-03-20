@@ -6,13 +6,12 @@ import { Wrapper } from "../components/ui/Wrapper";
 import { Button } from "../components/ui/Button";
 import { Input, PInput } from "../components/Input";
 import { useCanSubmitForm } from "../hooks/useCanSubmitFormik";
-import { useAxios } from "../hooks/useAxios";
 import { useState } from "react";
 import { Icon } from "@iconify/react";
+import axios from "../utils/axios";
 
 export const Component = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const axios = useAxios();
   const navigate = useNavigate();
   const schema = yup.object().shape({
     username: yup.string().required().min(3, "must be at least 3 characters"),
@@ -34,20 +33,13 @@ export const Component = () => {
     onSubmit: async (values, {}) => {
       try {
         setIsSubmitting(true);
-        const response = await axios.post(
-          `${import.meta.env.VITE_BASE_URL}/register`,
-          values,
-          {
-            headers: { "Content-Type": "application/json" },
-          }
-        );
-        if (response.status === 201) {
+        const response = await axios.post(`user/send/verification`, values, {
+          headers: { "Content-Type": "application/json" },
+        });
+        if (response.status === 200) {
           setIsSubmitting(false);
-          navigate(
-            `/confirm-otp?email=${encodeURIComponent(values.email)}&otp=${
-              response.data.otpCode
-            }`
-          );
+          console.log(response);
+          navigate(`/confirm-otp?email=${encodeURIComponent(values.email)}`);
         }
       } catch (error) {
         setIsSubmitting(false);

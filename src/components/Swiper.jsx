@@ -55,7 +55,7 @@ export const SwiperElem = () => {
             overflow: "hidden",
           }}
         >
-          <div className="min-h-[240px] h-[40vw] md:h-[460px] bg-app-red">
+          <div className="min-h-[240px] h-[40vw] md:h-[320px]">
             <SwiperCard />
           </div>
         </swiper-slide>
@@ -65,7 +65,7 @@ export const SwiperElem = () => {
             overflow: "hidden",
           }}
         >
-          <div className="min-h-[240px] h-[40vw] md:h-[460px] bg-app-red">
+          <div className="min-h-[240px] h-[40vw] md:h-[320px]">
             <SwiperCard />
           </div>
         </swiper-slide>
@@ -75,7 +75,7 @@ export const SwiperElem = () => {
             overflow: "hidden",
           }}
         >
-          <div className="min-h-[240px] h-[40vw] md:h-[460px] bg-app-red">
+          <div className="min-h-[240px] h-[40vw] md:h-[320px]">
             <SwiperCard />
           </div>
         </swiper-slide>

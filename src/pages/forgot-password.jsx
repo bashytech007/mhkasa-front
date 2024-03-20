@@ -5,14 +5,13 @@ import { Heading } from "../components/Heading";
 import { Button } from "../components/ui/Button";
 import { Input, PInput } from "../components/Input";
 import { useCanSubmitForm } from "../hooks/useCanSubmitFormik";
-import { useAxios } from "../hooks/useAxios";
 import { Wrapper } from "../components/ui/Wrapper";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
+import axios from "../utils/axios";
 
 export const ForgotPassword = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const axios = useAxios();
   const navigate = useNavigate();
   const schema = yup.object().shape({
     email: yup.string().email().required(),
@@ -21,11 +20,9 @@ export const ForgotPassword = () => {
   const request = async (values) => {
     setIsSubmitting(true);
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/forgot-password`,
-        values,
-        { headers: { "Content-Type": "application/json" } }
-      );
+      const response = await axios.post(`user/forget/password`, values, {
+        headers: { "Content-Type": "application/json" },
+      });
       if (response.status === 200) {
         setIsSubmitting(false);
         navigate(`/reset-password?email=${encodeURIComponent(values.email)}`);
@@ -87,7 +84,6 @@ export const ForgotPassword = () => {
 export const ResetPassword = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isRequestingOtp, setIsRequestingOtp] = useState(false);
-  const axios = useAxios();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const email = decodeURIComponent(searchParams.get("email") || "");
@@ -118,8 +114,8 @@ export const ResetPassword = () => {
       setIsSubmitting(true);
       try {
         const response = await axios.post(
-          `${import.meta.env.VITE_BASE_URL}/reset-password`,
-          { email, otp, password },
+          `user/reset/password`,
+          { email, token: otp, password },
           { headers: { "Content-Type": "application/json" } }
         );
         if (response.status === 200) {
@@ -139,7 +135,7 @@ export const ResetPassword = () => {
     setIsRequestingOtp(true);
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/resend-otp`,
+        "resend-otp",
         { email, actionType: 2 },
         { headers: { "Content-Type": "application/json" } }
       );

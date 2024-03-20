@@ -4,12 +4,11 @@ import { Button } from "../components/ui/Button";
 import { Heading } from "../components/Heading";
 import { Wrapper } from "../components/ui/Wrapper";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { useAxios } from "../hooks/useAxios";
 import { Icon } from "@iconify/react";
+import axios from "../utils/axios";
 
 export const Component = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const axios = useAxios();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const email = decodeURIComponent(searchParams.get("email"));
@@ -23,7 +22,7 @@ export const Component = () => {
     try {
       e.preventDefault();
       const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/confirm-otp`,
+        `user/verify`,
         {
           email,
           otp: otp.join(""),
@@ -95,11 +94,11 @@ const OTPInput = ({ otp, setOtp }) => {
   const refs = [useRef(), useRef(), useRef(), useRef()];
 
   const onKeyUp = (index, refs) => {
-    const keys = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const keys = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
     return (e) => {
       setOtp((prev) => {
         const newArr = prev;
-        if (keys.includes(Number(e.key))) {
+        if (keys.includes(e.key)) {
           newArr[index] = e.key;
           refs[index + 1]?.current.focus();
         }
@@ -129,26 +128,16 @@ const OTPInput = ({ otp, setOtp }) => {
   return (
     <>
       <div className="flex gap-1 py-4 sm:gap-2 md:gap-3 lg:gap-4 ">
-        {boxes.map((box, index) =>
-          index === 0 ? (
-            <Box
-              refs={refs}
-              index={box}
-              key={box}
-              otp={otp}
-              onKeyUp={onKeyUp}
-              onPaste={onPaste}
-            />
-          ) : (
-            <Box
-              refs={refs}
-              index={box}
-              key={box}
-              otp={otp}
-              onKeyUp={onKeyUp}
-            />
-          )
-        )}
+        {boxes.map((box) => (
+          <Box
+            refs={refs}
+            index={box}
+            key={box}
+            otp={otp}
+            onKeyUp={onKeyUp}
+            onPaste={onPaste}
+          />
+        ))}
       </div>
     </>
   );

@@ -1,51 +1,14 @@
 import { CategoryCard } from "./CategoryCard";
-import productImg from "../assets/images/product image.webp";
 import perfume from "../assets/images/perfume.webp";
-import perfumeOil from "../assets/images/perfume-oil.webp";
 import useLongPress from "../hooks/useLongPress";
 import { useEffect, useRef } from "react";
 import { Icon } from "@iconify/react";
 import { SectionHeader } from "./ui/SectionHeader";
+import { useCategory } from "../hooks/useCategory";
 
 export const TopCategories = () => {
-  const categories = [
-    {
-      image: perfume,
-      category: "Perfume Oil",
-      numberOfProducts: 23,
-    },
-    {
-      image: perfumeOil,
-      category: "Perfume",
-      numberOfProducts: 25,
-    },
-    {
-      image: productImg,
-      category: "Body Spray",
-      numberOfProducts: 106,
-    },
-    {
-      image: perfume,
-      category: "Perfume Oil",
-      numberOfProducts: 23,
-    },
-    {
-      image: perfumeOil,
-      category: "Perfume",
-      numberOfProducts: 25,
-    },
-    {
-      image: productImg,
-      category: "Body Spray",
-      numberOfProducts: 106,
-    },
-    {
-      image: perfumeOil,
-      category: "Roll On",
-      numberOfProducts: 93,
-    },
-  ];
-  
+  const { status, categories } = useCategory();
+
   const ref = useRef();
 
   const { getHandlers, setElement } = useLongPress(ref.current);
@@ -76,15 +39,23 @@ export const TopCategories = () => {
       </div>
 
       <ul className="pt-8 flex gap-6 overflow-auto no-scrollbar" ref={ref}>
-        {categories.map(({ numberOfProducts, image, category }, index) => (
-          <li key={index} className="grow-0 shrink-0">
-            <CategoryCard
-              numberOfProducts={numberOfProducts}
-              category={category}
-              image={image}
-            />
-          </li>
-        ))}
+        {status === "pending" ? (
+          "Loading..."
+        ) : status === "error" ? (
+          `An error has occurred`
+        ) : (
+          <>
+            {categories.map(({ numberOfProducts, image, name }, index) => (
+              <li key={index} className="grow-0 shrink-0">
+                <CategoryCard
+                  numberOfProducts={numberOfProducts}
+                  category={name}
+                  image={perfume}
+                />
+              </li>
+            ))}
+          </>
+        )}
       </ul>
     </section>
   );

@@ -13,9 +13,10 @@ export const Component = () => {
     <main>
       <Wrapper>
         <div className="flex gap-8 py-10">
-          <CategoryPanel />
+          <CategoryPanel fixedHeight/>
           <SwiperElem />
         </div>
+        
         <FeaturedProducts />
         <TopCategories />
         <LatestProducts />

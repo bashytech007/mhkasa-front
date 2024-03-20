@@ -4,14 +4,8 @@ import { User } from "./User";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import rollon from "../assets/images/rollon.svg";
-import humidifier from "../assets/images/humidifier.svg";
-import solar_perfumeoutline from "../assets/images/solar_perfume-outline.svg";
-import ph_drop from "../assets/images/ph_drop.svg";
-import aroma from "../assets/images/aroma.svg";
-import freshner from "../assets/images/freshener.svg";
-import deodorant from "../assets/images/deodorant.png";
 import { useCart } from "../hooks/useCart";
+import { useCategory } from "../hooks/useCategory";
 
 const Navbar = () => {
   const [expand, setExpand] = useState(false);
@@ -73,40 +67,8 @@ const MobileNavbar = ({ toggle }) => {
                       overflow: hidden;
                     }
               `;
-  const categories = [
-    {
-      category: "Perfume",
-      icon: solar_perfumeoutline,
-    },
-    {
-      category: "Perfume Oil",
-      icon: ph_drop,
-    },
-    {
-      category: "Body Spray",
-      icon: deodorant,
-    },
-    {
-      category: "Reed Diffuser",
-      icon: aroma,
-    },
-    {
-      category: "Roll On",
-      icon: rollon,
-    },
-    {
-      category: "Humidifier",
-      icon: humidifier,
-    },
-    {
-      category: "Air Freshner",
-      icon: freshner,
-    },
-    {
-      category: "Body Mist",
-      icon: deodorant,
-    },
-  ];
+
+  const { categories, error, status } = useCategory();
 
   return (
     <div className="bg-white fixed top-0 left-0 right-0 bottom-0 z-50 overflow-y-scroll md:hidden">
@@ -118,23 +80,28 @@ const MobileNavbar = ({ toggle }) => {
               <Icon icon="uil:times" style={{ fontSize: 32 }} />
             </button>
           </div>
-          <ul>
-            {categories.map(({ category, icon }, index) => (
-              <li key={index}>
-                <Link
-                  to={`/categories/${encodeURIComponent(
-                    category.toLowerCase()
-                  )}`}
-                  className="flex items-center gap-3 py-4"
-                >
-                  <div className="w-8">
-                    <img src={icon} alt="" />
-                  </div>
-                  {category}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          {status === "pending" ? (
+            "Loading..."
+          ) : status === "error" ? (
+            `An error has occurred`
+          ) : (
+            <ul>
+              {categories.map(({ name, icon }, index) => (
+                <li key={index}>
+                  <Link
+                    to={`/categories/${encodeURIComponent(name)}`}
+                    className="flex items-center gap-3 py-4 hover:text-app-red"
+                    onClick={toggle}
+                  >
+                    <div className="w-8">
+                      <img src={icon} alt="" />
+                    </div>
+                    {name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
         </Wrapper>
       </nav>
       <style>{css}</style>

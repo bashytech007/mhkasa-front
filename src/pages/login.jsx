@@ -5,14 +5,13 @@ import { Heading } from "../components/Heading";
 import { Input, PInput } from "../components/Input";
 import { useAuth } from "../hooks/useAuth";
 import { useCanSubmitForm } from "../hooks/useCanSubmitFormik";
-import { useAxios } from "../hooks/useAxios";
 import { Wrapper } from "../components/ui/Wrapper";
 import { Button } from "../components/ui/Button";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
+import axios from "../utils/axios";
 
 export const Component = () => {
-  const axios = useAxios();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const schema = yup.object().shape({
     email: yup.string().email().required(),
@@ -28,30 +27,20 @@ export const Component = () => {
   });
 
   const naigate = useNavigate();
-  const { setAccessToken, setUser } = useAuth();
+  const { setUser } = useAuth();
   const [searchParams] = useSearchParams();
   const redirect = searchParams.get("redirect") || "/";
 
   const login = async (values) => {
     setIsSubmitting(true);
     try {
-      const response = await axios.post(`login`, values, {
+      const response = await axios.post(`user/login`, values, {
         headers: { "Content-Type": "application/json" },
       });
       if (response.status === 200) {
         setIsSubmitting(false);
-        setAccessToken(response?.data?.accessToken);
-        setUser({
-          username: response?.data?.username,
-          email: response?.data?.email,
-        });
-        sessionStorage.setItem(
-          "user",
-          JSON.stringify({
-            username: response?.data?.username,
-            email: response?.data?.email,
-          })
-        );
+        setUser(response.data);
+        sessionStorage.setItem("user", JSON.stringify(response.data));
         naigate(decodeURIComponent(redirect));
       }
     } catch (error) {

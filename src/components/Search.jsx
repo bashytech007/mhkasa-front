@@ -8,17 +8,17 @@ import productImg4 from "../assets/images/product image(4).svg";
 import { Product } from "./ProductCard";
 import { useState } from "react";
 const Search = () => {
-  const [searchquery, setSearchQuery] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  const handleSearch = (e) => {
-    const query = e.target.value;
-    setSearchQuery(query);
-    const filtered = products.filter((product) =>
-      product.name.toLowerCase().includes(query.toLowerCase())
-    );
-    setFilteredProducts(filtered);
-    console.log(query);
-  };
+  // const [searchquery, setSearchQuery] = useState("");
+  // const [filteredProducts, setFilteredProducts] = useState([]);
+  // const handleSearch = (e) => {
+  //   const query = e.target.value;
+  //   setSearchQuery(query);
+  //   const filtered = products.filter((product) =>
+  //     product.name.toLowerCase().includes(query.toLowerCase())
+  //   );
+  //   setFilteredProducts(filtered);
+  //   console.log(query);
+  // };
   const products = [
     {
       product: "Explore Man hikhfik jkgbkb  kubkj hiokb ",

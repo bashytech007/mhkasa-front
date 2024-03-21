@@ -1,10 +1,10 @@
 import { CategoryCard } from "./CategoryCard";
 import perfume from "../assets/images/perfume.webp";
-import useLongPress from "../hooks/useLongPress";
+import useLongPress from "../hooks/utils/useLongPress";
 import { useEffect, useRef } from "react";
 import { Icon } from "@iconify/react";
 import { SectionHeader } from "./ui/SectionHeader";
-import { useCategory } from "../hooks/useCategory";
+import { useCategory } from "../hooks/query/useCategory";
 
 export const TopCategories = () => {
   const { status, categories } = useCategory();

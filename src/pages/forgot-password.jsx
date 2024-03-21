@@ -4,11 +4,12 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Heading } from "../components/Heading";
 import { Button } from "../components/ui/Button";
 import { Input, PInput } from "../components/Input";
-import { useCanSubmitForm } from "../hooks/useCanSubmitFormik";
+import { useCanSubmitForm } from "../hooks/utils/useCanSubmitFormik";
 import { Wrapper } from "../components/ui/Wrapper";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
 import axios from "../utils/axios";
+import { Seo } from "../components/Seo";
 
 export const ForgotPassword = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -44,40 +45,51 @@ export const ForgotPassword = () => {
   const canSubmit = useCanSubmitForm(formik);
 
   return (
-    <Wrapper className="max-w-lg flex flex-col items-center py-12">
-      <Heading>Forgot Password</Heading>
-      <p className="pt-4 text-[#666666] text-center pb-6">
-        Password reset link will be sent to your email address, know your
-        password?
-        <Link to="/login" className="text-app-ash-2 ml-2">
-          Login Here
-        </Link>
-      </p>
+    <>
+      <Seo
+        title="Mhkasa | Reset Password"
+        type="webapp"
+        description="Reset your password"
+        name=""
+      />
+      <Wrapper className="max-w-lg flex flex-col items-center py-12">
+        <Heading>Forgot Password</Heading>
+        <p className="pt-4 text-[#666666] text-center pb-6">
+          Password reset link will be sent to your email address, know your
+          password?
+          <Link to="/login" className="text-app-ash-2 ml-2">
+            Login Here
+          </Link>
+        </p>
 
-      <form
-        onSubmit={formik.handleSubmit}
-        className="w-full max-w-lg bg-white rounded-3xl p-4"
-      >
-        <Input
-          name="email"
-          formik={formik}
-          className="bg-app-ash-1"
-          placeholder="Email"
-        />
-
-        <Button
-          className="w-full flex justify-center bg-app-red hover:bg-red-500 text-sm  text-white font-bold mt-4 sm:hover:bg-black disabled:bg-[#999999] hover:disabled:bg-[#999999] sm:bg-app-black"
-          type="submit"
-          disabled={!canSubmit}
+        <form
+          onSubmit={formik.handleSubmit}
+          className="w-full max-w-lg bg-white rounded-3xl p-4"
         >
-          {isSubmitting ? (
-            <Icon icon="svg-spinners:6-dots-rotate" style={{ fontSize: 20 }} />
-          ) : (
-            "Restet Password"
-          )}
-        </Button>
-      </form>
-    </Wrapper>
+          <Input
+            name="email"
+            formik={formik}
+            className="bg-app-ash-1"
+            placeholder="Email"
+          />
+
+          <Button
+            className="w-full flex justify-center bg-app-red hover:bg-red-500 text-sm  text-white font-bold mt-4 sm:hover:bg-black disabled:bg-[#999999] hover:disabled:bg-[#999999] sm:bg-app-black"
+            type="submit"
+            disabled={!canSubmit}
+          >
+            {isSubmitting ? (
+              <Icon
+                icon="svg-spinners:6-dots-rotate"
+                style={{ fontSize: 20 }}
+              />
+            ) : (
+              "Restet Password"
+            )}
+          </Button>
+        </form>
+      </Wrapper>
+    </>
   );
 };
 
@@ -150,73 +162,85 @@ export const ResetPassword = () => {
   };
 
   return (
-    <Wrapper className="max-w-lg flex flex-col items-center py-12">
-      <Heading>Password Reset</Heading>
-      <p className="pt-4 text-[#666666] text-center">
-        Enter new password and otp sent to{" "}
-        <span className="text-app-red font-medium">{email}</span> email address.
-      </p>
-      <p className="text-[#666666] pb-4 text-center">
-        Remember your password?
-        <Link to="/login" className="text-app-black ml-2">
-          Login Here
-        </Link>
-      </p>
+    <>
+      <Seo
+        title="Mhkasa | Reset Password"
+        type="webapp"
+        description="Reset your password"
+        name=""
+      />
+      <Wrapper className="max-w-lg flex flex-col items-center py-12">
+        <Heading>Password Reset</Heading>
+        <p className="pt-4 text-[#666666] text-center">
+          Enter new password and otp sent to{" "}
+          <span className="text-app-red font-medium">{email}</span> email
+          address.
+        </p>
+        <p className="text-[#666666] pb-4 text-center">
+          Remember your password?
+          <Link to="/login" className="text-app-black ml-2">
+            Login Here
+          </Link>
+        </p>
 
-      <form
-        onSubmit={formik.handleSubmit}
-        className="w-full max-w-lg bg-white rounded-3xl p-4"
-      >
-        <PInput
-          name="password"
-          formik={formik}
-          className="bg-app-ash-1"
-          placeholder="New password"
-        />
-        <PInput
-          name="confirm_password"
-          formik={formik}
-          className="bg-app-ash-1"
-          placeholder="Confirm password"
-        />
-        <div className="flex items-center gap-4">
-          <Input
-            name="otp"
+        <form
+          onSubmit={formik.handleSubmit}
+          className="w-full max-w-lg bg-white rounded-3xl p-4"
+        >
+          <PInput
+            name="password"
             formik={formik}
-            className="bg-app-ash-1 grow w-full"
-            placeholder="OTP"
+            className="bg-app-ash-1"
+            placeholder="New password"
           />
+          <PInput
+            name="confirm_password"
+            formik={formik}
+            className="bg-app-ash-1"
+            placeholder="Confirm password"
+          />
+          <div className="flex items-center gap-4">
+            <Input
+              name="otp"
+              formik={formik}
+              className="bg-app-ash-1 grow w-full"
+              placeholder="OTP"
+            />
 
-          {isRequestingOtp ? (
-            <div className="w-28 flex justify-center">
+            {isRequestingOtp ? (
+              <div className="w-28 flex justify-center">
+                <Icon
+                  icon="svg-spinners:6-dots-rotate"
+                  style={{ fontSize: 20 }}
+                />
+              </div>
+            ) : (
+              <button
+                onClick={resendOtp}
+                className="w-28 py-2 rounded hover:bg-app-ash-1"
+                type="button"
+              >
+                Resend
+              </button>
+            )}
+          </div>
+
+          <Button
+            className="w-full flex justify-center bg-app-red hover:bg-red-500 text-sm  text-white font-bold mt-4 sm:hover:bg-black disabled:bg-[#999999] hover:disabled:bg-[#999999] sm:bg-app-black"
+            type="submit"
+            disabled={!canSubmit}
+          >
+            {isSubmitting ? (
               <Icon
                 icon="svg-spinners:6-dots-rotate"
                 style={{ fontSize: 20 }}
               />
-            </div>
-          ) : (
-            <button
-              onClick={resendOtp}
-              className="w-28 py-2 rounded hover:bg-app-ash-1"
-              type="button"
-            >
-              Resend
-            </button>
-          )}
-        </div>
-
-        <Button
-          className="w-full flex justify-center bg-app-red hover:bg-red-500 text-sm  text-white font-bold mt-4 sm:hover:bg-black disabled:bg-[#999999] hover:disabled:bg-[#999999] sm:bg-app-black"
-          type="submit"
-          disabled={!canSubmit}
-        >
-          {isSubmitting ? (
-            <Icon icon="svg-spinners:6-dots-rotate" style={{ fontSize: 20 }} />
-          ) : (
-            "Restet Password"
-          )}
-        </Button>
-      </form>
-    </Wrapper>
+            ) : (
+              "Restet Password"
+            )}
+          </Button>
+        </form>
+      </Wrapper>
+    </>
   );
 };

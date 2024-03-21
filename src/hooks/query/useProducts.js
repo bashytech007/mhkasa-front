@@ -1,5 +1,5 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import axios from "../utils/axios";
+import axios from "../../utils/axios";
 
 const getProducts = async (url) => {
   try {

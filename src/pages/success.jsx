@@ -1,6 +1,6 @@
 import success from "../assets/images/success_check.webp";
-import { Wrapper } from "../components/ui/Wrapper";
 import { Link } from "react-router-dom";
+import { Wrapper } from "../components/ui/Wrapper";
 
 export const Component = () => {
   return (

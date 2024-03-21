@@ -1,6 +1,6 @@
 import { SectionHeader } from "./ui/SectionHeader";
 import { Product } from "./ProductCard";
-import { useProducts } from "../hooks/useProducts";
+import { useProducts } from "../hooks/query/useProducts";
 import { ListGrid } from "./ui/ListGrid";
 
 export const FeaturedProducts = () => {

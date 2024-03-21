@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useCategory } from "../hooks/useCategory";
+import { useCategory } from "../hooks/query/useCategory";
 
 export const CategoryPanel = ({ fixedHeight }) => {
   const { categories, error, status } = useCategory();
@@ -18,15 +18,12 @@ export const CategoryPanel = ({ fixedHeight }) => {
           `An error has occurred ${error.message}`
         ) : (
           <ul>
-            {categories.map(({ name, icon }, index) => (
+            {categories.map(({ name }, index) => (
               <li key={index} className="first:pt-2 last:pb-2 group">
                 <Link
                   to={`/categories/${encodeURIComponent(name)}`}
                   className="flex items-center gap-3 py-2 pl-8 group-hover:text-app-red"
                 >
-                  <div className="w-8">
-                    <img src={icon} alt="" />
-                  </div>
                   {name}
                 </Link>
               </li>

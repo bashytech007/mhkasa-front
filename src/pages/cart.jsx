@@ -5,7 +5,8 @@ import { Modal } from "../components/Modal";
 import { Button } from "../components/ui/Button";
 import { Navigation } from "../components/ui/Navigation";
 import { Wrapper } from "../components/ui/Wrapper";
-import { useCart } from "../hooks/useCart";
+import { useCart } from "../hooks/query/useCart";
+import { Seo } from "../components/Seo";
 
 export const Component = () => {
   const [showModal, setShowModal] = useState(false);
@@ -13,6 +14,12 @@ export const Component = () => {
 
   return (
     <main>
+      <Seo
+        title="Mhkasa | Cart"
+        description="Your Mhkasa shopping Cart"
+        type="webapp"
+        name=""
+      />
       <Wrapper className="py-4">
         <Navigation location={["Home", "Cart"]} />
         <div className="flex items-center justify-between">

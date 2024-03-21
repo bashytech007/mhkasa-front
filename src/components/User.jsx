@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Logout } from "./Logout";
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from "../hooks/utils/useAuth";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { Button } from "./ui/Button";

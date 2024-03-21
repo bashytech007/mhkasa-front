@@ -1,7 +1,7 @@
 import { useRouteError } from "react-router-dom";
-import { Wrapper } from "../components/Wrapper";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { Wrapper } from "../components/ui/Wrapper";
 
 export default function ErrorPage() {
   const error = useRouteError();

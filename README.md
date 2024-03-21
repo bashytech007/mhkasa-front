@@ -1,8 +1,18 @@
-# React + Vite
+# Mhkasa
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Routes
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- `/` - home page
+- `/categories/:category` - individual category
+- `/search/:searchterm` - search for product
+- `/cart` - your cart
+- `/register` - register
+- `/confirn-otp` - confirm otp for new user
+- `/account-creation-success` - account creation success
+- `/login` - login
+- `/forgot-password` - request for password change otp
+- `/reset-password` - reset password
+- `/account` - user details
+- `/account/profile` -  user account profile
+- `/account/profile/order-history` - user order history
+- `/products/:product` - product details

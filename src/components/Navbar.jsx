@@ -1,16 +1,11 @@
-import { Logo } from "./Logo";
-import { Wrapper } from "./Wrapper";
+import { Logo } from "./ui/Logo";
+import { Wrapper } from "./ui/Wrapper";
 import { User } from "./User";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import rollon from "../assets/images/rollon.svg";
-import humidifier from "../assets/images/humidifier.svg";
-import solar_perfumeoutline from "../assets/images/solar_perfume-outline.svg";
-import ph_drop from "../assets/images/ph_drop.svg";
-import aroma from "../assets/images/aroma.svg";
-import freshner from "../assets/images/freshener.svg";
-import deodorant from "../assets/images/deodorant.png";
+import { useCart } from "../hooks/useCart";
+import { useCategory } from "../hooks/useCategory";
 
 const Navbar = () => {
   const [expand, setExpand] = useState(false);
@@ -54,7 +49,7 @@ const Navbar = () => {
           </button>
         </form>
 
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center justify-between gap-2 sm:gap-4">
           <CartButton />
           <User />
         </div>
@@ -67,83 +62,61 @@ const Navbar = () => {
 export default Navbar;
 
 const MobileNavbar = ({ toggle }) => {
-  const categories = [
-    {
-      category: "Perfume",
-      icon: solar_perfumeoutline,
-    },
-    {
-      category: "Perfume Oil",
-      icon: ph_drop,
-    },
-    {
-      category: "Body Spray",
-      icon: deodorant,
-    },
-    {
-      category: "Reed Diffuser",
-      icon: aroma,
-    },
-    {
-      category: "Roll On",
-      icon: rollon,
-    },
-    {
-      category: "Humidifier",
-      icon: humidifier,
-    },
-    {
-      category: "Air Freshner",
-      icon: freshner,
-    },
-    {
-      category: "Body Mist",
-      icon: deodorant,
-    },
-  ];
+  const css = `
+                body {
+                      overflow: hidden;
+                    }
+              `;
+
+  const { categories, error, status } = useCategory();
 
   return (
     <div className="fixed top-0 bottom-0 left-0 right-0 z-50 overflow-y-scroll bg-white md:hidden">
       <nav className="pt-6 min-h-[100vh]">
         <Wrapper>
           <div className="flex items-center justify-between pt-2 pb-6">
-            <h2 className="text-2xl font-bold" Link to="/Categories">
-              Categories
-            </h2>
+            <h2 className="text-2xl font-bold">Categories</h2>
             <button onClick={toggle}>
               <Icon icon="uil:times" style={{ fontSize: 32 }} />
             </button>
           </div>
-          <ul>
-            {categories.map(({ category, icon }, index) => (
-              <li key={index}>
-                <Link
-                  to={`/categories/${encodeURIComponent(
-                    category.toLowerCase()
-                  )}`}
-                  className="flex items-center gap-3 py-4"
-                >
-                  <div className="w-8">
-                    <img src={icon} alt="" />
-                  </div>
-                  {category}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          {status === "pending" ? (
+            "Loading..."
+          ) : status === "error" ? (
+            `An error has occurred`
+          ) : (
+            <ul>
+              {categories.map(({ name, icon }, index) => (
+                <li key={index}>
+                  <Link
+                    to={`/categories/${encodeURIComponent(name)}`}
+                    className="flex items-center gap-3 py-4 hover:text-app-red"
+                    onClick={toggle}
+                  >
+                    <div className="w-8">
+                      <img src={icon} alt="" />
+                    </div>
+                    {name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
         </Wrapper>
       </nav>
+      <style>{css}</style>
     </div>
   );
 };
 
-const CartButton = ({ numberOfItems = 0 }) => {
+const CartButton = () => {
+  const { cart } = useCart();
   return (
-    <button className="relative p-2">
+    <Link to="/cart" className="relative p-2">
       <Icon icon="bytesize:cart" style={{ fontSize: 32 }} />
-      <p className="absolute grid w-4 h-4 text-sm font-bold leading-none text-white rounded-full bg-app-red place-items-center top-1 right-1">
-        {numberOfItems}
+      <p className="absolute grid w-4 h-4 text-xs font-bold leading-none text-white rounded-full bg-app-red place-items-center top-1 right-1">
+        {cart.length}
       </p>
-    </button>
+    </Link>
   );
 };

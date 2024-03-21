@@ -1,15 +1,13 @@
 import { createContext, useState } from "react";
-
-export const AuthContext = createContext({});
+export const AuthContext = createContext();
 
 export const Auth = ({ children }) => {
-  const [user, setUser] = useState();
-  const [accessToken, setAccessToken] = useState(undefined);
+  const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("user")));
+
+  const getAccessToken = () => user?.token;
 
   return (
-    <AuthContext.Provider
-      value={{ user, accessToken, setAccessToken, setUser }}
-    >
+    <AuthContext.Provider value={{ user, getAccessToken, setUser }}>
       {children}
     </AuthContext.Provider>
   );

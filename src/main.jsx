@@ -1,63 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { Layout } from "./components/Layout.jsx";
-import { Login } from "./pages/Login.jsx";
-import { Register } from "./pages/Register.jsx";
-import { ForgotPassword } from "./pages/ForgotPassword.jsx";
-import { PhoneOtpPage } from "./pages/PhoneOtpPage.jsx";
-import { Home } from "./components/Home.jsx";
+import { App } from "./App.jsx";
 import { Auth } from "./contexts/Auth.jsx";
-import { ResetPassword } from "./pages/ResetPassword.jsx";
-import { Categories } from "./components/Categories.jsx";
-import Search from "./components/Search.jsx";
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    errorElement: <div>Error</div>,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/categories",
-        element: <Categories />,
-      },
-      {
-        path: "/search",
-        element: <Search />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/register",
-        element: <Register />,
-      },
-      {
-        path: "/forgot-password",
-        element: <ForgotPassword />,
-      },
-      {
-        path: "/reset-password",
-        element: <ResetPassword />,
-      },
-      {
-        path: "/confirm-otp",
-        element: <PhoneOtpPage />,
-      },
-    ],
-  },
-]);
+import { Cart } from "./contexts/Cart.jsx";
+import { Query } from "./contexts/Query.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Auth>
-      <RouterProvider router={router} />
-    </Auth>
+    <Query>
+      <Auth>
+        <Cart>
+          <App />
+        </Cart>
+      </Auth>
+    </Query>
   </React.StrictMode>
 );

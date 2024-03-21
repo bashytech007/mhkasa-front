@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /login/
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /confirm-otp
+Disallow: /account-creation-success

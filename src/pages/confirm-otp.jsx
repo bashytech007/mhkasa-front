@@ -1,35 +1,44 @@
 import { useEffect, useRef, useState } from "react";
 import authkey from "../assets/images/lockkey.svg";
-import { Button } from "../components/Button";
+import { Button } from "../components/ui/Button";
 import { Heading } from "../components/Heading";
-import { Wrapper } from "../components/Wrapper";
-import axios from "axios";
+import { Wrapper } from "../components/ui/Wrapper";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { Icon } from "@iconify/react";
+import axios from "../utils/axios";
 
-export const PhoneOtpPage = () => {
+export const Component = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const email = searchParams.get("email");
+  const email = decodeURIComponent(searchParams.get("email"));
   const [otp, setOtp] = useState(["", "", "", ""]);
+
   const [canSubmit, setCanSubmit] = useState(() =>
     otp.every((letter) => letter !== "")
   );
   const onSubmit = async (e) => {
-    e.preventDefault();
-    const response = await axios.post(
-      `${import.meta.env.VITE_BASE_URL}/user/verify`,
-      // values
-      {
-        email,
-        verificationCode: otp.join(""),
-      },
-      {
-        headers: { "Content-Type": "application/json" },
+    setIsSubmitting(true);
+    try {
+      e.preventDefault();
+      const response = await axios.post(
+        `user/verify`,
+        {
+          email,
+          otp: otp.join(""),
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      if (response.status === 200) {
+        setIsSubmitting(false);
+        navigate(`/account-creation-success`);
       }
-    );
-    if (response.status === 200) {
-      navigate(`/`);
-      // console.log(response);
+    } catch (error) {
+      setIsSubmitting(false);
+      console.log(error?.response?.data?.message);
     }
   };
 
@@ -54,32 +63,42 @@ export const PhoneOtpPage = () => {
             <p className="text-lg text-app-black  sm:text-[18px] md:text-[20px] lg:text-[24px]">
               Enter the verification Code sent to
             </p>
-            <span className="text-lg text-[#a40001] mt-2">+2349189394798</span>
+            <span className="text-lg text-[#a40001] mt-2 font-medium">
+              {email}
+            </span>
           </div>
 
           <OTPInput otp={otp} setOtp={setOtp} canSubmit={canSubmit} />
-
-          <div>
-            <Button className="bg-app-black text-white px-16 md:px-20">
-              Verify Now
-            </Button>
-          </div>
+          <Button
+            className="w-36 flex justify-center bg-app-red hover:bg-red-500 text-sm  text-white font-bold mt-4 sm:hover:bg-black disabled:bg-[#999999] hover:disabled:bg-[#999999] sm:bg-app-black"
+            type="submit"
+            disabled={!canSubmit}
+          >
+            {isSubmitting ? (
+              <Icon
+                icon="svg-spinners:6-dots-rotate"
+                style={{ fontSize: 20 }}
+              />
+            ) : (
+              "Verify Now"
+            )}
+          </Button>
         </form>
       </div>
     </Wrapper>
   );
 };
 
-const OTPInput = ({ otp, setOtp, canSubmit }) => {
+const OTPInput = ({ otp, setOtp }) => {
   const boxes = [0, 1, 2, 3];
   const refs = [useRef(), useRef(), useRef(), useRef()];
 
   const onKeyUp = (index, refs) => {
-    const keys = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const keys = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
     return (e) => {
       setOtp((prev) => {
         const newArr = prev;
-        if (keys.includes(Number(e.key))) {
+        if (keys.includes(e.key)) {
           newArr[index] = e.key;
           refs[index + 1]?.current.focus();
         }
@@ -94,18 +113,37 @@ const OTPInput = ({ otp, setOtp, canSubmit }) => {
     };
   };
 
+  const onPaste = (event) => {
+    event.preventDefault();
+    const keys = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    let paste = (event.clipboardData || window.clipboardData)
+      .getData("text")
+      .split("");
+    if (paste.every((num) => keys.includes(num))) {
+      setOtp(paste.slice(0, 4));
+      refs[refs.length - 1]?.current.focus();
+    }
+  };
+
   return (
     <>
       <div className="flex gap-1 py-4 sm:gap-2 md:gap-3 lg:gap-4 ">
         {boxes.map((box) => (
-          <Box refs={refs} index={box} key={box} otp={otp} onKeyUp={onKeyUp} />
+          <Box
+            refs={refs}
+            index={box}
+            key={box}
+            otp={otp}
+            onKeyUp={onKeyUp}
+            onPaste={onPaste}
+          />
         ))}
       </div>
     </>
   );
 };
 
-const Box = ({ index, refs, onKeyUp, otp }) => {
+const Box = ({ index, refs, onKeyUp, otp, ...rest }) => {
   return (
     <input
       ref={refs[index]}
@@ -114,6 +152,7 @@ const Box = ({ index, refs, onKeyUp, otp }) => {
       onChange={() => {}}
       onKeyUp={onKeyUp(index, refs)}
       className="w-10 aspect-square outline-none text-center font-bold rounded-xl border-4 bg-transparent border-app-red sm:w-12 sm:text-lg md:text-2xl md:w-14 lg:text-4xl lg:w-16"
+      {...rest}
     />
   );
 };

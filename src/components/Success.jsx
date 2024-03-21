@@ -2,7 +2,7 @@ import success from "../assets/images/success_check.webp";
 
 export const Success = ({ children }) => {
   return (
-    <div className="mx-auto w-fit flex flex-col items-center my-10">
+    <div className="flex flex-col items-center mx-auto my-10 w-fit">
       <img src={success} alt="" />
       {children}
     </div>

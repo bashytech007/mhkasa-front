@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "../../utils/axios";
 
-export const useCategory = (category) => {
+export const useCategory = () => {
   async function getCategories() {
     const response = await axios.get(`all/category`);
     return response.data;
@@ -11,7 +11,7 @@ export const useCategory = (category) => {
     error,
     status,
   } = useQuery({
-    queryKey: ["categories", category],
+    queryKey: ["categories"],
     queryFn: getCategories,
   });
 

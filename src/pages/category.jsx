@@ -10,6 +10,7 @@ import { Icon } from "@iconify/react";
 import { TopCategories } from "../components/TopCategories";
 import { Sort } from "../components/Sort";
 import { Seo } from "../components/Seo";
+import { useLoaderData } from "react-router-dom/dist";
 
 export const Component = () => {
   const { category } = useParams();
@@ -38,15 +39,11 @@ export const Component = () => {
     },
   ];
 
-  const {
-    data,
-    error,
-    fetchNextPage,
-    hasNextPage,
-    isFetching,
-    isFetchingNextPage,
-    status,
-  } = useInfiniteProducts("product/category/" + category, "category", category);
+  const { fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, status } =
+    useInfiniteProducts("product/category/" + category, "category", category);
+
+  const { categories } = useLoaderData();
+  console.log(categories);
 
   return (
     <>
@@ -88,11 +85,11 @@ export const Component = () => {
           {status === "pending" ? (
             "Loading..."
           ) : status === "error" ? (
-            `An error has occurred: ${error.message}`
+            `An error has occurred`
           ) : (
             <>
               <ul className="pt-8 grid gap-4 justify-center grid-flow-row auto-rows-fr grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-                {data.pages.map((group, i) => (
+                {categories.pages.map((group, i) => (
                   <Fragment key={i}>
                     {group.products.map((product) => (
                       <li key={product._id}>

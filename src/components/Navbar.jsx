@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../hooks/query/useCart";
 import { useCategory } from "../hooks/query/useCategory";
+import { useLoaderData } from "react-router-dom/dist";
 
 const Navbar = () => {
   const [expand, setExpand] = useState(false);
@@ -68,7 +69,7 @@ const MobileNavbar = ({ toggle }) => {
                     }
               `;
 
-  const { categories, error, status } = useCategory();
+  const { categories, status } = useCategory();
 
   return (
     <div className="fixed top-0 bottom-0 left-0 right-0 z-50 overflow-y-scroll bg-white md:hidden">

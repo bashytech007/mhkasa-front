@@ -68,11 +68,11 @@ export const SwiperElem = () => {
                   <h1 className="text-[#fff] lg:text-5xl sm:text-2xl font-bold leading-tight -mt-7">
                     seduction
                   </h1>
-                  <p className="text-white text-xs">
+                  <p className="text-xs text-white">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Harum, dolor.
                   </p>
-                  <p className="text-white text-xs">
+                  <p className="text-xs text-white">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Quod, nostrum.
                   </p>
@@ -82,8 +82,8 @@ export const SwiperElem = () => {
                   src={heroimg}
                   className="absolute bottom-0 right-0 z-[2]"
                 />
-                <div className="mx-auto px-20 pt-8">
-                  <button className="py-2 text-black bg-white px-16 font-semibold rounded-full ">
+                <div className="px-20 pt-8 mx-auto">
+                  <button className="px-16 py-2 font-semibold text-black bg-white rounded-full ">
                     Explore Collection
                   </button>
                 </div>
@@ -110,11 +110,11 @@ export const SwiperElem = () => {
                   <h1 className="text-[#fff] lg:text-5xl sm:text-2xl font-bold leading-tight -mt-7">
                     seduction
                   </h1>
-                  <p className="text-white text-xs">
+                  <p className="text-xs text-white">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Harum, dolor.
                   </p>
-                  <p className="text-white text-xs">
+                  <p className="text-xs text-white">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Quod, nostrum.
                   </p>
@@ -124,8 +124,8 @@ export const SwiperElem = () => {
                   src={heroimg}
                   className="absolute bottom-0 right-0 z-[2]"
                 />
-                <div className="mx-auto px-20 pt-8">
-                  <button className="py-2 text-black bg-white px-16 font-semibold rounded-full ">
+                <div className="px-20 pt-8 mx-auto">
+                  <button className="px-16 py-2 font-semibold text-black bg-white rounded-full ">
                     Explore Collection
                   </button>
                 </div>
@@ -152,11 +152,11 @@ export const SwiperElem = () => {
                   <h1 className="text-[#fff] lg:text-5xl sm:text-2xl font-bold leading-tight -mt-7">
                     seduction
                   </h1>
-                  <p className="text-white text-xs">
+                  <p className="text-xs text-white">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Harum, dolor.
                   </p>
-                  <p className="text-white text-xs">
+                  <p className="text-xs text-white">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Quod, nostrum.
                   </p>
@@ -166,8 +166,8 @@ export const SwiperElem = () => {
                   src={heroimg}
                   className="absolute bottom-0 right-0 z-[2]"
                 />
-                <div className="mx-auto px-20 pt-8">
-                  <button className="py-2 text-black bg-white px-16 font-semibold rounded-full ">
+                <div className="px-20 pt-8 mx-auto">
+                  <button className="px-16 py-2 font-semibold text-black bg-white rounded-full ">
                     Explore Collection
                   </button>
                 </div>

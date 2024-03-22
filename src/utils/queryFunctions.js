@@ -7,6 +7,7 @@ export async function getProducts(url) {
     });
     return response.data.map((x) => {
       return {
+        id: x._id,
         product: x.name,
         category: x.category,
         originalPrice: x.price,

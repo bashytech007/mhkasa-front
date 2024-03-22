@@ -1,4 +1,5 @@
 import { Button } from "./ui/Button";
+import { useCartContext } from "../hooks/utils/useCart";
 
 export const Product = ({
   product,
@@ -6,7 +7,9 @@ export const Product = ({
   originalPrice,
   discountedPrice,
   image,
+  id,
 }) => {
+  const { addToCart } = useCartContext();
   return (
     <div className="bg-white rounded-2xl overflow-hidden h-full @container">
       <div className="h-24">
@@ -20,7 +23,9 @@ export const Product = ({
       </div>
 
       <div className="px-4 pt-2 pb-4 flex text-sm flex-col h-[calc(100%-6rem)]">
-        <p className="text-app-red font-medium @[240px]:text-app-ash-2">{category}</p>
+        <p className="text-app-red font-medium @[240px]:text-app-ash-2">
+          {category}
+        </p>
         <h2 className="text-app-black font-bold text-[16px] pt-1 line-clamp-2">
           {product}
         </h2>
@@ -38,7 +43,12 @@ export const Product = ({
             )}
           </div>
 
-          <Button className="bg-app-red text-app-ash font-medium text-nowrap text-sm mt-auto @[240px]:bg-app-black">
+          <Button
+            onClick={() => {
+              addToCart({ quantity: 1, itemId: id });
+            }}
+            className="bg-app-red text-app-ash font-medium text-nowrap text-sm mt-auto @[240px]:bg-app-black"
+          >
             Buy Now
           </Button>
         </div>

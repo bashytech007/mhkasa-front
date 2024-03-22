@@ -4,9 +4,8 @@ import { User } from "./User";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "../hooks/query/useCart";
+import { useCartQuery } from "../hooks/query/useCart";
 import { useCategory } from "../hooks/query/useCategory";
-import { useLoaderData } from "react-router-dom/dist";
 
 const Navbar = () => {
   const [expand, setExpand] = useState(false);
@@ -108,13 +107,15 @@ const MobileNavbar = ({ toggle }) => {
 };
 
 const CartButton = () => {
-  const { cart } = useCart();
+  const { data, status } = useCartQuery();
   return (
     <Link to="/cart" className="relative p-2">
       <Icon icon="bytesize:cart" style={{ fontSize: 32 }} />
-      <p className="absolute grid w-4 h-4 text-xs font-bold leading-none text-white rounded-full bg-app-red place-items-center top-1 right-1">
-        {cart.length}
-      </p>
+      {status === "success" && (
+        <p className="absolute grid w-4 h-4 text-xs font-bold leading-none text-white rounded-full bg-app-red place-items-center top-1 right-1">
+          {data.items.length}
+        </p>
+      )}
     </Link>
   );
 };

@@ -18,6 +18,7 @@ export const Component = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   if (!category) throw new Error("Invalid category");
   const { categories } = useLoaderData();
+  console.log(categories)
   const sortBy = searchParams.get("sort") || "";
 
   const { fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, status } =
@@ -121,5 +122,3 @@ export const Component = () => {
     </>
   );
 };
-
-export const LatestProducts = () => {};

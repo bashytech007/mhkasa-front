@@ -1,53 +1,58 @@
-import { createContext, useEffect, useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { createContext } from "react";
+import axios from "../utils/axios";
 export const CartContext = createContext();
 
 export const Cart = ({ children }) => {
-  const [cart, setCart] = useState([
-    {
-      quantity: 1,
-      unitPrice: 124,
-      description: "Product 1",
-      id: 124,
-    },
-    {
-      quantity: 1,
-      unitPrice: 3290,
-      description: "Product Category 1",
-      id: 234,
-    },
-    {
-      quantity: 1,
-      unitPrice: 12309,
-      description: "Category Product 1",
-      id: 6234,
-    },
-  ]);
+  const userId = "65d23b4e2a4c112f98383490";
+  const queryClient = useQueryClient();
 
-  const addToCart = ({ itemId, quantity }) => {};
-  
-  const removeFromCart = (itemId) => {
-    const newCart = cart.filter((c) => c.id !== itemId);
-    setCart(newCart);
+  const addToCart = ({ itemId, quantity }) => {
+    if (!userId) return;
+    add.mutate({ userId, itemId, quantity });
   };
 
-  const setItemQuantity = (itemId, quantity) => {
-    if (quantity < 1) {
-      return removeFromCart(itemId);
-    }
-    const itemIndex = cart.findIndex((item) => item.id === itemId);
-    if (itemIndex < 0) return;
-    const newCart = [...cart];
-    newCart[itemIndex].quantity = quantity;
-    setCart(newCart);
+  const removeFromCart = (itemId) => {
+    if (!userId) return;
+    console.log({ itemId });
+    remove.mutate({ userId, itemId });
   };
 
   const clearCart = () => {
-    setCart([]);
+    if (!userId) return;
+    clear.mutate({ userId });
   };
+
+  const clear = useMutation({
+    mutationFn: ({ userId }) => axios.post(`clear/cart/${userId}`, {}),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
+    },
+  });
+
+  const remove = useMutation({
+    mutationFn: ({ userId, itemId }) =>
+      axios.post(`remove/cart/${userId}/${itemId}`, {}),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
+    },
+  });
+
+  const add = useMutation({
+    mutationFn: ({ userId, itemId, quantity }) =>
+      axios.post(`add/cart/${userId}/${itemId}`, { quantity }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
+    },
+  });
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, clearCart, setItemQuantity }}
+      value={{
+        addToCart,
+        removeFromCart,
+        clearCart,
+      }}
     >
       {children}
     </CartContext.Provider>

@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useCart } from "../hooks/query/useCart";
 import { Modal } from "./Modal";
 import { Button } from "./ui/Button";
 import { Icon } from "@iconify/react";
+import { useCartContext } from "../hooks/utils/useCart";
 
 export const CartItemQuantity = ({ productId, quantity }) => {
-  const { cart, setItemQuantity, removeFromCart } = useCart();
+  const { cart, setItemQuantity, removeFromCart } = useCartContext();
   const [showModal, setShowModal] = useState(false);
 
   const increaseQty = () => {
@@ -26,7 +26,7 @@ export const CartItemQuantity = ({ productId, quantity }) => {
         className="h-8 text-2xl w-6 col-start-1 col-end-7 row-start-4 row-end-7 md:h-auto md:row-start-1 md:col-end-4"
         onClick={decreaseQty}
       >
-        <Icon icon="tdesign:minus"/>
+        <Icon icon="tdesign:minus" />
       </button>
       <input
         type="number"

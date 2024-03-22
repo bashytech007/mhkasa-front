@@ -17,41 +17,41 @@ import { Sort } from "../components/Sort";
 
 export const Categories = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
-  // const products = [
-  //   {
-  //     product: "Explore Man",
-  //     category: "Body Spray",
-  //     originalPrice: 2400,
-  //     image: productImg,
-  //   },
-  //   {
-  //     product: "Drty Man",
-  //     category: "Body Spray",
-  //     originalPrice: 2400,
-  //     discountedPrice: 2100,
-  //     image: productImg,
-  //   },
-  //   {
-  //     product: "Dynamic",
-  //     category: "Body Spray",
-  //     originalPrice: 2400,
-  //     discountedPrice: 2100,
-  //     image: productImg,
-  //   },
-  //   {
-  //     product: "Mousuf",
-  //     category: "Roll On",
-  //     originalPrice: 2400,
-  //     image: productImg,
-  //   },
-  //   {
-  //     product: "Explore Man",
-  //     category: "Body Spray",
-  //     originalPrice: 2400,
-  //     discountedPrice: 2100,
-  //     image: productImg,
-  //   },
-  // ];
+  const products = [
+    {
+      product: "Explore Man",
+      category: "Body Spray",
+      originalPrice: 2400,
+      image: productImg,
+    },
+    {
+      product: "Drty Man",
+      category: "Body Spray",
+      originalPrice: 2400,
+      discountedPrice: 2100,
+      image: productImg,
+    },
+    {
+      product: "Dynamic",
+      category: "Body Spray",
+      originalPrice: 2400,
+      discountedPrice: 2100,
+      image: productImg,
+    },
+    {
+      product: "Mousuf",
+      category: "Roll On",
+      originalPrice: 2400,
+      image: productImg,
+    },
+    {
+      product: "Explore Man",
+      category: "Body Spray",
+      originalPrice: 2400,
+      discountedPrice: 2100,
+      image: productImg,
+    },
+  ];
 
   const ref = useRef();
   useEffect(() => {
@@ -182,7 +182,7 @@ export const Categories = () => {
               )
             )}
           </ul>
-          {/* <ul className="grid justify-center grid-flow-row gap-4 pt-8 auto-rows-fr sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <ul className="grid justify-center grid-flow-row gap-4 pt-8 auto-rows-fr sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {products.map(
               (
                 { product, category, originalPrice, discountedPrice, image },
@@ -199,7 +199,7 @@ export const Categories = () => {
                 </li>
               )
             )}
-          </ul> */}
+          </ul>
         </section>
       </Wrapper>
     </main>

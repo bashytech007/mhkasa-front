@@ -11,33 +11,33 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        lazy: () => import("./components/OnlyAuthenticated.jsx"),
+        lazy: () => import("./components/OnlyAuthenticated"),
         children: [
           {
             path: "/",
-            lazy: () => import("./pages/home.jsx"),
+            lazy: () => import("./pages/home"),
           },
           {
             path: "/cart",
-            lazy: () => import("./pages/cart.jsx"),
+            lazy: () => import("./pages/cart"),
           },
           {
             path: "/categories/:category",
-            lazy: () => import("./pages/category.jsx"),
+            lazy: () => import("./pages/category"),
           },
         ],
       },
       {
         path: "/",
-        lazy: () => import("./components/OnlyUnAuthenticated.jsx"),
+        lazy: () => import("./components/OnlyUnAuthenticated"),
         children: [
           {
             path: "/login",
-            lazy: () => import("./pages/login.jsx"),
+            lazy: () => import("./pages/login"),
           },
           {
             path: "/register",
-            lazy: () => import("./pages/register.jsx"),
+            lazy: () => import("./pages/register"),
           },
           {
             path: "/forgot-password",
@@ -55,13 +55,13 @@ const router = createBrowserRouter([
           },
           {
             path: "/confirm-otp",
-            lazy: () => import("./pages/confirm-otp.jsx"),
+            lazy: () => import("./pages/confirm-otp"),
           },
         ],
       },
       {
         path: "/account-creation-success",
-        lazy: () => import("./pages/success.jsx"),
+        lazy: () => import("./pages/success"),
       },
     ],
   },

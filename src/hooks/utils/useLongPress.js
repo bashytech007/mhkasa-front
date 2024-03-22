@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { handleHorizantalScroll } from "../utils/horizontalScroll";
+import { handleHorizantalScroll } from "../../utils/horizontalScroll";
 
 export default function useLongPress() {
   const [element, setElement] = useState();

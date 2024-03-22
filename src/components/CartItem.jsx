@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react";
 import { CartItemQuantity } from "./CartItemQuantity";
-import { useCart } from "../hooks/useCart";
+import { useCart } from "../hooks/query/useCart";
 import { Modal } from "./Modal";
 import { Button } from "./ui/Button";
 import { useState } from "react";

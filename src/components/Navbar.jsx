@@ -4,8 +4,8 @@ import { User } from "./User";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "../hooks/useCart";
-import { useCategory } from "../hooks/useCategory";
+import { useCart } from "../hooks/query/useCart";
+import { useCategory } from "../hooks/query/useCategory";
 
 const Navbar = () => {
   const [expand, setExpand] = useState(false);
@@ -27,7 +27,9 @@ const Navbar = () => {
           <button onClick={toggle} className="md:hidden">
             <Icon icon="charm:menu-hamburger" style={{ fontSize: 36 }} />
           </button>
-          <Logo />
+          <div className="sm:hidden  md:block">
+            <Logo />
+          </div>
         </div>
 
         <form
@@ -86,16 +88,13 @@ const MobileNavbar = ({ toggle }) => {
             `An error has occurred`
           ) : (
             <ul>
-              {categories.map(({ name, icon }, index) => (
+              {categories.map(({ name }, index) => (
                 <li key={index}>
                   <Link
                     to={`/categories/${encodeURIComponent(name)}`}
                     className="flex items-center gap-3 py-4 hover:text-app-red"
                     onClick={toggle}
                   >
-                    <div className="w-8">
-                      <img src={icon} alt="" />
-                    </div>
                     {name}
                   </Link>
                 </li>

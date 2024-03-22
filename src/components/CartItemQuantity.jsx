@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useCart } from "../hooks/useCart";
+import { useCart } from "../hooks/query/useCart";
 import { Modal } from "./Modal";
 import { Button } from "./ui/Button";
 import { Icon } from "@iconify/react";

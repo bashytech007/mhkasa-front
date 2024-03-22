@@ -1,7 +1,7 @@
 import { SectionHeader } from "./ui/SectionHeader";
 import { Product } from "./ProductCard";
 import { ListGrid } from "./ui/ListGrid";
-import { useProducts } from "../hooks/useProducts";
+import { useProducts } from "../hooks/query/useProducts";
 
 export const LatestProducts = () => {
   const { data, status, error } = useProducts("latest/product", "latest");

@@ -1,8 +1,7 @@
 import { Icon } from "@iconify/react";
 import { useEffect, useRef } from "react";
 import { register } from "swiper/element/bundle";
-import heroimg from "../assets/images/_Downloader1.png";
-import elipses from "../assets/images/Ellipse 28.png";
+
 export const SwiperElem = () => {
   const ref = useRef();
 
@@ -55,7 +54,7 @@ export const SwiperElem = () => {
             overflow: "hidden",
           }}
         >
-          <div className="min-h-[240px] h-[40vw] bg-[#A40001] rounded-3xl overflow-hidden md:h-[460px]">
+          {/* <div className="min-h-[240px] h-[40vw] bg-[#A40001] rounded-3xl overflow-hidden md:h-[460px]">
             <div>
               <div className="title w-full  bg-[#A40001]">
                 <div className="flex flex-col gap-4 px-20 pt-32">
@@ -89,9 +88,9 @@ export const SwiperElem = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </swiper-slide>
-        <swiper-slide
+        {/* <swiper-slide
           style={{
             borderRadius: 24,
             overflow: "hidden",
@@ -174,7 +173,7 @@ export const SwiperElem = () => {
               </div>
             </div>
           </div>
-        </swiper-slide>
+        </swiper-slide> */}
       </swiper-container>
 
       <button className="swiper-button-prev flex absolute bg-[#3333] w-12 h-12 z-50 left-8 top-1/2 items-center justify-center rounded-full">

@@ -3,13 +3,14 @@ import { useFormik } from "formik";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Heading } from "../components/Heading";
 import { Input, PInput } from "../components/Input";
-import { useAuth } from "../hooks/useAuth";
-import { useCanSubmitForm } from "../hooks/useCanSubmitFormik";
+import { useAuth } from "../hooks/utils/useAuth";
+import { useCanSubmitForm } from "../hooks/utils/useCanSubmitFormik";
 import { Wrapper } from "../components/ui/Wrapper";
 import { Button } from "../components/ui/Button";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
 import axios from "../utils/axios";
+import { Seo } from "../components/Seo";
 
 export const Component = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -61,6 +62,7 @@ export const Component = () => {
 
   return (
     <Wrapper className="flex flex-col items-center max-w-lg py-12">
+      <Seo title='Mhkasa | Login' type='webapp' description='login to your account' name='' />
       <Heading>Login</Heading>
       <p className="py-4 text-[#666666] text-center">
         Your Welcome back don&rsquo;t have an account?

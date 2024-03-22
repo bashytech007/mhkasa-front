@@ -1,4 +1,4 @@
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from "../hooks/utils/useAuth";
 import { Button } from "./ui/Button";
 export const Logout = ({ toggle }) => {
   const { setUser } = useAuth();

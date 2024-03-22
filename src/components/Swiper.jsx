@@ -2,6 +2,8 @@ import { Icon } from "@iconify/react";
 import { useEffect, useRef } from "react";
 import { register } from "swiper/element/bundle";
 import { SwiperCard } from "./SwiperCard";
+import { SwiperCard1 } from "./SwiperCard1";
+import { SwiperCard2 } from "./SwiperCard2";
 
 export const SwiperElem = () => {
   const ref = useRef();
@@ -66,7 +68,7 @@ export const SwiperElem = () => {
           }}
         >
           <div className="min-h-[240px] h-[40vw] md:h-[320px]">
-            <SwiperCard />
+            <SwiperCard1 />
           </div>
         </swiper-slide>
         <swiper-slide
@@ -76,10 +78,9 @@ export const SwiperElem = () => {
           }}
         >
           <div className="min-h-[240px] h-[40vw] md:h-[320px]">
-            <SwiperCard />
+            <SwiperCard2 />
           </div>
         </swiper-slide>
-
       </swiper-container>
 
       <button className="swiper-button-prev flex absolute bg-[#3333] w-12 h-12 z-10 left-8 top-1/2 items-center justify-center rounded-full">
@@ -97,7 +98,7 @@ export const SwiperElem = () => {
           color="white"
         />
       </button>
-      <ul className="swiper-pagination flex gap-2 items-end absolute bottom-4 z-10 left-4 md:bottom-8"></ul>
+      <ul className="absolute z-10 flex items-end gap-2 swiper-pagination bottom-4 left-4 md:bottom-8"></ul>
     </div>
   );
 };

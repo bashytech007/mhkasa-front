@@ -80,3 +80,9 @@ input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
 }
+
+.bg-image {
+  background-image: url("./assets/images/bg-dolce2.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}

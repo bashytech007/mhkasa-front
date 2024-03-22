@@ -1,3 +1,4 @@
+
 import { Success } from "../components/Success";
 import { Wrapper } from "../components/ui/Wrapper";
 import { Link } from "react-router-dom";
@@ -19,3 +20,4 @@ export const Component = () => {
     </Wrapper>
   );
 };
+

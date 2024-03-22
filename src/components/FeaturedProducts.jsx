@@ -13,7 +13,7 @@ export const FeaturedProducts = () => {
       <ListGrid>
         {featuredProducts.map(
           (
-            { product, category, originalPrice, discountedPrice, image },
+            { product, category, originalPrice, discountedPrice, image, id },
             index
           ) => (
             <li key={index}>
@@ -23,6 +23,7 @@ export const FeaturedProducts = () => {
                 originalPrice={originalPrice}
                 discountedPrice={discountedPrice}
                 image={image}
+                id={id}
               />
             </li>
           )

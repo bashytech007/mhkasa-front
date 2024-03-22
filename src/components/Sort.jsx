@@ -2,8 +2,14 @@ import { Icon } from "@iconify/react";
 import { Button } from "./ui/Button";
 import { useState } from "react";
 
-export const Sort = () => {
+export const Sort = ({ onclick }) => {
   const [show, setShow] = useState(false);
+
+  const onClick = (sortBy) => {
+    setShow(false);
+    return onclick(sortBy);
+  };
+
   return (
     <div className="relative py-2 w-48 z-10">
       <Button
@@ -15,7 +21,7 @@ export const Sort = () => {
           icon="fa6-solid:angle-down"
           vFlip={show}
           style={{ fontSize: 24 }}
-          className="hidden text-app-black min-[512px]:block"
+          className="text-app-black"
         />
       </Button>
       <ul
@@ -24,13 +30,24 @@ export const Sort = () => {
         }`}
       >
         <li>
-          <button className="py-1">New Arrival</button>
+          <button className="py-1" onClick={() => onClick("")}>
+            None
+          </button>
         </li>
         <li>
-          <button className="py-1">Price: Low - High</button>
+          <button className="py-1" onClick={() => onClick("newest")}>
+            New Arrival
+          </button>
         </li>
         <li>
-          <button className="py-1">Price: High - Low</button>
+          <button className="py-1" onClick={() => onClick("priceLowest")}>
+            Price: Low - High
+          </button>
+        </li>
+        <li>
+          <button className="py-1" onClick={() => onClick("priceHighest")}>
+            Price: High - Low
+          </button>
         </li>
       </ul>
     </div>

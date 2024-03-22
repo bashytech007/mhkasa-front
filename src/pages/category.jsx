@@ -10,40 +10,32 @@ import { Icon } from "@iconify/react";
 import { TopCategories } from "../components/TopCategories";
 import { Sort } from "../components/Sort";
 import { Seo } from "../components/Seo";
-import { useLoaderData } from "react-router-dom/dist";
+import { useLoaderData, useSearchParams } from "react-router-dom/dist";
 
 export const Component = () => {
   const { category } = useParams();
-  if (!category) throw new Error("Invalid category");
 
-  const sort = [
-    {
-      term: "",
-      url: "",
-      key: [],
-    },
-    {
-      term: "New Arrival",
-      url: "",
-      key: [],
-    },
-    {
-      term: "New Arrival",
-      url: "",
-      key: [],
-    },
-    {
-      term: "New Arrival",
-      url: "",
-      key: [],
-    },
-  ];
+  const [searchParams, setSearchParams] = useSearchParams();
+  if (!category) throw new Error("Invalid category");
+  const { categories } = useLoaderData();
+  const sortBy = searchParams.get("sort") || "";
 
   const { fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, status } =
-    useInfiniteProducts("product/category/" + category, "category", category);
+    useInfiniteProducts(
+      `product/category/${category}?sort=${sortBy}`,
+      "category",
+      category,
+      sortBy
+    );
 
-  const { categories } = useLoaderData();
-  console.log(categories);
+  const onClick = (term) => {
+    if (typeof term !== "string") return;
+    if (!term) {
+      searchParams.delete("sort");
+      return setSearchParams(searchParams);
+    }
+    setSearchParams({ ...searchParams, sort: term });
+  };
 
   return (
     <>
@@ -80,7 +72,7 @@ export const Component = () => {
           <TopCategories />
           <div className="flex justify-between items-center py-4">
             <SectionHeader header={category} />
-            <Sort />
+            <Sort onclick={onClick} />
           </div>
           {status === "pending" ? (
             "Loading..."

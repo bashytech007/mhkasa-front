@@ -2,8 +2,39 @@ import { Icon } from "@iconify/react";
 import { Button } from "./ui/Button";
 import { useState } from "react";
 
-export const Sort = ({ onclick }) => {
+const ListItem = ({ sort, term, display, onClick }) => {
+  return (
+    <li>
+      <button
+        className={`py-3 w-full ${sort === term ? "bg-slate-100" : ""}`}
+        onClick={() => onClick(term)}
+      >
+        {display}
+      </button>
+    </li>
+  );
+};
+
+export const Sort = ({ onclick, sort }) => {
   const [show, setShow] = useState(false);
+  const list = [
+    {
+      term: "",
+      display: "None",
+    },
+    {
+      term: "newest",
+      display: " New Arrival",
+    },
+    {
+      term: "priceLowest",
+      display: "Price: Low - High",
+    },
+    {
+      term: "priceHighest",
+      display: "Price: High - Low",
+    },
+  ];
 
   const onClick = (sortBy) => {
     setShow(false);
@@ -25,30 +56,19 @@ export const Sort = ({ onclick }) => {
         />
       </Button>
       <ul
-        className={`bg-white absolute top-full w-full py-6 px-6 rounded-3xl ${
+        className={`bg-white absolute top-full w-full overflow-hidden rounded-3xl ${
           show ? "" : "hidden"
         }`}
       >
-        <li>
-          <button className="py-1" onClick={() => onClick("")}>
-            None
-          </button>
-        </li>
-        <li>
-          <button className="py-1" onClick={() => onClick("newest")}>
-            New Arrival
-          </button>
-        </li>
-        <li>
-          <button className="py-1" onClick={() => onClick("priceLowest")}>
-            Price: Low - High
-          </button>
-        </li>
-        <li>
-          <button className="py-1" onClick={() => onClick("priceHighest")}>
-            Price: High - Low
-          </button>
-        </li>
+        {list.map((li) => (
+          <ListItem
+            key={li.display}
+            display={li.display}
+            term={li.term}
+            sort={sort}
+            onClick={onClick}
+          />
+        ))}
       </ul>
     </div>
   );

@@ -33,12 +33,17 @@ export const homeLoader = (queryClient) => async () => {
 
 export const categoriesLoader =
   (queryClient) =>
-  async ({ params: { category } }) => {
+  async ({ params: { category }, request }) => {
+    const url = new URL(request.url);
+    const sortBy = url.searchParams.get("sort") || "";
     const query = {
       initialPageParam: 1,
-      queryKey: ["product", "category", category],
+      queryKey: ["product", "category", category, sortBy],
       queryFn: async ({ pageParam }) =>
-        await fetchProducts(`product/category/${category}`, pageParam),
+        await fetchProducts(
+          `product/category/${category}?sort=${sortBy}`,
+          pageParam
+        ),
       getNextPageParam: ({ currentPage, totalPages }) =>
         currentPage < totalPages ? currentPage + 1 : undefined,
     };

@@ -82,7 +82,9 @@ input[type="number"] {
 }
 
 .bg-image {
-  background-image: url("./assets/images/bg-dolce2.jpg");
+  background-image: url("./assets/images/dolce.png");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+  background-position: bottom;
+  width: 100%;
 }

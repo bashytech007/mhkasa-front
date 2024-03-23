@@ -9,7 +9,7 @@ export const Logo = ({
   return (
     <Link to="/" aria-label="Navigate to home page">
       <div
-        className={`text-[30px] flex gap-x-2 gap-y-3 ${
+        className={`hidden  text-[30px] md:flex gap-x-2 gap-y-3 ${
           stack === "horizontal" ? "flow-row items-center " : "flex-col"
         }`}
       >
@@ -21,7 +21,7 @@ export const Logo = ({
           }`}
         />
         <p
-          className={`font-fuzzy font-bold tracking-tighter ${
+          className={`hidden md:block font-fuzzy font-bold tracking-tighter ${
             stack === "horizontal" ? "mt-3" : ""
           } ${textColor === "red" ? "text-app-red" : "text-white"} ${
             size === "sm" ? "text-md" : size === "lg" ? "text-4xl" : "text-lg"

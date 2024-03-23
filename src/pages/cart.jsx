@@ -13,7 +13,6 @@ export const Component = () => {
   const [showModal, setShowModal] = useState(false);
   const { status, data } = useCartQuery();
   const { clearCart } = useCartContext();
-
   return (
     <main>
       <Seo

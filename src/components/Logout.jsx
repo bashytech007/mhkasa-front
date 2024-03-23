@@ -1,12 +1,27 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useAuth } from "../hooks/utils/useAuth";
 import { Button } from "./ui/Button";
 export const Logout = ({ toggle }) => {
   const { setUser } = useAuth();
-  const onClick = async () => {
-    setUser(undefined);
+  const queryClient = useQueryClient();
+
+  const logout = () => {
     sessionStorage.removeItem("user");
-    toggle();
+    setUser(undefined);
   };
+
+  const mutation = useMutation({
+    mutationFn: logout,
+    onSuccess: () => {
+      toggle();
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
+    },
+  });
+
+  const onClick = async () => {
+    mutation.mutate();
+  };
+
   return (
     <Button
       className="w-full font-bold bg-app-ash text-nowrap text-app-red"

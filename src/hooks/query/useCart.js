@@ -1,9 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "../../utils/axios";
+import { useAuth } from "../utils/useAuth";
 
 export const useCartQuery = () => {
+  const { getUserId } = useAuth();
+  const userId = getUserId();
   async function getCart() {
-    const response = await axios.get(`cart/65d23b4e2a4c112f98383490`);
+    if (!userId)
+      return {
+        items: [],
+      };
+    const response = await axios.get(`cart/${userId}`);
     return response.data;
   }
   return useQuery({

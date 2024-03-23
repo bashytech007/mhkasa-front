@@ -2,19 +2,23 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createContext } from "react";
 import axios from "../utils/axios";
 import toast from "react-hot-toast";
+import { useAuth } from "../hooks/utils/useAuth";
 export const CartContext = createContext();
 
 export const Cart = ({ children }) => {
-  const userId = "65d23b4e2a4c112f98383490";
+  const { getUserId } = useAuth();
   const queryClient = useQueryClient();
 
   const hasItem = (itemId) => {
-    return queryClient
-      .getQueryData(["cart"])
-      ?.items.find((item) => item.productId._id === itemId);
+    const cart = queryClient.getQueryData(["cart"]);
+
+    return cart
+      ? cart.items.find((item) => item.productId._id === itemId)
+      : undefined;
   };
 
   const addToCart = ({ itemId, quantity }) => {
+    const userId = getUserId();
     if (!userId) return;
     if (hasItem(itemId)) {
       return toast("Item already in cart");
@@ -23,21 +27,25 @@ export const Cart = ({ children }) => {
   };
 
   const increaseItem = ({ itemId, quantity }) => {
+    const userId = getUserId();
     if (!userId) return;
     increase.mutate({ userId, itemId, quantity });
   };
 
   const decreaseItem = ({ itemId, quantity }) => {
+    const userId = getUserId();
     if (!userId) return;
     decrease.mutate({ userId, itemId, quantity });
   };
 
   const removeFromCart = (itemId) => {
+    const userId = getUserId();
     if (!userId) return;
     remove.mutate({ userId, itemId });
   };
 
   const clearCart = () => {
+    const userId = getUserId();
     if (!userId) return;
     clear.mutate({ userId });
   };
@@ -53,9 +61,6 @@ export const Cart = ({ children }) => {
   const remove = useMutation({
     mutationFn: ({ userId, itemId }) =>
       axios.post(`remove/cart/${userId}/${itemId}`, {}),
-    onMutate: ({ itemId }) => {
-      return { itemId };
-    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["cart"] });
     },

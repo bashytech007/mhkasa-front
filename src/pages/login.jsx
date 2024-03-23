@@ -8,12 +8,12 @@ import { useCanSubmitForm } from "../hooks/utils/useCanSubmitFormik";
 import { Wrapper } from "../components/ui/Wrapper";
 import { Button } from "../components/ui/Button";
 import { Icon } from "@iconify/react";
-import { useState } from "react";
 import axios from "../utils/axios";
 import { Seo } from "../components/Seo";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export const Component = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const queryClient = useQueryClient();
   const schema = yup.object().shape({
     email: yup.string().email().required(),
     password: yup
@@ -32,29 +32,28 @@ export const Component = () => {
   const [searchParams] = useSearchParams();
   const redirect = searchParams.get("redirect") || "/";
 
-  const login = async (values) => {
-    setIsSubmitting(true);
-    try {
-      const response = await axios.post(`user/login`, values, {
+  const mutation = useMutation({
+    mutationFn: (values) => {
+      return axios.post(`user/login`, values, {
         headers: { "Content-Type": "application/json" },
       });
-      if (response.status === 200) {
-        setIsSubmitting(false);
-        setUser(response.data);
-        sessionStorage.setItem("user", JSON.stringify(response.data));
-        naigate(decodeURIComponent(redirect));
-      }
-    } catch (error) {
-      console.log(error?.response?.data?.message);
-      setIsSubmitting(false);
-    }
-  };
+    },
+    onSuccess: (response) => {
+      setUser(response.data);
+      sessionStorage.setItem("user", JSON.stringify(response.data));
+      queryClient.setQueryData(["cart"], response.data.cart);
+      naigate(decodeURIComponent(redirect));
+    },
+    onError: (error) => {
+      console.error(error);
+    },
+  });
 
   const formik = useFormik({
     initialValues: { email: "", password: "" },
     validationSchema: schema,
     onSubmit: async (values) => {
-      await login(values);
+      mutation.mutate(values);
     },
   });
 
@@ -62,7 +61,12 @@ export const Component = () => {
 
   return (
     <Wrapper className="flex flex-col items-center max-w-lg py-12">
-      <Seo title='Mhkasa | Login' type='webapp' description='login to your account' name='' />
+      <Seo
+        title="Mhkasa | Login"
+        type="webapp"
+        description="login to your account"
+        name=""
+      />
       <Heading>Login</Heading>
       <p className="py-4 text-[#666666] text-center">
         Your Welcome back don&rsquo;t have an account?
@@ -87,7 +91,7 @@ export const Component = () => {
           type="submit"
           disabled={!canSubmit}
         >
-          {isSubmitting ? (
+          {mutation.isPending ? (
             <Icon icon="svg-spinners:6-dots-rotate" style={{ fontSize: 20 }} />
           ) : (
             "Login"

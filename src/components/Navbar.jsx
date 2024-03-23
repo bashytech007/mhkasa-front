@@ -113,7 +113,7 @@ const CartButton = () => {
       <Icon icon="bytesize:cart" style={{ fontSize: 32 }} />
       {status === "success" && (
         <p className="absolute grid w-4 h-4 text-xs font-bold leading-none text-white rounded-full bg-app-red place-items-center top-1 right-1">
-          {data.items.length}
+          {data?.items?.length ?? 0}
         </p>
       )}
     </Link>

@@ -3,44 +3,46 @@ import { Modal } from "./Modal";
 import { Button } from "./ui/Button";
 import { Icon } from "@iconify/react";
 import { useCartContext } from "../hooks/utils/useCart";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
+import { debounce } from "../hooks/utils/useDebounce";
 
 export const CartItemQuantity = ({ productId, quantity }) => {
-  const { cart, setItemQuantity, removeFromCart } = useCartContext();
+  const { decreaseItem, increaseItem } = useCartContext();
   const [showModal, setShowModal] = useState(false);
+  const [qty, setQty] = useState(quantity);
 
-  const increaseQty = () => {
-    const item = cart.find((c) => c.id === productId);
-    setItemQuantity(productId, item.quantity + 1);
-  };
-  const decreaseQty = () => {
-    const item = cart.find((c) => c.id === productId);
-    if (item.quantity - 1 < 1) {
-      return setShowModal(true);
-    }
-    setItemQuantity(productId, item.quantity - 1);
-  };
+  useEffect(() => {
+    setQty(quantity);
+  }, [quantity]);
 
   return (
     <div className="grid grid-cols-12 grid-rows-6">
       <button
+        onClick={(e) => {
+          if (qty <= 1) {
+            return toast.error("Can't perform action");
+          }
+          decreaseItem({ quantity: 1, itemId: productId });
+        }}
         className="h-8 text-2xl w-6 col-start-1 col-end-7 row-start-4 row-end-7 md:h-auto md:row-start-1 md:col-end-4"
-        onClick={decreaseQty}
       >
         <Icon icon="tdesign:minus" />
       </button>
       <input
         type="number"
-        value={quantity}
+        value={qty}
         className="w-8 mx-auto h-7 text-center outline-none border-black border-2 text-lg rounded col-start-1 col-end-13 row-start-1 row-end-4 md:row-end-7 md:border-none"
         onChange={(e) => {
           const val = e.target.value;
           if (Number(val) === 0) return;
-          setItemQuantity(productId, Number(val));
         }}
       />
       <button
+        onClick={(e) => {
+          increaseItem({ quantity: 1, itemId: productId });
+        }}
         className="grid place-items-center h-8 text-2xl w-6 col-start-7 col-end-13 row-start-4 row-end-7 md:h-auto md:row-start-1 md:col-start-10"
-        onClick={increaseQty}
       >
         <Icon icon="tdesign:plus" />
       </button>

@@ -35,7 +35,10 @@ export const CartItem = ({ item }) => {
         </p>
 
         <div className="grid items-center justify-end col-end-13 col-start-10 row-span-2 md:justify-center md:items-start md:row-span-3 md:text-center md:col-start-9 md:col-end-11">
-          <CartItemQuantity quantity={item.quantity} productId={item.id} />
+          <CartItemQuantity
+            quantity={item.quantity}
+            productId={item.productId._id}
+          />
         </div>
 
         <p className="col-end-13 col-start-10 text-right md:row-span-2 md:text-center md:col-start-11 md:col-end-13">
@@ -66,7 +69,12 @@ export const CartItem = ({ item }) => {
               onClick={() => {
                 removeFromCart(item.productId._id);
                 setShowModal(false);
-                toast( `Removed item x from Cart`)
+                toast(
+                  <p>
+                    <span className="text-app-red">{item.productId.name}</span>{" "}
+                    removed from Cart
+                  </p>
+                );
               }}
             >
               Remove

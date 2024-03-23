@@ -10,6 +10,7 @@ export const Product = ({
   id,
 }) => {
   const { addToCart } = useCartContext();
+
   return (
     <div className="bg-white rounded-2xl overflow-hidden h-full @container">
       <div className="h-24">

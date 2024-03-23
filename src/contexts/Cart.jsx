@@ -3,9 +3,45 @@ import { createContext } from "react";
 import axios from "../utils/axios";
 import toast from "react-hot-toast";
 import { useAuth } from "../hooks/utils/useAuth";
+import { Link } from "react-router-dom/dist";
+import { Button } from "../components/ui/Button";
 export const CartContext = createContext();
 
 export const Cart = ({ children }) => {
+  function isLoggedIn(userId) {
+    if (!userId) {
+      const toastId = toast.custom(
+        <div className="bg-app-ash pb-4 pt-7 px-5 rounded">
+          <p>Please login to your account to continue shopping</p>
+          <div className="flex items-center justify-center gap-6 p-6">
+            <button
+              onClick={() => {
+                toast.remove(toastId);
+              }}
+            >
+              Close
+            </button>
+            <Link to="/login">
+              <Button
+                className="bg-app-red text-white"
+                onClick={() => {
+                  toast.remove(toastId);
+                }}
+              >
+                Login
+              </Button>
+            </Link>
+          </div>
+        </div>,
+        {
+          id: "toast",
+          duration: 1000 * 60 * 60,
+        }
+      );
+    }
+    return !!userId;
+  }
+
   const { getUserId } = useAuth();
   const queryClient = useQueryClient();
 
@@ -19,11 +55,14 @@ export const Cart = ({ children }) => {
 
   const addToCart = ({ itemId, quantity }) => {
     const userId = getUserId();
-    if (!userId) return;
-    if (hasItem(itemId)) {
-      return toast("Item already in cart");
+    if (isLoggedIn(userId)) {
+      if (hasItem(itemId)) {
+        return toast("Item already in cart", {
+          id: "already-in-cart",
+        });
+      }
+      add.mutate({ userId, itemId, quantity });
     }
-    add.mutate({ userId, itemId, quantity });
   };
 
   const increaseItem = ({ itemId, quantity }) => {

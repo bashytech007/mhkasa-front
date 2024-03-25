@@ -5,13 +5,14 @@ import { Modal } from "../components/Modal";
 import { Button } from "../components/ui/Button";
 import { Navigation } from "../components/ui/Navigation";
 import { Wrapper } from "../components/ui/Wrapper";
-import { useCart } from "../hooks/query/useCart";
+import { useCartQuery } from "../hooks/query/useCart";
 import { Seo } from "../components/Seo";
+import { useCartContext } from "../hooks/utils/useCart";
 
 export const Component = () => {
   const [showModal, setShowModal] = useState(false);
-  const { cart, clearCart } = useCart();
-
+  const { status, data } = useCartQuery();
+  const { clearCart } = useCartContext();
   return (
     <main>
       <Seo
@@ -24,7 +25,7 @@ export const Component = () => {
         <Navigation location={["Home", "Cart"]} />
         <div className="flex items-center justify-between">
           <Heading className="pt-2">Your Shopping Cart</Heading>
-          {cart.length > 0 && (
+          {status === "success" && data.items.length > 0 && (
             <button
               onClick={() => {
                 setShowModal(true);

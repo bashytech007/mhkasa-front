@@ -10,43 +10,32 @@ import { Icon } from "@iconify/react";
 import { TopCategories } from "../components/TopCategories";
 import { Sort } from "../components/Sort";
 import { Seo } from "../components/Seo";
+import { useLoaderData, useSearchParams } from "react-router-dom/dist";
 
 export const Component = () => {
   const { category } = useParams();
+
+  const [searchParams, setSearchParams] = useSearchParams();
   if (!category) throw new Error("Invalid category");
+  const { categories } = useLoaderData();
+  const sortBy = searchParams.get("sort") || "";
 
-  const sort = [
-    {
-      term: "",
-      url: "",
-      key: [],
-    },
-    {
-      term: "New Arrival",
-      url: "",
-      key: [],
-    },
-    {
-      term: "New Arrival",
-      url: "",
-      key: [],
-    },
-    {
-      term: "New Arrival",
-      url: "",
-      key: [],
-    },
-  ];
+  const { fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, status } =
+    useInfiniteProducts(
+      `product/category/${category}?sort=${sortBy}`,
+      "category",
+      category,
+      sortBy
+    );
 
-  const {
-    data,
-    error,
-    fetchNextPage,
-    hasNextPage,
-    isFetching,
-    isFetchingNextPage,
-    status,
-  } = useInfiniteProducts("product/category/" + category, "category", category);
+  const onClick = (term) => {
+    if (typeof term !== "string") return;
+    if (!term) {
+      searchParams.delete("sort");
+      return setSearchParams(searchParams);
+    }
+    setSearchParams({ ...searchParams, sort: term });
+  };
 
   return (
     <>
@@ -83,16 +72,16 @@ export const Component = () => {
           <TopCategories />
           <div className="flex justify-between items-center py-4">
             <SectionHeader header={category} />
-            <Sort />
+            <Sort onclick={onClick} sort={sortBy} />
           </div>
           {status === "pending" ? (
             "Loading..."
           ) : status === "error" ? (
-            `An error has occurred: ${error.message}`
+            `An error has occurred`
           ) : (
             <>
               <ul className="pt-8 grid gap-4 justify-center grid-flow-row auto-rows-fr grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-                {data.pages.map((group, i) => (
+                {categories.pages.map((group, i) => (
                   <Fragment key={i}>
                     {group.products.map((product) => (
                       <li key={product._id}>
@@ -102,6 +91,7 @@ export const Component = () => {
                           originalPrice={product.price}
                           discountedPrice={product?.discountedPrice}
                           image={product.mainImage}
+                          id={product._id}
                         />
                       </li>
                     ))}
@@ -132,5 +122,3 @@ export const Component = () => {
     </>
   );
 };
-
-export const LatestProducts = () => {};

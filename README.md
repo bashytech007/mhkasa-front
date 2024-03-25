@@ -16,3 +16,9 @@
 - `/account/profile` -  user account profile
 - `/account/profile/order-history` - user order history
 - `/products/:product` - product details
+
+## Endpoints
+
+
+
+ 

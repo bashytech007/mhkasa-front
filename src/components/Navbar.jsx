@@ -4,7 +4,7 @@ import { User } from "./User";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "../hooks/query/useCart";
+import { useCartQuery } from "../hooks/query/useCart";
 import { useCategory } from "../hooks/query/useCategory";
 
 const Navbar = () => {
@@ -70,7 +70,7 @@ const MobileNavbar = ({ toggle }) => {
                     }
               `;
 
-  const { categories, error, status } = useCategory();
+  const { categories, status } = useCategory();
 
   return (
     <div className="fixed top-0 bottom-0 left-0 right-0 z-50 overflow-y-scroll bg-white md:hidden">
@@ -109,13 +109,15 @@ const MobileNavbar = ({ toggle }) => {
 };
 
 const CartButton = () => {
-  const { cart } = useCart();
+  const { data, status } = useCartQuery();
   return (
     <Link to="/cart" className="relative p-2">
       <Icon icon="bytesize:cart" style={{ fontSize: 32 }} />
-      <p className="absolute grid w-4 h-4 text-xs font-bold leading-none text-white rounded-full bg-app-red place-items-center top-1 right-1">
-        {cart.length}
-      </p>
+      {status === "success" && (
+        <p className="absolute grid w-4 h-4 text-xs font-bold leading-none text-white rounded-full bg-app-red place-items-center top-1 right-1">
+          {data?.items?.length ?? 0}
+        </p>
+      )}
     </Link>
   );
 };

@@ -42,9 +42,9 @@ export const Sort = ({ onclick, sort }) => {
   };
 
   return (
-    <div className="relative py-2 w-48 z-10">
+    <div className="relative z-10 w-48 py-2">
       <Button
-        className="bg-white w-full py-2 flex justify-between items-center"
+        className="flex items-center justify-between w-full py-2 bg-white"
         onClick={() => setShow((v) => !v)}
       >
         Sort By{" "}

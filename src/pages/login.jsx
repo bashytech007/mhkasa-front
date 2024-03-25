@@ -11,6 +11,7 @@ import { Icon } from "@iconify/react";
 import axios from "../utils/axios";
 import { Seo } from "../components/Seo";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 export const Component = () => {
   const queryClient = useQueryClient();
@@ -44,8 +45,8 @@ export const Component = () => {
       queryClient.setQueryData(["cart"], response.data.cart);
       naigate(decodeURIComponent(redirect));
     },
-    onError: (error) => {
-      console.error(error);
+    onError: () => {
+      toast.error("Login attempt failed: check Network");
     },
   });
 

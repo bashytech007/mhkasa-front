@@ -1,8 +1,14 @@
 import { Icon } from "@iconify/react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { cn } from "../../utils/cn";
 
-export const Navigation = ({ location, className = "" }) => {
+export const Navigation = ({
+  location,
+  className = "",
+  iconClassName = "",
+  currentLocationClassName = "",
+}) => {
   useEffect(() => {
     if (
       !location ||
@@ -15,12 +21,20 @@ export const Navigation = ({ location, className = "" }) => {
 
   return (
     <p
-      className={`inline-flex flex-wrap items-center text-[#ffffff96] font-medium ${className}`}
+      className={cn(
+        `inline-flex flex-wrap items-center text-[#ffffff96] font-medium`,
+        className
+      )}
     >
       {location.map((part, index) => {
         if (index === location.length - 1) {
           return (
-            <Link to={part.to} key={index} title={part?.title || ""}>
+            <Link
+              to={part.to}
+              key={index}
+              title={part?.title || ""}
+              className={cn(currentLocationClassName)}
+            >
               {part.description}
             </Link>
           );
@@ -33,7 +47,10 @@ export const Navigation = ({ location, className = "" }) => {
               title={part?.title || ""}
             >
               {part.description}{" "}
-              <Icon icon="mi:chevron-double-right" className="text-white" />
+              <Icon
+                icon="mi:chevron-double-right"
+                className={cn("text-white", iconClassName)}
+              />
             </Link>
           );
         }

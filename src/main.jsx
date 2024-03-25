@@ -21,7 +21,6 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        lazy: () => import("./components/OnlyAuthenticated"),
         children: [
           {
             path: "/",
@@ -33,9 +32,23 @@ const router = createBrowserRouter([
             lazy: () => import("./pages/cart"),
           },
           {
+            path: "/products/:product",
+            lazy: () => import("./pages/select-product.jsx"),
+          },
+          {
             path: "/categories/:category",
             lazy: () => import("./pages/category"),
             loader: categoriesLoader(queryClient),
+          },
+        ],
+      },
+      {
+        path: "/",
+        lazy: () => import("./components/OnlyAuthenticated"),
+        children: [
+          {
+            path: "/checkout",
+            lazy: () => import("./pages/checkout"),
           },
         ],
       },

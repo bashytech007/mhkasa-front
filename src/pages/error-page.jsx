@@ -5,7 +5,7 @@ import { Wrapper } from "../components/ui/Wrapper";
 
 export default function ErrorPage() {
   const error = useRouteError();
-  console.error(error);
+  // console.error(error);
 
   return (
     <div id="error-page" className="flex flex-col min-h-dvh">

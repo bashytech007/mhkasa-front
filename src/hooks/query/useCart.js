@@ -16,5 +16,6 @@ export const useCartQuery = () => {
   return useQuery({
     queryKey: ["cart"],
     queryFn: getCart,
+    refetchInterval: 1000 * 60 * 1,
   });
 };

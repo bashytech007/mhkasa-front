@@ -25,14 +25,14 @@ export const CartItemQuantity = ({ productId, quantity }) => {
           }
           decreaseItem({ quantity: 1, itemId: productId });
         }}
-        className="h-8 text-2xl w-6 col-start-1 col-end-7 row-start-4 row-end-7 md:h-auto md:row-start-1 md:col-end-4"
+        className="h-8 text-2xl w-6 col-start-1 col-end-7 row-start-4 row-end-7 @lg:h-auto @lg:row-start-1 @lg:col-end-4"
       >
         <Icon icon="tdesign:minus" />
       </button>
       <input
         type="number"
         value={qty}
-        className="w-8 mx-auto h-7 text-center outline-none border-black border-2 text-lg rounded col-start-1 col-end-13 row-start-1 row-end-4 md:row-end-7 md:border-none"
+        className="w-8 mx-auto h-7 text-center outline-none border-black border-2 text-lg rounded col-start-1 col-end-13 row-start-1 row-end-4 @lg:row-end-7 @lg:border-none"
         onChange={(e) => {
           const val = e.target.value;
           if (Number(val) === 0) return;
@@ -42,7 +42,7 @@ export const CartItemQuantity = ({ productId, quantity }) => {
         onClick={(e) => {
           increaseItem({ quantity: 1, itemId: productId });
         }}
-        className="grid place-items-center h-8 text-2xl w-6 col-start-7 col-end-13 row-start-4 row-end-7 md:h-auto md:row-start-1 md:col-start-10"
+        className="grid place-items-center h-8 text-2xl w-6 col-start-7 col-end-13 row-start-4 row-end-7 @lg:h-auto @lg:row-start-1 @lg:col-start-10"
       >
         <Icon icon="tdesign:plus" />
       </button>

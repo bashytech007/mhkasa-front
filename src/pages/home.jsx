@@ -6,21 +6,21 @@ import { FeaturedProducts } from "../components/FeaturedProducts";
 import { LatestProducts } from "../components/LatestProducts";
 import { TopCategories } from "../components/TopCategories";
 import { Seo } from "../components/Seo";
+import { Sales } from "../components/Sales";
 
 export const Component = () => {
-
-
   return (
     <main>
-      <Seo title='Mhkasa | Home' type='webapp' name='' />
+      <Seo title="Mhkasa | Home" type="webapp" name="" />
       <Wrapper>
         <div className="flex gap-8 py-10">
-          <CategoryPanel fixedHeight/>
+          <CategoryPanel fixedHeight />
           <SwiperElem />
         </div>
-        
+
         <FeaturedProducts />
         <TopCategories />
+        <Sales />
         <LatestProducts />
       </Wrapper>
       <div className="pt-6">

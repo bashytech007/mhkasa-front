@@ -4,5 +4,5 @@ import { useAuth } from "../hooks/utils/useAuth";
 export const Component = () => {
   const { user } = useAuth();
   // return !user ? <Outlet /> : <Navigate to="/" />;
-  return <Outlet/>
+  return <Outlet />;
 };

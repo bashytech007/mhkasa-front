@@ -86,5 +86,10 @@ input[type="number"] {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
-  width: 100%;
+  /* width: 100%; */
+}
+.bg-sales {
+  background-image: url("./assets/images/salesbg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }

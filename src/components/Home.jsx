@@ -15,7 +15,9 @@ import { Icon } from "@iconify/react";
 import useLongPress from "../hooks/useLongPress";
 import { Sort } from "../components/Sort";
 import { Sales } from "./Sales";
+
 export const Home = () => {
+  console.log("this is Home");
   const ref = useRef();
   const [featuredProducts, setFeaturedProducts] = useState([]);
 
@@ -105,7 +107,8 @@ export const Home = () => {
           <CategoryPanel />
           <SwiperElem />
         </div>
-        <div className="">
+
+        <div className="w-full bg-red-500">
           <section className="py-8 ">
             <div className="flex items-center justify-between">
               <SectionHeader header="Featured Products" />
@@ -130,8 +133,9 @@ export const Home = () => {
               )}
             </ul>
           </section>
-          <Sales />
         </div>
+        <Sales />
+        <h3>World</h3>
         <section className="py-8">
           <div className="flex items-center justify-between">
             <SectionHeader header="Top Categories" Link to="/Categoreis" />

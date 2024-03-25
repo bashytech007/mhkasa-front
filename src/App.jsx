@@ -32,6 +32,10 @@ const router = createBrowserRouter([
         lazy: () => import("./components/OnlyUnAuthenticated"),
         children: [
           {
+            path: "/",
+            lazy: () => import("./components/Home.jsx"),
+          },
+          {
             path: "/login",
             lazy: () => import("./pages/login"),
           },

@@ -1,8 +1,15 @@
 import { Link } from "react-router-dom";
 import { useCategory } from "../hooks/query/useCategory";
-
+import { Icon1, Icon2, Icon3, Icon4 } from "../components/Icon";
+import { iconExists } from "@iconify/react";
 export const CategoryPanel = ({ fixedHeight }) => {
   const { categories, error, status } = useCategory();
+  const icons = [
+    <Icon1 key={iconExists} />,
+    <Icon2 key={iconExists} />,
+    <Icon3 key={iconExists} />,
+    <Icon4 key={iconExists} />,
+  ];
 
   return (
     <nav className="rounded-2xl overflow-hidden hidden min-w-[260px] w-fit md:flex md:flex-col">
@@ -24,6 +31,7 @@ export const CategoryPanel = ({ fixedHeight }) => {
                   to={`/categories/${encodeURIComponent(name)}`}
                   className="flex items-center gap-3 py-2 pl-8 group-hover:text-app-red"
                 >
+                  {icons[index % icons.length]}
                   {name}
                 </Link>
               </li>

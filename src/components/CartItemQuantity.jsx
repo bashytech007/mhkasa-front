@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 import { useCartContext } from "../hooks/utils/useCart";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
-import { debounce } from "../hooks/utils/useDebounce";
+// import { debounce } from "../hooks/utils/useDebounce";
 
 export const CartItemQuantity = ({ productId, quantity }) => {
   const { decreaseItem, increaseItem } = useCartContext();

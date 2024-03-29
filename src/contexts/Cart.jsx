@@ -3,13 +3,14 @@ import { createContext } from "react";
 import axios from "../utils/axios";
 import toast from "react-hot-toast";
 import { useAuth } from "../hooks/utils/useAuth";
-import { Link } from "react-router-dom/dist";
+import { Link, useLocation } from "react-router-dom/dist";
 import { Button } from "../components/ui/Button";
 export const CartContext = createContext();
 
 export const Cart = ({ children }) => {
   function isLoggedIn(userId) {
     if (!userId) {
+      const { pathname } = window.location;
       const toastId = toast.custom(
         <div className="bg-app-ash pb-4 pt-7 px-5 rounded">
           <p>Please login to your account to continue shopping</p>
@@ -21,7 +22,7 @@ export const Cart = ({ children }) => {
             >
               Close
             </button>
-            <Link to="/login">
+            <Link to={`/login?redirect=${encodeURIComponent(pathname)}`}>
               <Button
                 className="bg-app-red text-white"
                 onClick={() => {
@@ -45,8 +46,20 @@ export const Cart = ({ children }) => {
   const { getUserId } = useAuth();
   const queryClient = useQueryClient();
 
-  const hasItem = (itemId) => {
-    const cart = queryClient.getQueryData(["cart"]);
+  const hasItem = async (itemId) => {
+    async function getCart() {
+      const userId = getUserId();
+      if (!userId)
+        return {
+          items: [],
+        };
+      const response = await axios.get(`cart/${userId}`);
+      return response.data;
+    }
+    const cart = await queryClient.ensureQueryData({
+      queryKey: ["cart"],
+      queryFn: getCart,
+    });
 
     return cart
       ? cart.items.find((item) => item.productId._id === itemId)
@@ -56,11 +69,6 @@ export const Cart = ({ children }) => {
   const addToCart = ({ itemId, quantity }) => {
     const userId = getUserId();
     if (isLoggedIn(userId)) {
-      if (hasItem(itemId)) {
-        return toast("Item already in cart", {
-          id: "already-in-cart",
-        });
-      }
       add.mutate({ userId, itemId, quantity });
     }
   };
@@ -142,6 +150,7 @@ export const Cart = ({ children }) => {
         clearCart,
         increaseItem,
         decreaseItem,
+        hasItem,
       }}
     >
       {children}

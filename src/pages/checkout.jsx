@@ -3,17 +3,14 @@ import { Navigation } from "../components/ui/Navigation";
 import { Wrapper } from "../components/ui/Wrapper";
 import { useCartQuery } from "../hooks/query/useCart";
 import { Seo } from "../components/Seo";
-import { useAuth } from "../hooks/utils/useAuth";
 import { Heading } from "../components/Heading";
 import { OrderSummary } from "../components/OrderTotal";
 import { CartItems } from "../components/Cart";
 import { cn } from "../utils/cn";
-import { useRef, useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Component = () => {
-  const { getUserId } = useAuth();
-  const { status, data } = useCartQuery();
-
   return (
     <main>
       <Seo
@@ -164,6 +161,14 @@ const PaymentMethod = ({ className }) => {
 
 const CartSummary = ({ className }) => {
   const { data } = useCartQuery();
+  const navigate = useNavigate();
+  const onClick = () => {
+    setTimeout(
+      () =>
+        navigate("/account/checkout-success"),
+      2000
+    );
+  };
   return (
     <div className={cn("bg-white rounded-xl p-5", className)}>
       <div className="flex items-center gap-3 border-b-2 pb-4">
@@ -174,7 +179,10 @@ const CartSummary = ({ className }) => {
         <OrderSummary />
 
         {!data?.items || data.items.length === 0 ? null : (
-          <Button className="bg-black text-white font-bold w-full mt-6">
+          <Button
+            className="bg-black text-white font-bold w-full mt-6"
+            onClick={onClick}
+          >
             Pay Now
           </Button>
         )}

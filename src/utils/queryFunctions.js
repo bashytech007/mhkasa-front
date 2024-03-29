@@ -29,3 +29,8 @@ export const fetchProducts = async (url, pageParam) => {
   const res = await axios.get(`${url}?page=` + pageParam);
   return res.data;
 };
+
+export const fetchProduct = async (productId) => {
+  const res = await axios.get(`product/${productId}`);
+  return res.data;
+};

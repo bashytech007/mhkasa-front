@@ -6,6 +6,7 @@ import { Wrapper } from "../components/ui/Wrapper";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import axios from "../utils/axios";
+import { Seo } from "../components/Seo";
 
 export const Component = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -47,45 +48,53 @@ export const Component = () => {
   }, [otp]);
 
   return (
-    <Wrapper>
-      <div className="py-12 grid items-center md:grid-cols-[40%,60%]">
-        <div>
-          <div className="max-w-[420px] mx-auto">
-            <img src={authkey} className="w-full" />
-          </div>
-        </div>
-
-        <form onSubmit={onSubmit} className="flex flex-col md:items-end">
+    <>
+      <Seo
+        title="Mhkasa | Corfirm OTP"
+        description="Complete TranscationF"
+        type="webapp"
+        name=""
+      />
+      <Wrapper>
+        <div className="py-12 grid items-center md:grid-cols-[40%,60%]">
           <div>
-            <Heading className="text-[24px] sm:text-[30px] md:text-[36px] lg:text-[42px]">
-              AUTHENTICATION
-            </Heading>
-            <p className="text-lg text-app-black  sm:text-[18px] md:text-[20px] lg:text-[24px]">
-              Enter the verification Code sent to
-            </p>
-            <span className="text-lg text-[#a40001] mt-2 font-medium">
-              {email}
-            </span>
+            <div className="max-w-[420px] mx-auto">
+              <img src={authkey} className="w-full" />
+            </div>
           </div>
 
-          <OTPInput otp={otp} setOtp={setOtp} canSubmit={canSubmit} />
-          <Button
-            className="w-36 flex justify-center bg-app-red hover:bg-red-500 text-sm  text-white font-bold mt-4 sm:hover:bg-black disabled:bg-[#999999] hover:disabled:bg-[#999999] sm:bg-app-black"
-            type="submit"
-            disabled={!canSubmit}
-          >
-            {isSubmitting ? (
-              <Icon
-                icon="svg-spinners:6-dots-rotate"
-                style={{ fontSize: 20 }}
-              />
-            ) : (
-              "Verify Now"
-            )}
-          </Button>
-        </form>
-      </div>
-    </Wrapper>
+          <form onSubmit={onSubmit} className="flex flex-col md:items-end">
+            <div>
+              <Heading className="text-[24px] sm:text-[30px] md:text-[36px] lg:text-[42px]">
+                AUTHENTICATION
+              </Heading>
+              <p className="text-lg text-app-black  sm:text-[18px] md:text-[20px] lg:text-[24px]">
+                Enter the verification Code sent to
+              </p>
+              <span className="text-lg text-[#a40001] mt-2 font-medium">
+                {email}
+              </span>
+            </div>
+
+            <OTPInput otp={otp} setOtp={setOtp} canSubmit={canSubmit} />
+            <Button
+              className="w-36 flex justify-center bg-app-red hover:bg-red-500 text-sm  text-white font-bold mt-4 sm:hover:bg-black disabled:bg-[#999999] hover:disabled:bg-[#999999] sm:bg-app-black"
+              type="submit"
+              disabled={!canSubmit}
+            >
+              {isSubmitting ? (
+                <Icon
+                  icon="svg-spinners:6-dots-rotate"
+                  style={{ fontSize: 20 }}
+                />
+              ) : (
+                "Verify Now"
+              )}
+            </Button>
+          </form>
+        </div>
+      </Wrapper>
+    </>
   );
 };
 

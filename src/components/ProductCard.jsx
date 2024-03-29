@@ -1,5 +1,5 @@
 import { Button } from "./ui/Button";
-import { useCartContext } from "../hooks/utils/useCart";
+import { Link } from "react-router-dom";
 
 export const Product = ({
   product,
@@ -9,7 +9,6 @@ export const Product = ({
   image,
   id,
 }) => {
-  const { addToCart } = useCartContext();
 
   return (
     <div className="bg-white rounded-2xl overflow-hidden h-full @container">
@@ -44,14 +43,11 @@ export const Product = ({
             )}
           </div>
 
-          <Button
-            onClick={() => {
-              addToCart({ quantity: 1, itemId: id });
-            }}
-            className="bg-app-red text-app-ash font-medium text-nowrap text-sm mt-auto @[240px]:bg-app-black"
-          >
-            Buy Now
-          </Button>
+          <Link to={`/products/${id}`}>
+            <Button className="bg-app-red text-app-ash font-medium text-nowrap text-sm mt-auto @[240px]:bg-app-black">
+              Buy Now
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

@@ -12,6 +12,7 @@ import axios from "../utils/axios";
 import { Seo } from "../components/Seo";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import { prefix } from "../utils/lib";
 
 export const Component = () => {
   const queryClient = useQueryClient();
@@ -41,7 +42,7 @@ export const Component = () => {
     },
     onSuccess: (response) => {
       setUser(response.data);
-      sessionStorage.setItem("user", JSON.stringify(response.data));
+      localStorage.setItem(prefix("user"), JSON.stringify(response.data));
       queryClient.setQueryData(["cart"], response.data.cart);
       naigate(decodeURIComponent(redirect));
     },

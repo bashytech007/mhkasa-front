@@ -68,7 +68,7 @@ const router = createBrowserRouter([
             lazy: () => import("./pages/profile"),
           },
           {
-            path: "/account/checkout-success",
+            path: "/payment-callback",
             lazy: () => import("./pages/checkout-success"),
           },
           {

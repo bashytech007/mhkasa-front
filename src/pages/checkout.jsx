@@ -8,9 +8,52 @@ import { OrderSummary } from "../components/OrderTotal";
 import { CartItems } from "../components/Cart";
 import { cn } from "../utils/cn";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/utils/useAuth";
+import axios from "../utils/axios";
+import { useMutation } from "@tanstack/react-query";
+import { Icon } from "@iconify/react";
+import * as yup from "yup";
+import { Input } from "../components/Input";
+import { useFormik } from "formik";
 
 export const Component = () => {
+  const schema = yup.object().shape({
+    email: yup.string().email().required(),
+    phone: yup.string().required(),
+    city: yup.string().required(),
+    state: yup.string().required(),
+    country: yup.string().required(),
+    name: yup.string().required(),
+    address: yup.string().required(),
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      address: "",
+      email: "",
+      phone: "",
+      city: "",
+      state: "",
+      country: "",
+    },
+    validationSchema: schema,
+    onSubmit: async (values) => {
+      mutation.mutate(values);
+    },
+  });
+
+  const { getUserId } = useAuth();
+  const mutation = useMutation({
+    mutationFn: (payload) => {
+      return axios.post(`make/payment/${getUserId()}`, payload);
+    },
+    onSuccess: (res) => {
+      console.log(res)
+      window.location.href = res.data.paymentLink;
+    },
+  });
+
   return (
     <main>
       <Seo
@@ -33,13 +76,17 @@ export const Component = () => {
         />
 
         <div className="grid gap-6 md:grid-cols-12">
-          <div className="grid gap-6 md:col-span-6 lg:col-span-7 xl:col-span-8">
-            <PersonalDetails />
-            <DeliveryDetails />
+          <form
+            onSubmit={formik.handleSubmit}
+            id="checkout-form"
+            className="grid gap-6 md:col-span-6 lg:col-span-7 xl:col-span-8"
+          >
+            <PersonalDetails formik={formik} />
+            <DeliveryDetails formik={formik} />
             <PaymentMethod />
-          </div>
+          </form>
           <div className="md:col-span-6 lg:col-span-5 xl:col-span-4">
-            <CartSummary />
+            <CartSummary isPending={mutation.isPending} />
           </div>
         </div>
       </Wrapper>
@@ -47,7 +94,7 @@ export const Component = () => {
   );
 };
 
-const PersonalDetails = ({ className }) => {
+const PersonalDetails = ({ className, formik }) => {
   return (
     <div className={cn("bg-white rounded-xl p-5", className)}>
       <div className="flex items-center gap-3 border-b-2 pb-4">
@@ -58,19 +105,34 @@ const PersonalDetails = ({ className }) => {
       </div>
       <div className="@container py-4 grid gap-3">
         <div>
-          <Input type="text" placeholder="Your Full Name" />
+          <Input
+            placeholder="Your Full Name"
+            formik={formik}
+            name="name"
+            className="bg-app-ash-1"
+          />
         </div>
 
         <div className="grid w-full gap-3 @md:grid-cols-2">
-          <Input type="text" placeholder="Your Email" />
-          <Input type="text" placeholder="Your Phone" />
+          <Input
+            placeholder="Your Email"
+            formik={formik}
+            name="email"
+            className="bg-app-ash-1"
+          />
+          <Input
+            placeholder="Your Phone"
+            formik={formik}
+            name="phone"
+            className="bg-app-ash-1"
+          />
         </div>
       </div>
     </div>
   );
 };
 
-const DeliveryDetails = ({ className }) => {
+const DeliveryDetails = ({ className, formik }) => {
   return (
     <div className={cn("bg-white rounded-xl p-5", className)}>
       <div className="flex items-center gap-3 border-b-2 pb-4">
@@ -82,19 +144,43 @@ const DeliveryDetails = ({ className }) => {
       <div className="@container py-4 grid gap-3">
         <div className="grid gap-3 grid-cols-12">
           <div className="col-span-12 @sm:col-span-8">
-            <Input type="text" placeholder="Address" />
+            <Input
+              type="text"
+              placeholder="Address"
+              formik={formik}
+              name="address"
+              className="bg-app-ash-1"
+            />
           </div>
           <div className="col-span-12 @sm:col-span-4">
-            <Input type="text" placeholder="City" />
+            <Input
+              type="text"
+              placeholder="City"
+              formik={formik}
+              name="city"
+              className="bg-app-ash-1"
+            />
           </div>
         </div>
 
         <div className="grid gap-3 grid-cols-12">
           <div className="col-span-12 @sm:col-span-6">
-            <Input type="text" placeholder="State" />
+            <Input
+              type="text"
+              placeholder="State"
+              formik={formik}
+              name="state"
+              className="bg-app-ash-1"
+            />
           </div>
           <div className="col-span-12 @sm:col-span-6">
-            <Input type="text" placeholder="Country" />
+            <Input
+              type="text"
+              placeholder="Country"
+              formik={formik}
+              name="country"
+              className="bg-app-ash-1"
+            />
           </div>
         </div>
       </div>
@@ -122,7 +208,9 @@ const PaymentMethod = ({ className }) => {
                 : "before:bg-transparent"
             }`}
           />
-          <button onClick={() => setPaymentMethod("online")}>Online</button>
+          <button type="button" onClick={() => setPaymentMethod("online")}>
+            Online
+          </button>
         </div>
         <div className="inline-flex items-center gap-2">
           <div
@@ -132,7 +220,10 @@ const PaymentMethod = ({ className }) => {
                 : "before:bg-transparent"
             }`}
           />
-          <button onClick={() => setPaymentMethod("payOnDelivery")}>
+          <button
+            type="button"
+            onClick={() => setPaymentMethod("payOnDelivery")}
+          >
             Pay On Delivery
           </button>
         </div>
@@ -141,10 +232,10 @@ const PaymentMethod = ({ className }) => {
       {paymentMethod === "online" ? (
         <div className="py-2 grid gap-4">
           <div>
-            <button>Flutterwave</button>
+            <button type="button">Flutterwave</button>
           </div>
           <div>
-            <button>Paystack</button>
+            <button type="button">Paystack</button>
           </div>
         </div>
       ) : paymentMethod === "payOnDelivery" ? (
@@ -159,16 +250,9 @@ const PaymentMethod = ({ className }) => {
   );
 };
 
-const CartSummary = ({ className }) => {
+const CartSummary = ({ className, isPending }) => {
   const { data } = useCartQuery();
-  const navigate = useNavigate();
-  const onClick = () => {
-    setTimeout(
-      () =>
-        navigate("/account/checkout-success"),
-      2000
-    );
-  };
+
   return (
     <div className={cn("bg-white rounded-xl p-5", className)}>
       <div className="flex items-center gap-3 border-b-2 pb-4">
@@ -180,10 +264,19 @@ const CartSummary = ({ className }) => {
 
         {!data?.items || data.items.length === 0 ? null : (
           <Button
+            type="submit"
+            form="checkout-form"
             className="bg-black text-white font-bold w-full mt-6"
-            onClick={onClick}
           >
-            Pay Now
+            {isPending ? (
+              <Icon
+                icon="svg-spinners:6-dots-rotate"
+                style={{ fontSize: 20 }}
+                className="text-center"
+              />
+            ) : (
+              "Pay Now"
+            )}
           </Button>
         )}
       </div>
@@ -191,11 +284,3 @@ const CartSummary = ({ className }) => {
   );
 };
 
-const Input = (props) => {
-  return (
-    <input
-      className="rounded-full py-2 px-4 outline-none bg-app-ash-1 w-full"
-      {...props}
-    />
-  );
-};

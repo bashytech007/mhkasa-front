@@ -33,7 +33,7 @@ export const Component = () => {
 
   const onClick = () => {
     if (count <= 0) {
-      return toast("Please specify quantity");
+      return toast.error("Please specify quantity");
     }
     addToCart({ itemId: product._id, quantity: count });
   };
@@ -185,8 +185,9 @@ export const Component = () => {
               data.items.find((item) => item.productId._id === product._id)
             ) ? (
               <Button
+                disabled={!count}
                 onClick={onClick}
-                className="bg-app-red text-white font-medium"
+                className="bg-app-red text-white font-medium disabled:bg-[#848484]"
               >
                 Add to Cart
               </Button>

@@ -14,6 +14,7 @@ import axios from "axios";
 import { Icon } from "@iconify/react";
 import useLongPress from "../hooks/useLongPress";
 import { Sort } from "../components/Sort";
+import { Sales } from "./Sales";
 export const Home = () => {
   const ref = useRef();
   const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -52,16 +53,16 @@ export const Home = () => {
 
       if (response.status === 200) {
         if (Array.isArray(response.data) && response.data.length > 0) {
-          setTopProducts(
-            response.data.map((product) => {
-              return {
-                product: product.name,
-                category: product.category,
-                originalPrice: product.price,
-                image: product.mainImage,
-              };
-            })
-          );
+          // setTopProducts(
+          //   response.data.map((product) => {
+          //     return {
+          //       product: product.name,
+          //       category: product.category,
+          //       originalPrice: product.price,
+          //       image: product.mainImage,
+          //     };
+          //   })
+          // );
         }
       }
     }
@@ -129,6 +130,7 @@ export const Home = () => {
               )}
             </ul>
           </section>
+          <Sales />
         </div>
         <section className="py-8">
           <div className="flex items-center justify-between">
@@ -136,13 +138,13 @@ export const Home = () => {
             <div className="flex gap-4">
               <button
                 {...getHandlers("backward")}
-                className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
+                className="grid w-10 h-10 bg-white rounded-full place-items-center hover:scale-105"
               >
                 <Icon icon="fa6-solid:angle-left" style={{ fontSize: 28 }} />
               </button>
               <button
                 {...getHandlers("forward")}
-                className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
+                className="grid w-10 h-10 bg-white rounded-full place-items-center hover:scale-105"
               >
                 <Icon
                   icon="fa6-solid:angle-left"
@@ -171,4 +173,3 @@ export const Home = () => {
     </main>
   );
 };
-

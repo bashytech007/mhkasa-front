@@ -27,7 +27,9 @@ const Navbar = () => {
           <button onClick={toggle} className="md:hidden">
             <Icon icon="charm:menu-hamburger" style={{ fontSize: 36 }} />
           </button>
-          <Logo />
+          <div className="sm:hidden md:block">
+            <Logo />
+          </div>
         </div>
 
         <form

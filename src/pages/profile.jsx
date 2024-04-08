@@ -1,3 +1,4 @@
+import * as yup from "yup";
 import { Icon } from "@iconify/react";
 import { Heading } from "../components/Heading";
 import { Wrapper } from "../components/ui/Wrapper";
@@ -6,9 +7,60 @@ import { cn } from "../utils/cn";
 import { Button } from "../components/ui/Button";
 import { Seo } from "../components/Seo";
 import { useAuth } from "../hooks/utils/useAuth";
+import { useState } from "react";
+import { PInput } from "../components/Input";
+import { useFormik } from "formik";
+import { useMutation } from "@tanstack/react-query";
 
 export const Component = () => {
-  const { getUserEmail } = useAuth();
+  const { getUserEmail, username, getUserId } = useAuth();
+  const [editMode, setEditMode] = useState(false);
+  const [val, setVal] = useState(username);
+  const toggle = () => {
+    setEditMode((v) => !v);
+  };
+
+  const nameMutation = useMutation({
+    mutationFn: (values) => {
+      return axios.post(`edit/user/${getUserId()}`, values, {
+        headers: { "Content-Type": "application/json" },
+      });
+    },
+    onSuccess: (response) => {
+      console.log(response);
+    },
+    onError: () => {
+      toast.error("Update attempt failed");
+    },
+  });
+
+  const schema = yup.object().shape({
+    new_password: yup
+      .string()
+      .trim()
+      .required("Required field")
+      .matches(/(?=.*[A-Z])/, "must contain uppercase")
+      .matches(/^(?=.*[a-z])/, "Must contain lowercase")
+      .min(6, "must be at least 6 characters long")
+      .max(50, "must be at most 50 characters long"),
+    // .matches(/(?=.*[^\w\d\s])/, "must contain special character")
+    current_password: yup
+      .string()
+      .trim()
+      .required("Required field")
+      .matches(/(?=.*[A-Z])/, "must contain uppercase")
+      .matches(/^(?=.*[a-z])/, "Must contain lowercase")
+      .min(6, "must be at least 6 characters long")
+      .max(50, "must be at most 50 characters long"),
+    // .matches(/(?=.*[^\w\d\s])/, "must contain special character")
+  });
+  const formik = useFormik({
+    initialValues: { new_password: "", current_password: "" },
+    validationSchema: schema,
+    onSubmit: async (values) => {
+      // mutation.mutate(values);
+    },
+  });
   return (
     <>
       <Seo
@@ -39,12 +91,40 @@ export const Component = () => {
               <div>
                 <p className="font-bold">Name:</p>
                 <div className="flex justify-between gap-6">
-                  <input type="text" value={"Chisom"} className="outline-noe" />
-                  <Icon
-                    icon="lucide:edit"
-                    style={{ fontSize: 32 }}
-                    className="text-app-ash-2"
-                  />
+                  {editMode ? (
+                    <>
+                      <input
+                        type="text"
+                        value={val}
+                        className="outline-noe"
+                        onChange={(e) => {
+                          setVal(e.target.value);
+                        }}
+                      />
+                      <button
+                        onClick={() => {
+                          nameMutation.mutate({ username: val });
+                          toggle();
+                        }}
+                      >
+                        <Icon
+                          icon="mingcute:check-2-fill"
+                          style={{ fontSize: 32 }}
+                        />
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <p>{username}</p>
+                      <button onClick={toggle}>
+                        <Icon
+                          icon="lucide:edit"
+                          style={{ fontSize: 32 }}
+                          className="text-app-ash-2"
+                        />
+                      </button>
+                    </>
+                  )}
                 </div>
               </div>
               <div className="py-4">
@@ -63,15 +143,19 @@ export const Component = () => {
             <div className="flex items-center gap-3 border-b-2 pb-4">
               <Heading>Reset Passowrd</Heading>
             </div>
-            <form className="pt-6">
+            <form onSubmit={formik.handleSubmit} className="pt-6">
               <div className="grid gap-6">
-                <input
-                  className="rounded-full py-2 px-4 outline-none bg-app-ash-1 w-full"
+                <PInput
                   placeholder="Enter Current Password"
+                  formik={formik}
+                  name="current_password"
+                  className="bg-app-ash-1"
                 />
-                <input
-                  className="rounded-full py-2 px-4 outline-none bg-app-ash-1 w-full"
+                <PInput
                   placeholder="Enter New Password"
+                  formik={formik}
+                  name="new_password"
+                  className="bg-app-ash-1"
                 />
               </div>
               <Button className="bg-app-black text-white font-medium mt-6">

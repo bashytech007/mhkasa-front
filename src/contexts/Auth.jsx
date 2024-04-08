@@ -3,6 +3,7 @@ import { prefix } from "../utils/lib";
 export const AuthContext = createContext();
 
 export const Auth = ({ children }) => {
+  const username = "Mhkasa Uer";
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem(prefix("user")))
   );
@@ -13,7 +14,14 @@ export const Auth = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, getAccessToken, setUser, getUserId, getUserEmail }}
+      value={{
+        user,
+        getAccessToken,
+        setUser,
+        getUserId,
+        getUserEmail,
+        username,
+      }}
     >
       {children}
     </AuthContext.Provider>

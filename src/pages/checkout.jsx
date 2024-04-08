@@ -7,7 +7,7 @@ import { Heading } from "../components/Heading";
 import { OrderSummary } from "../components/OrderTotal";
 import { CartItems } from "../components/Cart";
 import { cn } from "../utils/cn";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../hooks/utils/useAuth";
 import axios from "../utils/axios";
 import { useMutation } from "@tanstack/react-query";
@@ -49,10 +49,14 @@ export const Component = () => {
       return axios.post(`make/payment/${getUserId()}`, payload);
     },
     onSuccess: (res) => {
-      console.log(res)
+      console.log(res);
       window.location.href = res.data.paymentLink;
     },
   });
+
+  useEffect(() => {
+    axios.get(`get/user/${getUserId()}`).then((res) => console.log(res));
+  }, []);
 
   return (
     <main>
@@ -283,4 +287,3 @@ const CartSummary = ({ className, isPending }) => {
     </div>
   );
 };
-

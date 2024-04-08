@@ -7,6 +7,5 @@ export const Component = () => {
   const redirect = encodeURIComponent(url);
 
   const { user } = useAuth();
-  return <Outlet />;
-  // return !!user ? <Outlet /> : <Navigate to={`/login?redirect=${redirect}`} />;
+  return !!user ? <Outlet /> : <Navigate to={`/login?redirect=${redirect}`} />;
 };

@@ -1,12 +1,15 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useAuth } from "../hooks/utils/useAuth";
 import { Button } from "./ui/Button";
-export const Logout = ({ toggle }) => {
+import { cn } from "../utils/cn";
+import { prefix } from "../utils/lib";
+
+export const Logout = ({ toggle, className }) => {
   const { setUser } = useAuth();
   const queryClient = useQueryClient();
 
   const logout = () => {
-    sessionStorage.removeItem("user");
+    localStorage.removeItem(prefix("user"));
     setUser(undefined);
   };
 
@@ -24,7 +27,10 @@ export const Logout = ({ toggle }) => {
 
   return (
     <Button
-      className="w-full font-bold bg-app-ash text-nowrap text-app-red"
+      className={cn(
+        "w-full font-bold bg-app-ash text-nowrap text-app-red",
+        className
+      )}
       onClick={onClick}
     >
       Log Out

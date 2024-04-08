@@ -1,13 +1,12 @@
-
-import { Success } from "../components/Success";
-import { Wrapper } from "../components/ui/Wrapper";
 import { Link } from "react-router-dom";
+import { Wrapper } from "../components/ui/Wrapper";
+import { Success } from "../components/Success";
 
 export const Component = () => {
   return (
     <Wrapper className="py-8">
       <Success>
-        <h2 className="font-bold text-xl mt-6">Successfully</h2>
+        <h2 className="mt-6 text-xl font-bold">Successfully</h2>
         <p>your account has been created</p>
         <Link
           to="/"
@@ -20,4 +19,3 @@ export const Component = () => {
     </Wrapper>
   );
 };
-

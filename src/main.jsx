@@ -9,7 +9,11 @@ import { Auth } from "./contexts/Auth.jsx";
 import { Cart } from "./contexts/Cart.jsx";
 import ErrorPage from "./pages/error-page.jsx";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { categoriesLoader, homeLoader } from "./utils/loaders.js";
+import {
+  categoriesLoader,
+  homeLoader,
+  productLoader,
+} from "./utils/loaders.js";
 
 const queryClient = new QueryClient();
 
@@ -21,7 +25,6 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        lazy: () => import("./components/OnlyAuthenticated"),
         children: [
           {
             path: "/",
@@ -33,9 +36,44 @@ const router = createBrowserRouter([
             lazy: () => import("./pages/cart"),
           },
           {
+            path: "/account-creation-success",
+            lazy: () => import("./pages/success"),
+          },
+          {
+            path: "/products/:productId",
+            lazy: () => import("./pages/select-product.jsx"),
+            loader: productLoader(queryClient),
+          },
+          {
             path: "/categories/:category",
             lazy: () => import("./pages/category"),
             loader: categoriesLoader(queryClient),
+          },
+        ],
+      },
+      {
+        path: "/",
+        lazy: () => import("./components/OnlyAuthenticated"),
+        children: [
+          {
+            path: "/checkout",
+            lazy: () => import("./pages/checkout"),
+          },
+          {
+            path: "/account",
+            lazy: () => import("./pages/account"),
+          },
+          {
+            path: "/account/profile",
+            lazy: () => import("./pages/profile"),
+          },
+          {
+            path: "/payment-callback",
+            lazy: () => import("./pages/checkout-success"),
+          },
+          {
+            path: "/account/order-history",
+            lazy: () => import("./pages/order-history"),
           },
         ],
       },
@@ -70,10 +108,6 @@ const router = createBrowserRouter([
             lazy: () => import("./pages/confirm-otp"),
           },
         ],
-      },
-      {
-        path: "/account-creation-success",
-        lazy: () => import("./pages/success"),
       },
     ],
   },

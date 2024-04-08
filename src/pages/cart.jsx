@@ -8,8 +8,12 @@ import { Wrapper } from "../components/ui/Wrapper";
 import { useCartQuery } from "../hooks/query/useCart";
 import { Seo } from "../components/Seo";
 import { useCartContext } from "../hooks/utils/useCart";
+import { useAuth } from "../hooks/utils/useAuth";
+import { Link } from "react-router-dom/dist";
+import { OrderTotal } from "../components/OrderTotal";
 
 export const Component = () => {
+  const { getUserId } = useAuth();
   const [showModal, setShowModal] = useState(false);
   const { status, data } = useCartQuery();
   const { clearCart } = useCartContext();
@@ -22,7 +26,15 @@ export const Component = () => {
         name=""
       />
       <Wrapper className="py-4">
-        <Navigation location={["Home", "Cart"]} />
+        <Navigation
+          location={[
+            { description: "Home", to: "/", title: "Go to Home Page" },
+            { description: "Cart", to: "/cart" },
+          ]}
+          className="text-[#3338]"
+          iconClassName="text-[#3339] text-2xl"
+          currentLocationClassName="text-app-black"
+        />
         <div className="flex items-center justify-between">
           <Heading className="pt-2">Your Shopping Cart</Heading>
           {status === "success" && data.items.length > 0 && (
@@ -36,11 +48,25 @@ export const Component = () => {
           )}
         </div>
 
-        <Cart />
-
-        <div className="py-4">
-          <CouponCode />
-        </div>
+        {getUserId() ? (
+          <>
+            <Cart />
+            <OrderTotal />
+          </>
+        ) : (
+          <>
+            <div className="py-4">
+              <p className="pb-4">
+                Please login to your account to view items in your cart
+              </p>
+              <Link to={`/login?redirect=${encodeURIComponent("/cart")}`}>
+                <Button className="bg-app-red px-12 text-white font-medium">
+                  Login
+                </Button>
+              </Link>
+            </div>
+          </>
+        )}
       </Wrapper>
       {showModal && (
         <Modal title="Clear All Items?">
@@ -70,20 +96,5 @@ export const Component = () => {
         </Modal>
       )}
     </main>
-  );
-};
-
-const CouponCode = () => {
-  return (
-    <div className="bg-red-100 rounded-full overflow-hidden relative max-w-lg">
-      <input
-        type="text"
-        className="py-2 w-full pl-4 pr-32 outline-none"
-        placeholder="Enter Discount Code"
-      />
-      <button className="bg-app-black absolute right-0 top-0 bottom-0 w-28 text-white">
-        Apply
-      </button>
-    </div>
   );
 };

@@ -2,9 +2,9 @@ import { Wrapper } from "../components/ui/Wrapper";
 import { Features } from "../components/Features";
 import { SwiperElem } from "../components/Swiper";
 import { CategoryPanel } from "../components/CategoryPanel";
-import { FeaturedProducts } from "../components/FeaturedProducts";
-import { LatestProducts } from "../components/LatestProducts";
-import { TopCategories } from "../components/TopCategories";
+// import { FeaturedProducts } from "../components/FeaturedProducts";
+// import { LatestProducts } from "../components/LatestProducts";
+// import { TopCategories } from "../components/TopCategories";
 import { Seo } from "../components/Seo";
 import { Sales } from "../components/Sales";
 
@@ -18,10 +18,10 @@ export const Component = () => {
           <SwiperElem />
         </div>
 
-        <FeaturedProducts />
-        <TopCategories />
+        {/* <FeaturedProducts /> */}
+        {/* <TopCategories /> */}
         <Sales />
-        <LatestProducts />
+        {/* <LatestProducts /> */}
       </Wrapper>
       <div className="pt-6">
         <Features />

@@ -2,13 +2,20 @@ import { useRouteError } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Wrapper } from "../components/ui/Wrapper";
+import { Seo } from "../components/Seo";
 
 export default function ErrorPage() {
   const error = useRouteError();
-  console.error(error);
+  // console.error(error);
 
   return (
     <div id="error-page" className="flex flex-col min-h-dvh">
+      <Seo
+        title="Mhkasa | Error"
+        description="Complete TranscationF"
+        type="webapp"
+        name=""
+      />
       <header className="bg-white">
         <Navbar />
       </header>

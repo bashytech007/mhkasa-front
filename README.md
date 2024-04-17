@@ -14,7 +14,7 @@
 - `/reset-password` - reset password
 - `/account` - user details
 - `/account/profile` -  user account profile
-- `/account/profile/order-history` - user order history
+- `/account/order-history` - user order history
 - `/products/:product` - product details
 
 ## Endpoints

@@ -15,7 +15,6 @@ export const Input = ({
         type={type}
         className={cn("rounded-full w-full py-2 px-6 outline-none", className)}
         {...formik.getFieldProps(name)}
-        // autoComplete
         {...rest}
       />
       {formik.touched[name] && formik.errors[name] && (

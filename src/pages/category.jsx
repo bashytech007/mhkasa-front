@@ -53,13 +53,12 @@ export const Component = () => {
               <Navigation
                 location={[
                   { description: "Home", to: "/", title: "Go to Home Page" },
-                  { description: "Category", to: "/" },
+                  { description: category, to: "/" },
                 ]}
-                className="text-xl"
+                className="text-xl py-4"
+                iconClassName="text-2xl"
+                currentLocationClassName="text-white"
               />
-              <h2 className="font-bold text-white text-3xl tracking-tighter md:tracking-normal">
-                {category}
-              </h2>
             </Wrapper>
           </div>
           <img

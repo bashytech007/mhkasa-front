@@ -1,4 +1,9 @@
-import { fetchProducts, getCategories, getProducts } from "./queryFunctions";
+import {
+  fetchProduct,
+  fetchProducts,
+  getCategories,
+  getProducts,
+} from "./queryFunctions";
 
 export const homeLoader = (queryClient) => async () => {
   const featuredProductQuery = {
@@ -54,5 +59,21 @@ export const categoriesLoader =
 
     return {
       categories,
+    };
+  };
+
+export const productLoader =
+  (queryClient) =>
+  async ({ params: { productId } }) => {
+    const query = {
+      queryKey: ["products", productId],
+      queryFn: async () => await fetchProduct(productId),
+    };
+
+    const product =
+      queryClient.getQueryData(query.queryKey) ??
+      (await queryClient.fetchQuery(query));
+    return {
+      product,
     };
   };

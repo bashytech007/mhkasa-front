@@ -22,6 +22,7 @@ export const Component = () => {
 
   const nameMutation = useMutation({
     mutationFn: (values) => {
+      alert(1)
       return axios.post(`edit/user/${getUserId()}`, values, {
         headers: { "Content-Type": "application/json" },
       });
@@ -58,7 +59,7 @@ export const Component = () => {
     initialValues: { new_password: "", current_password: "" },
     validationSchema: schema,
     onSubmit: async (values) => {
-      // mutation.mutate(values);
+      nameMutation.mutate(values);
     },
   });
   return (
@@ -158,7 +159,7 @@ export const Component = () => {
                   className="bg-app-ash-1"
                 />
               </div>
-              <Button className="bg-app-black text-white font-medium mt-6">
+              <Button type='submit' className="bg-app-black text-white font-medium mt-6">
                 Reset
               </Button>
             </form>

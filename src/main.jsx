@@ -9,8 +9,11 @@ import { Auth } from "./contexts/Auth.jsx";
 import { Cart } from "./contexts/Cart.jsx";
 import ErrorPage from "./pages/error-page.jsx";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { categoriesLoader } from "./utils/loaders.js";
-import { MyAccount } from "./pages/MyAccount";
+import {
+  categoriesLoader,
+  homeLoader,
+  productLoader,
+} from "./utils/loaders.js";
 
 const queryClient = new QueryClient();
 
@@ -26,22 +29,7 @@ const router = createBrowserRouter([
           {
             path: "/",
             lazy: () => import("./pages/home"),
-            // loader: homeLoader(queryClient),
-          },
-          {
-            path: "/search",
-            lazy: () => import("./components/Search.jsx"),
-            // loader: homeLoader(queryClient),
-          },
-          // {
-          //   path: "/myaccount",
-          //   lazy: () => import("./pages/myaccount.jsx"),
-          //   // loader: homeLoader(queryClient),
-          // },
-          {
-            path: "/",
-            lazy: () => import("./pages/home"),
-            // loader: homeLoader(queryClient),
+            loader: homeLoader(queryClient),
           },
           {
             path: "/cart",
@@ -80,7 +68,7 @@ const router = createBrowserRouter([
             lazy: () => import("./pages/profile"),
           },
           {
-            path: "/payment-callback",
+            path: "/flw-payment-callback",
             lazy: () => import("./pages/checkout-success"),
           },
           {
@@ -100,13 +88,6 @@ const router = createBrowserRouter([
           {
             path: "/register",
             lazy: () => import("./pages/register"),
-          },
-          {
-            path: "/myaccount",
-            async lazy() {
-              let { MyAccount } = await import("./pages/MyAccount");
-              return { Component: MyAccount };
-            },
           },
           {
             path: "/forgot-password",

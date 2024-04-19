@@ -11,13 +11,14 @@ import { Icon } from "@iconify/react";
 import { Sort } from "../components/Sort";
 import { Seo } from "../components/Seo";
 import { useLoaderData, useSearchParams } from "react-router-dom/dist";
+import { TopCategories } from "../components/TopCategories";
 
 export const Component = () => {
   const { category } = useParams();
 
   const [searchParams, setSearchParams] = useSearchParams();
   if (!category) throw new Error("Invalid category");
-  // const { categories } = useLoaderData();
+  const { categories } = useLoaderData();
   const sortBy = searchParams.get("sort") || "";
 
   const { fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, status } =

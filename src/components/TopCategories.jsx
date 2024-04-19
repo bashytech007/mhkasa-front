@@ -1,4 +1,4 @@
-import { CategoryCard } from "./CategoryCard";
+ import { CategoryCard } from "./CategoryCard";
 import perfume from "../assets/images/perfume.webp";
 import useLongPress from "../hooks/utils/useLongPress";
 import { useEffect, useRef } from "react";

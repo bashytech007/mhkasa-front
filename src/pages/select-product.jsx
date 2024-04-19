@@ -121,42 +121,17 @@ export const Component = () => {
               <p className="font-bold text-xl">#{format(product.price)}</p>
               <p className="py-1">{product.description}</p>
               <p>
-                <span className="font-bold">SKU:</span> 54645850
+                
               </p>
               <p className="py-1">
                 <span className="font-bold">Brand:</span> Brand Name
               </p>
               <div className="py-1">
-                <Heading className="text-app-black">Variation</Heading>
-                <div className="flex gap-2 pt-2">
-                  {[
-                    "bg-black",
-                    "bg-orange-500",
-                    "bg-green-600",
-                    "bg-purple-500",
-                    "bg-red-500",
-                    "bg-blue-300",
-                  ].map((color) => (
-                    <div
-                      className={`h-10 aspect-square rounded-full ${color}`}
-                      key={color}
-                    />
-                  ))}
-                </div>
+                
               </div>
               <div className="flex gap-x-12 flex-wrap justify-between pb-4">
                 <div className="py-2">
-                  <Heading className="text-app-black">Size</Heading>
-                  <div className="flex gap-2 pt-2">
-                    {["SM", "MD", "LG", "XL", "XXL"].map((size) => (
-                      <div
-                        key={size}
-                        className={`h-10 aspect-square rounded-full bg-white grid place-items-center font-medium`}
-                      >
-                        {size}
-                      </div>
-                    ))}
-                  </div>
+                  
                 </div>
                 <div className="py-2">
                   <Heading className="text-app-black">Quantity</Heading>

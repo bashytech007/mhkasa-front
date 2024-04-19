@@ -15,7 +15,7 @@ export async function getProducts(url) {
       };
     });
   } catch (error) {
-    // console.error(error)
+    console.error(error)
     throw new Error("Failed to get featured products");
   }
 }

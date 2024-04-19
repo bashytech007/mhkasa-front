@@ -52,19 +52,19 @@ export const ForgotPassword = () => {
         description="Reset your password"
         name=""
       />
-      <Wrapper className="max-w-lg flex flex-col items-center py-12">
+      <Wrapper className="flex flex-col items-center max-w-lg py-12">
         <Heading>Forgot Password</Heading>
         <p className="pt-4 text-[#666666] text-center pb-6">
           Password reset link will be sent to your email address, know your
           password?
-          <Link to="/login" className="text-app-ash-2 ml-2">
+          <Link to="/login" className="ml-2 text-app-ash-2">
             Login Here
           </Link>
         </p>
 
         <form
           onSubmit={formik.handleSubmit}
-          className="w-full max-w-lg bg-white rounded-3xl p-4"
+          className="w-full max-w-lg p-4 bg-white rounded-3xl"
         >
           <Input
             name="email"
@@ -169,23 +169,23 @@ export const ResetPassword = () => {
         description="Reset your password"
         name=""
       />
-      <Wrapper className="max-w-lg flex flex-col items-center py-12">
+      <Wrapper className="flex flex-col items-center max-w-lg py-12">
         <Heading>Password Reset</Heading>
         <p className="pt-4 text-[#666666] text-center">
           Enter new password and otp sent to{" "}
-          <span className="text-app-red font-medium">{email}</span> email
+          <span className="font-medium text-app-red">{email}</span> email
           address.
         </p>
         <p className="text-[#666666] pb-4 text-center">
           Remember your password?
-          <Link to="/login" className="text-app-black ml-2">
+          <Link to="/login" className="ml-2 text-app-black">
             Login Here
           </Link>
         </p>
 
         <form
           onSubmit={formik.handleSubmit}
-          className="w-full max-w-lg bg-white rounded-3xl p-4"
+          className="w-full max-w-lg p-4 bg-white rounded-3xl"
         >
           <PInput
             name="password"
@@ -203,12 +203,12 @@ export const ResetPassword = () => {
             <Input
               name="otp"
               formik={formik}
-              className="bg-app-ash-1 grow w-full"
+              className="w-full bg-app-ash-1 grow"
               placeholder="OTP"
             />
 
             {isRequestingOtp ? (
-              <div className="w-28 flex justify-center">
+              <div className="flex justify-center w-28">
                 <Icon
                   icon="svg-spinners:6-dots-rotate"
                   style={{ fontSize: 20 }}
@@ -217,7 +217,7 @@ export const ResetPassword = () => {
             ) : (
               <button
                 onClick={resendOtp}
-                className="w-28 py-2 rounded hover:bg-app-ash-1"
+                className="py-2 rounded w-28 hover:bg-app-ash-1"
                 type="button"
               >
                 Resend

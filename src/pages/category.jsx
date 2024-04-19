@@ -7,10 +7,11 @@ import { useInfiniteProducts } from "../hooks/query/useProducts";
 import { Product } from "../components/ProductCard";
 import banner from "../assets/images/banner.png";
 import { Icon } from "@iconify/react";
-import { TopCategories } from "../components/TopCategories";
+// import { TopCategories } from "../components/TopCategories";
 import { Sort } from "../components/Sort";
 import { Seo } from "../components/Seo";
 import { useLoaderData, useSearchParams } from "react-router-dom/dist";
+import { TopCategories } from "../components/TopCategories";
 
 export const Component = () => {
   const { category } = useParams();
@@ -48,7 +49,7 @@ export const Component = () => {
       <section>
         <div className="relative">
           <div className="absolute right-0 left-0 top-0 bottom-0 bg-[#3333]" />
-          <div className="absolute w-full top-1/3 left-0">
+          <div className="absolute left-0 w-full top-1/3">
             <Wrapper>
               <Navigation
                 location={[
@@ -59,17 +60,20 @@ export const Component = () => {
                 iconClassName="text-2xl"
                 currentLocationClassName="text-white"
               />
+              <h2 className="text-3xl font-bold tracking-tighter text-white md:tracking-normal">
+                {category}
+              </h2>
             </Wrapper>
           </div>
           <img
             src={banner}
             alt=""
-            className="min-h-48 max-h-60 w-full object-center object-cover"
+            className="object-cover object-center w-full min-h-48 max-h-60"
           />
         </div>
         <Wrapper className="py-6">
           <TopCategories />
-          <div className="flex justify-between items-center py-4">
+          <div className="flex items-center justify-between py-4">
             <SectionHeader header={category} />
             <Sort onclick={onClick} sort={sortBy} />
           </div>
@@ -79,7 +83,7 @@ export const Component = () => {
             `An error has occurred`
           ) : (
             <>
-              <ul className="pt-8 grid gap-4 justify-center grid-flow-row auto-rows-fr grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+              <ul className="grid justify-center grid-flow-row grid-cols-2 gap-4 pt-8 auto-rows-fr sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
                 {categories.pages.map((group, i) => (
                   <Fragment key={i}>
                     {group.products.map((product) => (

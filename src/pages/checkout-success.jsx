@@ -34,9 +34,9 @@ export const Component = () => {
       />
       <Wrapper className="py-8">
         {status !== "successful" ? (
-          <>Show failed transaction UI heer</>
+          <>Your transaction has failed Pls try again</>
         ) : verification === "pending" ? (
-          <>display your loading UI here</>
+          <>Your Payment is being Processed ...</>
         ) : verification === 'successful' ? (
           <Success>
             <h2 className="mt-6 text-xl font-bold">Success</h2>

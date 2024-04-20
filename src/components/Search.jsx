@@ -1,13 +1,13 @@
 import { CategoryPanel } from "./CategoryPanel";
 import handair from "../assets/images/handairfresener.png";
-import { DefaultSlider } from "./DefaultSlider";
+// import { DefaultSlider } from "./DefaultSlider";
 import productImg1 from "../assets/images/product image(1).svg";
 import productImg2 from "../assets/images/product image(2).svg";
 import productImg3 from "../assets/images/product image(3).svg";
 import productImg4 from "../assets/images/product image(4).svg";
 import { Product } from "./ProductCard";
 import { useState } from "react";
-const Search = () => {
+export const Component = () => {
   // const [searchquery, setSearchQuery] = useState("");
   // const [filteredProducts, setFilteredProducts] = useState([]);
   // const handleSearch = (e) => {
@@ -58,9 +58,7 @@ const Search = () => {
     <div className="flex ">
       <div className="flex flex-col px-8">
         <CategoryPanel />
-        <div className="bg-#000000">
-          <DefaultSlider className="bg-#000000" />
-        </div>
+        <div className="bg-#000000">{/* <D className="bg-#000000" /> */}</div>
         <div className="w-full pb-3">
           <img src={handair} className="" />
         </div>
@@ -75,7 +73,7 @@ const Search = () => {
           <div className="">Sort By</div>
         </div>
         <div className="">
-          <ul className="pt-8 grid gap-4 justify-center grid-flow-row auto-rows-fr grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+          <ul className="grid justify-center grid-flow-row grid-cols-2 gap-4 pt-8 auto-rows-fr sm:grid-cols-3 md:grid-cols-4">
             {products.map(
               (
                 { product, category, originalPrice, discountedPrice, image },
@@ -98,5 +96,3 @@ const Search = () => {
     </div>
   );
 };
-
-export default Search;

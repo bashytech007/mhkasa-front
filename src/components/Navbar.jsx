@@ -3,11 +3,12 @@ import { Wrapper } from "./ui/Wrapper";
 import { User } from "./User";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useCartQuery } from "../hooks/query/useCart";
 import { useCategory } from "../hooks/query/useCategory";
 
 const Navbar = () => {
+  const navigate=useNavigate()
   const [expand, setExpand] = useState(false);
   const toggle = () => {
     setExpand((v) => !v);
@@ -17,7 +18,7 @@ const Navbar = () => {
     e.preventDefault();
     const value = e.target?.search?.value;
     if (!value) return;
-    alert(value);
+    navigate(`/search?s=${value}`)
   };
 
   return (

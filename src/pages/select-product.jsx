@@ -185,7 +185,7 @@ export const Component = () => {
           </div>
         </div>
 
-        <ProductDetail />
+        <ProductDetail productId={product._id} />
       </Wrapper>
     </>
   );

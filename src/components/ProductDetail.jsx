@@ -64,19 +64,32 @@ export const ProductDetail = ({ productId }) => {
     );
   }
 
+  // useEffect(() => {
+  //   /**
+  //    * fetch data from end point and set here
+  //    */
+  //   setReviews([
+  //     {
+  //       review:
+  //         "hiue iurhfi urefber fbuib chneroir iohf noeri hioferho hofuie rhfioer jhoif erjhof joerhjfio",
+  //       reviewer: "John Doe",
+  //       rating: 3,
+  //     },
+  //   ]);
+  // }, []);
   useEffect(() => {
-    /**
-     * fetch data from end point and set here
-     */
-    setReviews([
-      {
-        review:
-          "hiue iurhfi urefber fbuib chneroir iohf noeri hioferho hofuie rhfioer jhoif erjhof joerhjfio",
-        reviewer: "John Doe",
-        rating: 3,
-      },
-    ]);
-  }, []);
+    const fetchReviews = async () => {
+      try {
+        const response = await axios.get(`/review/${productId}`);
+        setReviews(response.data); 
+      } catch (error) {
+        console.error("Error fetching reviews:", error);
+      }
+    };
+
+    fetchReviews();
+  }, [productId]);
+
 
   return (
     <div className="bg-white px-6 py-4 rounded-3xl mb-6">
@@ -105,9 +118,9 @@ export const ProductDetail = ({ productId }) => {
             <p>Average Ratings</p>
           </div>
           <ul className="grid gap-2 pt-4 max-h-[480px] overflow-y-auto">
-            {reviews.map(({ review, reviewer, rating }, i) => (
+            {reviews.map(({ review, name, rating }, i) => (
               <li key={i}>
-                <Review review={review} reviewer={reviewer} rating={rating} />
+                <Review review={review} reviewer={name} rating={rating} />
               </li>
             ))}
           </ul>

@@ -77,8 +77,8 @@ const Order = ({ id, date, status }) => {
     <li className="grid grid-cols-6 py-2">
       <p className="col-span-3 @md:col-span-2">{id}</p>
       <p className="hidden text-center col-span-2 @md:block">{date}</p>
-      <p className="col-span-3 text-right rounded-full py-1 px-4 bg-app-ash-1 ml-auto w-fit @md:col-span-2">
-        {status}
+      <p className={`col-span-3 text-right rounded-full py-1 px-4 ${status ==="pending"?"bg-red-800 text-white":status==="dispatched" ? "bg-yellow-500":status==="delivered"?"bg-green-500":""} ml-auto w-fit @md:col-span-2`}>
+      {status}
       </p>
     </li>
   );

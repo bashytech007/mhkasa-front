@@ -96,6 +96,19 @@ input[type="number"] {
   }
 }
 
+
+@media screen and (max-width:357px) {
+  
+.bg-image {
+  /* background-image: url("./assets/images/dolceonly.png"); */
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
+  /* background-position: bottom; */
+  /* width: 30%; */
+  display:hidden;
+}
+}
+
 .bg-sales {
   background-image: url("./assets/images/salesbg.png");
   background-repeat: no-repeat;

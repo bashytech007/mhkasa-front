@@ -140,7 +140,7 @@ export const Component = () => {
             </div>
           </div>
 
-          <div className={cn("bg-white rounded-xl p-5")}>
+          {/* <div className={cn("bg-white rounded-xl p-5")}>
             <div className="flex items-center gap-3 border-b-2 pb-4">
               <Heading>Reset Passowrd</Heading>
             </div>
@@ -162,8 +162,8 @@ export const Component = () => {
               <Button type='submit' className="bg-app-black text-white font-medium mt-6">
                 Reset
               </Button>
-            </form>
-          </div>
+            </form> 
+          </div> */}
         </div>
       </Wrapper>
     </>

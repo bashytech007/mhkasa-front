@@ -14,19 +14,15 @@ import { useLoaderData, useSearchParams } from "react-router-dom/dist";
 import { TopCategories } from "../components/TopCategories";
 
 export const Component = () => {
-  const { category } = useParams();
 
   const [searchParams, setSearchParams] = useSearchParams();
-  if (!category) throw new Error("Invalid category");
   const { categories } = useLoaderData();
   const sortBy = searchParams.get("sort") || "";
- 
+  const search=searchParams.get("s") || "";
   const { fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, status } =
     useInfiniteProducts(
-      `product/category/${category}?sort=${sortBy}`,
-      "category",
-      category,
-      sortBy
+      `product/search?sort=${sortBy}&s=${search}`,
+    
     );
 
   const onClick = (term) => {
@@ -41,9 +37,9 @@ export const Component = () => {
   return (
     <>
       <Seo
-        title={`Mhkasa | ${category}`}
+        title={`Mhkasa | Search`}
         type="webapp"
-        description={`Get the best ${category} from Mhkasa Store`}
+        description={`Search For Perfumes On Mhkasa Store`}
         name=""
       />
       <section>
@@ -54,14 +50,14 @@ export const Component = () => {
               <Navigation
                 location={[
                   { description: "Home", to: "/", title: "Go to Home Page" },
-                  { description: category, to: "/" },
+                  { description: "Search", to: `${location.pathname}${location.search}` },
                 ]}
                 className="text-xl py-4"
                 iconClassName="text-2xl"
                 currentLocationClassName="text-white"
               />
               <h2 className="text-3xl font-bold tracking-tighter text-white md:tracking-normal">
-                {category}
+                Search Results for "{search}"
               </h2>
             </Wrapper>
           </div>
@@ -72,9 +68,9 @@ export const Component = () => {
           />
         </div>
         <Wrapper className="py-6">
-          <TopCategories />
+          
           <div className="flex items-center justify-between py-4">
-            <SectionHeader header={category} />
+            <SectionHeader header="Search" />
             <Sort onclick={onClick} sort={sortBy} />
           </div>
           {status === "pending" ? (

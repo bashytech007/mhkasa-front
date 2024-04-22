@@ -3,6 +3,7 @@ import dolceimg from "../assets/images/dolceonly.png";
 
 export const SwiperCard1 = () => {
   return (
+
     <div className="max-h-screen w-full rounded-3xl md:h-screen overflow-y-hidden">
       <div className="bg-image h-screen pb-20">
         <div>

@@ -32,6 +32,11 @@ const router = createBrowserRouter([
             loader: homeLoader(queryClient),
           },
           {
+            path: "/search",
+            lazy: () => import("./pages/search"),
+            loader: homeLoader(queryClient),
+          },
+          {
             path: "/cart",
             lazy: () => import("./pages/cart"),
           },

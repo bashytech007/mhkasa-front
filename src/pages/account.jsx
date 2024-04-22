@@ -6,9 +6,21 @@ import { Navigation } from "../components/ui/Navigation";
 import { Seo } from "../components/Seo";
 import { Logout } from "../components/Logout";
 import { useAuth } from "../hooks/utils/useAuth";
+import { useEffect, useState } from "react";
+import axios from "../utils/axios";
 
 export const Component = () => {
-  const { getUserEmail } = useAuth();
+  const { getUserEmail,getUserId } = useAuth();
+ const [orderdata,setOrderData]=useState({})
+  useEffect(()=>{
+    axios.get(`/count/user/orders/${getUserId()}`).then((res)=>{
+
+      setOrderData(res.data)
+    }).catch((err)=>{
+    console.log(err)
+    })
+
+  },[])
   return (
     <>
       <Seo
@@ -51,11 +63,14 @@ export const Component = () => {
               <div>
                 <Heading>ORDERS</Heading>
                 <div className="flex items-center gap-x-4 gap-y-2 flex-wrap pt-2">
-                  <p className="p-1 rounded-md text-sm text-nowrap text-yellow-500 font-bold bg-yellow-50">
-                    0 Pending
+                  <p className="p-1 rounded-md text-sm text-nowrap text-red-500 font-bold bg-yellow-50">
+                    {orderdata?.pending||0} Pending
+                  </p>
+                  <p className="p-1 rounded-md text-sm text-nowrap text-yellow-500 font-bold bg-green-50">
+                    {orderdata?.dispatched||0} Dispacthed
                   </p>
                   <p className="p-1 rounded-md text-sm text-nowrap text-green-500 font-bold bg-green-50">
-                    0 Delivered
+                    {orderdata?.delivered||0} Delivered
                   </p>
                 </div>
               </div>

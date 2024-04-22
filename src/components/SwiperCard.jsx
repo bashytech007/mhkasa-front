@@ -19,7 +19,7 @@ export const SwiperCard = () => {
                 seduction
               </h1>
               <p className="hidden text-xs text-white md:block md:text-sm">
-                discover your signature scent, one spritz at a time.
+                Discover your signature scent, one spritz at a time.
               </p>
             </div>
             <img
@@ -31,7 +31,7 @@ export const SwiperCard = () => {
               className="absolute md:bottom-0 md:right-0 bottom-2 right-2 z-[2] md:w-[415px]  w-[314px]"
             />
             <div className="px-4 pt-2 md:px-24">
-              <button className="px-1 py-1 font-semibold text-black bg-white rounded-full md:px-6 md:py-2 sm:px-3">
+              <button className="text-xs md:text-sm px-1 py-1 font-semibold text-black bg-white rounded-full md:px-6 md:py-2 sm:px-3">
                 Explore Collection
               </button>
             </div>

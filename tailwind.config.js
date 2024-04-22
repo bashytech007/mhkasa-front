@@ -16,6 +16,9 @@ export default {
         "app-slate": "#B6B6B6",
         "app-black": "#171717",
       },
+      backgroundImage: {
+        swift: "linear-gradient(100deg, #A40001, #3E0000 100%)",
+      },
       spacing: {
         cont1300: "calc((100% - 1300px) / 2 )",
       },

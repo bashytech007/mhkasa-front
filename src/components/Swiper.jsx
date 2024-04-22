@@ -83,7 +83,7 @@ export const SwiperElem = () => {
         </swiper-slide>
       </swiper-container>
 
-      <button className="swiper-button-prev flex absolute bg-[#3333] w-12 h-12 z-10 left-8 top-1/2 items-center justify-center rounded-full">
+      <button className="swiper-button-prev flex absolute bg-[#3333] w-12 h-12 z-10 left-3 top-1/2 items-center justify-center rounded-full">
         <Icon
           icon="fa6-solid:angle-right"
           style={{ fontSize: 36 }}
@@ -91,7 +91,7 @@ export const SwiperElem = () => {
           hFlip="true"
         />
       </button>
-      <button className="swiper-button-next flex absolute bg-[#3333] w-12 h-12 z-10 right-8 top-1/2 items-center justify-center rounded-full">
+      <button className="swiper-button-next flex absolute bg-[#3333] w-12 h-12 z-10 right-3 top-1/2 items-center justify-center rounded-full">
         <Icon
           icon="fa6-solid:angle-right"
           style={{ fontSize: 36 }}

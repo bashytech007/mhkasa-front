@@ -7,7 +7,7 @@ import { Heading } from "../components/Heading";
 import { OrderSummary } from "../components/OrderTotal";
 import { CartItems } from "../components/Cart";
 import { cn } from "../utils/cn";
-import {  useState } from "react";
+import {  useEffect, useState } from "react";
 import { useAuth } from "../hooks/utils/useAuth";
 import axios from "../utils/axios";
 import { useMutation } from "@tanstack/react-query";
@@ -44,6 +44,7 @@ export const Component = () => {
   });
 
   const { getUserId } = useAuth();
+  console.log(getUserId())
   const mutation = useMutation({
     mutationFn: (payload) => {
       return axios.post(`create/order/${getUserId()}`, payload);
@@ -53,6 +54,15 @@ export const Component = () => {
       window.location.href = res.data.paymentLink;
     },
   });
+useEffect(()=>{
+ axios.get(`/get/user/${getUserId()}`).then((res)=>{
+  console.log(res.data)
+  formik.values.email=res.data.user.email
+  formik.values.phone=res.data.user.phoneNumber
+  formik.values.address=res.data.user.address
+ })
+
+},[])
 
   return (
     <main>
@@ -95,6 +105,7 @@ export const Component = () => {
 };
 
 const PersonalDetails = ({ className, formik }) => {
+
   return (
     <div className={cn("bg-white rounded-xl p-5", className)}>
       <div className="flex items-center gap-3 border-b-2 pb-4">
@@ -133,6 +144,7 @@ const PersonalDetails = ({ className, formik }) => {
 };
 
 const DeliveryDetails = ({ className, formik }) => {
+   
   return (
     <div className={cn("bg-white rounded-xl p-5", className)}>
       <div className="flex items-center gap-3 border-b-2 pb-4">

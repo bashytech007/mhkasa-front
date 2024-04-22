@@ -17,8 +17,14 @@ export const CategoryPanel = ({ fixedHeight }) => {
         <h2 className="pl-8 text-2xl font-bold text-white">Categories</h2>
       </div>
       <div
-        className={`overflow-y-auto ${fixedHeight ? "h-[224px]" : "h-auto"}`}
+        className={`flex items-center overflow-y-auto  ${fixedHeight ? "h-[224px]" : "h-auto"}`}
       >
+        
+        <div className="flex flex-col justify-start items-center gap-2 px-2">
+          {icons.map((icon, index) => (
+            <div key={index}>{icon}</div>
+          ))}
+        </div>
         {status === "pending" ? (
           "Loading..."
         ) : status === "error" ? (
@@ -29,7 +35,7 @@ export const CategoryPanel = ({ fixedHeight }) => {
               <li key={index} className="first:pt-2 last:pb-2 group">
                 <Link
                   to={`/categories/${encodeURIComponent(name)}`}
-                  className="flex items-center gap-3 py-2 pl-8 group-hover:text-app-red"
+                  className="flex items-center  gap-2 py-2 group-hover:text-app-red"
                 >
                   {name}
                 </Link>

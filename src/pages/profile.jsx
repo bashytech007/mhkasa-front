@@ -20,20 +20,20 @@ export const Component = () => {
     setEditMode((v) => !v);
   };
 
-  const nameMutation = useMutation({
-    mutationFn: (values) => {
-      alert(1)
-      return axios.post(`edit/user/${getUserId()}`, values, {
-        headers: { "Content-Type": "application/json" },
-      });
-    },
-    onSuccess: (response) => {
-      console.log(response);
-    },
-    onError: () => {
-      toast.error("Update attempt failed");
-    },
-  });
+  // const nameMutation = useMutation({
+  //   mutationFn: (values) => {
+  //     alert(1)
+  //     return axios.post(`edit/user/${getUserId()}`, values, {
+  //       headers: { "Content-Type": "application/json" },
+  //     });
+  //   },
+  //   onSuccess: (response) => {
+  //     console.log(response);
+  //   },
+  //   onError: () => {
+  //     toast.error("Update attempt failed");
+  //   },
+  // });
 
   const schema = yup.object().shape({
     new_password: yup
@@ -90,42 +90,42 @@ export const Component = () => {
             </div>
             <div className="pt-6">
               <div>
-                <p className="font-bold">Name:</p>
+                {/* <p className="font-bold">Name:</p> */}
                 <div className="flex justify-between gap-6">
-                  {editMode ? (
-                    <>
-                      <input
+                  {/* { ( */}
+                    {/* // <> */}
+                      {/* <input
                         type="text"
                         value={val}
                         className="outline-noe"
                         onChange={(e) => {
                           setVal(e.target.value);
                         }}
-                      />
-                      <button
+                      /> */}
+                      {/* <button
                         onClick={() => {
                           nameMutation.mutate({ username: val });
                           toggle();
                         }}
-                      >
-                        <Icon
+                      > */}
+                        {/* <Icon
                           icon="mingcute:check-2-fill"
                           style={{ fontSize: 32 }}
-                        />
-                      </button>
-                    </>
-                  ) : (
-                    <>
-                      <p>{username}</p>
-                      <button onClick={toggle}>
-                        <Icon
-                          icon="lucide:edit"
-                          style={{ fontSize: 32 }}
-                          className="text-app-ash-2"
-                        />
-                      </button>
-                    </>
-                  )}
+                        /> */}
+                      {/* </button> */}
+                    {/* </> */}
+                  {/* )    ( */}
+                    {/* // <> */}
+                    {/* //   <p>{username}</p> */}
+                    {/* //   <button onClick={toggle}> */}
+                       {/* <Icon */}
+                    {/* //       icon="lucide:edit" */}
+                    {/* //       style={{ fontSize: 32 }} */}
+                    {/* //       className="text-app-ash-2" */}
+                    {/* //     /> */}
+                    {/* //   </button> */}
+                    {/* // </> */}
+                  {/* )} */}
                 </div>
               </div>
               <div className="py-4">
@@ -136,7 +136,10 @@ export const Component = () => {
                 <p className="font-bold">Phone:</p>
                 <p>123 4567 890 78</p>
               </div>
-              <div></div>
+              <div>
+              <p className="font-bold">Address</p>
+                <p>No 7 morgan Estate</p>
+              </div>
             </div>
           </div>
 

@@ -22,6 +22,7 @@ console.log(verification)
         `/verify/payment/${tx_ref}/${transaction_id}`
       );
       if (res.status == 200) {
+        console.log("succesfull")
         setVerification(res.data ? "successful" : "failed");
       }
     } catch (error) {
@@ -40,12 +41,16 @@ console.log(verification)
         type="webapp"
         name=""
       />
-      <Wrapper className="py-8">
-        { verification === "pending" ? (
+      <Wrapper className="py-8 ">
+        {  status !== "successful" ? (
+          <>Your transaction has failed Pls try again</>
+        ) : verification === "pending" ? (
+          <>Your Payment is being Processed ...</>
+        ) : verification === 'successful' ? (
           <Icon
           icon="svg-spinners:6-dots-rotate"
-          style={{ fontSize: 100 }}
-          className="text-center flex items-center"
+          style={{ fontSize: 100,display:"grid",placeItems:"center" }}
+          className="text-center"
         />        ) : verification === 'successful' ? (
           <Success>
             <h2 className="mt-6 text-xl font-bold">Success</h2>

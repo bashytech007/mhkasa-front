@@ -17,13 +17,16 @@ export const Component = () => {
   const { category } = useParams();
 
   const [searchParams, setSearchParams] = useSearchParams();
+  console.log(searchParams)
   if (!category) throw new Error("Invalid category");
   const { categories } = useLoaderData();
   const sortBy = searchParams.get("sort") || "";
- 
-  const { fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, status } =
+ const url=sortBy?`product/category/${sortBy}/${category}`:`product/category/${category}`
+
+
+  const { fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, status, } =
     useInfiniteProducts(
-      `product/category/${category}?sort=${sortBy}`,
+      url,
       "category",
       category,
       sortBy

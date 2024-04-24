@@ -23,15 +23,15 @@ export const Sort = ({ onclick, sort }) => {
       display: "None",
     },
     {
-      term: "newest",
+      term: "latest",
       display: " New Arrival",
     },
     {
-      term: "priceLowest",
+      term: "lowestPrice",
       display: "Price: Low - High",
     },
     {
-      term: "priceHighest",
+      term: "highestPrice",
       display: "Price: High - Low",
     },
   ];

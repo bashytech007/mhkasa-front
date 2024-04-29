@@ -10,14 +10,14 @@ const categoriesImage={
   "Roll-on":"/topCategories/Roll-on.webp",
   "Perfumes":"/topCategories/Perfumes.webp",
   "Oil Perfumes":"/topCategories/oilperfumes.webp",
-  "Air Fresheners":"/topCategories/Air Fresheners.webp"
+  "Air fresheners":"/topCategories/Air fresheners.webp"
 }
 export const CategoryCard = ({ category, numberOfProducts = Math.floor(Math.random()*10+1), image }) => {
   return (
     <Link to={`/categories/${category}`}>
       <div className="relative aspect-[5/7] w-[calc(220px+1vw)] rounded-2xl overflow-hidden">
         <img
-          src={categoriesImage[category]||image||""}
+          src={categoriesImage[category.trim()]||image||""}
           alt=""
           className="object-cover object-center w-full h-full"
         />

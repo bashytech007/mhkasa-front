@@ -55,8 +55,8 @@ const Navbar = () => {
           >
             <Icon icon="mynaui:search" style={{ fontSize: 28 }} />
           </button>
-         <CategoryPanel/>
         </form>
+         <CategoryPanel/>
 
         <div className="flex items-center justify-between gap-2 sm:gap-4">
           <CartButton />

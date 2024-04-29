@@ -10,7 +10,9 @@ const categoriesImage={
   "Roll-on":"/topCategories/Roll-on.webp",
   "Perfumes":"/topCategories/Perfumes.webp",
   "Oil Perfumes":"/topCategories/oilperfumes.webp",
-  "Air fresheners":"/topCategories/Air fresheners.webp"
+  "Air fresheners":"/topCategories/Air fresheners.webp",
+  "Car Wash":"/topCategories/Car Wash.webp",
+  "Car fragrances":"/topCategories/Car fragnances.webp"
 }
 export const CategoryCard = ({ category, numberOfProducts = Math.floor(Math.random()*11+1), image }) => {
   return (

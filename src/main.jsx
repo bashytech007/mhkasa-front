@@ -10,6 +10,7 @@ import { Cart } from "./contexts/Cart.jsx";
 import ErrorPage from "./pages/error-page.jsx";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import {
+  LayoutLoader,
   categoriesLoader,
   homeLoader,
   productLoader,
@@ -20,6 +21,7 @@ const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
     path: "/",
+    loader:LayoutLoader(queryClient),
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [

@@ -1,9 +1,11 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { Icon1, Icon2, Icon3, Icon4 } from "../components/Icon";
-import { iconExists } from "@iconify/react";
-export const CategoryPanel = ({ fixedHeight }) => {
-  
+import { Icon, iconExists } from "@iconify/react";
+import { Button } from "./ui/Button";
+import { useState } from "react";
+export const CategoryPanel = () => {
   const { categories = [], status, error } = useLoaderData();
+  const [expand, setExpand] = useState(false);
   const icons = [
     <Icon1 key={iconExists} />,
     <Icon2 key={iconExists} />,
@@ -11,42 +13,54 @@ export const CategoryPanel = ({ fixedHeight }) => {
     <Icon4 key={iconExists} />,
   ];
 
+  const toggle = () => setExpand((v) => !v);
+
   return (
-    <nav className="rounded-2xl overflow-hidden hidden min-w-[260px] w-fit md:flex md:flex-col">
-      <div className="py-3 bg-app-red">
-        <h2 className="pl-8 text-2xl font-bold text-white">Categories</h2>
-      </div>
-      <div
-        className={`flex items-center overflow-y-auto  ${fixedHeight ? "h-[224px]" : "h-auto"}`}
+    <div className="hidden bg-white relative z-50 md:block">
+      <h2 className="px-6"></h2>
+      <Button
+        className="px-0 text-nowrap md:px-5 md:bg-app-ash"
+        aria-label="Profile drop down"
+        onClick={toggle}
       >
-        
-        <div className="flex flex-col justify-start items-center gap-2 px-2">
-          {icons.map((icon, index) => (
-            <div key={index}>{icon}</div>
-          ))}
+        <div className="flex items-center md:gap-4">
+          <p>All Categories</p>
+          <Icon
+            icon="fa6-solid:angle-down"
+            vFlip={expand}
+            style={{ fontSize: 24 }}
+            className="hidden text-app-black min-[512px]:block"
+          />
         </div>
-        {status === "pending" ? (
-          "Loading..."
-        ) : status === "error" ? (
-          `An error has occurred ${error.message}`
-        ) : (
-          <ul>
+      </Button>
+      {status === "pending" ? (
+        "Loading..."
+      ) : status === "error" ? (
+        `An error has occurred ${error.message}`
+      ) : (
+        <ul
+          className={`absolute min-w-full right-0 pb-6 pt-3 bg-white rounded-md shadow-lg top-[calc(100%+1.5rem)] z-50 ${
+            expand ? "" : "hidden"
+          }`}
+        >
+          <>
             {categories.map(({ name }, index) => (
-              <li key={index} className="first:pt-2 last:pb-2 group">
+              <li
+                key={index}
+                className="first:pt-2 last:pb-2 px-8 hover:bg-gray-200"
+              >
                 <Link
                   to={`/categories/${encodeURIComponent(name)}`}
-                  className="flex items-center  gap-2 py-2 group-hover:text-app-red"
+                  className="flex items-center gap-2 text-nowrap py-2 hover:text-app-red"
+                  onClick={() => setExpand(false)}
                 >
                   {name}
                 </Link>
               </li>
             ))}
-          </ul>
-        )}
-      </div>
-
-      <div className="py-5 mt-auto bg-app-red" />
-    </nav>
+          </>
+        </ul>
+      )}
+    </div>
   );
 };
-

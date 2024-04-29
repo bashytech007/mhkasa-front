@@ -12,10 +12,11 @@ import toast from "react-hot-toast";
 import { format } from "../utils/lib";
 import { Seo } from "../components/Seo";
 
+
 export const Component = () => {
   const { product } = useLoaderData();
   const { decreaseItem, increaseItem, addToCart } = useCartContext();
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   const { data } = useCartQuery();
 
   const increase = () => {
@@ -118,7 +119,7 @@ export const Component = () => {
                 </Button>
               </div>
               <p className="font-medium text-xl py-2">{product.category}</p>
-              <p className="font-bold text-xl">#{format(product.price)}</p>
+              <p className="font-bold text-xl">₦{format(product.price)}</p>
               <p className="py-1">{product.description}</p>
               <p>
                 
@@ -167,13 +168,14 @@ export const Component = () => {
                 data &&
                 data.items.find((item) => item.productId._id === product._id)
               ) ? (
-                <Button
+                    <Button
                   disabled={!count}
                   onClick={onClick}
                   className="bg-app-red text-white font-medium disabled:bg-[#848484]"
                 >
                   Add to Cart
                 </Button>
+
               ) : (
                 <Link to="/cart">
                   <Button className="bg-app-red text-white font-medium">

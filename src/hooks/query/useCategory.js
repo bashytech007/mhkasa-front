@@ -4,6 +4,7 @@ import axios from "../../utils/axios";
 export const useCategory = () => {
   async function getCategories() {
     const response = await axios.get(`all/category`);
+    // console.log(response)
     return response.data;
   }
   const {

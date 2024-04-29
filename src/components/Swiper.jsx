@@ -40,7 +40,7 @@ export const SwiperElem = () => {
   }, []);
 
   return (
-    <div className="relative w-full md:w-[calc(100%-292px)]">
+    <div className="relative w-full md:w-[calc(100%)]">
       <swiper-container
         ref={ref}
         slides-per-view="1"
@@ -57,7 +57,7 @@ export const SwiperElem = () => {
             overflow: "hidden",
           }}
         >
-          <div className="min-h-[240px] h-[40vw] md:h-[320px]">
+          <div className="min-h-[250px] h-[40vw] md:h-[559px]">
             <SwiperCard />
           </div>
         </swiper-slide>
@@ -67,7 +67,7 @@ export const SwiperElem = () => {
             overflow: "hidden",
           }}
         >
-          <div className="min-h-[240px] h-[40vw] md:h-[320px]">
+          <div className="min-h-[250px] h-[40vw] md:h-[559px]">
             <SwiperCard1 />
           </div>
         </swiper-slide>
@@ -77,7 +77,7 @@ export const SwiperElem = () => {
             overflow: "hidden",
           }}
         >
-          <div className="min-h-[240px] h-[40vw] md:h-[320px]">
+          <div className="min-h-[250px] h-[40vw] md:h-[559px]">
             <SwiperCard2 />
           </div>
         </swiper-slide>
@@ -98,7 +98,9 @@ export const SwiperElem = () => {
           color="white"
         />
       </button>
-      <ul className="absolute z-10 flex items-end gap-2 swiper-pagination bottom-4 left-4 md:bottom-8"></ul>
+      <ul className="absolute z-10 flex items-end gap-2 swiper-pagination bottom-4 left-4 md:bottom-8">
+        
+      </ul>
     </div>
   );
 };

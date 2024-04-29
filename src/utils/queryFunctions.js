@@ -15,7 +15,27 @@ export async function getProducts(url) {
       };
     });
   } catch (error) {
-    console.error(error)
+    console.error(error);
+    throw new Error("Failed to get featured products");
+  }
+}
+
+export async function getBestSellers(url) {
+  try {
+    const response = await axios.get(url, {
+      headers: { "Content-Type": "application/json" },
+    });
+    return response.data.map((x) => {
+      return {
+        id: x.product._id,
+        product: x.product.name,
+        category: x.product.category,
+        originalPrice: x.product.price,
+        image: x.product.mainImage,
+      };
+    });
+  } catch (error) {
+    console.error(error);
     throw new Error("Failed to get featured products");
   }
 }

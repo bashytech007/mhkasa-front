@@ -1,6 +1,7 @@
 import {
   fetchProduct,
   fetchProducts,
+  getBestSellers,
   getCategories,
   getProducts,
 } from "./queryFunctions";
@@ -21,7 +22,7 @@ export const homeLoader = (queryClient) => async () => {
   }
   const bestSellersProductQuery={
     queryKey:["product","bestsellers"],
-    queryFn:async()=>await getProducts("bestseller/product")
+    queryFn:async()=>await getBestSellers("bestseller/product")
   }
   const categoriesQuery = {
     queryKey: ["categories"],

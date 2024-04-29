@@ -18,7 +18,7 @@ export const homeLoader = (queryClient) => async () => {
   };
   const newArrivalsProductQuery={
     queryKey:["product","newarrivals"],
-    queryFn:async()=>await getProducts("deal/product")
+    queryFn:async()=>await getBestSellers("deal/product")
   }
   const bestSellersProductQuery={
     queryKey:["product","bestsellers"],

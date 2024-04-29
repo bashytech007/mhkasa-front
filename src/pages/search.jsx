@@ -21,7 +21,7 @@ export const Component = () => {
   const search=searchParams.get("s") || "";
   const { fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, status,data } =
     useInfiniteProducts(
-      `/search?sort=${sortBy}&name=${search}`,
+      `search?sort=${sortBy}&name=${search}`,
     );
     console.log(data)
 

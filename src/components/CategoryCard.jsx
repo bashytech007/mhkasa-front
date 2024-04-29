@@ -12,7 +12,7 @@ const categoriesImage={
   "Oil Perfumes":"/topCategories/oilperfumes.webp",
   "Air fresheners":"/topCategories/Air fresheners.webp"
 }
-export const CategoryCard = ({ category, numberOfProducts = Math.floor(Math.random()*10+1), image }) => {
+export const CategoryCard = ({ category, numberOfProducts = Math.floor(Math.random()*11+1), image }) => {
   return (
     <Link to={`/categories/${category}`}>
       <div className="relative aspect-[5/7] w-[calc(220px+1vw)] rounded-2xl overflow-hidden">

@@ -15,7 +15,14 @@ export const homeLoader = (queryClient) => async () => {
     queryKey: ["product", "latest"],
     queryFn: async () => await getProducts("latest/product"),
   };
-
+  const newArrivalsProductQuery={
+    queryKey:["product","newarrivals"],
+    queryFn:async()=>await getProducts("deal/product")
+  }
+  const bestSellersProductQuery={
+    queryKey:["product","bestsellers"],
+    queryFn:async()=>await getProducts("bestseller/product")
+  }
   const categoriesQuery = {
     queryKey: ["categories"],
     queryFn: getCategories,
@@ -26,15 +33,53 @@ export const homeLoader = (queryClient) => async () => {
   );
 
   const latestProducts = await queryClient.ensureQueryData(latestProductQuery);
-
+  const newArrivals = await queryClient.ensureQueryData(newArrivalsProductQuery);
+  const bestsellers = await queryClient.ensureQueryData(bestSellersProductQuery);
+  
   const categories = await queryClient.ensureQueryData(categoriesQuery);
 
   return {
     featuredProducts,
     latestProducts,
     categories,
+    newArrivals,
+    bestsellers,
   };
 };
+
+export const LayoutLoader = (queryClient) => async () => {
+  // const featuredProductQuery = {
+  //   queryKey: ["product", "featured"],
+  //   queryFn: async () => await getProducts("featured/product"),
+  // };
+
+  // const latestProductQuery = {
+  //   queryKey: ["product", "latest"],
+  //   queryFn: async () => await getProducts("latest/product"),
+  // };
+  // const newArrivalsProductQuery={
+  //   queryKey:["product","newarrivals"],
+  //   queryFn:async()=>await get
+  // }
+  const categoriesQuery = {
+    queryKey: ["categories"],
+    queryFn: getCategories,
+  };
+
+  // const featuredProducts = await queryClient.ensureQueryData(
+  //   featuredProductQuery
+  // );
+
+  // const latestProducts = await queryClient.ensureQueryData(latestProductQuery);
+
+  const categories = await queryClient.ensureQueryData(categoriesQuery);
+
+  return {
+    categories,
+  };
+};
+
+
 
 export const categoriesLoader =
   (queryClient) =>

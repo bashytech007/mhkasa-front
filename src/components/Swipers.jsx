@@ -188,7 +188,7 @@ export const SwiperElem = () => {
         <Icon
           icon="fa6-solid:angle-right"
           style={{ fontSize: 36 }}
-          color="white"
+          color="green"
         />
       </button>
       <ul className="absolute z-10 flex items-center gap-2 swiper-pagination bottom-4 left-4 md:bottom-8"></ul>

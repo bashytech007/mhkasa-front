@@ -18,20 +18,18 @@ export const User = () => {
     <div className="relative">
       <Button
         className="px-0 text-nowrap md:px-5 md:bg-app-ash"
-        onClick={toggle}
         aria-label="Profile drop down"
       >
-        <div className="flex items-center md:gap-4">
-          <Icon icon="lucide:user" style={{ fontSize: 32 }} />
-          <p className="leading-none mx-2 hidden min-[512px]:block">
-            My Account
-          </p>
-          <Icon
+        <div className="flex items-center md:gap-4"
+>
+          <Icon icon="lucide:user" style={{ fontSize: 32 }}  onClick={toggle}/>
+          
+          {/* <Icon
             icon="fa6-solid:angle-down"
             vFlip={expand}
             style={{ fontSize: 32 }}
             className="hidden text-app-black min-[512px]:block"
-          />
+          /> */}
         </div>
       </Button>
       {!hideList.some((x) => pathname.includes(x)) && (

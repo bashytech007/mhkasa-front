@@ -19,11 +19,12 @@ export const Component = () => {
   const { categories } = useLoaderData();
   const sortBy = searchParams.get("sort") || "";
   const search=searchParams.get("s") || "";
-  const { fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, status } =
+  const { fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, status,data } =
     useInfiniteProducts(
-      `product/search?sort=${sortBy}&s=${search}`,
-    
+      `/search?sort=${sortBy}&name=${search}`,
     );
+    console.log(data)
+
 
   const onClick = (term) => {
     if (typeof term !== "string") return;
@@ -80,9 +81,7 @@ export const Component = () => {
           ) : (
             <>
               <ul className="grid justify-center grid-flow-row grid-cols-2 gap-4 pt-8 auto-rows-fr sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-                {categories.pages.map((group, i) => (
-                  <Fragment key={i}>
-                    {group.products.map((product) => (
+                    {data?.pages?.[0]?.map((product) => (
                       <li key={product._id}>
                         <Product
                           product={product.name}
@@ -94,8 +93,6 @@ export const Component = () => {
                         />
                       </li>
                     ))}
-                  </Fragment>
-                ))}
               </ul>
               <div>
                 <button

@@ -3,16 +3,17 @@ import { Product } from "./ProductCard";
 import { ListGrid } from "./ui/ListGrid";
 import { useLoaderData } from "react-router-dom/dist";
 
-export const LatestProducts = () => {
-  const { latestProducts } = useLoaderData();
+export const NewArrivals = () => {
+  const { newArrivals } = useLoaderData();
 
   return (
     <section className="py-8">
-      <SectionHeader header="Latest Products" />
+      <SectionHeader header="Deal of the Day" />
+
       <ListGrid>
-        {latestProducts.map(
+        {newArrivals.map(
           (
-            { id, product, category, originalPrice, discountedPrice, image },
+            { product, category, originalPrice, discountedPrice, image, id },
             index
           ) => (
             <li key={index}>

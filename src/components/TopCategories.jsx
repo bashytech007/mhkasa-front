@@ -50,7 +50,7 @@ export const TopCategories = () => {
                 <CategoryCard
                   numberOfProducts={numberOfProducts}
                   category={name}
-                  image={perfume}
+                  image={name}
                 />
               </li>
             ))}

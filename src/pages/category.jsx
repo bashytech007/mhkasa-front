@@ -7,7 +7,6 @@ import { useInfiniteProducts } from "../hooks/query/useProducts";
 import { Product } from "../components/ProductCard";
 import banner from "../assets/images/banner.png";
 import { Icon } from "@iconify/react";
-// import { TopCategories } from "../components/TopCategories";
 import { Sort } from "../components/Sort";
 import { Seo } from "../components/Seo";
 import { useLoaderData, useSearchParams } from "react-router-dom/dist";

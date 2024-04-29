@@ -6,13 +6,18 @@ import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useCartQuery } from "../hooks/query/useCart";
 import { useCategory } from "../hooks/query/useCategory";
-
+// import { getCategories } from "../utils/queryFunctions";
+import { CategoryPanel } from "../components/CategoryPanel";
 const Navbar = () => {
+  
   const navigate=useNavigate()
   const [expand, setExpand] = useState(false);
   const toggle = () => {
     setExpand((v) => !v);
   };
+  const categories=useCategory({
+    
+  })
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -27,7 +32,7 @@ const Navbar = () => {
         <div className="flex items-center gap-2">
           <button onClick={toggle} className="md:hidden">
             <Icon icon="charm:menu-hamburger" style={{ fontSize: 36 }} />
-          </button>
+        </button>
           <div className="sm:hidden md:block">
             <Logo />
           </div>
@@ -50,6 +55,7 @@ const Navbar = () => {
           >
             <Icon icon="mynaui:search" style={{ fontSize: 28 }} />
           </button>
+         <CategoryPanel/>
         </form>
 
         <div className="flex items-center justify-between gap-2 sm:gap-4">

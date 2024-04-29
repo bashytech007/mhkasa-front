@@ -82,7 +82,7 @@ input[type="number"] {
 }
 
 .bg-image {
-  background-image: url("./assets/images/dolce.png");
+  background-image: url("./assets/images/dolceNew.svg");
   background-size: cover;
   background-position: center; 
   background-repeat: no-repeat;

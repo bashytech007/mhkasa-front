@@ -1,6 +1,7 @@
 import { Button } from "./ui/Button";
 import { Link } from "react-router-dom";
 
+
 export const Product = ({
   product,
   category,
@@ -34,15 +35,14 @@ export const Product = ({
             {discountedPrice ? (
               <div className="flex items-center gap-3">
                 <p className="line-through text-app-ash-1 text-xs">
-                  #{originalPrice}
+                ₦{originalPrice}
                 </p>
-                <p>#{discountedPrice}</p>
+                <p>₦{discountedPrice}</p>
               </div>
             ) : (
-              <p>#{originalPrice}</p>
+              <p>₦{originalPrice}</p>
             )}
           </div>
-
           <Link to={`/products/${id}`}>
             <Button className="bg-app-red text-app-ash font-medium text-nowrap text-sm mt-auto @[240px]:bg-app-black">
               Buy Now

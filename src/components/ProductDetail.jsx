@@ -107,7 +107,7 @@ export const ProductDetail = ({ productId }) => {
 
       <div className="grid gap-6 pt-5 md:grid-cols-2">
         {tab === "description" ? (
-          <div>good perfume</div>
+          <div>a good perfume</div>
         ) : (
           <div>
             <div className="flex gap-4 items-end">

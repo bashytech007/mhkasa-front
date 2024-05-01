@@ -15,7 +15,7 @@ const ListItem = ({ sort, term, display, onClick }) => {
   );
 };
 
-export const Sort = ({ onclick, sort }) => {
+export const Sort = ({ onClick, sort }) => {
   const [show, setShow] = useState(false);
   const list = [
     {
@@ -36,9 +36,9 @@ export const Sort = ({ onclick, sort }) => {
     },
   ];
 
-  const onClick = (sortBy) => {
+  const onSortClick = (sortBy) => {
     setShow(false);
-    return onclick(sortBy);
+    return onClick(sortBy);
   };
 
   return (
@@ -66,7 +66,7 @@ export const Sort = ({ onclick, sort }) => {
             display={li.display}
             term={li.term}
             sort={sort}
-            onClick={onClick}
+            onClick={onSortClick}
           />
         ))}
       </ul>

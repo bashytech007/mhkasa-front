@@ -13,13 +13,12 @@ export const Product = ({
 
   return (
     <div className="bg-white rounded-2xl overflow-hidden h-full @container">
-      <div className="h-24">
+      <div className="w-full aspect-[1.25] relative">
         <img
           src={image}
           alt=""
-          className="h-full w-full"
-          width={295}
-          height={170}
+          className="h-full w-full absolute object-cover "
+          
         />
       </div>
 
@@ -30,7 +29,7 @@ export const Product = ({
         <h2 className="text-app-black font-bold text-[16px] pt-1 line-clamp-2">
           {product}
         </h2>
-        <div className="flex pt-2 mt-auto gap-y-4 gap-x-3 flex-col @[240px]:flex-row @[240px]:items-center @[240px]:justify-between">
+        <div className="flex pt-2 gap-y-4 gap-x-3 flex-col @[240px]:flex-row @[240px]:items-center @[240px]:justify-between">
           <div>
             {discountedPrice ? (
               <div className="flex items-center gap-3">

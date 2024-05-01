@@ -77,7 +77,7 @@ export const Component = () => {
           <TopCategories />
           <div className="flex items-center justify-between py-4">
             <SectionHeader header={category} />
-            <Sort onclick={onClick} sort={sortBy} />
+            <Sort onClick={onClick} sort={sortBy} />
           </div>
           {status === "pending" ? (
             "Loading..."

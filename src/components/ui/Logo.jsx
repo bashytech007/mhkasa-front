@@ -27,7 +27,7 @@ export const Logo = ({
             size === "sm" ? "text-md" : size === "lg" ? "text-4xl" : "text-xl"
           } sm:mt-2`}
         >
-          mhkasa
+          mkhasa
         </p>
       </div>
     </Link>

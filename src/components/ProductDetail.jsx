@@ -9,6 +9,7 @@ import { Input } from "./Input";
 import { useCanSubmitForm } from "../hooks/utils/useCanSubmitFormik";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import { useSearchParams } from "react-router-dom";
 
 export const ProductDetail = ({ productId }) => {
   const { getUserId } = useAuth();
@@ -39,9 +40,15 @@ export const ProductDetail = ({ productId }) => {
   const [reviews, setReviews] = useState([]);
 
   const [rating, setRating] = useState(0);
-  const [tab, setTab] = useState("reviews");
   const onClick = (rate) => {
     setRating(rate);
+  };
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [tab, setTab] = useState(searchParams.get("tab") || "reviews");
+  const onTabClick = (tab) => {
+    if (!tab) return;
+    setSearchParams({ tab });
+    setTab(tab);
   };
 
   const canSubmit = useCanSubmitForm(formik, rating > 0);
@@ -64,24 +71,11 @@ export const ProductDetail = ({ productId }) => {
     );
   }
 
-  // useEffect(() => {
-  //   /**
-  //    * fetch data from end point and set here
-  //    */
-  //   setReviews([
-  //     {
-  //       review:
-  //         "hiue iurhfi urefber fbuib chneroir iohf noeri hioferho hofuie rhfioer jhoif erjhof joerhjfio",
-  //       reviewer: "John Doe",
-  //       rating: 3,
-  //     },
-  //   ]);
-  // }, []);
   useEffect(() => {
     const fetchReviews = async () => {
       try {
         const response = await axios.get(`/review/${productId}`);
-        setReviews(response.data); 
+        setReviews(response.data);
       } catch (error) {
         console.error("Error fetching reviews:", error);
       }
@@ -90,7 +84,6 @@ export const ProductDetail = ({ productId }) => {
     fetchReviews();
   }, [productId]);
 
-
   return (
     <div className="bg-white px-6 py-4 rounded-3xl mb-6">
       <div className="grid grid-cols-2 border-b-2 md:grid-cols-4">
@@ -98,7 +91,7 @@ export const ProductDetail = ({ productId }) => {
           className={`-mb-[2px] pb-4 ${
             tab === "description" ? "border-b-black border-b-2 font-bold" : ""
           }`}
-          onClick={() => setTab("description")}
+          onClick={() => onTabClick("description")}
         >
           Description
         </button>
@@ -106,25 +99,31 @@ export const ProductDetail = ({ productId }) => {
           className={`-mb-[2px] pb-4 ${
             tab === "reviews" ? "border-b-black border-b-2 font-bold" : ""
           }`}
-          onClick={() => setTab("reviews")}
+          onClick={() => onTabClick("reviews")}
         >
           Reviews
         </button>
       </div>
+
       <div className="grid gap-6 pt-5 md:grid-cols-2">
-        <div>
-          <div className="flex gap-4 items-end">
-            <p className="font-medium text-4xl">4.5</p>
-            <p>Average Ratings</p>
+        {tab === "description" ? (
+          <div>Product decription UI here</div>
+        ) : (
+          <div>
+            <div className="flex gap-4 items-end">
+              <p className="font-medium text-4xl">4.5</p>
+              <p>Average Ratings</p>
+            </div>
+            <ul className="grid gap-2 pt-4 max-h-[480px] overflow-y-auto">
+              {reviews.map(({ review, name, rating }, i) => (
+                <li key={i}>
+                  <Review review={review} reviewer={name} rating={rating} />
+                </li>
+              ))}
+            </ul>
           </div>
-          <ul className="grid gap-2 pt-4 max-h-[480px] overflow-y-auto">
-            {reviews.map(({ review, name, rating }, i) => (
-              <li key={i}>
-                <Review review={review} reviewer={name} rating={rating} />
-              </li>
-            ))}
-          </ul>
-        </div>
+        )}
+
         {getUserId() ? (
           <div>
             <p>Your Rating</p>

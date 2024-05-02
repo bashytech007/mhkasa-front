@@ -1,22 +1,29 @@
 import { Wrapper } from "../components/ui/Wrapper";
 import { Navigation } from "../components/ui/Navigation";
 import { SectionHeader } from "../components/ui/SectionHeader";
-import { useSearchProducts } from "../hooks/query/useProducts";
+import { useInfiniteProducts } from "../hooks/query/useProducts";
 import { Product } from "../components/ProductCard";
 import banner from "../assets/images/banner.png";
 import { Sort } from "../components/Sort";
 import { Seo } from "../components/Seo";
 import { useSearchParams } from "react-router-dom/dist";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import { Fragment } from "react";
 
 export const Component = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const sortBy = searchParams.get("sort") || "";
   const search = searchParams.get("s") || "";
 
-  const { data, status, error } = useSearchProducts(
-    `search?sort=${sortBy}`,
-    search
-  );
+  const {
+    data,
+    status,
+    error,
+    fetchNextPage,
+    isFetchingNextPage,
+    isFetching,
+    hasNextPage,
+  } = useInfiniteProducts(`search?name=${search}&sort=${sortBy}`, "search");
   const onClick = (term) => {
     if (typeof term !== "string") return;
     if (!term) {
@@ -74,19 +81,40 @@ export const Component = () => {
           ) : (
             <>
               <ul className="grid justify-center grid-flow-row grid-cols-2 gap-4 pt-8 auto-rows-fr sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-                {data.map((product) => (
-                  <li key={product._id}>
-                    <Product
-                      product={product.name}
-                      category={product.category}
-                      originalPrice={product.price}
-                      discountedPrice={product?.discountedPrice}
-                      image={product.mainImage}
-                      id={product._id}
-                    />
-                  </li>
+                {data.pages.map((group, i) => (
+                  <Fragment key={i}>
+                    {group.products.map((product) => (
+                      <li key={product._id}>
+                        <Product
+                          product={product.name}
+                          category={product.category}
+                          originalPrice={product.price}
+                          discountedPrice={product?.discountedPrice}
+                          image={product.mainImage}
+                          id={product._id}
+                        />
+                      </li>
+                    ))}
+                  </Fragment>
                 ))}
               </ul>
+              <div>
+                <button
+                  onClick={() => fetchNextPage()}
+                  disabled={isFetchingNextPage}
+                  className={`${!hasNextPage ? "hidden" : ""}`}
+                >
+                  {isFetchingNextPage ? "Loading more..." : "Load More"}
+                </button>
+              </div>
+              <div className="flex justify-center">
+                {isFetching && !isFetchingNextPage ? (
+                  <Icon
+                    icon="svg-spinners:3-dots-bounce"
+                    className="text-4xl"
+                  />
+                ) : null}
+              </div>
             </>
           )}
         </Wrapper>

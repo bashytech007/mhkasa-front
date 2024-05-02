@@ -28,10 +28,10 @@ export const SwiperCard2 = () => {
               />
               <img
                 src={heroimg}
-                className="absolute md:bottom-0 md:right-0 bottom-2 pl-44 md:pl-0 md:w-[475px] w-[275px] h-[85%] w-full md:z-[3]"
+                className="absolute md:bottom-0 md:right-0 bottom-2 pl-44 md:pl-0 md:w-[475px] w-[295px] h-[85%] md:z-[3]"
               />
             </div>
-            <div className="px-2 pt-2 mr-20 md:px-24">
+            <div className="px-2 pt-2 mr-10 md:px-24">
               <button className="text-xs md:text-sm px-4 py-2 font-semibold text-white bg-[#A40001] rounded-full md:px-16 md:py-4 ml-16 md:ml-0 z-10">
                 Explore Collection
               </button>

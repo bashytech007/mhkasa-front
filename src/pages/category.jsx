@@ -43,9 +43,9 @@ export const Component = () => {
   return (
     <>
       <Seo
-        title={`Mhkasa | ${category}`}
+        title={`Mkhasa | ${category}`}
         type="webapp"
-        description={`Get the best ${category} from Mhkasa Store`}
+        description={`Get the best ${category} from Mkhasa Store`}
         name=""
       />
       <section>

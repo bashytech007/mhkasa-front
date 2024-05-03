@@ -64,7 +64,7 @@ export const Component = () => {
   return (
     <Wrapper className="flex flex-col items-center max-w-lg py-12">
       <Seo
-        title="Mhkasa | Login"
+        title="Mkhasa | Login"
         type="webapp"
         description="login to your account"
         name=""

@@ -67,7 +67,7 @@ useEffect(()=>{
   return (
     <main>
       <Seo
-        title="Mhkasa | Checkout"
+        title="Mkhasa | Checkout"
         description="Complete TranscationF"
         type="webapp"
         name=""
@@ -278,7 +278,7 @@ const CartSummary = ({ className, isPending }) => {
           <Button
             type="submit"
             form="checkout-form"
-            className="bg-black text-white font-bold w-full mt-6"
+            className="bg-green-500 text-white font-bold w-full mt-6"
           >
             {isPending ? (
               <Icon

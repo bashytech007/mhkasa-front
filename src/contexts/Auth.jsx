@@ -3,7 +3,7 @@ import { prefix } from "../utils/lib";
 export const AuthContext = createContext();
 
 export const Auth = ({ children }) => {
-  const username = "Mhkasa User";
+  const username = "Mkhasa User";
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem(prefix("user")))
   );

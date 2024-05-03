@@ -20,8 +20,8 @@ export const Component = () => {
   return (
     <main>
       <Seo
-        title="Mhkasa | Cart"
-        description="Your Mhkasa shopping Cart"
+        title="Mkhasa | Cart"
+        description="Your Mkhasa shopping Cart"
         type="webapp"
         name=""
       />

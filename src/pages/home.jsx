@@ -13,7 +13,7 @@ import { BestSellers } from "../components/BestSellers";
 export const Component = () => {
   return (
     <main>
-      <Seo title="Mhkasa | Home" type="webapp" name="" />
+      <Seo title="Mkhasa | Home" type="webapp" name="" />
       <Wrapper>
         <div className="flex gap-8 py-10">
           {/* <CategoryPanel fixedHeight /> */}

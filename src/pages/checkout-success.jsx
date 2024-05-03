@@ -36,7 +36,7 @@ export const Component = () => {
   return (
     <>
       <Seo
-        title="Mhkasa | Checkout Complete"
+        title="Mkhasa | Checkout Complete"
         description="Complete Transaction"
         type="webapp"
         name=""

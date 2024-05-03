@@ -43,7 +43,7 @@ export const Component = () => {
   return (
     <>
       <Seo
-        title={`Mhkasa | ${product.name || ""}`}
+        title={`Mkhasa | ${product.name || ""}`}
         description="Complete TranscationF"
         type="webapp"
         name=""

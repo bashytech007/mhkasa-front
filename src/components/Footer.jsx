@@ -70,7 +70,7 @@ export const Footer = () => {
                 <Link
                   to="/"
                   className="p-1 inline-block hover:scale-105 hover:text-app-red"
-                  aria-label="link to Mhkasa instagram page"
+                  aria-label="link to Mkhasa instagram page"
                 >
                   <Icon icon="mdi:instagram" style={{ fontSize: 32 }} />
                 </Link>
@@ -79,7 +79,7 @@ export const Footer = () => {
                 <Link
                   to="/"
                   className="p-1 inline-block hover:scale-105"
-                  aria-label="link to Mhkasa X (formerly known as twitter) page"
+                  aria-label="link to Mkhasa X (formerly known as twitter) page"
                 >
                   <Icon
                     icon="bi:twitter-x"
@@ -92,7 +92,7 @@ export const Footer = () => {
                 <Link
                   to="/"
                   className="p-1 inline-block hover:scale-105"
-                  aria-label="link to Mhkasa meta (formaerly known as facebook) page"
+                  aria-label="link to Mkhasa meta (formaerly known as facebook) page"
                 >
                   <Icon
                     icon="lucide:facebook"
@@ -105,7 +105,7 @@ export const Footer = () => {
                 <Link
                   to="/"
                   className="p-1 inline-block hover:scale-105"
-                  aria-label="link to Mhkasa youtube page"
+                  aria-label="link to Mkhasa youtube page"
                 >
                   <Icon
                     icon="ant-design:youtube-outlined"

@@ -34,6 +34,7 @@ export const Sort = ({ onClick, sort }) => {
       term: "highestPrice",
       display: "Price: High - Low",
     },
+    
   ];
 
   const onSortClick = (sortBy) => {

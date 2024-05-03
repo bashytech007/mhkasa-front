@@ -47,7 +47,7 @@ export const ForgotPassword = () => {
   return (
     <>
       <Seo
-        title="Mhkasa | Reset Password"
+        title="Mkhasa | Reset Password"
         type="webapp"
         description="Reset your password"
         name=""
@@ -164,7 +164,7 @@ export const ResetPassword = () => {
   return (
     <>
       <Seo
-        title="Mhkasa | Reset Password"
+        title="Mkhasa | Reset Password"
         type="webapp"
         description="Reset your password"
         name=""

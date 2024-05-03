@@ -24,7 +24,7 @@ export const Component = () => {
   return (
     <>
       <Seo
-        title="Mhkasa | My Account"
+        title="Mkhasa | My Account"
         type="webapp"
         description="Experience smooth shopping"
         name=""

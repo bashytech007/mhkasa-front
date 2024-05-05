@@ -7,7 +7,7 @@ import { Heading } from "../components/Heading";
 import { OrderSummary } from "../components/OrderTotal";
 import { CartItems } from "../components/Cart";
 import { cn } from "../utils/cn";
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../hooks/utils/useAuth";
 import axios from "../utils/axios";
 import { useMutation } from "@tanstack/react-query";
@@ -43,26 +43,27 @@ export const Component = () => {
     },
   });
 
+  const [provider, setProvider] = useState("paystack");
+
   const { getUserId } = useAuth();
-  console.log(getUserId())
   const mutation = useMutation({
     mutationFn: (payload) => {
-      return axios.post(`create/order/${getUserId()}`, payload);
+      return axios.post(`create/order/${getUserId()}`, {
+        provider,
+        ...payload,
+      });
     },
     onSuccess: (res) => {
-      console.log(res);
       window.location.href = res.data.paymentLink;
     },
   });
-useEffect(()=>{
- axios.get(`/get/user/${getUserId()}`).then((res)=>{
-  console.log(res.data)
-  formik.values.email=res.data.user.email
-  formik.values.phone=res.data.user.phoneNumber
-  formik.values.address=res.data.user.address
- })
-
-},[])
+  useEffect(() => {
+    axios.get(`/get/user/${getUserId()}`).then((res) => {
+      formik.values.email = res.data.user.email;
+      formik.values.phone = res.data.user.phoneNumber;
+      formik.values.address = res.data.user.address;
+    });
+  }, []);
 
   return (
     <main>
@@ -93,7 +94,7 @@ useEffect(()=>{
           >
             <PersonalDetails formik={formik} />
             <DeliveryDetails formik={formik} />
-            {/* <PaymentMethod /> */}
+            <PaymentMethod setProvider={setProvider} provider={provider} />
           </form>
           <div className="md:col-span-6 lg:col-span-5 xl:col-span-4">
             <CartSummary isPending={mutation.isPending} />
@@ -105,7 +106,6 @@ useEffect(()=>{
 };
 
 const PersonalDetails = ({ className, formik }) => {
-
   return (
     <div className={cn("bg-white rounded-xl p-5", className)}>
       <div className="flex items-center gap-3 border-b-2 pb-4">
@@ -144,7 +144,6 @@ const PersonalDetails = ({ className, formik }) => {
 };
 
 const DeliveryDetails = ({ className, formik }) => {
-   
   return (
     <div className={cn("bg-white rounded-xl p-5", className)}>
       <div className="flex items-center gap-3 border-b-2 pb-4">
@@ -200,67 +199,87 @@ const DeliveryDetails = ({ className, formik }) => {
   );
 };
 
-// const PaymentMethod = ({ className }) => {
-//   const [paymentMethod, setPaymentMethod] = useState("online");
+const PaymentMethod = ({ className, setProvider, provider }) => {
+  const [paymentMethod, setPaymentMethod] = useState("online");
 
-//   return (
-//     <div className={cn("bg-white rounded-xl p-5", className)}>
-//       <div className="flex items-center gap-3 border-b-2 pb-4">
-//         <p className="bg-app-ash-1 w-8 aspect-square rounded-full grid place-items-center font-bold">
-//           3
-//         </p>
-//         <Heading>Payment Method</Heading>
-//       </div>
-//       <div className="flex items-center py-4 gap-3">
-//         <div className="inline-flex items-center gap-2">
-//           <div
-//             className={`relative w-5 h-5 rounded-full border-[2px] border-current before:inset-[1px] before:rounded-full before:absolute ${
-//               paymentMethod === "online"
-//                 ? "before:bg-current"
-//                 : "before:bg-transparent"
-//             }`}
-//           />
-//           <button type="button" onClick={() => setPaymentMethod("online")}>
-//             Online
-//           </button>
-//         </div>
-//         <div className="inline-flex items-center gap-2">
-//           <div
-//             className={`relative w-5 h-5 rounded-full border-[2px] border-current before:inset-[1px] before:rounded-full before:absolute ${
-//               paymentMethod === "payOnDelivery"
-//                 ? "before:bg-current"
-//                 : "before:bg-transparent"
-//             }`}
-//           />
-//           <button
-//             type="button"
-//             onClick={() => setPaymentMethod("payOnDelivery")}
-//           >
-//             Pay On Delivery
-//           </button>
-//         </div>
-//       </div>
+  return (
+    <div className={cn("bg-white rounded-xl p-5", className)}>
+      <div className="flex items-center gap-3 border-b-2 pb-4">
+        <p className="bg-app-ash-1 w-8 aspect-square rounded-full grid place-items-center font-bold">
+          3
+        </p>
+        <Heading>Payment Method</Heading>
+      </div>
+      <div className="flex items-center py-4 gap-3">
+        <div className="inline-flex items-center gap-2">
+          <div
+            className={`relative w-5 h-5 rounded-full border-[2px] border-current before:inset-[1px] before:rounded-full before:absolute ${
+              paymentMethod === "online"
+                ? "before:bg-current"
+                : "before:bg-transparent"
+            }`}
+          />
+          <button type="button" onClick={() => setPaymentMethod("online")}>
+            Online
+          </button>
+        </div>
+        <div className="inline-flex items-center gap-2">
+          <div
+            className={`relative w-5 h-5 rounded-full border-[2px] border-current before:inset-[1px] before:rounded-full before:absolute ${
+              paymentMethod === "payOnDelivery"
+                ? "before:bg-current"
+                : "before:bg-transparent"
+            }`}
+          />
+          <button
+            type="button"
+            onClick={() => setPaymentMethod("payOnDelivery")}
+          >
+            Pay On Delivery
+          </button>
+        </div>
+      </div>
 
-//       {paymentMethod === "online" ? (
-//         <div className="py-2 grid gap-4">
-//           <div>
-//             <button type="button">Flutterwave</button>
-//           </div>
-//           <div>
-//             <button type="button">Paystack</button>
-//           </div>
-//         </div>
-//       ) : paymentMethod === "payOnDelivery" ? (
-//         <div className="py-2 grid gap-4">
-//           <p>
-//             Pay on Delivery not available for now, please use online payment
-//             option
-//           </p>
-//         </div>
-//       ) : null}
-//     </div>
-//   );
-// };
+      {paymentMethod === "online" ? (
+        <div>
+          <div
+            className={`w-full text-left p-2 ${
+              provider === "flutterwave" ? "bg-app-ash-1" : ""
+            }`}
+          >
+            <button
+              type="button"
+              onClick={() => setProvider("flutterwave")}
+              className="w-full text-left"
+            >
+              Flutterwave
+            </button>
+          </div>
+          <div
+            className={`w-full text-left p-2 ${
+              provider === "paystack" ? "bg-app-ash-1" : ""
+            }`}
+          >
+            <button
+              type="button"
+              onClick={() => setProvider("paystack")}
+              className="w-full text-left"
+            >
+              Paystack
+            </button>
+          </div>
+        </div>
+      ) : paymentMethod === "payOnDelivery" ? (
+        <div className="py-2 grid gap-4">
+          <p>
+            Pay on Delivery not available for now, please use online payment
+            option
+          </p>
+        </div>
+      ) : null}
+    </div>
+  );
+};
 
 const CartSummary = ({ className, isPending }) => {
   const { data } = useCartQuery();

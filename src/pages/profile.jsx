@@ -141,7 +141,7 @@ export const Component = () => {
               </div>
               <div>
                 <p className="font-bold">Phone:</p>
-                <p>123 4567 890 78</p>
+                <p>123 4567 890 79</p>
               </div>
               <div>
                 <p className="font-bold">Address</p>

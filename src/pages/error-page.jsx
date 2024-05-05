@@ -11,7 +11,7 @@ export default function ErrorPage() {
   return (
     <div id="error-page" className="flex flex-col min-h-dvh">
       <Seo
-        title="Mhkasa | Error"
+        title="Mkhasa | Error"
         description="Complete TranscationF"
         type="webapp"
         name=""

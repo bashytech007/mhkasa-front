@@ -23,7 +23,7 @@ export const Component = () => {
   return (
     <>
       <Seo
-        title="Mhkasa | Order History"
+        title="Mkhasa | Order History"
         type="webapp"
         description="Experience smooth shopping"
         name=""

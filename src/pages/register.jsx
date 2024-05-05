@@ -54,7 +54,7 @@ export const Component = () => {
   return (
     <>
         <Seo
-          title="Mhkasa | Register"
+          title="Mkhasa | Register"
           type="webapp"
           description="Register to experience smooth shopping"
           name=""

@@ -20,6 +20,7 @@ export const Component = () => {
         const res = await axios.post(
           `/verify/payment/${tx_ref}/${transaction_id}`
         );
+        
         if (res.status === 200) {
           console.log("successful");
           setVerification(res.data ? "successful" : "failed");
@@ -36,7 +37,7 @@ export const Component = () => {
   return (
     <>
       <Seo
-        title="Mhkasa | Checkout Complete"
+        title="Mkhasa | Checkout Complete"
         description="Complete Transaction"
         type="webapp"
         name=""

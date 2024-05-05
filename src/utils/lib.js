@@ -21,7 +21,7 @@ export const getUserCountry = () => {
   return getCode(timezoneToCountry[tzArr[tzArr.length - 1]]);
 };
 
-export const prefix = (val, prefix = "mhkasa") => {
+export const prefix = (val, prefix = "mkhasa") => {
   if (typeof val !== "string" || typeof prefix !== "string")
     throw new Error("Invalid argument");
   return `${prefix}_${val}`;

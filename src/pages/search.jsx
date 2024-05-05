@@ -36,9 +36,9 @@ export const Component = () => {
   return (
     <>
       <Seo
-        title={`Mhkasa | Search`}
+        title={`Mkhasa | Search`}
         type="webapp"
-        description={`Search For Perfumes On Mhkasa Store`}
+        description={`Search For Perfumes On Mkhasa Store`}
         name=""
       />
       <section>

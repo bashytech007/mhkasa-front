@@ -50,7 +50,7 @@ export const Component = () => {
   return (
     <>
       <Seo
-        title="Mhkasa | Corfirm OTP"
+        title="Mkhasa | Corfirm OTP"
         description="Complete TranscationF"
         type="webapp"
         name=""

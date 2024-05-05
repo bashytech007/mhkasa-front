@@ -25,7 +25,7 @@ export const Component = () => {
 
   const nameMutation = useMutation({
     mutationFn: (values) => {
-      return axios.post(`edit/user/${getUserId()}`, values, {
+      return axios.post(`edit/user/change/password/${getUserId()}`, values, {
         headers: { "Content-Type": "application/json" },
       });
     },

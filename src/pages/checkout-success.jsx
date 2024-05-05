@@ -20,6 +20,7 @@ export const Component = () => {
         const res = await axios.post(
           `/verify/payment/${tx_ref}/${transaction_id}`
         );
+        
         if (res.status === 200) {
           console.log("successful");
           setVerification(res.data ? "successful" : "failed");

@@ -34,6 +34,10 @@ export const Sort = ({ onClick, sort }) => {
       term: "highestPrice",
       display: "Price: High - Low",
     },
+    {
+      term: "men",
+      display: "Price: High - Low",
+    },
     
   ];
 

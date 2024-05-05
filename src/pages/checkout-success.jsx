@@ -9,29 +9,58 @@ import { Error } from "../components/Error";
 
 export const Component = () => {
   const [searchParams] = useSearchParams();
-  const [status, setStatus] = useState(searchParams.get("status"));
-  const tx_ref = searchParams.get("tx_ref");
-  const transaction_id = searchParams.get("transaction_id");
+  const provider = searchParams.get("provider");
   const [verification, setVerification] = useState("pending");
 
+  const status = searchParams.get("status");
+
+  const tx_ref =
+    provider === "paystack"
+      ? searchParams.get("txref")
+      : provider === "flutterwave"
+      ? searchParams.get("tx_ref")
+      : "";
+
+  const transaction_id =
+    provider === "paystack"
+      ? searchParams.get("reference")
+      : provider === "flutterwave"
+      ? searchParams.get("transaction_id")
+      : "";
+  // const transaction_id = provider === "paystack"? searchParams.get("transaction_id");
+
   useEffect(() => {
-    const verifyPayment = async () => {
+    const verifyFlutterwavePayment = async () => {
       try {
         const res = await axios.post(
           `/verify/payment/${tx_ref}/${transaction_id}`
         );
-        
+
         if (res.status === 200) {
-          console.log("successful");
           setVerification(res.data ? "successful" : "failed");
         }
       } catch (error) {
-        console.log("failed");
         setVerification("failed");
       }
     };
 
-    status === 'successful' && verifyPayment();
+    const verifyPaystackPayment = async () => {
+      try {
+        const res = await axios.post(
+          `/verify/paystack/payment/${transaction_id}`
+        );
+
+        if (res.status === 200) {
+          setVerification(res.data ? "successful" : "failed");
+        }
+      } catch (error) {
+        setVerification("failed");
+      }
+    };
+
+    if (provider === "flutterwave" && status === "successful")
+      verifyFlutterwavePayment();
+    else verifyPaystackPayment();
   }, []);
 
   return (
@@ -45,7 +74,7 @@ export const Component = () => {
       <Wrapper className="py-8 ">
         {verification === "pending" ? (
           <>Your Payment is being Processed ...</>
-        ) : verification === 'successful' ? (
+        ) : verification === "successful" ? (
           <Success>
             <h2 className="mt-6 text-xl font-bold">Success</h2>
             <p className="mx-auto max-w-lg text-center">
@@ -54,16 +83,15 @@ export const Component = () => {
               <Link to="/account/order-history" className="text-app-red">
                 here
               </Link>
-              , below are related products that go with what you just
-              purchased.
+              , below are related products that go with what you just purchased.
             </p>
           </Success>
-        ) : verification === 'failed' ? (
+        ) : verification === "failed" ? (
           <Error>
             <h2 className="mt-6 text-xl font-bold">Failed</h2>
             <p className="mx-auto max-w-lg text-center">
-              Sorry, your transaction failed. Please check that you have not been debited and contact your bank.
-              Click
+              Sorry, your transaction failed. Please check that you have not
+              been debited and contact your bank. Click
               <Link to="/" className="text-app-red">
                 here
               </Link>

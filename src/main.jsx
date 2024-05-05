@@ -75,7 +75,7 @@ const router = createBrowserRouter([
             lazy: () => import("./pages/profile"),
           },
           {
-            path: "/flw-payment-callback",
+            path: "/payment-callback",
             lazy: () => import("./pages/checkout-success"),
           },
           {

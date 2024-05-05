@@ -24,10 +24,18 @@ export const Component = () => {
   };
 
   const nameMutation = useMutation({
-    mutationFn: (values) => {
-      return axios.post(`edit/user/change/password/${getUserId()}`, values, {
-        headers: { "Content-Type": "application/json" },
-      });
+    mutationFn: async (values) => {
+      try {
+        setUpdatingPassword(true);
+        await axios.post(`user/change/password/${getUserId()}`, values, {
+          headers: { "Content-Type": "application/json" },
+        });
+        toast.success(error.response?.data?.message || "Password updated");
+      } catch (error) {
+        toast.error(error.response?.data?.message || "Update attempt failed");
+      } finally {
+        setUpdatingPassword(false);
+      }
     },
   });
 
@@ -59,15 +67,6 @@ export const Component = () => {
     validationSchema: schema,
     onSubmit: async (values) => {
       nameMutation.mutate(values);
-      try {
-        setUpdatingPassword(true);
-        await axios.post("user/change/password", values);
-        toast.success(error.response?.data?.message || "Password updated");
-      } catch (error) {
-        toast.error(error.response?.data?.message || "Update attempt failed");
-      } finally {
-        setUpdatingPassword(false);
-      }
     },
   });
   return (

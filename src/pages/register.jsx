@@ -42,6 +42,7 @@ export const Component = () => {
           console.log(response);
           navigate(`/confirm-otp?email=${encodeURIComponent(values.email)}`);
         }
+        console.log(response)
       } catch (error) {
         setIsSubmitting(false);
         console.log(error.response.data.message);

@@ -28,6 +28,7 @@ export const ForgotPassword = () => {
         setIsSubmitting(false);
         navigate(`/reset-password?email=${encodeURIComponent(values.email)}`);
       }
+      console.log(response)
     } catch (error) {
       setIsSubmitting(false);
       console.log(error?.response?.data?.message);
@@ -84,7 +85,7 @@ export const ForgotPassword = () => {
                 style={{ fontSize: 20 }}
               />
             ) : (
-              "Restet Password"
+              "Reset Password"
             )}
           </Button>
         </form>
@@ -130,16 +131,19 @@ export const ResetPassword = () => {
           { email, token: otp, password },
           { headers: { "Content-Type": "application/json" } }
         );
+        console.log(response)
         if (response.status === 200) {
           setIsSubmitting(false);
           navigate(`/login`);
         }
+        console.log(response)
       } catch (error) {
         setIsSubmitting(false);
         console.error(error);
       }
     },
   });
+  
 
   const canSubmit = useCanSubmitForm(formik);
 
@@ -236,7 +240,7 @@ export const ResetPassword = () => {
                 style={{ fontSize: 20 }}
               />
             ) : (
-              "Restet Password"
+              "Reset Password"
             )}
           </Button>
         </form>

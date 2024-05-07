@@ -13,10 +13,10 @@ export const Component = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const email = decodeURIComponent(searchParams.get("email"));
-  const [otp, setOtp] = useState(["", "", "", ""]);
+  const [verificationCode, setVerificationCode] = useState(["", "", "", ""]);
 
   const [canSubmit, setCanSubmit] = useState(() =>
-    otp.every((letter) => letter !== "")
+    verificationCode.every((letter) => letter !== "")
   );
   const onSubmit = async (e) => {
     setIsSubmitting(true);
@@ -26,7 +26,7 @@ export const Component = () => {
         `user/verify`,
         {
           email,
-          otp: otp.join(""),
+          verificationCode: verificationCode.join(""),
         },
         {
           headers: { "Content-Type": "application/json" },
@@ -37,6 +37,7 @@ export const Component = () => {
         setIsSubmitting(false);
         navigate(`/account-creation-success`);
       }
+      console.log(response)
     } catch (error) {
       setIsSubmitting(false);
       console.log(error?.response?.data?.message);
@@ -44,8 +45,8 @@ export const Component = () => {
   };
 
   useEffect(() => {
-    setCanSubmit(() => otp.every((letter) => letter !== ""));
-  }, [otp]);
+    setCanSubmit(() => verificationCode.every((letter) => letter !== ""));
+  }, [verificationCode]);
 
   return (
     <>
@@ -76,7 +77,7 @@ export const Component = () => {
               </span>
             </div>
 
-            <OTPInput otp={otp} setOtp={setOtp} canSubmit={canSubmit} />
+            <OTPInput verificationCode={verificationCode} setVerificationCode={setVerificationCode} canSubmit={canSubmit} />
             <Button
               className="w-36 flex justify-center bg-app-red hover:bg-red-500 text-sm  text-white font-bold mt-4 sm:hover:bg-black disabled:bg-[#999999] hover:disabled:bg-[#999999] sm:bg-app-black"
               type="submit"
@@ -98,14 +99,14 @@ export const Component = () => {
   );
 };
 
-const OTPInput = ({ otp, setOtp }) => {
+const OTPInput = ({ verificationCode, setVerificationCode }) => {
   const boxes = [0, 1, 2, 3];
   const refs = [useRef(), useRef(), useRef(), useRef()];
 
   const onKeyUp = (index, refs) => {
     const keys = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
     return (e) => {
-      setOtp((prev) => {
+      setVerificationCode((prev) => {
         const newArr = prev;
         if (keys.includes(e.key)) {
           newArr[index] = e.key;
@@ -129,7 +130,7 @@ const OTPInput = ({ otp, setOtp }) => {
       .getData("text")
       .split("");
     if (paste.every((num) => keys.includes(num))) {
-      setOtp(paste.slice(0, 4));
+      setVerificationCode(paste.slice(0, 4));
       refs[refs.length - 1]?.current.focus();
     }
   };
@@ -142,7 +143,7 @@ const OTPInput = ({ otp, setOtp }) => {
             refs={refs}
             index={box}
             key={box}
-            otp={otp}
+            verificationCode={verificationCode}
             onKeyUp={onKeyUp}
             onPaste={onPaste}
           />
@@ -152,12 +153,12 @@ const OTPInput = ({ otp, setOtp }) => {
   );
 };
 
-const Box = ({ index, refs, onKeyUp, otp, ...rest }) => {
+const Box = ({ index, refs, onKeyUp, verificationCode, ...rest }) => {
   return (
     <input
       ref={refs[index]}
       type="number"
-      value={otp[index]}
+      value={verificationCode[index]}
       onChange={() => {}}
       onKeyUp={onKeyUp(index, refs)}
       className="w-10 aspect-square outline-none text-center font-bold rounded-xl border-4 bg-transparent border-app-red sm:w-12 sm:text-lg md:text-2xl md:w-14 lg:text-4xl lg:w-16"

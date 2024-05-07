@@ -10,6 +10,7 @@ import { useCanSubmitForm } from "../hooks/utils/useCanSubmitFormik";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useSearchParams } from "react-router-dom";
+import { SectionHeader } from "./ui/SectionHeader";
 
 export const ProductDetail = ({ productId }) => {
   const { getUserId } = useAuth();
@@ -204,3 +205,12 @@ const Rating = ({ rating = 0, onClick = () => {} }) => {
     </div>
   );
 };
+const LayerWith=()=>{
+  return(
+    <div className="">
+
+      <SectionHeader header="ProductsYoulayerWith"/>
+    </div>
+    
+  )
+}

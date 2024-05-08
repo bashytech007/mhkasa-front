@@ -4,6 +4,7 @@ import axios from "../../utils/axios";
 export const useInfiniteProducts = (url, ...key) => {
   const fetchProducts = async (url, pageParam) => {
     const res = await axios.get(`${url}?page=` + pageParam);
+    console.log(res.data);
     return res.data;
   };
 

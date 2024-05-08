@@ -92,17 +92,17 @@ export const Component = () => {
                   className="w-28 aspect-square object-cover"
                 />
                 <img
-                  src={product.firstImage}
+                  src={product.mainImage}
                   alt=""
                   className="w-28 aspect-square object-cover"
                 />
                 <img
-                  src={product.secondImage}
+                  src={product.mainImage}
                   alt=""
                   className="w-28 aspect-square object-cover"
                 />
                 <img
-                  src={product.thirdImage}
+                  src={product.mainImage}
                   alt=""
                   className="w-28 aspect-square object-cover"
                 />

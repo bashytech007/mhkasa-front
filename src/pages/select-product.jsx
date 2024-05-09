@@ -11,7 +11,7 @@ import { useCartQuery } from "../hooks/query/useCart";
 import toast from "react-hot-toast";
 import { format } from "../utils/lib";
 import { Seo } from "../components/Seo";
-
+import { Product } from "../components/ProductCard";
 
 export const Component = () => {
   const { product } = useLoaderData();
@@ -121,19 +121,13 @@ export const Component = () => {
               <p className="font-medium text-xl py-2">{product.category}</p>
               <p className="font-bold text-xl">₦{format(product.price)}</p>
               <p className="py-1">{product.description}</p>
-              <p>
-                
-              </p>
+              <p></p>
               <p className="py-1">
                 <span className="font-bold">Brand:</span> Brand Name
               </p>
-              <div className="py-1">
-                
-              </div>
+              <div className="py-1"></div>
               <div className="flex gap-x-12 flex-wrap justify-between pb-4">
-                <div className="py-2">
-                  
-                </div>
+                <div className="py-2"></div>
                 <div className="py-2">
                   <Heading className="text-app-black">Quantity</Heading>
                   <div className="flex gap-4 pt-2 items-center">
@@ -168,14 +162,13 @@ export const Component = () => {
                 data &&
                 data.items.find((item) => item.productId._id === product._id)
               ) ? (
-                    <Button
+                <Button
                   disabled={!count}
                   onClick={onClick}
                   className="bg-app-red text-white font-medium disabled:bg-[#848484]"
                 >
                   Add to Cart
                 </Button>
-
               ) : (
                 <Link to="/cart">
                   <Button className="bg-app-red text-white font-medium">
@@ -188,6 +181,20 @@ export const Component = () => {
         </div>
 
         <ProductDetail productId={product._id} />
+
+{/* STYLE THE UI APPROPRAITELY */}
+        <div>
+          <Heading>Layer With</Heading>
+          {product.layerWith.map((product) => (
+            <Product
+              id={product._id}
+              product={product.name}
+              category={product.category}
+              originalPrice={product.price}
+              image={product.productImage || product.firstImage}
+            />
+          ))}
+        </div>
       </Wrapper>
     </>
   );

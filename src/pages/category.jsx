@@ -9,14 +9,13 @@ import banner from "../assets/images/banner.png";
 import { Icon } from "@iconify/react";
 import { Sort } from "../components/Sort";
 import { Seo } from "../components/Seo";
-import { useLoaderData, useSearchParams } from "react-router-dom/dist";
+import { useSearchParams } from "react-router-dom/dist";
 import { TopCategories } from "../components/TopCategories";
 
 export const Component = () => {
   const { category } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   if (!category) throw new Error("Invalid category");
-  // const { categories } = useLoaderData();
   const sortBy = searchParams.get("sort") || "";
   const filterBy = searchParams.get("filter") || "";
 
@@ -113,11 +112,13 @@ export const Component = () => {
                   </Fragment>
                 ))}
               </ul>
-              <div>
+              <div className="pt-6">
                 <button
                   onClick={() => fetchNextPage()}
                   disabled={isFetchingNextPage}
-                  className={`${!hasNextPage ? "hidden" : ""}`}
+                  className={`${
+                    !hasNextPage ? "hidden" : ""
+                  } text-white bg-app-red py-2 px-6 hover:bg-app-red/70 disabled:bg-app-black/50`}
                 >
                   {isFetchingNextPage ? "Loading more..." : "Load More"}
                 </button>

@@ -16,14 +16,14 @@ export const homeLoader = (queryClient) => async () => {
     queryKey: ["product", "latest"],
     queryFn: async () => await getProducts("latest/product"),
   };
-  const newArrivalsProductQuery={
-    queryKey:["product","newarrivals"],
-    queryFn:async()=>await getBestSellers("deal/product")
-  }
-  const bestSellersProductQuery={
-    queryKey:["product","bestsellers"],
-    queryFn:async()=>await getBestSellers("bestseller/product")
-  }
+  const newArrivalsProductQuery = {
+    queryKey: ["product", "newarrivals"],
+    queryFn: async () => await getBestSellers("deal/product"),
+  };
+  const bestSellersProductQuery = {
+    queryKey: ["product", "bestsellers"],
+    queryFn: async () => await getBestSellers("bestseller/product"),
+  };
   const categoriesQuery = {
     queryKey: ["categories"],
     queryFn: getCategories,
@@ -34,9 +34,13 @@ export const homeLoader = (queryClient) => async () => {
   );
 
   const latestProducts = await queryClient.ensureQueryData(latestProductQuery);
-  const newArrivals = await queryClient.ensureQueryData(newArrivalsProductQuery);
-  const bestsellers = await queryClient.ensureQueryData(bestSellersProductQuery);
-  
+  const newArrivals = await queryClient.ensureQueryData(
+    newArrivalsProductQuery
+  );
+  const bestsellers = await queryClient.ensureQueryData(
+    bestSellersProductQuery
+  );
+
   const categories = await queryClient.ensureQueryData(categoriesQuery);
 
   return {
@@ -80,33 +84,33 @@ export const LayoutLoader = (queryClient) => async () => {
   };
 };
 
+// export const categoriesLoader =
+//   (queryClient) =>
+//   async ({ params: { category }, request }) => {
+//     const url = new URL(request.url);
+//     const sortBy = url.searchParams.get("sort") || "";
+//     const filterBy = url.searchParams.get("filter") || "";
+//     const reqUrl = filterBy
+//       ? `product/category/${category}/appeal/${filterBy}`
+//       : sortBy
+//       ? `product/category/${sortBy}/${category}`
+//       : `product/category/${category}`;
+//     const query = {
+//       initialPageParam: 1,
+//       queryKey: ["product", "category", category, { sortBy, filterBy }],
+//       queryFn: async ({ pageParam }) => await fetchProducts(reqUrl, pageParam),
+//       getNextPageParam: ({ currentPage, totalPages }) =>
+//         currentPage < totalPages ? currentPage + 1 : undefined,
+//     };
 
+//     const categories =
+//       queryClient.getQueryData(query.queryKey) ??
+//       (await queryClient.fetchInfiniteQuery(query));
 
-export const categoriesLoader =
-  (queryClient) =>
-  async ({ params: { category }, request }) => {
-    const url = new URL(request.url);
-    const sortBy = url.searchParams.get("sort") || "";
-    const query = {
-      initialPageParam: 1,
-      queryKey: ["product", "category", category, sortBy],
-      queryFn: async ({ pageParam }) =>
-        await fetchProducts(
-          `product/category/${category}?sort=${sortBy}`,
-          pageParam
-        ),
-      getNextPageParam: ({ currentPage, totalPages }) =>
-        currentPage < totalPages ? currentPage + 1 : undefined,
-    };
-
-    const categories =
-      queryClient.getQueryData(query.queryKey) ??
-      (await queryClient.fetchInfiniteQuery(query));
-
-    return {
-      categories,
-    };
-  };
+//     return {
+//       categories,
+//     };
+//   };
 
 export const productLoader =
   (queryClient) =>

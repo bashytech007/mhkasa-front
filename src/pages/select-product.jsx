@@ -184,7 +184,7 @@ export const Component = () => {
 
 {/* STYLE THE UI APPROPRAITELY */}
         <div>
-          <Heading>Products You Can Layer With</Heading>
+          <Heading>Products To Can Layer With</Heading>
           {product.layerWith.map((product) => (
             <Product
               id={product._id}

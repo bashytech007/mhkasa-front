@@ -184,14 +184,14 @@ export const Component = () => {
 
 {/* STYLE THE UI APPROPRAITELY */}
         <div>
-          <Heading>Layer With</Heading>
+          <Heading>Products You Can Layer With</Heading>
           {product.layerWith.map((product) => (
             <Product
               id={product._id}
               product={product.name}
               category={product.category}
               originalPrice={product.price}
-              image={product.productImage || product.firstImage}
+              image={product.productImage || product.mainImage}
             />
           ))}
         </div>

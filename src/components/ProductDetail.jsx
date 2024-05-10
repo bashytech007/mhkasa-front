@@ -210,6 +210,12 @@ const LayerWith=()=>{
     <div className="">
 
       <SectionHeader header="ProductsYoulayerWith"/>
+      <div className="flex items-center justify between">
+        <div>
+          the card
+        </div>
+        <ProductCard />
+      </div>
     </div>
     
   )

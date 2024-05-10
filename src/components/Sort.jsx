@@ -23,19 +23,29 @@ export const Sort = ({ onClick, sort }) => {
       display: "None",
     },
     {
-      term: "latest",
+      term: "sort-latest",
       display: " New Arrival",
     },
     {
-      term: "lowestPrice",
+      term: "sort-lowestPrice",
       display: "Price: Low - High",
     },
     {
-      term: "highestPrice",
+      term: "sort-highestPrice",
       display: "Price: High - Low",
     },
-    
-    
+    {
+      term: "filter-unisex",
+      display: "Unisex",
+    },
+    {
+      term: "filter-men",
+      display: "Men",
+    },
+    {
+      term: "filter-women",
+      display: "Women",
+    },
   ];
 
   const onSortClick = (sortBy) => {

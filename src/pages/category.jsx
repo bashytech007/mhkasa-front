@@ -9,35 +9,44 @@ import banner from "../assets/images/banner.png";
 import { Icon } from "@iconify/react";
 import { Sort } from "../components/Sort";
 import { Seo } from "../components/Seo";
-import { useLoaderData, useSearchParams } from "react-router-dom/dist";
+import { useSearchParams } from "react-router-dom/dist";
 import { TopCategories } from "../components/TopCategories";
 
 export const Component = () => {
   const { category } = useParams();
-
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams)
   if (!category) throw new Error("Invalid category");
-  const { categories } = useLoaderData();
   const sortBy = searchParams.get("sort") || "";
- const url=sortBy?`product/category/${sortBy}/${category}`:`product/category/${category}`
+  const filterBy = searchParams.get("filter") || "";
 
+  const url = filterBy
+    ? `product/category/${category}/appeal/${filterBy}`
+    : sortBy
+    ? `product/category/${sortBy}/${category}`
+    : `product/category/${category}`;
 
-  const { fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, status, } =
-    useInfiniteProducts(
-      url,
-      "category",
-      category,
-      sortBy
-    );
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetching,
+    isFetchingNextPage,
+    status,
+  } = useInfiniteProducts(url, "category", category, { sortBy, filterBy });
 
   const onClick = (term) => {
     if (typeof term !== "string") return;
     if (!term) {
-      searchParams.delete("sort");
-      return setSearchParams(searchParams);
+      return setSearchParams({});
     }
-    setSearchParams({ ...searchParams, sort: term });
+    if (term.startsWith("sort")) {
+      searchParams.has("filter") && searchParams.delete("filter");
+      setSearchParams({ ...searchParams, sort: term.split("-")[1] });
+    }
+    if (term.startsWith("filter")) {
+      searchParams.has("sort") && searchParams.delete("sort");
+      setSearchParams({ ...searchParams, filter: term.split("-")[1] });
+    }
   };
 
   return (
@@ -86,7 +95,7 @@ export const Component = () => {
           ) : (
             <>
               <ul className="grid justify-center grid-flow-row grid-cols-2 gap-4 pt-8 auto-rows-fr sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-                {categories.pages.map((group, i) => (
+                {data.pages.map((group, i) => (
                   <Fragment key={i}>
                     {group.products.map((product) => (
                       <li key={product._id}>
@@ -103,11 +112,13 @@ export const Component = () => {
                   </Fragment>
                 ))}
               </ul>
-              <div>
+              <div className="pt-6">
                 <button
                   onClick={() => fetchNextPage()}
                   disabled={isFetchingNextPage}
-                  className={`${!hasNextPage ? "hidden" : ""}`}
+                  className={`${
+                    !hasNextPage ? "hidden" : ""
+                  } text-white bg-app-red py-2 px-6 hover:bg-app-red/70 disabled:bg-app-black/50`}
                 >
                   {isFetchingNextPage ? "Loading more..." : "Load More"}
                 </button>

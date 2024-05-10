@@ -11,7 +11,7 @@ import ErrorPage from "./pages/error-page.jsx";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import {
   LayoutLoader,
-  categoriesLoader,
+  // categoriesLoader,
   homeLoader,
   productLoader,
 } from "./utils/loaders.js";
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
           {
             path: "/categories/:category",
             lazy: () => import("./pages/category"),
-            loader: categoriesLoader(queryClient),
+            // loader: categoriesLoader(queryClient),
           },
         ],
       },

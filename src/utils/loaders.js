@@ -1,3 +1,5 @@
+import ScrollToTop from "../components/ScrollToTop";
+import { ScrollRestoration } from "react-router-dom";
 import {
   fetchProduct,
   fetchProducts,
@@ -113,11 +115,13 @@ export const LayoutLoader = (queryClient) => async () => {
 //   };
 
 export const productLoader =
-  (queryClient) =>
+(queryClient) =>
   async ({ params: { productId } }) => {
+    
     const query = {
       queryKey: ["products", productId],
       queryFn: async () => await fetchProduct(productId),
+      
     };
 
     const product =

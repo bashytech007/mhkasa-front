@@ -18,7 +18,7 @@ export const TopCategories = () => {
   }, []);
 
   return (
-    <section className="py-8">
+    <section className="py-8 hidden md:block">
       <div className="flex items-center justify-between">
         <SectionHeader header="Top Categories" />
 

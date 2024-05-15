@@ -83,7 +83,7 @@ export const Component = () => {
           />
         </div>
         <Wrapper className="py-6">
-          <TopCategories />
+          {/* <TopCategories /> */}
           <div className="flex items-center justify-between py-4">
             <SectionHeader header={category} />
             <Sort onClick={onClick} sort={sortBy} />

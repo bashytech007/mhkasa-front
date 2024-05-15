@@ -7,8 +7,8 @@ export const LatestProducts = () => {
   const { latestProducts } = useLoaderData();
 
   return (
-    <section className="py-8">
-      <SectionHeader header="Latest Products" />
+    <section className="py-8 font-farFetch">
+      <SectionHeader header="New In" />
       <ListGrid>
         {latestProducts.map(
           (

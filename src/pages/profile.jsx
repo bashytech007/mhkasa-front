@@ -22,6 +22,22 @@ export const Component = () => {
   const toggle = () => {
     setEditMode((v) => !v);
   };
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShow(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
 
   const nameMutation = useMutation({
     mutationFn: async (values) => {

@@ -12,6 +12,7 @@ import toast from "react-hot-toast";
 import { format } from "../utils/lib";
 import { Seo } from "../components/Seo";
 import { Product } from "../components/ProductCard";
+import { ListGrid } from "../components/ui/ListGrid";
 
 export const Component = () => {
   const { product } = useLoaderData();
@@ -183,8 +184,8 @@ export const Component = () => {
         <ProductDetail productId={product._id} />
 
 {/* STYLE THE UI APPROPRAITELY */}
-        <div>
           <Heading>Products You Can Layer With</Heading>
+        <ListGrid>
           {product.layerWith.map((product) => (
             <Product
               id={product._id}
@@ -194,7 +195,7 @@ export const Component = () => {
               image={product.productImage || product.mainImage}
             />
           ))}
-        </div>
+        </ListGrid>
       </Wrapper>
     </>
   );

@@ -8,7 +8,7 @@ export const NewArrivals = () => {
 
   return (
     <section className="py-8">
-      <SectionHeader header="Deal of the Day" />
+      <SectionHeader header="Deals" />
 
       <ListGrid>
         {newArrivals.map(

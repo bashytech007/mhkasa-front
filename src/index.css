@@ -1,4 +1,4 @@
-@font-face {
+ /* @font-face {
   font-family: "Monteserrat";
   font-style: normal;
   font-display: swap;
@@ -40,9 +40,9 @@
     url("assets/fonts/Montserrat/static/Montserrat-Bold.ttf") format("woff"),
     url("assets/fonts/Montserrat/static/Montserrat-Bold.ttf") format("truetype"),
     url("assets/fonts/Montserrat/static/Montserrat-Bold.ttf") format("svg");
-}
+} */
 
-@font-face {
+/* @font-face {
   font-family: "Fuzzy Bubbles";
   font-style: normal;
   font-display: swap;
@@ -54,6 +54,30 @@
     url("assets/fonts/Fuzzy_Bubbles/FuzzyBubbles-Bold.ttf") format("woff"),
     url("assets/fonts/Fuzzy_Bubbles/FuzzyBubbles-Bold.ttf") format("truetype"),
     url("assets/fonts/Fuzzy_Bubbles/FuzzyBubbles-Bold.ttf") format("svg");
+  }  */
+@font-face {
+  font-family: 'Farfetch Basis';
+  font-style:normal;
+  font-display: swap;
+  font-weight:700;
+  src:local("Farfetch"),
+  url("../src/fonts/Farfetch.ttf") format('embedded-opentype'),
+  url("../src/fonts/Farfetch.ttf") format('woff2'),
+  url("../src/fonts/Farfetch.ttf") format('woff'),
+  url("../src/fonts/Farfetch.ttf") format('truetype'),
+  url("../src/fonts/Farfetch.ttf") format('svg'),
+}
+@font-face {
+  font-family: 'NimbusSan';
+  font-style:normal;
+  font-display: swap;
+  font-weight:700;
+  src:local("NimbusSan"),
+  url("../src/fonts/NimbusSan.ttf") format('embedded-opentype'),
+  url("../src/fonts/NimbusSan.ttf") format('woff2'),
+  url("../src/fonts/NimbusSan.ttf") format('woff'),
+  url("../src/fonts/NimbusSan.ttf") format('truetype'),
+  url("../src/fonts/NimbusSan.ttf") format('svg'),
 }
 
 @tailwind base;
@@ -115,3 +139,4 @@ input[type="number"] {
   /* background-repeat: no-repeat; */
   /* background-size: cover; */
 }
+

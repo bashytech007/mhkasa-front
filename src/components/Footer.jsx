@@ -9,12 +9,14 @@ export const Footer = () => {
       <Wrapper>
         <div className="grid justify-between gap-y-6 grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 md:grid-cols-12 md:grid-rows-1">
           <div className="flex justify-center sm:col-start-1 sm:col-end-2 sm:row-start-1 sm:row-end-2 md:col-start-1 md:col-end-4 md:row-start-1 md:row-end-2 md:justify-start">
-            <Logo stack="vertical" size="lg" />
+           <div className="text-white">
+           <Logo stack="vertical" size="lg" className="text-white" />
+           </div>
           </div>
 
           <div className="flex flex-col sm:text-right sm:col-start-2 sm:col-end-3 sm:row-start-1 sm:row-end-3 md:col-start-4 md:col-end-7 md:row-start-1 md:row-end-2">
             <h2 className="text-lg font-bold text-white text-center md:text-right">
-              Important Links
+              Explore Mhkasa
             </h2>
             <ul className="text-app-ash-2 mt-4 text-center md:text-right">
               <li>

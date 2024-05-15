@@ -1,47 +1,46 @@
 import { Logo } from "./ui/Logo";
 import { Wrapper } from "./ui/Wrapper";
-import { User } from "./User";
+import User from "../components/User"
 import { Icon } from "@iconify/react";
-import { useState } from "react";
+import { useState ,useRef,useEffect} from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useCartQuery } from "../hooks/query/useCart";
 import { useCategory } from "../hooks/query/useCategory";
 // import { getCategories } from "../utils/queryFunctions";
 import { CategoryPanel } from "../components/CategoryPanel";
+import { useCategoryContext } from "./CategoryContext";
+
 const Navbar = () => {
-  
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const [expand, setExpand] = useState(false);
+  const { toggleCategoryPanel } = useCategoryContext();
   const toggle = () => {
     setExpand((v) => !v);
   };
-  const categories=useCategory({
-    
-  })
 
   const onSubmit = (e) => {
     e.preventDefault();
     const value = e.target?.search?.value;
     if (!value) return;
-    navigate(`/search?s=${value}`)
+    navigate(`/search?s=${value}`);
   };
 
   return (
     <Wrapper className="py-4">
-      <nav className="relative flex items-center justify-between gap-x-8 pb-[56px] md:pb-0">
+      <nav className="relative flex items-center justify-between gap-x-8 pb-[56px] md:pb-0 font-farFetch">
         <div className="flex items-center gap-2">
           <button onClick={toggle} className="md:hidden">
             <Icon icon="charm:menu-hamburger" style={{ fontSize: 36 }} />
-        </button>
-          <div className="sm:hidden md:block">
+          </button>
+          <button onClick={toggleCategoryPanel} className="md:block hidden">
+            <Icon icon="charm:menu-hamburger" style={{ fontSize: 36 }} />
+          </button>
+          <div className="sm:hidden md:block text-red-700">
             <Logo />
           </div>
         </div>
 
-        <form
-          className="absolute bottom-0 w-full group md:relative md:w-fit"
-          onSubmit={onSubmit}
-        >
+        <form className="absolute bottom-0 w-full group md:relative md:w-fit" onSubmit={onSubmit}>
           <input
             id="search"
             type="text"
@@ -56,18 +55,17 @@ const Navbar = () => {
             <Icon icon="mynaui:search" style={{ fontSize: 28 }} />
           </button>
         </form>
-         <CategoryPanel/>
+        {/* <CategoryPanel /> */}
 
         <div className="flex items-center justify-between gap-2 sm:gap-4">
           <CartButton />
-          <User />
+            <User  />
         </div>
       </nav>
       {expand && <MobileNavbar toggle={toggle} />}
     </Wrapper>
   );
 };
-
 export default Navbar;
 
 const MobileNavbar = ({ toggle }) => {
@@ -128,3 +126,5 @@ const CartButton = () => {
     </Link>
   );
 };
+
+

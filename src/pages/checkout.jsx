@@ -223,7 +223,7 @@ const PaymentMethod = ({ className, setProvider, provider }) => {
             Online
           </button>
         </div>
-        <div className="inline-flex items-center gap-2">
+        {/* <div className="inline-flex items-center gap-2">
           <div
             className={`relative w-5 h-5 rounded-full border-[2px] border-current before:inset-[1px] before:rounded-full before:absolute ${
               paymentMethod === "payOnDelivery"
@@ -237,7 +237,7 @@ const PaymentMethod = ({ className, setProvider, provider }) => {
           >
             Pay On Delivery
           </button>
-        </div>
+        </div> */}
       </div>
 
       {paymentMethod === "online" ? (
@@ -269,14 +269,7 @@ const PaymentMethod = ({ className, setProvider, provider }) => {
             </button>
           </div>
         </div>
-      ) : paymentMethod === "payOnDelivery" ? (
-        <div className="py-2 grid gap-4">
-          <p>
-            Pay on Delivery not available for now, please use online payment
-            option
-          </p>
-        </div>
-      ) : null}
+      ) :  null}
     </div>
   );
 };

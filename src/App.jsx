@@ -158,10 +158,10 @@ const router = createBrowserRouter([
 ]);
 
 export const App = () => (
-  <ScrollToTop>
   
+  <CategoryProvider>
     <RouterProvider router={router}/>
-      
+    </CategoryProvider>
     
-  </ScrollToTop>
+  
 );

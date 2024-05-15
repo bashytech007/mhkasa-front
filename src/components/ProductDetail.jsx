@@ -11,6 +11,7 @@ import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useSearchParams } from "react-router-dom";
 import { SectionHeader } from "./ui/SectionHeader";
+import { CategoryPanel } from "./CategoryPanel";
 
 export const ProductDetail = ({ productId }) => {
   const { getUserId } = useAuth();
@@ -87,6 +88,7 @@ export const ProductDetail = ({ productId }) => {
 
   return (
     <div className="bg-white px-6 py-4 rounded-3xl mb-6">
+      <CategoryPanel/>
       <div className="grid grid-cols-2 border-b-2 md:grid-cols-4">
         <button
           className={`-mb-[2px] pb-4 ${

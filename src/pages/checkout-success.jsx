@@ -80,7 +80,7 @@ export const Component = () => {
             <p className="mx-auto max-w-lg text-center">
               You have successfully placed your order, you can track your order
               status
-              <Link to="/account/order-history" className="text-app-red">
+              <Link to="/account/order-history" className="text-app-red px-2">
                 here
               </Link>
               , below are related products that go with what you just purchased.

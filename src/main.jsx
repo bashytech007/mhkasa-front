@@ -130,19 +130,19 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
    
+          <CategoryProvider>
     <HelmetProvider>
     
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
         <Auth>
           <Cart>
-          <CategoryProvider>
             <RouterProvider router={router} />
-            </CategoryProvider>
           </Cart>
         </Auth>
       </QueryClientProvider>
     
     </HelmetProvider>
+            </CategoryProvider>
   </React.StrictMode>
 );

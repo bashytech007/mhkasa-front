@@ -64,7 +64,7 @@ export const Component = () => {
         <Heading>Register</Heading>
         <p className="text-[#666666] py-4 text-center">
           Create Your account, Already have an account?
-          <Link to="/login" className="text-app-black ml-2">
+          <Link to="/login" className="text-app-black ml-2 underline">
             Login Here
           </Link>
         </p>

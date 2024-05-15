@@ -89,10 +89,10 @@ export const Component = () => {
         ) : verification === "failed" ? (
           <Error>
             <h2 className="mt-6 text-xl font-bold">Failed</h2>
-            <p className="mx-auto max-w-lg text-center">
+            <p className="mx-auto max-w-lg text-center ">
               Sorry, your transaction failed. Please check that you have not
               been debited and contact your bank. Click
-              <Link to="/" className="text-app-red">
+              <Link to="/" className="text-app-red px-2">
                 here
               </Link>
               to return to home.

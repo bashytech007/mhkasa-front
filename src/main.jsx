@@ -17,7 +17,7 @@ import {
   homeLoader,
   productLoader,
 } from "./utils/loaders.js";
-import ScrollToTop from "./components/ScrollToTop.jsx";
+
 
 
 const queryClient = new QueryClient();
@@ -102,6 +102,24 @@ const router = createBrowserRouter(
           {
             path: "/register",
             lazy: () => import("./pages/register"),
+          },
+          {
+            path: "/about",
+            async lazy (){
+
+              let {About}= await import("./pages/about");
+              return{Component:About};
+            } 
+
+          },
+          {
+            path: "/privacy",
+            async lazy (){
+
+              let {Privacy}= await import("./pages/privacy");
+              return{Component:Privacy};
+            } 
+
           },
           {
             path: "/forgot-password",

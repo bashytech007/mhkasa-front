@@ -5,8 +5,8 @@ export default {
   theme: {
     fontFamily: {
       monteserrat: ["Monteserrat", "sans-serif"],
-      Farfetch:["Farfetch Basis","sans-serif"]
-      // fuzzy: ["Fuzzy Bubbles", "sans-serif"],
+      Farfetch:["Farfetch Basis","sans-serif"],
+      fuzzy: ["Fuzzy Bubbles", "sans-serif"],
     },
     extend: {
       colors: {

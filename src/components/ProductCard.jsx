@@ -1,6 +1,6 @@
+import { cn } from "../utils/cn";
 import { Button } from "./ui/Button";
 import { Link } from "react-router-dom";
-
 
 export const Product = ({
   product,
@@ -9,16 +9,20 @@ export const Product = ({
   discountedPrice,
   image,
   id,
+  className,
 }) => {
-
   return (
-    <div className="bg-white rounded-2xl overflow-hidden h-full @container">
+    <div
+      className={cn(
+        "bg-white rounded-2xl overflow-hidden h-full @container",
+        className
+      )}
+    >
       <div className="w-full aspect-[1.25] relative">
         <img
           src={image}
           alt=""
           className="h-full w-full absolute object-cover "
-          
         />
       </div>
 
@@ -34,7 +38,7 @@ export const Product = ({
             {discountedPrice ? (
               <div className="flex items-center gap-3">
                 <p className="line-through text-app-ash-1 text-xs">
-                ₦{originalPrice}
+                  ₦{originalPrice}
                 </p>
                 <p>₦{discountedPrice}</p>
               </div>

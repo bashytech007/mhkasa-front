@@ -9,7 +9,7 @@ import { Seo } from "../components/Seo";
 import { Sales } from "../components/Sales";
 import { NewArrivals } from "../components/NewArrivals";
 import { BestSellers } from "../components/BestSellers";
-import { CategoryPanel } from "../components/CategoryPanel";
+// import { CategoryPanel } from "../components/CategoryPanel";
 
 export const Component = () => {
   return (
@@ -17,20 +17,16 @@ export const Component = () => {
       <Seo title="Mkhasa | Home" type="webapp" name="" />
       <Wrapper>
         <div className="flex flex-col gap-8 py-2 ">
-          {/* <CategoryPanel fixedHeight /> */}
-          <CategoryPanel/>
           <SwiperElem />
         </div>
-        <BestSellers/>
+        <BestSellers />
         <LatestProducts />
         <Sales />
-        <NewArrivals/>
+        <NewArrivals />
         {/* <FeaturedProducts /> */}
         <TopCategories />
       </Wrapper>
-      <div className="pt-6">
-        {/* <Features /> */}
-      </div>
+      <div className="pt-6">{/* <Features /> */}</div>
     </main>
   );
 };

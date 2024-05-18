@@ -1,19 +1,16 @@
 import { Logo } from "./ui/Logo";
 import { Wrapper } from "./ui/Wrapper";
-import User from "../components/User"
+import User from "../components/User";
 import { Icon } from "@iconify/react";
-import { useState ,useRef,useEffect} from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useCartQuery } from "../hooks/query/useCart";
 import { useCategory } from "../hooks/query/useCategory";
 // import { getCategories } from "../utils/queryFunctions";
-import { CategoryPanel } from "../components/CategoryPanel";
-import { useCategoryContext } from "./CategoryContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [expand, setExpand] = useState(false);
-  const { toggleCategoryPanel } = useCategoryContext();
   const toggle = () => {
     setExpand((v) => !v);
   };
@@ -26,21 +23,25 @@ const Navbar = () => {
   };
 
   return (
-    <Wrapper className="py-4">
+    <Wrapper className="py-4 relative">
       <nav className="relative flex items-center justify-between gap-x-8 pb-[56px] md:pb-0 font-farFetch">
         <div className="flex items-center gap-2">
-          <button onClick={toggle} className="md:hidden">
-            <Icon icon="charm:menu-hamburger" style={{ fontSize: 36 }} />
-          </button>
-          <button onClick={toggleCategoryPanel} className="md:block hidden">
-            <Icon icon="charm:menu-hamburger" style={{ fontSize: 36 }} />
+          <button onClick={toggle}>
+            {expand ? (
+              <Icon icon="uil:times" style={{ fontSize: 36 }} />
+            ) : (
+              <Icon icon="charm:menu-hamburger" style={{ fontSize: 36 }} />
+            )}
           </button>
           <div className="sm:hidden md:block text-red-700">
             <Logo />
           </div>
         </div>
 
-        <form className="absolute bottom-0 w-full group md:relative md:w-fit" onSubmit={onSubmit}>
+        <form
+          className="absolute bottom-0 w-full group md:relative md:w-fit"
+          onSubmit={onSubmit}
+        >
           <input
             id="search"
             type="text"
@@ -55,14 +56,13 @@ const Navbar = () => {
             <Icon icon="mynaui:search" style={{ fontSize: 28 }} />
           </button>
         </form>
-        {/* <CategoryPanel /> */}
-
         <div className="flex items-center justify-between gap-2 sm:gap-4">
           <CartButton />
-            <User  />
+          <User />
         </div>
       </nav>
       {expand && <MobileNavbar toggle={toggle} />}
+      {expand && <DesktopNav toggle={toggle} />}
     </Wrapper>
   );
 };
@@ -113,6 +113,35 @@ const MobileNavbar = ({ toggle }) => {
   );
 };
 
+const DesktopNav = ({ toggle }) => {
+  const { categories, status } = useCategory();
+  return (
+    <div className="z-50 rounded bg-white top-[calc(100%+.5rem)] left-0 absolute px-12 hidden md:block">
+      <nav>
+        {status === "pending" ? (
+          "Loading..."
+        ) : status === "error" ? (
+          `An error has occurred`
+        ) : (
+          <ul>
+            {categories.map(({ name }, index) => (
+              <li key={index}>
+                <Link
+                  to={`/categories/${encodeURIComponent(name)}`}
+                  className="flex items-center gap-3 py-3 hover:text-app-red"
+                  onClick={toggle}
+                >
+                  {name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+      </nav>
+    </div>
+  );
+};
+
 const CartButton = () => {
   const { data, status } = useCartQuery();
   return (
@@ -126,5 +155,3 @@ const CartButton = () => {
     </Link>
   );
 };
-
-

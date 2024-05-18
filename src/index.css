@@ -42,7 +42,7 @@
     url("assets/fonts/Montserrat/static/Montserrat-Bold.ttf") format("svg");
 } */
 
-/* @font-face {
+ @font-face {
   font-family: "Fuzzy Bubbles";
   font-style: normal;
   font-display: swap;
@@ -54,7 +54,7 @@
     url("assets/fonts/Fuzzy_Bubbles/FuzzyBubbles-Bold.ttf") format("woff"),
     url("assets/fonts/Fuzzy_Bubbles/FuzzyBubbles-Bold.ttf") format("truetype"),
     url("assets/fonts/Fuzzy_Bubbles/FuzzyBubbles-Bold.ttf") format("svg");
-  }  */
+  }  
 @font-face {
   font-family: 'Farfetch Basis';
   font-style:normal;

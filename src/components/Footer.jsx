@@ -8,20 +8,20 @@ export const Footer = () => {
     <footer className="bg-black py-6 mt-auto">
       <Wrapper>
         <div className="grid justify-between gap-y-6 grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 md:grid-cols-12 md:grid-rows-1">
-          <div className="flex justify-center sm:col-start-1 sm:col-end-2 sm:row-start-1 sm:row-end-2 md:col-start-1 md:col-end-4 md:row-start-1 md:row-end-2 md:justify-start">
-           <div className="text-white">
-           <Logo stack="vertical" size="lg" className="text-white" />
-           </div>
+          <div className="flex justify-start sm:col-start-1 sm:col-end-2 sm:row-start-1 sm:row-end-2 md:col-start-1 md:col-end-4 md:row-start-1 md:row-end-2">
+            <div className="text-white">
+              <Logo stack="vertical" size="lg" className="text-white font-fuzzy" />
+            </div>
           </div>
 
           <div className="flex flex-col sm:text-right sm:col-start-2 sm:col-end-3 sm:row-start-1 sm:row-end-3 md:col-start-4 md:col-end-7 md:row-start-1 md:row-end-2">
-            <h2 className="text-lg font-bold text-white text-center md:text-right">
+            <h2 className="text-lg font-bold text-white text-left md:text-right">
               Explore Mhkasa
             </h2>
-            <ul className="text-app-ash-2 mt-4 text-center md:text-right">
+            <ul className="text-app-ash-2 mt-4 text-left md:text-right">
               <li>
                 <Link
-                  to="/"
+                  to="/about"
                   className="w-full py-2 inline-block hover:text-app-red"
                 >
                   About Us
@@ -32,12 +32,12 @@ export const Footer = () => {
                   to="/"
                   className="w-full py-2 inline-block hover:text-app-red"
                 >
-                  Contact US
+                  Contact Us
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/"
+                  to="/privacy"
                   className="w-full py-2 inline-block hover:text-app-red"
                 >
                   Privacy Policy
@@ -52,22 +52,21 @@ export const Footer = () => {
                 </Link>
               </li>
               <li>
-                {" "}
                 <Link
                   to="/"
                   className="w-full py-2 inline-block hover:text-app-red"
                 >
-                  Terms of service
+                  Terms of Service
                 </Link>
               </li>
             </ul>
           </div>
 
           <div className="sm:col-start-1 sm:col-end-2 sm:row-start-2 sm:row-end-3 md:col-start-10 md:col-end-13 md:row-start-1 md:row-end-1 md:text-right">
-            <h2 className="text-lg font-bold text-white text-center md:text-left">
+            <h2 className="text-lg font-bold text-white text-left md:text-left">
               Socials
             </h2>
-            <ul className="flex text-app-ash-2 justify-center gap-3 mt-4 md:justify-start">
+            <ul className="flex text-app-ash-2 justify-start gap-3 mt-4 md:justify-start">
               <li>
                 <Link
                   to="/"
@@ -94,7 +93,7 @@ export const Footer = () => {
                 <Link
                   to="/"
                   className="p-1 inline-block hover:scale-105"
-                  aria-label="link to Mkhasa meta (formaerly known as facebook) page"
+                  aria-label="link to Mkhasa meta (formerly known as facebook) page"
                 >
                   <Icon
                     icon="lucide:facebook"
@@ -119,8 +118,8 @@ export const Footer = () => {
             </ul>
           </div>
         </div>
-        <p className="text-app-ash-2 text-sm text-center pt-10 sm:text-right">
-          &copy; {new Date().getFullYear()} All Rights reserved
+        <p className="text-app-ash-2 text-sm text-left pt-10 sm:text-right">
+          &copy; {new Date().getFullYear()} All Rights Reserved
         </p>
       </Wrapper>
     </footer>

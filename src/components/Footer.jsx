@@ -1,24 +1,25 @@
-import { Link } from "react-router-dom";
-import { Logo } from "./ui/Logo";
-import { Wrapper } from "./ui/Wrapper";
-import { Icon } from "@iconify/react";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Logo } from './ui/Logo';
+import { Wrapper } from './ui/Wrapper';
+import { Icon } from '@iconify/react';
 
 export const Footer = () => {
   return (
     <footer className="bg-black py-6 mt-auto">
       <Wrapper>
-        <div className="grid justify-between gap-y-6 grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 md:grid-cols-12 md:grid-rows-1">
-          <div className="flex justify-start sm:col-start-1 sm:col-end-2 sm:row-start-1 sm:row-end-2 md:col-start-1 md:col-end-4 md:row-start-1 md:row-end-2">
+        <div className="grid gap-y-6 grid-cols-1 md:grid-cols-12 items-start">
+          <div className="flex justify-start md:col-span-3">
             <div className="text-white">
               <Logo stack="vertical" size="lg" className="text-white font-fuzzy" />
             </div>
           </div>
 
-          <div className="flex flex-col sm:text-right sm:col-start-2 sm:col-end-3 sm:row-start-1 sm:row-end-3 md:col-start-4 md:col-end-7 md:row-start-1 md:row-end-2">
-            <h2 className="text-lg font-bold text-white text-left md:text-right">
-              Explore Mhkasa
+          <div className="md:col-span-3">
+            <h2 className="text-lg font-bold text-white text-left">
+              Explore Mkhasa
             </h2>
-            <ul className="text-app-ash-2 mt-4 text-left md:text-right">
+            <ul className="text-app-ash-2 mt-4 text-left">
               <li>
                 <Link
                   to="/about"
@@ -62,11 +63,26 @@ export const Footer = () => {
             </ul>
           </div>
 
-          <div className="sm:col-start-1 sm:col-end-2 sm:row-start-2 sm:row-end-3 md:col-start-10 md:col-end-13 md:row-start-1 md:row-end-1 md:text-right">
-            <h2 className="text-lg font-bold text-white text-left md:text-left">
+          <div className="md:col-span-3">
+            <h2 className="text-lg font-bold text-white text-left">
+              CONTACT US
+            </h2>
+            <div className="text-app-ash-2 mt-4 text-left">
+              <p>House 92, Dele Orisabiyi Street Okota Lagos State</p>
+              <p>Call Us: 09013898261</p>
+              <p>Email: info@mkhasa.com</p>
+              <h3 className="text-lg font-bold text-white mt-4">Support/Sales Team</h3>
+              <p>Call Us: 09131451391</p>
+              <p>Email: sales@mkhasa.com</p>
+              <p>Email: support@mkhasa.com</p>
+            </div>
+          </div>
+
+          <div className="md:col-span-3">
+            <h2 className="text-lg font-bold text-white text-left md:text-right">
               Socials
             </h2>
-            <ul className="flex text-app-ash-2 justify-start gap-3 mt-4 md:justify-start">
+            <ul className="flex text-app-ash-2 justify-start gap-3 mt-4 md:justify-end">
               <li>
                 <Link
                   to="/"

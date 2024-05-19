@@ -17,7 +17,7 @@ export const BestSellers = () => {
     setElement(ref.current);
   }, []);
   return (
-    <section className="py-8 hidden md:block">
+    <section className="py-8 md:block">
       <div className="flex items-center justify-between">
         <SectionHeader header="Best Sellers" />
 

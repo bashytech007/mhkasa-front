@@ -13,11 +13,11 @@ export default function useLongPress() {
       isLongPress.current = true;
       scrollRef.current = setInterval(() => {
         if (direction === "forward") {
-          handleHorizantalScroll(element, 20);
+          handleHorizantalScroll(element, 180);  // Increased increment
         } else {
-          handleHorizantalScroll(element, -20);
+          handleHorizantalScroll(element, -180);  // Increased increment
         }
-      }, 10);
+      }, 5);  // Reduced interval timing
     }, 500);
   }
 
@@ -26,11 +26,11 @@ export default function useLongPress() {
       clearInterval(scrollRef.current);
       return;
     }
-    // move elenent by 100px
+    // move element by 100px
     if (direction === "forward") {
-      handleHorizantalScroll(element, 30);
+      handleHorizantalScroll(element, 100);  // Increased increment
     } else {
-      handleHorizantalScroll(element, -30);
+      handleHorizantalScroll(element, -100);  // Increased increment
     }
   }
 
@@ -44,7 +44,7 @@ export default function useLongPress() {
 
   function handleOnMouseUp() {
     if (isLongPress.current) {
-      //   terminate scroll
+      // terminate scroll
       clearInterval(scrollRef.current);
       return;
     }
@@ -53,7 +53,7 @@ export default function useLongPress() {
 
   function handleOnTouchEnd() {
     if (isLongPress.current) {
-      //   terminate scroll
+      // terminate scroll
       clearInterval(scrollRef.current);
       return;
     }
@@ -78,9 +78,12 @@ export default function useLongPress() {
       onTouchCancel: handleOnTouchCancel,
     };
   };
-
+function className(){
+  return `${className}`
+}
   return {
     getHandlers,
     setElement,
+    className,
   };
 }

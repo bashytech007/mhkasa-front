@@ -10,7 +10,7 @@ export const Footer = () => {
       <Wrapper>
         <div className="grid gap-y-6 grid-cols-1 md:grid-cols-12 items-start">
           <div className="flex justify-start md:col-span-3">
-            <div className="text-white">
+            <div className="text-white font-fuzzy">
               <Logo stack="vertical" size="lg" className="text-white font-fuzzy" />
             </div>
           </div>
@@ -30,10 +30,10 @@ export const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/"
+                  to="/delivery"
                   className="w-full py-2 inline-block hover:text-app-red"
                 >
-                  Contact Us
+                  Delivery 
                 </Link>
               </li>
               <li>
@@ -85,7 +85,8 @@ export const Footer = () => {
             <ul className="flex text-app-ash-2 justify-start gap-3 mt-4 md:justify-end">
               <li>
                 <Link
-                  to="/"
+                  to="https://www.instagram.com/_perkfragrances?igsh=YzljYTk1ODg3Zg=="
+                  target='_blank'
                   className="p-1 inline-block hover:scale-105 hover:text-app-red"
                   aria-label="link to Mkhasa instagram page"
                 >
@@ -94,7 +95,8 @@ export const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/"
+                  to="https://twitter.com/Mkhasa_"
+                  target="_blank"
                   className="p-1 inline-block hover:scale-105"
                   aria-label="link to Mkhasa X (formerly known as twitter) page"
                 >

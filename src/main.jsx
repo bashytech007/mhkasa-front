@@ -122,6 +122,15 @@ const router = createBrowserRouter(
 
           },
           {
+            path: "/delivery",
+            async lazy (){
+
+              let {Delivery}= await import("./pages/delivery");
+              return{Component:Delivery};
+            } 
+
+          },
+          {
             path: "/forgot-password",
             async lazy() {
               let { ForgotPassword } = await import("./pages/forgot-password");

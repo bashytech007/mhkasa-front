@@ -33,7 +33,7 @@ const Navbar = () => {
               <Icon icon="charm:menu-hamburger" style={{ fontSize: 36 }} />
             )}
           </button>
-          <div className="sm:hidden md:block text-red-700">
+          <div className="sm:hidden md:block text-red-700 font-fuzzy">
             <Logo />
           </div>
         </div>

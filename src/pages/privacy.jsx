@@ -2,8 +2,8 @@ import React from 'react';
 
 export const Privacy = () => {
   return (
-    <div className="bg-gray-50 py-10 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
+    <div className="bg-gray-50 py-10 px-4 sm:px-6 lg:px-8 font-Farfetch">
+      <div className="max-w-4xl mx-auto ">
         <h1 className="text-3xl font-extrabold text-gray-900 text-center mb-6">Privacy Policy</h1>
         <p className="text-lg text-gray-700 mb-4">
           Mkhasa Technologies Limited (“Mkhasa”) knows that you care how information about you is used and shared, and we appreciate your trust that we will do so carefully and sensibly. This notice describes our privacy policy. By visiting Mkhasa.com, you are accepting the practices described in this Privacy Notice.

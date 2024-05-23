@@ -183,8 +183,8 @@ export const Component = () => {
 
         <ProductDetail productId={product._id} />
 
-{/* STYLE THE UI APPROPRAITELY */}
-          <Heading>Products You Can Layer With</Heading>
+        {/* STYLE THE UI APPROPRAITELY */}
+        <Heading>Products You Can Layer With</Heading>
         <ListGrid>
           {product.layerWith.map((product) => (
             <Product

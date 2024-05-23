@@ -4,8 +4,8 @@ import logoImg from "../../assets/images/logo.webp";
 export const Logo = ({
   stack = "horizontal",
   textColor = "red",
-  textFooterColor="white",
-  backGroundColor="black",
+  textFooterColor = "white",
+  backGroundColor = "black",
   size = "md",
 }) => {
   return (
@@ -18,13 +18,15 @@ export const Logo = ({
         <img
           src={logoImg}
           alt=""
-          className={`aspect-[40/37] hidden ${
+          className={`aspect-[40/37] ${
             size === "sm" ? "w-12" : size === "lg" ? "w-20" : "w-14"
-          } sm:block`}
+          }`}
         />
         <p
           className={`font-Fa font-bold tracking-tighter  ${
-            backGroundColor==="black"? textFooterColor === "white":textColor==="red"
+            backGroundColor === "black"
+              ? textFooterColor === "white"
+              : textColor === "red"
           } ${
             size === "sm" ? "text-md" : size === "lg" ? "text-4xl" : "text-xl"
           } sm:mt-2`}

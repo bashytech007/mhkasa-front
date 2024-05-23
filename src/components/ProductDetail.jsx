@@ -12,6 +12,12 @@ import toast from "react-hot-toast";
 import { useSearchParams } from "react-router-dom";
 import { SectionHeader } from "./ui/SectionHeader";
 import { CategoryPanel } from "./CategoryPanel";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./ui/ToolTip";
 
 export const ProductDetail = ({ productId }) => {
   const { getUserId } = useAuth();
@@ -88,7 +94,7 @@ export const ProductDetail = ({ productId }) => {
 
   return (
     <div className="bg-white px-6 py-4 rounded-3xl mb-6">
-      <CategoryPanel/>
+      <CategoryPanel />
       <div className="grid grid-cols-2 border-b-2 md:grid-cols-4">
         <button
           className={`-mb-[2px] pb-4 ${
@@ -107,7 +113,6 @@ export const ProductDetail = ({ productId }) => {
           Reviews
         </button>
       </div>
-
 
       <div className="grid gap-6 pt-5 md:grid-cols-2">
         {tab === "description" ? (
@@ -130,8 +135,17 @@ export const ProductDetail = ({ productId }) => {
 
         {getUserId() ? (
           <div>
-            <p>Your Rating</p>
-            <Rating rating={rating} onClick={onClick} />
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <p>Your Rating</p>
+                  <Rating rating={rating} onClick={onClick} />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Select your rating for this product</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
             <form onSubmit={formik.handleSubmit} className="grid gap-4">
               <div className="grid gap-4 grid-cols-2">
                 <Input
@@ -159,13 +173,23 @@ export const ProductDetail = ({ productId }) => {
                   <p className="text-app-red"> {formik.errors["review"]}</p>
                 )}
               </div>
-              <Button
-                type="submit"
-                className="bg-app-black text-white font-medium w-fit hover:bg-black disabled:bg-[#999999] hover:disabled:bg-[#999999]"
-                disabled={!canSubmit}
-              >
-                Submit Review
-              </Button>
+
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger className="w-fit">
+                    <Button
+                      type="submit"
+                      className="bg-app-black text-white font-medium w-fit hover:bg-black disabled:bg-[#999999] hover:disabled:bg-[#999999]"
+                      disabled={!canSubmit}
+                    >
+                      Submit Review
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent className={rating > 0 ? "hidden" : ""}>
+                    <p>You must select rating to proceed</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </form>
           </div>
         ) : (
@@ -207,18 +231,14 @@ const Rating = ({ rating = 0, onClick = () => {} }) => {
     </div>
   );
 };
-const LayerWith=()=>{
-  return(
+const LayerWith = () => {
+  return (
     <div className="">
-
-      <SectionHeader header="ProductsYoulayerWith"/>
+      <SectionHeader header="ProductsYoulayerWith" />
       <div className="flex items-center justify between">
-        <div>
-          the card
-        </div>
+        <div>the card</div>
         <ProductCard />
       </div>
     </div>
-    
-  )
-}
+  );
+};

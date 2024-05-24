@@ -8,14 +8,15 @@ export const Footer = () => {
   return (
     <footer className="bg-black py-6 mt-auto">
       <Wrapper>
-        <div className="grid gap-y-6 grid-cols-1 md:grid-cols-12 items-start">
-          <div className="flex justify-start md:col-span-3">
-            <div className="text-white font-fuzzy">
-              <Logo stack="vertical" size="lg" className="text-white font-fuzzy" />
+        <div className="grid gap-y-5 grid-cols-1 md:grid-cols-12 items-start">
+        <div className="hidden md:flex justify-start md:col-span-3">
+            <div className="sm:block text-white font-fuzzy">
+              <Logo stack="hidden" size="lg" className="font-fuzzy" />
             </div>
           </div>
 
-          <div className="md:col-span-3">
+
+          <div className="md:col-span-3 font-Farfetch">
             <h2 className="text-lg font-bold text-white text-left">
               Explore Mkhasa
             </h2>
@@ -63,7 +64,7 @@ export const Footer = () => {
             </ul>
           </div>
 
-          <div className="md:col-span-3">
+          <div className="md:col-span-3 font-Farfetch">
             <h2 className="text-lg font-bold text-white text-left">
               CONTACT US
             </h2>
@@ -78,7 +79,7 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className="md:col-span-3">
+          <div className="md:col-span-3 font-Farfetch">
             <h2 className="text-lg font-bold text-white text-left md:text-right">
               Socials
             </h2>
@@ -136,7 +137,12 @@ export const Footer = () => {
             </ul>
           </div>
         </div>
-        <p className="text-app-ash-2 text-sm text-left pt-10 sm:text-right">
+        <div className="md:hidden flex mt-3 justify-start md:col-span-3 ">
+            <div className="sm:block text-white font-fuzzy">
+              <Logo stack="hidden" size="lg" className="font-fuzzy" />
+            </div>
+          </div>
+        <p className="text-app-ash-2 text-sm text-left pt-10 sm:text-right md:text-center font-Farfetch">
           &copy; {new Date().getFullYear()} All Rights Reserved
         </p>
       </Wrapper>

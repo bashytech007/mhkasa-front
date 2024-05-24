@@ -139,7 +139,7 @@ export const Footer = () => {
         </div>
         <div className="md:hidden flex mt-3 justify-start md:col-span-3 ">
             <div className="sm:block text-white font-fuzzy">
-              <Logo stack="hidden" size="lg" className="font-fuzzy" />
+              <Logo stack="horizontal" size="lg" className="font-fuzzy" />
             </div>
           </div>
         <p className="text-app-ash-2 text-sm text-left pt-10 sm:text-right md:text-center font-Farfetch">

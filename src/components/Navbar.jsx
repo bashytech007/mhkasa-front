@@ -124,8 +124,8 @@ const DesktopNav = ({ toggle }) => {
           `An error has occurred`
         ) : (
           <ul>
-            {categories.map(({ name }, index) => (
-              <li key={index}>
+            {categories.map(({ name }) => (
+              <li key={name.id}>
                 <Link
                   to={`/categories/${encodeURIComponent(name)}`}
                   className="flex items-center gap-3 py-3 hover:text-app-red"

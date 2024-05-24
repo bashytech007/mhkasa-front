@@ -8,8 +8,8 @@ export const Footer = () => {
   return (
     <footer className="bg-black py-6 mt-auto">
       <Wrapper>
-        <div className="grid gap-y-6 grid-cols-1 md:grid-cols-12 items-start">
-        <div className="hidden  justify-start md:col-span-3">
+        <div className="grid gap-y-5 grid-cols-1 md:grid-cols-12 items-start">
+        <div className="hidden md:flex justify-start md:col-span-3">
             <div className="sm:block text-white font-fuzzy">
               <Logo stack="hidden" size="lg" className="font-fuzzy" />
             </div>
@@ -137,7 +137,7 @@ export const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="md:hidden flex justify-start md:col-span-3 ">
+        <div className="md:hidden flex mt-3 justify-start md:col-span-3 ">
             <div className="sm:block text-white font-fuzzy">
               <Logo stack="hidden" size="lg" className="font-fuzzy" />
             </div>

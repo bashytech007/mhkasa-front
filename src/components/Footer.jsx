@@ -79,14 +79,14 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className="md:col-span-3 font-Farfetch">
-            <h2 className="text-lg font-bold text-white text-left md:text-right">
+          <div className="md:col-span-3 font-Farfetch 0">
+            <h2 className="text-lg font-bold text-white text-left md:pr-20 md:text-right">
               Socials
             </h2>
             <ul className="flex text-app-ash-2 justify-start gap-3 mt-4 md:justify-end">
               <li>
                 <Link
-                  to="https://www.instagram.com/_perkfragrances?igsh=YzljYTk1ODg3Zg=="
+                  to="https://www.instagram.com/_mkhasa_"
                   target='_blank'
                   className="p-1 inline-block hover:scale-105 hover:text-app-red"
                   aria-label="link to Mkhasa instagram page"
@@ -110,7 +110,8 @@ export const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/"
+                  to="https://www.facebook.com/profile.php?id=61559801264240&mibextid=ZbWKwL"
+                  target="_blank"
                   className="p-1 inline-block hover:scale-105"
                   aria-label="link to Mkhasa meta (formerly known as facebook) page"
                 >
@@ -134,12 +135,26 @@ export const Footer = () => {
                   />
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="https://www.tiktok.com/@_mkhasa_?_t=8mdu7onNLSH&_r=1"
+                  target="_blank"
+                  className="p-1 inline-block hover:scale-105"
+                  aria-label="link to Mkhasa tiktok page"
+                >
+                  <Icon
+                  icon="ant-design:tik-tok-outlined"
+                    style={{ fontSize: 32 }}
+                    className="hover:text-app-red "
+                  />
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
         <div className="md:hidden flex mt-3 justify-start md:col-span-3 ">
             <div className="sm:block text-white font-fuzzy">
-              <Logo stack="hidden" size="lg" className="font-fuzzy" />
+              <Logo backGroundColor="black" />
             </div>
           </div>
         <p className="text-app-ash-2 text-sm text-left pt-10 sm:text-right md:text-center font-Farfetch">

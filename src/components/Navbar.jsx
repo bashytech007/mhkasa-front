@@ -78,7 +78,7 @@ const MobileNavbar = ({ toggle }) => {
   const { categories, status } = useCategory();
 
   return (
-    <div className="fixed top-0 bottom-0 left-0 right-0 z-50 overflow-y-scroll bg-white ">
+    <div className="fixed top-0 bottom-0 left-0 right-0 z-50 overflow-y-scroll bg-white  md:hidden">
       <nav className="pt-6 min-h-[100vh]">
         <Wrapper>
           <div className="flex items-center justify-between pt-2 pb-6">
@@ -124,8 +124,8 @@ const DesktopNav = ({ toggle }) => {
           `An error has occurred`
         ) : (
           <ul>
-            {categories.map(({ name }) => (
-              <li key={name.id}>
+            {categories.map(({ name }, index) => (
+              <li key={index}>
                 <Link
                   to={`/categories/${encodeURIComponent(name)}`}
                   className="flex items-center gap-3 py-3 hover:text-app-red"

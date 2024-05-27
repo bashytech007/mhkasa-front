@@ -158,9 +158,11 @@ const router = createBrowserRouter([
 ]);
 
 export const App = () => (
-  
+
   <CategoryProvider>
+      <ScrollToTop>
     <RouterProvider router={router}/>
+    </ScrollToTop>
     </CategoryProvider>
     
   

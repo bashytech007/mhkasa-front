@@ -1,4 +1,3 @@
-import { Logo } from "./ui/Logo";
 import { Wrapper } from "./ui/Wrapper";
 import User from "../components/User";
 import { Icon } from "@iconify/react";
@@ -6,7 +5,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCartQuery } from "../hooks/query/useCart";
 import { useCategory } from "../hooks/query/useCategory";
-// import { getCategories } from "../utils/queryFunctions";
+import { Logo } from "./ui/Logo";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -33,8 +32,10 @@ const Navbar = () => {
               <Icon icon="charm:menu-hamburger" style={{ fontSize: 36 }} />
             )}
           </button>
+
           <div>
             <Logo />
+
           </div>
         </div>
 

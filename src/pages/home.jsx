@@ -24,7 +24,7 @@ export const Component = () => {
         <Sales />
         <NewArrivals />
         {/* <FeaturedProducts /> */}
-        <TopCategories />
+        {/* <TopCategories /> */}
       </Wrapper>
       <div className="pt-6">{/* <Features /> */}</div>
     </main>

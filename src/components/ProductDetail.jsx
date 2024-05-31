@@ -9,7 +9,7 @@ import { Input } from "./Input";
 import { useCanSubmitForm } from "../hooks/utils/useCanSubmitFormik";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams,useLoaderData } from "react-router-dom";
 import { SectionHeader } from "./ui/SectionHeader";
 import { CategoryPanel } from "./CategoryPanel";
 import {
@@ -21,6 +21,7 @@ import {
 
 export const ProductDetail = ({ productId }) => {
   const { getUserId } = useAuth();
+  const { product } = useLoaderData();
   const schema = yup.object().shape({
     email: yup.string().email().required(),
     name: yup.string().trim().required(),
@@ -116,7 +117,7 @@ export const ProductDetail = ({ productId }) => {
 
       <div className="grid gap-6 pt-5 md:grid-cols-2">
         {tab === "description" ? (
-          <div>a good perfume</div>
+          <div>{product.description}</div>
         ) : (
           <div>
             <div className="flex gap-4 items-end">

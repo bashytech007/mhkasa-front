@@ -16,7 +16,7 @@ import { ListGrid } from "../components/ui/ListGrid";
 
 export const Component = () => {
   const { product } = useLoaderData();
-  
+  // console.log(product)
   const { decreaseItem, increaseItem, addToCart } = useCartContext();
   const [count, setCount] = useState(1);
   const { data } = useCartQuery();
@@ -116,16 +116,16 @@ export const Component = () => {
                 <p className="text-app-red font-medium sm:text-xl">
                   {product.name}
                 </p>
-                <Button className="bg-white text-sm sm:text-[16px] md:bg-app-ash-2">
+                {/* <Button className="bg-white text-sm sm:text-[16px] md:bg-app-ash-2">
                   7 Days Return Policy
-                </Button>
+                </Button> */}
               </div>
               <p className="font-medium text-xl py-2">{product.category}</p>
               <p className="font-bold text-xl">₦{format(product.price)}</p>
               <p className="py-1">{product.description}</p>
               <p></p>
               <p className="py-1">
-                <span className="font-bold">Brand:</span> Brand Name
+                <span className="font-bold">{product.sku}</span>{product.sku}
               </p>
               <div className="py-1"></div>
               <div className="flex gap-x-12 flex-wrap justify-between pb-4">

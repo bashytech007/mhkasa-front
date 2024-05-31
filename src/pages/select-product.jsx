@@ -16,6 +16,7 @@ import { ListGrid } from "../components/ui/ListGrid";
 
 export const Component = () => {
   const { product } = useLoaderData();
+  
   const { decreaseItem, increaseItem, addToCart } = useCartContext();
   const [count, setCount] = useState(1);
   const { data } = useCartQuery();
@@ -66,46 +67,46 @@ export const Component = () => {
 
         <div className="@container pb-8">
           <div className="grid gap-8 @4xl:grid-cols-2">
-            <div className="relative min-w-[320px]">
-              <div className="rounded-2xl overflow-hidden aspect-square @[400px]:aspect-video">
+            <div className="relative min-w-[350px]">
+              <div className="rounded-2xl overflow-hidden  aspect-square @[460px]:aspect-video">
                 <img
                   src={product.mainImage}
                   alt=""
-                  className="w-full h-full object-cover"
+                  className="w-full h-full  object-cover md:object-cover"
                 />
               </div>
               <div className="flex gap-4 absolute top-6 right-6 z-50">
-                <button className="bg-white rounded-md h-11 grid place-items-center aspect-square">
+                {/* <button className="bg-white rounded-md h-11 grid place-items-center aspect-square">
                   <Icon icon="fa6-solid:angle-left" style={{ fontSize: 28 }} />
-                </button>
-                <button className="bg-white h-11 rounded-md grid place-items-center aspect-square">
+                </button> */}
+                {/* <button className="bg-white h-11 rounded-md grid place-items-center aspect-square">
                   <Icon
                     icon="fa6-solid:angle-left"
                     hFlip
                     style={{ fontSize: 28 }}
                   />
-                </button>
+                </button> */}
               </div>
-              <div className="flex gap-4 overflow-x-auto pt-6">
+              <div className="flex gap-4 overflow-x-auto pt-6 md:object-cover object-contain">
                 <img
                   src={product.mainImage}
                   alt=""
-                  className="w-28 aspect-square object-cover"
+                  className="w-28 aspect-square "
                 />
                 <img
-                  src={product.mainImage}
+                  src={product.firstImage}
                   alt=""
-                  className="w-28 aspect-square object-cover"
+                  className="w-28 aspect-square "
                 />
                 <img
-                  src={product.mainImage}
+                  src={product.secondImage}
                   alt=""
-                  className="w-28 aspect-square object-cover"
+                  className="w-28 aspect-square "
                 />
                 <img
-                  src={product.mainImage}
+                  src={product.thirdImage}
                   alt=""
-                  className="w-28 aspect-square object-cover"
+                  className="w-28 aspect-square "
                 />
               </div>
             </div>

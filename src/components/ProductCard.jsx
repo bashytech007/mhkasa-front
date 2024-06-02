@@ -47,6 +47,9 @@ export const Product = ({
             )}
           </div>
           <Link to={`/products/${id}`}>
+            {/* <Button className="bg-app-red text-app-ash font-medium text-nowrap text-sm mt-auto @[240px]:bg-app-black">
+              Add to Cart
+            </Button> */}
             <Button className="bg-app-red text-app-ash font-medium text-nowrap text-sm mt-auto @[240px]:bg-app-black">
               Buy Now
             </Button>

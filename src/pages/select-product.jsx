@@ -125,11 +125,11 @@ export const Component = () => {
               <p className="py-1">{product.description}</p>
               <p></p>
               <p className="py-1">
-                <span className="font-bold">{product.sku}</span>{product.sku}
+                <span className="font-bold">sku:{product.sku}</span>
               </p>
               <div className="py-1"></div>
               <div className="flex gap-x-12 flex-wrap justify-between pb-4">
-                <div className="py-2"></div>
+                {/* <div className="py-2"></div> */}
                 <div className="py-2">
                   <Heading className="text-app-black">Quantity</Heading>
                   <div className="flex gap-4 pt-2 items-center">
@@ -164,13 +164,22 @@ export const Component = () => {
                 data &&
                 data.items.find((item) => item.productId._id === product._id)
               ) ? (
-                <Button
+             <div className="flex gap-8">
+                 <Button
                   disabled={!count}
                   onClick={onClick}
-                  className="bg-app-red text-white font-medium disabled:bg-[#848484]"
+                  className="bg-black text-white font-medium px-14 disabled:bg-[#848484]"
                 >
                   Add to Cart
                 </Button>
+                 <Button
+                  disabled={!count}
+                  onClick={onClick}
+                  className="bg-green-500 text-white font-medium px-14 disabled:bg-[#848484]"
+                >
+                  Buy Now
+                </Button>
+             </div>
               ) : (
                 <Link to="/cart">
                   <Button className="bg-app-red text-white font-medium">

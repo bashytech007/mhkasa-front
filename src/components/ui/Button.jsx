@@ -7,10 +7,10 @@ export const Button = ({ variant, className, ...props }) => {
   );
 };
 
-const buttonVariants = cva("py-2 px-5", {
+const buttonVariants = cva("py-2 px-4", {
   variants: {
     variant: {
-      pill: "rounded-full",
+      pill: "rounded-xl",
     },
   },
   defaultVariants: {

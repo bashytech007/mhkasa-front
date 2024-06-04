@@ -178,7 +178,7 @@ export const Component = () => {
                   </div>
                 </div>
               </div>
-             <div className="md:flex flex-col md:gap-8 gap-16"> 
+             <div className="flex flex-col md:flex-row gap-8 md:space-x-4 mt-4 "> 
 
              {!(
                 data &&
@@ -188,7 +188,7 @@ export const Component = () => {
                  <Button
                   disabled={!count}
                   onClick={onClick}
-                  className="bg-app-black text-white font-medium md:px-14 px-32 py-2 w-full disabled:bg-[#848484]"
+                  className="bg-app-black text-white font-medium md:px-14  py-2 w-full  disabled:bg-[#848484]"
                 >
                   Add to Cart
                 </Button>
@@ -196,8 +196,8 @@ export const Component = () => {
            
               ) : (
                 
-                <Link to="/cart">
-                  <Button className="bg-app-black md:px-14 px-8 py-2 text-white font-medium">
+                <Link to="/cart" className="w-full md:flex-1">
+                  <Button className="bg-app-black md:px-14  py-2 w-full  text-white focus:outline-none font-medium">
                     Go to Cart
                   </Button>
                 </Link>
@@ -205,7 +205,7 @@ export const Component = () => {
                 <Button
                  
                  onClick={onClickCheckout}
-                 className="bg-green-500 text-white font-medium md:px-14 px-32 py-2 w-full mt-4 disabled:bg-[#848484]"
+                 className="bg-green-500 text-white font-medium md:px-14  py-2 w-full  disabled:bg-[#848484]"
                >
                  Buy Now
                </Button>

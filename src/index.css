@@ -59,7 +59,19 @@
   font-family: 'Farfetch Basis';
   font-style:normal;
   font-display: swap;
-  font-weight:700;
+  font-weight:500;
+  src:local("Farfetch"),
+  url("../src/fonts/Farfetch.ttf") format('embedded-opentype'),
+  url("../src/fonts/Farfetch.ttf") format('woff2'),
+  url("../src/fonts/Farfetch.ttf") format('woff'),
+  url("../src/fonts/Farfetch.ttf") format('truetype'),
+  url("../src/fonts/Farfetch.ttf") format('svg'),
+}
+@font-face {
+  font-family: 'Farfetch Basis';
+  font-style:bold;
+  font-display: swap;
+  font-weight:bold;
   src:local("Farfetch"),
   url("../src/fonts/Farfetch.ttf") format('embedded-opentype'),
   url("../src/fonts/Farfetch.ttf") format('woff2'),

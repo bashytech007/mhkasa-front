@@ -1,26 +1,38 @@
 import { Wrapper } from "../components/ui/Wrapper";
 import { Navigation } from "../components/ui/Navigation";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData ,useNavigate} from "react-router-dom";
 import { ProductDetail } from "../components/ProductDetail";
 import { Icon } from "@iconify/react";
 import { Heading } from "../components/Heading";
 import { Button } from "../components/ui/Button";
 import { useCartContext } from "../hooks/utils/useCart";
-import { useState } from "react";
+import { useState,useRef,useEffect } from "react";
 import { useCartQuery } from "../hooks/query/useCart";
 import toast from "react-hot-toast";
 import { format } from "../utils/lib";
 import { Seo } from "../components/Seo";
 import { Product } from "../components/ProductCard";
 import { ListGrid } from "../components/ui/ListGrid";
+import useLongPress from "../hooks/utils/useLongPress";
+import  {LatestProducts } from "../components/LatestProducts";
+// import { SectionHeader } from "./ui/SectionHeader";
+
 
 export const Component = () => {
   const { product } = useLoaderData();
-  // console.log(product)
+  console.log(product)
   const { decreaseItem, increaseItem, addToCart } = useCartContext();
   const [count, setCount] = useState(1);
   const { data } = useCartQuery();
+ const navigate=useNavigate()
+ const { bestsellers } = useLoaderData();
+ const ref = useRef();
 
+ const { getHandlers, setElement } = useLongPress(ref.current);
+
+ useEffect(() => {
+   setElement(ref.current);
+ }, [setElement]);
   const increase = () => {
     if (data.items.find((item) => item.productId._id === product._id)) {
       return increaseItem({ itemId: product._id, quantity: 1 });
@@ -41,12 +53,17 @@ export const Component = () => {
     }
     addToCart({ itemId: product._id, quantity: count });
   };
+  const onClickCheckout=()=>{
+  
+    addToCart({ itemId: product._id, quantity: count||1 });
+   navigate("/checkout")
+  }
 
   return (
     <>
       <Seo
         title={`Mkhasa | ${product.name || ""}`}
-        description="Complete TranscationF"
+        description="Complete Transcation"
         type="webapp"
         name=""
       />
@@ -88,26 +105,27 @@ export const Component = () => {
                 </button> */}
               </div>
               <div className="flex gap-4 overflow-x-auto pt-6 md:object-cover object-contain">
-                <img
+                
+                {!!product.mainImage ?  <img
                   src={product.mainImage}
-                  alt=""
+                  alt="mainImage"
                   className="w-28 aspect-square "
-                />
-                <img
+                />:null}
+                {!!product.firstImage ?  <img
                   src={product.firstImage}
-                  alt=""
+                  alt="firstImage"
                   className="w-28 aspect-square "
-                />
-                <img
+                />:null}
+                 {!!product.secondImage ?  <img
                   src={product.secondImage}
-                  alt=""
+                  alt="secondImage"
                   className="w-28 aspect-square "
-                />
-                <img
+                />:null}
+              {!!product.thirdImage ?  <img
                   src={product.thirdImage}
-                  alt=""
+                  alt="thirdImage"
                   className="w-28 aspect-square "
-                />
+                />:null}
               </div>
             </div>
 
@@ -122,14 +140,15 @@ export const Component = () => {
               </div>
               <p className="font-medium text-xl py-2">{product.category}</p>
               <p className="font-bold text-xl">₦{format(product.price)}</p>
-              <p className="py-1">{product.description}</p>
+             
+              {/* <p className="py-1">{product.description.topnote}</p> */}
               <p></p>
               <p className="py-1">
-                <span className="font-bold">{product.sku}</span>{product.sku}
+                <span className="font-bold">sku:{product.sku}</span>
               </p>
               <div className="py-1"></div>
               <div className="flex gap-x-12 flex-wrap justify-between pb-4">
-                <div className="py-2"></div>
+                {/* <div className="py-2"></div> */}
                 <div className="py-2">
                   <Heading className="text-app-black">Quantity</Heading>
                   <div className="flex gap-4 pt-2 items-center">
@@ -159,33 +178,82 @@ export const Component = () => {
                   </div>
                 </div>
               </div>
+             <div className="flex flex-col md:flex-row gap-8 md:space-x-4 mt-4 "> 
 
-              {!(
+             {!(
                 data &&
                 data.items.find((item) => item.productId._id === product._id)
               ) ? (
-                <Button
+            
+                 <Button
                   disabled={!count}
                   onClick={onClick}
-                  className="bg-app-red text-white font-medium disabled:bg-[#848484]"
+                  className="bg-app-black text-white font-medium md:px-14  py-2 w-full  disabled:bg-[#848484]"
                 >
                   Add to Cart
                 </Button>
+               
+           
               ) : (
-                <Link to="/cart">
-                  <Button className="bg-app-red text-white font-medium">
+                
+                <Link to="/cart" className="w-full md:flex-1">
+                  <Button className="bg-app-black md:px-14  py-2 w-full  text-white focus:outline-none font-medium">
                     Go to Cart
                   </Button>
                 </Link>
               )}
+                <Button
+                 
+                 onClick={onClickCheckout}
+                 className="bg-green-500 text-white font-medium md:px-14  py-2 w-full  disabled:bg-[#848484]"
+               >
+                 Buy Now
+               </Button>
+              </div>
+             
             </div>
           </div>
         </div>
 
-        <ProductDetail productId={product._id} />
-
-        {/* STYLE THE UI APPROPRAITELY */}
-        <Heading>Products You Can Layer With</Heading>
+         {/* STYLE THE UI APPROPRAITELY */}
+         <div className="flex justify-between gap-2">
+        <Heading>We Also Recommend</Heading>
+          <div>
+          
+          <ListGrid>
+          {product.layerWith.map((product) => (
+            <Product
+              id={product._id}
+              product={product.name}
+              category={product.category}
+              originalPrice={product.price}
+              image={product.productImage || product.mainImage}
+            />
+          ))}
+        </ListGrid>
+         
+          </div>
+          <button
+            {...getHandlers("backward")}
+            className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
+          >
+            <Icon icon="fa6-solid:angle-left" style={{ fontSize: 28 }} />
+          </button>
+         
+          <button
+            {...getHandlers("forward")}
+            className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
+          >
+            <Icon icon="fa6-solid:angle-left" hFlip style={{ fontSize: 28 }} />
+          </button>
+          {/* <LatestProducts/> */}
+        </div>
+         <div className="flex justify-between gap-2">
+        <Heading className="text-nowrap md:text-wrap">Products You Can Layer With</Heading>
+        <ul
+        className="pt-8 grid grid-cols-2 gap-4 md:flex md:flex-row md:overflow-auto md:no-scrollbar"
+        ref={ref}
+      >
         <ListGrid>
           {product.layerWith.map((product) => (
             <Product
@@ -197,6 +265,26 @@ export const Component = () => {
             />
           ))}
         </ListGrid>
+      </ul>
+          <button
+            {...getHandlers("backward")}
+            className="h-8 w-8 bg-white rounded-full grid place-items-center hover:scale-105"
+          >
+            <Icon icon="fa6-solid:angle-left" style={{ fontSize: 28 }} />
+          </button>
+         
+          <button
+            {...getHandlers("forward")}
+            className="h-8 w-8 bg-white rounded-full grid place-items-center hover:scale-105"
+          >
+            <Icon icon="fa6-solid:angle-left" hFlip style={{ fontSize: 28 }} />
+          </button>
+        </div>
+       
+
+        <ProductDetail productId={product._id} />
+
+       
       </Wrapper>
     </>
   );

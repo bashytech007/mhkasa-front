@@ -117,7 +117,16 @@ export const ProductDetail = ({ productId }) => {
 
       <div className="grid gap-6 pt-5 md:grid-cols-2">
         {tab === "description" ? (
-          <div>{product.description}</div>
+          <div className=" "> 
+            <p className="py-1"><span className="font-bold">Description:</span>{product.description}</p>
+          <div className="py-2">
+          <p className="py-1"><span className="font-bold">Orientation:  </span>{product.appeal}</p>
+          <p className="py-1"><span className="font-bold">Type:</span>{product.type}</p>
+          <p className="py-1"><span className="font-bold">Volume:</span>{product.volume}</p>
+          </div>
+          <p className="py-1"><span className="font-bold">Top Notes:</span>{product.topNotes}</p>
+          <p className="py-1"><span className="font-bold">Middle Notes:</span>{product.middleNotes}</p>
+          <p className="py-1"><span className="font-bold">Base Notes:</span>{product.baseNotes}</p></div>
         ) : (
           <div>
             <div className="flex gap-4 items-end">
@@ -180,7 +189,7 @@ export const ProductDetail = ({ productId }) => {
                   <TooltipTrigger className="w-fit">
                     <Button
                       type="submit"
-                      className="bg-app-black text-white font-medium w-fit hover:bg-black disabled:bg-[#999999] hover:disabled:bg-[#999999]"
+                      className="bg-app-black text-white font-medium w-fit hover:bg-app-black disabled:bg-[#999999] hover:disabled:bg-[#999999]"
                       disabled={!canSubmit}
                     >
                       Submit Review
@@ -232,14 +241,4 @@ const Rating = ({ rating = 0, onClick = () => {} }) => {
     </div>
   );
 };
-const LayerWith = () => {
-  return (
-    <div className="">
-      <SectionHeader header="ProductsYoulayerWith" />
-      <div className="flex items-center justify between">
-        <div>the card</div>
-        <ProductCard />
-      </div>
-    </div>
-  );
-};
+

@@ -216,11 +216,13 @@ export const Component = () => {
         </div>
 
          {/* STYLE THE UI APPROPRAITELY */}
-         <div className="flex justify-between gap-2">
+         <div className="flex flex-col md:flex-row justify-between gap-2">
+        <div className="md:flex md:flex-col">
         <Heading>We Also Recommend</Heading>
-          <div>
-          
+          <h2>The video will be here</h2>
+        <video src="" alt="nothing yet" />
           <ListGrid>
+          <h2>The cards for we Also Recommend</h2>
           {product.layerWith.map((product) => (
             <Product
               id={product._id}
@@ -232,8 +234,10 @@ export const Component = () => {
           ))}
         </ListGrid>
          
-          </div>
-          <button
+          </div >
+          
+         <div className="hidden  md:flex flex-row">
+         <button
             {...getHandlers("backward")}
             className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
           >
@@ -245,16 +249,17 @@ export const Component = () => {
             className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
           >
             <Icon icon="fa6-solid:angle-left" hFlip style={{ fontSize: 28 }} />
-          </button>
-          {/* <LatestProducts/> */}
+          </button> 
+           {/* <LatestProducts/> */}
         </div>
-         <div className="flex justify-between gap-2">
-        <Heading className="text-nowrap md:text-wrap">Products You Can Layer With</Heading>
-        <ul
-        className="pt-8 grid grid-cols-2 gap-4 md:flex md:flex-row md:overflow-auto md:no-scrollbar"
-        ref={ref}
-      >
-        <ListGrid>
+         </div>
+         <div className="flex flex-col md:flex-row justify-between gap-2">
+        <div className="md:flex md:flex-col">
+        <Heading>Products You Can Layer With</Heading>
+          <h2>The video will be here</h2>
+        <video src="" alt="nothing yet" />
+          <ListGrid>
+          <h2>The cards for Products you can layer With</h2>
           {product.layerWith.map((product) => (
             <Product
               id={product._id}
@@ -265,22 +270,28 @@ export const Component = () => {
             />
           ))}
         </ListGrid>
-      </ul>
-          <button
+         
+          </div >
+          
+         <div className="hidden  md:flex flex-row">
+         <button
             {...getHandlers("backward")}
-            className="h-8 w-8 bg-white rounded-full grid place-items-center hover:scale-105"
+            className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
           >
             <Icon icon="fa6-solid:angle-left" style={{ fontSize: 28 }} />
           </button>
          
           <button
             {...getHandlers("forward")}
-            className="h-8 w-8 bg-white rounded-full grid place-items-center hover:scale-105"
+            className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
           >
             <Icon icon="fa6-solid:angle-left" hFlip style={{ fontSize: 28 }} />
-          </button>
+          </button> 
+           {/* <LatestProducts/> */}
         </div>
+         </div>
        
+      
 
         <ProductDetail productId={product._id} />
 

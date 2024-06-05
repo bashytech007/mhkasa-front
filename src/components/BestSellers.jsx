@@ -180,7 +180,7 @@ export const BestSellers = () => {
                 discountedPrice={discountedPrice}
                 image={image}
                 id={id}
-                className="min-w-[10rem]"
+                className="min-w-[11rem]"
               />
             </li>
           )

@@ -48,10 +48,10 @@ export const Product = ({
             )}
           </div>
           
-            <Button className="md:hidden block bg-app-black rounded-full md:w-full px-8 text-center text-app-ash font-medium text-nowrap text-sm mt-auto @[240px]:bg-app-black">
+            <Button variant="rectangle" className="md:hidden block ">
               Buy Now
             </Button>
-            <Button className="hidden md:block bg-app-black md:px-14 rounded-full md:w-full px-8 text-center text-app-ash font-medium text-nowrap text-sm mt-auto mx-auto @[240px]:bg-app-black">
+            <Button variant="rectangle" className="hidden md:block ">
               Add To Cart
             </Button>
         </div>

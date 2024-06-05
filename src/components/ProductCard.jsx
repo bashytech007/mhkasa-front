@@ -12,6 +12,7 @@ export const Product = ({
   className,
 }) => {
   return (
+    <Link to={`/products/${id}`}>
     <div
       className={cn(
         "bg-white rounded-2xl overflow-hidden  h-full @container",
@@ -46,13 +47,16 @@ export const Product = ({
               <p>₦{originalPrice}</p>
             )}
           </div>
-          <Link to={`/products/${id}`}>
-            <Button className="bg-app-red text-app-ash font-medium text-nowrap text-sm mt-auto @[240px]:bg-app-black">
+          
+            <Button variant="rectangle" className="md:hidden block ">
               Buy Now
             </Button>
-          </Link>
+            <Button variant="rectangle" className="hidden md:block ">
+              Add To Cart
+            </Button>
         </div>
       </div>
     </div>
+          </Link>
   );
 };

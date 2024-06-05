@@ -9,7 +9,7 @@ import { Input } from "./Input";
 import { useCanSubmitForm } from "../hooks/utils/useCanSubmitFormik";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams,useLoaderData } from "react-router-dom";
 import { SectionHeader } from "./ui/SectionHeader";
 import { CategoryPanel } from "./CategoryPanel";
 import {
@@ -21,6 +21,7 @@ import {
 
 export const ProductDetail = ({ productId }) => {
   const { getUserId } = useAuth();
+  const { product } = useLoaderData();
   const schema = yup.object().shape({
     email: yup.string().email().required(),
     name: yup.string().trim().required(),
@@ -116,7 +117,16 @@ export const ProductDetail = ({ productId }) => {
 
       <div className="grid gap-6 pt-5 md:grid-cols-2">
         {tab === "description" ? (
-          <div>a good perfume</div>
+          <div className=" "> 
+            <p className="py-1"><span className="font-bold">Description:</span>{product.description}</p>
+          <div className="py-2">
+          <p className="py-1"><span className="font-bold">Orientation:  </span>{product.appeal}</p>
+          <p className="py-1"><span className="font-bold">Type:</span>{product.type}</p>
+          <p className="py-1"><span className="font-bold">Volume:</span>{product.volume}</p>
+          </div>
+          <p className="py-1"><span className="font-bold">Top Notes:</span>{product.topNotes}</p>
+          <p className="py-1"><span className="font-bold">Middle Notes:</span>{product.middleNotes}</p>
+          <p className="py-1"><span className="font-bold">Base Notes:</span>{product.baseNotes}</p></div>
         ) : (
           <div>
             <div className="flex gap-4 items-end">
@@ -179,7 +189,7 @@ export const ProductDetail = ({ productId }) => {
                   <TooltipTrigger className="w-fit">
                     <Button
                       type="submit"
-                      className="bg-app-black text-white font-medium w-fit hover:bg-black disabled:bg-[#999999] hover:disabled:bg-[#999999]"
+                      className="bg-app-black text-white font-medium w-fit hover:bg-app-black disabled:bg-[#999999] hover:disabled:bg-[#999999]"
                       disabled={!canSubmit}
                     >
                       Submit Review
@@ -231,14 +241,4 @@ const Rating = ({ rating = 0, onClick = () => {} }) => {
     </div>
   );
 };
-const LayerWith = () => {
-  return (
-    <div className="">
-      <SectionHeader header="ProductsYoulayerWith" />
-      <div className="flex items-center justify between">
-        <div>the card</div>
-        <ProductCard />
-      </div>
-    </div>
-  );
-};
+

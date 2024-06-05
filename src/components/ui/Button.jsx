@@ -10,7 +10,8 @@ export const Button = ({ variant, className, ...props }) => {
 const buttonVariants = cva("py-2 px-4", {
   variants: {
     variant: {
-      pill: "rounded-xl",
+      pill: "rounded-full",
+      rectangle:"rounded-lg bg-app-black text-center  text-white "
     },
   },
   defaultVariants: {

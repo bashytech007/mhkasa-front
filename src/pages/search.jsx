@@ -351,7 +351,7 @@ export const Component = () => {
             <>
               {isEmpty ? (
                 <div className="text-center">
-                  <p className="md:text-3xl text-2xl font-bold font-Farfetch">We don't have what you're looking for this time, but why not take recommendations made for you. Alternatively, shop by category.</p>
+                  <p className="md:text-3xl text-xl font-bold font-Farfetch">We don't have what you're looking for this time, but why not take recommendations made for you. Alternatively, shop by category.</p>
                   {/* Add your recommendations and categories here */}
                 </div>
               ) : (

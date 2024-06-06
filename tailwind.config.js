@@ -6,6 +6,7 @@ export default {
     fontFamily: {
       monteserrat: ["Monteserrat", "sans-serif"],
       Farfetch:["Farfetch Basis","sans-serif"],
+      NimbusSan:["NimbusSan","sans-serif"],
       fuzzy: ["Fuzzy Bubbles", "sans-serif"],
     },
     extend: {

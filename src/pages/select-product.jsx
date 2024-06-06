@@ -14,7 +14,7 @@ import { Seo } from "../components/Seo";
 import { Product } from "../components/ProductCard";
 import { ListGrid } from "../components/ui/ListGrid";
 import useLongPress from "../hooks/utils/useLongPress";
-import  {LatestProducts } from "../components/LatestProducts";
+// import  {LatestProducts } from "../components/LatestProducts";
 // import { SectionHeader } from "./ui/SectionHeader";
 
 
@@ -25,7 +25,7 @@ export const Component = () => {
   const [count, setCount] = useState(1);
   const { data } = useCartQuery();
  const navigate=useNavigate()
- const { bestsellers } = useLoaderData();
+//  const { bestsellers } = useLoaderData();
  const ref = useRef();
 
  const { getHandlers, setElement } = useLongPress(ref.current);
@@ -89,7 +89,7 @@ export const Component = () => {
                 <img
                   src={product.mainImage}
                   alt=""
-                  className="w-full bg-white h-full  object-cover md:object-contain"
+                  className="w-full h-full  object-cover md:object-cover"
                 />
               </div>
               <div className="flex gap-4 absolute top-6 right-6 z-50">
@@ -130,10 +130,10 @@ export const Component = () => {
             </div>
 
             <div>
-              <div className="flex justify-between items-center flex-wrap gap-2">
-                <p  className="text-[#555] font-bold md:text-4xl sm:text-xl">
+              <div className="flex justify-between items-center flex-wrap gap-2 font-Farfetch">
+                <h3  className="text-[#555] font-bold md:text-4xl sm:text-xl">
                   {product.name}
-                </p>
+                </h3>
                 {/* <Button className="bg-white text-sm sm:text-[16px] md:bg-app-ash-2">
                   7 Days Return Policy
                 </Button> */}
@@ -144,14 +144,15 @@ export const Component = () => {
               {/* <p className="py-1">{product.description.topnote}</p> */}
               <p></p>
               <p className="py-4">
-                  <p className="font-medium text-xl py-2 "> <span className="font-bold">brand:</span>{product.brand}</p>
-                <span className="font-bold">sku:{product.sku}</span>
+                  <p className="font-medium text-xl py-2 "> <span className="font-bold">Brand:</span>{product.brand}</p>
+                  <p className="font-medium text-xl py-2 "> <span className="font-bold">Manufacturer:</span>{product.manufacturer}</p>
+                <span className="font-bold">SKU:{product.sku}</span>
               </p>
               <div className="py-1"></div>
               <div className="flex gap-x-12 flex-wrap justify-between pb-2">
                 {/* <div className="py-2"></div> */}
                 <div className="py-1">
-                  <p className="text-app-grey text-[#555]">Qty</p>
+                  <p className="text-[#555]">Qty</p>
                   <div className="flex gap-4 pt-2 items-center">
                     <button
                       onClick={decrease}
@@ -159,7 +160,7 @@ export const Component = () => {
                     >
                       <Icon icon="ic:round-minus" style={{ fontSize: 30 }} />
                     </button>
-                    <p className="text-3xl font-medium">
+                    <p className="text-3xl font-Farfetch font-light">
                       {!data?.items
                         ? count
                         : data.items.find(
@@ -198,11 +199,11 @@ export const Component = () => {
            
               ) : (
                 
-                <Link to="/cart" className="w-full md:flex-1">
-                  <Button variant="rectangle" className="bg-app-black md:px-8 px-10 w-full focus:outline-none font-medium">
+                
+                  <Button variant="rectangle" to="/cart" className="bg-app-black md:flex-1 md:px-8 px-10 w-full focus:outline-none font-medium">
                     Go to Cart
                   </Button>
-                </Link>
+               
               )}
                 <Button
                  variant="rectangle"

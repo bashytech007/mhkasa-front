@@ -14,7 +14,7 @@ export const CartItem = ({ item }) => {
       <div className="@container grid grid-cols-12 grid-rows-3 items-center">
         <div className="flex items-center gap-2 col-span-9 row-span-3 @lg:col-span-6 @lg:gap-12">
           <div className="w-20 min-h-[96px] bg-app-ash-1">
-            <img src={item.productId.secondImage} alt="" className="w-20" />
+            <img src={item.productId.mainImage} alt="" className="w-20" />
           </div>
 
           <div>

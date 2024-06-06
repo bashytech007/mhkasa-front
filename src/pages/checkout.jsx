@@ -219,9 +219,9 @@ const PaymentMethod = ({ className, setProvider, provider }) => {
                 : "before:bg-transparent"
             }`}
           />
-          <button type="button" onClick={() => setPaymentMethod("online")}>
+          {/* <button type="button" onClick={() => setPaymentMethod("online")}>
             Online
-          </button>
+          </button> */}
         </div>
         {/* <div className="inline-flex items-center gap-2">
           <div

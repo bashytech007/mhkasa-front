@@ -91,6 +91,18 @@
   url("../src/fonts/NimbusSan.ttf") format('truetype'),
   url("../src/fonts/NimbusSan.ttf") format('svg'),
 }
+@font-face {
+  font-family: 'NimbusSan';
+  font-style:bold;
+  font-display: swap;
+  font-weight:bold;
+  src:local("NimbusSan"),
+  url("../src/fonts/NimbusSan.ttf") format('embedded-opentype'),
+  url("../src/fonts/NimbusSan.ttf") format('woff2'),
+  url("../src/fonts/NimbusSan.ttf") format('woff'),
+  url("../src/fonts/NimbusSan.ttf") format('truetype'),
+  url("../src/fonts/NimbusSan.ttf") format('svg'),
+}
 
 @tailwind base;
 @tailwind components;

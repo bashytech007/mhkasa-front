@@ -47,7 +47,7 @@ export const Component = () => {
       naigate(decodeURIComponent(redirect));
     },
     onError: () => {
-      // toast.error("Login attempt failed: check Network");
+      toast.error("Login attempt failed:Check that your email or password is inputed correctly");
     },
   });
 

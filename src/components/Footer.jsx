@@ -69,7 +69,7 @@ export const Footer = () => {
               CONTACT US
             </h2>
             <div className="text-app-ash-2 mt-4 text-left">
-              <p>House 92, Dele Orisabiyi Street Okota Lagos State</p>
+              {/* <p>House 92, Dele Orisabiyi Street Okota Lagos State</p> */}
               <p>Call Us: 09013898261</p>
               <p>Email: info@mkhasa.com</p>
               <h3 className="text-lg font-bold text-white mt-4">Support/Sales Team</h3>

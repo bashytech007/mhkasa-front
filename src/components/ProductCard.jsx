@@ -15,7 +15,7 @@ export const Product = ({
     <Link to={`/products/${id}`}>
     <div
       className={cn(
-        "bg-white rounded-2xl overflow-hidden  h-full @container",
+        "bg-white rounded-2xl overflow-hidden  h-full @container font-Farfetch",
         className
       )}
     >
@@ -48,7 +48,7 @@ export const Product = ({
             )}
           </div>
           
-            <Button variant="rectangle" className="md:hidden block bg-app-black rounded-full md:w-full px-8 text-center text-app-ash font-medium text-nowrap text-sm mt-auto @[240px]:bg-app-black">
+            <Button variant="rectangle" className="md:hidden block bg-app-black  md:w-full px-8 text-center text-app-ash font-medium text-nowrap text-sm mt-auto @[240px]:bg-app-black">
               Buy Now
             </Button>
             <Button variant="rectangle" className="hidden md:block ">

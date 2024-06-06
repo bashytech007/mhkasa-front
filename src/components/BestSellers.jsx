@@ -17,7 +17,7 @@ export const BestSellers = () => {
   }, [setElement]);
 
   return (
-    <section className="py-8">
+    <section className="py-8 font-Farfetch">
       <div className="flex items-center justify-between">
         <SectionHeader header="Best Sellers" />
 

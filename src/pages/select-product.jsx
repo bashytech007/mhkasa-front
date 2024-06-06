@@ -131,43 +131,43 @@ export const Component = () => {
 
             <div>
               <div className="flex justify-between items-center flex-wrap gap-2 font-Farfetch">
-                <p className="text-xl font-bold text-[#A40001]">{product.category}</p>
+                <p className="text-xl font-bold text-[#A40001] font-Farfetch">{product.category}</p>
                   {/* <Button className="bg-white text-sm sm:text-[16px] md:bg-app-ash-2">
                   7 Days Return Policy
                 </Button> */}
                
               
               </div>
-             <div className="mt-5 -md:mt-6"> 
-             <h3  className="text-[#555] font-bold md:text-4xl text-3xl">
+             <div className="mt-5 -md:mt-6 font-Farfetch"> 
+             <h3  className="text-[#555] font-bold md:text-4xl text-3xl font-Farfetch">
                   {product.name}
                 </h3>
              </div>
         
-              <div className="mt-5 md:mt-2">
-              <p className="font-bold md:text-5xl text-black  text-5xl">₦{format(product.price)}</p>
+              <div className="mt-5 md:mt-2 font-Farfetch">
+              <p className="font-bold md:text-5xl text-black  text-5xl font-Farfetch">₦{format(product.price)}</p>
               </div>
              
              
-              <div className="mt-5 md:mt-2">
-              <p className="text-xl md:text-2xl"><strong className="text-black">SKU</strong>  : <span className="text-[#555]">{product.sku} </span></p>
-              <p className="text-xl text-[#555]">Brand <span className="font-bold text-xl text-[#555]"> : {product.brand}</span></p>
-              <p className="text-xl text-[#555]">Manufacturer <span className="font-bold text-xl text-[#555]"> : {product.manufacturer}</span></p>
+              <div className="mt-5 md:mt-2 font-Farfetch">
+              <p className="text-xl md:text-2xl font-Farfetch"><strong className="text-black font-Farfetch">SKU</strong>  : <span className="font-Farfetch text-[#555]">{product.sku} </span></p>
+              <p className="text-xl text-[#555] font-Farfetch">Brand <span className="font-bold text-xl text-[#555] font-Farfetch"> : {product.brand}</span></p>
+              <p className="text-xl text-[#555] font-Farfetch">Manufacturer <span className="font-Farfetch font-bold text-xl text-[#555]"> : {product.manufacturer}</span></p>
                 
               </div>
               <div className="py-2"></div>
-              <div className="flex gap-x-12 flex-wrap justify-between pb-2">
+              <div className="flex gap-x-12 flex-wrap justify-between pb-2 font-Farfetch">
                 {/* <div className="py-2"></div> */}
                 <div className="py-3">
-                  <p className="text-[#555] text-xl font-bold mt-1 pb-2">Qty</p>
-                  <div className="flex gap-4 pt-2 items-center">
+                  <p className="text-[#555] text-xl font-bold mt-1 pb-2 font-Farfetch">Qty</p>
+                  <div className="flex gap-4 pt-2 items-center font-Farfetch">
                     <button
                       onClick={decrease}
-                      className="h-10 aspect-square rounded-full bg-white grid place-items-center font-medium"
+                      className="h-10 font-Farfetch aspect-square rounded-full bg-white grid place-items-center font-medium"
                     >
                       <Icon icon="ic:round-minus" style={{ fontSize: 30 }} />
                     </button>
-                    <p className="text-3xl font-Farfetch font-normal">
+                    <p className="text-3xl font-NimbusSan font-normal">
                       {!data?.items
                         ? count
                         : data.items.find(
@@ -180,7 +180,7 @@ export const Component = () => {
                     </p>
                     <button
                       onClick={increase}
-                      className="h-10 aspect-square rounded-full bg-white grid place-items-center font-medium"
+                      className="h-10 aspect-square rounded-full bg-white grid place-items-center font-medium font-Farfetch"
                     >
                       <Icon icon="ph:plus-bold" style={{ fontSize: 30 }} />
                     </button>
@@ -229,7 +229,7 @@ export const Component = () => {
          {/* STYLE THE UI APPROPRAITELY */}
          <div className="flex flex-col md:flex-row justify-between ">
          {Array.isArray(product.layerWith) && product.layerWith.length > 0 && (
-  <div className="md:flex md:flex-col">
+  <div className="md:flex md:flex-col font-Farfetch">
     <Heading>We Also Recommend</Heading>
     <h2>The video will be here</h2>
     {/* <video src="" alt="nothing yet" /> */}

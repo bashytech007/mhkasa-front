@@ -28,7 +28,7 @@ export const Product = ({
       </div>
 
       <div className="px-4 pt-2 pb-4 flex text-sm flex-col h-[calc(100%-6rem)]">
-        <p className="text-app-red font-medium @[240px]:text-app-ash-2">
+        <p className="text-[#555] font-medium @[240px]:text-app-ash-2">
           {category}
         </p>
         <h2 className="text-app-black font-bold text-[16px] pt-1 line-clamp-2">

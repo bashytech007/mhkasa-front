@@ -333,7 +333,7 @@ export const Component = () => {
             </Wrapper>
           </div>
           <img
-            src={banner}
+            // src={banner}
             alt=""
             className="object-cover object-center w-full min-h-48 max-h-60"
           />

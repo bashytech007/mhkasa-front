@@ -82,7 +82,7 @@ export const Component = () => {
           currentLocationClassName="text-app-black"
         />
 
-        <div className="@container pb-8">
+        <div className="@container pb-8 font-Farfetch">
           <div className="grid gap-8 @4xl:grid-cols-2">
             <div className="relative min-w-[350px] md:min-w-[550px]">
               <div className="rounded-2xl overflow-hidden w-full aspect-square md:@[460px]:aspect-video">
@@ -131,28 +131,35 @@ export const Component = () => {
 
             <div>
               <div className="flex justify-between items-center flex-wrap gap-2 font-Farfetch">
-                <h3  className="text-[#555] font-bold md:text-4xl sm:text-xl">
-                  {product.name}
-                </h3>
-                {/* <Button className="bg-white text-sm sm:text-[16px] md:bg-app-ash-2">
+                <p className="text-xl font-bold text-[#A40001]">{product.category}</p>
+                  {/* <Button className="bg-white text-sm sm:text-[16px] md:bg-app-ash-2">
                   7 Days Return Policy
                 </Button> */}
+               
+              
               </div>
-              {/* <p className="font-medium text-xl py-2">{product.category}</p> */}
-              <p className="font-bold md:text-2xl text-xl py-1">₦{format(product.price)}</p>
+             <div className="mt-5 -md:mt-6"> 
+             <h3  className="text-[#555] font-bold md:text-4xl text-3xl">
+                  {product.name}
+                </h3>
+             </div>
+        
+              <div className="mt-5 md:mt-2">
+              <p className="font-bold md:text-5xl text-black  text-5xl">₦{format(product.price)}</p>
+              </div>
              
-              {/* <p className="py-1">{product.description.topnote}</p> */}
-              <p></p>
-              <p className="py-4">
-                  <p className="font-medium text-xl py-2 "> <span className="font-bold">Brand:</span>{product.brand}</p>
-                  <p className="font-medium text-xl py-2 "> <span className="font-bold">Manufacturer:</span>{product.manufacturer}</p>
-                <span className="font-bold">SKU:{product.sku}</span>
-              </p>
-              <div className="py-1"></div>
+             
+              <div className="mt-5 md:mt-2">
+              <p className="text-xl md:text-2xl"><strong className="text-black">SKU</strong>  : <span className="text-[#555]">{product.sku} </span></p>
+              <p className="text-xl text-[#555]">Brand <span className="font-bold text-xl text-[#555]"> : {product.brand}</span></p>
+              <p className="text-xl text-[#555]">Manufacturer <span className="font-bold text-xl text-[#555]"> : {product.manufacturer}</span></p>
+                
+              </div>
+              <div className="py-2"></div>
               <div className="flex gap-x-12 flex-wrap justify-between pb-2">
                 {/* <div className="py-2"></div> */}
-                <div className="py-1">
-                  <p className="text-[#555]">Qty</p>
+                <div className="py-3">
+                  <p className="text-[#555] text-xl font-bold mt-1 pb-2">Qty</p>
                   <div className="flex gap-4 pt-2 items-center">
                     <button
                       onClick={decrease}
@@ -160,7 +167,7 @@ export const Component = () => {
                     >
                       <Icon icon="ic:round-minus" style={{ fontSize: 30 }} />
                     </button>
-                    <p className="text-3xl font-Farfetch font-light">
+                    <p className="text-3xl font-Farfetch font-normal">
                       {!data?.items
                         ? count
                         : data.items.find(
@@ -191,7 +198,7 @@ export const Component = () => {
                   disabled={!count}
                   variant="rectangle"
                   onClick={onClick}
-                  className="bg-app-black md:px-8 w-full px-10 disabled:bg-[#848484]"
+                  className="hidden md:block bg-app-black md:px-8 w-full px-10 disabled:bg-[#848484]"
                 >
                   Add to Cart
                 </Button>
@@ -199,16 +206,17 @@ export const Component = () => {
            
               ) : (
                 
-                
-                  <Button variant="rectangle" to="/cart" className="bg-app-black md:flex-1 md:px-8 px-10 w-full focus:outline-none font-medium">
+                <Link className="md:flex-1" to="/cart"><Button variant="rectangle"  className="hidden md:block bg-app-black md:px-8 px-10 w-full focus:outline-none font-medium">
                     Go to Cart
                   </Button>
+                  </Link>
+
                
               )}
                 <Button
                  variant="rectangle"
                  onClick={onClickCheckout}
-                 className="bg-green-500 text-white  md:px-8 w-full px-10 focus:outline-none font-medium  disabled:bg-[#848484]"
+                 className="bg-[#27D34C] text-white  md:px-8 w-full px-10 focus:outline-none font-medium  disabled:bg-[#848484]"
                >
                  Buy Now
                </Button>

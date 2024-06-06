@@ -14,6 +14,7 @@ import { Seo } from "../components/Seo";
 import { Product } from "../components/ProductCard";
 import { ListGrid } from "../components/ui/ListGrid";
 import useLongPress from "../hooks/utils/useLongPress";
+import axios from "axios";
 // import  {LatestProducts } from "../components/LatestProducts";
 // import { SectionHeader } from "./ui/SectionHeader";
 
@@ -23,6 +24,7 @@ export const Component = () => {
   console.log(product)
   const { decreaseItem, increaseItem, addToCart } = useCartContext();
   const [count, setCount] = useState(1);
+  const [recommend , setRecommend] = useState([])
   const { data } = useCartQuery();
  const navigate=useNavigate()
 //  const { bestsellers } = useLoaderData();
@@ -58,6 +60,20 @@ export const Component = () => {
     addToCart({ itemId: product._id, quantity: count||1 });
    navigate("/checkout")
   }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('https://mkhasa-bfdb6fabd978.herokuapp.com/api/v1/recommend');
+        console.log({response})
+        setRecommend(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -145,14 +161,15 @@ export const Component = () => {
              </div>
         
               <div className="mt-5 md:mt-2 font-Farfetch">
-              <p className="font-bold md:text-5xl text-app-black  text-5xl font-Farfetch">₦{format(product.price)}</p>
+              <p className="md:text-5xl text-5xl font-Farfetch">₦<span>{format(product.price)}</span></p>
               </div>
              
              
               <div className="mt-5 md:mt-2 font-Farfetch">
-              <p className="text-xl md:text-2xl font-Farfetch"><strong className="text-black font-Farfetch">SKU</strong>  : <span className="font-Farfetch text-[#555]">{product.sku} </span></p>
-              <p className="text-xl md:text-2xl font-Farfetch"><strong className="text-black font-Farfetch">Brand</strong>  : <span className="font-Farfetch text-[#555]">{product.brand} </span></p>
-              <p className="text-xl md:text-2xl font-Farfetch"><strong className="text-black font-Farfetch">Manufacturer</strong>  : <span className="font-Farfetch text-[#555]">{product.manufacturer} </span></p>
+              <p className="font-Farfetch mt-2"><strong className="text-black font-Farfetch Basis font-bold">SKU</strong>: <span className="font-Farfetch text-[#555]">{product.sku}</span></p>
+              <p className="font-Farfetch mt-2"><strong className="text-black font-Farfetch font-bold">Brand</strong>: <span className="font-Farfetch text-[#555]">{product.brand}</span></p>
+               <p className="font-Farfetch mt-2"><strong className="text-black font-Farfetch font-bold">Manufacturer</strong>: <span className="font-Farfetch text-[#555]">{product.manufacturer}</span></p>
+
               {/* <p className="text-xl text-[#555] font-Farfetch">Brand <span className="font-bold text-xl text-[#555] font-Farfetch"> : {product.brand}</span></p>
               <p className="text-xl text-[#555] font-Farfetch">Manufacturer <span className="font-Farfetch font-bold text-xl text-[#555]"> : {product.manufacturer}</span></p> */}
                 
@@ -182,9 +199,9 @@ export const Component = () => {
                     </p>
                     <button
                       onClick={increase}
-                      className="h-10 aspect-square rounded-full bg-white grid place-items-center font-medium font-Farfetch"
+                      className="h-10 font-Farfetch aspect-square rounded-full bg-white grid place-items-center font-medium"
                     >
-                      <Icon icon="ph:plus-bold" style={{ fontSize: 30 }} />
+                      <Icon icon="ph:plus-bold" style={{ fontSize: 25 }} />
                     </button>
                   </div>
                 </div>
@@ -200,7 +217,7 @@ export const Component = () => {
                   disabled={!count}
                   variant="rectangle"
                   onClick={onClick}
-                  className="hidden md:block bg-app-black md:px-8 w-full px-10 disabled:bg-[#848484]"
+                  className="  bg-app-black md:px-8 w-full px-10 disabled:bg-[#848484]"
                 >
                   Add to Cart
                 </Button>
@@ -208,10 +225,13 @@ export const Component = () => {
            
               ) : (
                 
-                <Link className="md:flex-1" to="/cart"><Button variant="rectangle"  className="hidden md:block bg-app-black md:px-8 px-10 w-full focus:outline-none font-medium">
-                    Go to Cart
-                  </Button>
+                <Button variant="rectangle"  className=" bg-app-black md:px-8 px-10 w-full focus:outline-none font-medium">
+                  <Link to='/cart'>
+                  Go to Cart
                   </Link>
+                 
+                  </Button>
+                  
 
                
               )}
@@ -229,14 +249,11 @@ export const Component = () => {
         </div>
 
          {/* STYLE THE UI APPROPRAITELY */}
-         <div className="flex flex-col md:flex-row justify-between ">
-         {Array.isArray(product.layerWith) && product.layerWith.length > 0 && (
+         <div className="">
+         {/* {Array.isArray(product.layerWith) && product.layerWith.length > 0 && (
   <div className="md:flex md:flex-col font-Farfetch">
-    <Heading>We Also Recommend</Heading>
-    <h2>The video will be here</h2>
-    {/* <video src="" alt="nothing yet" /> */}
+    <Heading>You can layer with</Heading>
     <ListGrid>
-      {/* <h2>The cards for We Also Recommend</h2> */}
       {product.layerWith.map((product) => (
         <Product
           key={product._id}
@@ -249,14 +266,12 @@ export const Component = () => {
       ))}
     </ListGrid>
   </div>
-)}
+)} */}
 
-  <div className="md:flex md:flex-col">
+  
   {Array.isArray(product.layerWith) && product.layerWith.length > 0 && (
-  <div className="md:flex md:flex-col">
-    <Heading>We Also Recommend</Heading>
-    <h2>The video will be here</h2>
-    {/* <video src="" alt="nothing yet" /> */}
+  <div className="">
+    <Heading className="mt-3 mb-[-10px]">You can also layer with</Heading>
     <ListGrid>
       {/* <h2>The cards for We Also Recommend</h2> */}
       {product.layerWith.map((product) => (
@@ -273,7 +288,7 @@ export const Component = () => {
   </div>
 )}
   
-          </div >
+          
           
          <div className="hidden">
          <button
@@ -298,6 +313,24 @@ export const Component = () => {
 
         <ProductDetail productId={product._id} />
 
+        {Array.isArray(product.layerWith) && product.layerWith.length > 0 && (
+  <div className="mb-4">
+    <Heading className="mt-3 mb-[-10px]">We also Recommend : </Heading>
+    <ListGrid>
+      {/* <h2>The cards for We Also Recommend</h2> */}
+      {recommend.map((product) => (
+        <Product
+          key={product.product._id}
+          id={product.product._id}
+          product={product.product.name}
+          category={product.product.category}
+          originalPrice={product.product.price}
+          image={product.product.productImage || product.product.mainImage}
+        />
+      ))}
+    </ListGrid>
+  </div>
+)}
        
       </Wrapper>
     </>

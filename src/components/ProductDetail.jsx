@@ -94,7 +94,7 @@ export const ProductDetail = ({ productId }) => {
   }, [productId]);
 
   return (
-    <div className="bg-white px-6 py-4 rounded-3xl mb-6 font-Farfetch">
+    <div className="bg-white px-6 py-4  mb-6 font-Farfetch mt-2">
       <CategoryPanel />
       <div className="grid grid-cols-2 border-b-2 md:grid-cols-4">
         <button

@@ -1,5 +1,6 @@
 import { SectionHeader } from "./ui/SectionHeader";
 import { Product } from "./ProductCard";
+import { ListGrid } from "./ui/ListGrid";
 import { useLoaderData } from "react-router-dom/dist";
 import useLongPress from "../hooks/utils/useLongPress";
 import { Icon } from "@iconify/react";
@@ -37,7 +38,27 @@ export const BestSellers = () => {
         </div>
       </div>
 
-      <ul
+<ListGrid>
+{bestsellers.map(
+          (
+            { product, category, originalPrice, discountedPrice, image, id },
+            index
+          ) => (
+            <li key={index} className="md:flex-shrink-0 grow">
+              <Product
+                product={product}
+                category={category}
+                originalPrice={originalPrice}
+                discountedPrice={discountedPrice}
+                image={image}
+                id={id}
+                className="min-w-[10rem]"
+              />
+            </li>
+          )
+        )}
+</ListGrid>
+      {/* <ul
         className="pt-8 gap-4 flex flex-wrap sm:flex-nowrap overflow-x-auto sm:no-scrollbar"
         ref={ref}
       >
@@ -59,7 +80,7 @@ export const BestSellers = () => {
             </li>
           )
         )}
-      </ul>
+      </ul> */}
     </section>
   );
 };

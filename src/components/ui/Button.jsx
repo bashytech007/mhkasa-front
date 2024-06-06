@@ -7,11 +7,11 @@ export const Button = ({ variant, className, ...props }) => {
   );
 };
 
-const buttonVariants = cva("py-2 px-4", {
+const buttonVariants = cva("py-2 px-4 font-Farfetch", {
   variants: {
     variant: {
-      pill: "rounded-full",
-      rectangle:"rounded-lg bg-app-black text-center  text-white "
+      pill: "rounded-full font-Farfetch",
+      rectangle:"rounded-lg bg-app-black text-center  text-white font-Farfetch"
     },
   },
   defaultVariants: {

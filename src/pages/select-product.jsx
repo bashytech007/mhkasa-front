@@ -82,7 +82,7 @@ export const Component = () => {
           currentLocationClassName="text-app-black"
         />
 
-        <div className="@container pb-8 font-Farfetch">
+        <div className="@container pb-8 font-Farfetch bg-white px-2">
           <div className="grid gap-8 @4xl:grid-cols-2">
             <div className="relative min-w-[350px] md:min-w-[550px]">
               <div className="rounded-2xl overflow-hidden w-full aspect-square md:@[460px]:aspect-video">
@@ -145,14 +145,16 @@ export const Component = () => {
              </div>
         
               <div className="mt-5 md:mt-2 font-Farfetch">
-              <p className="font-bold md:text-5xl text-black  text-5xl font-Farfetch">₦{format(product.price)}</p>
+              <p className="font-bold md:text-5xl text-app-black  text-5xl font-Farfetch">₦{format(product.price)}</p>
               </div>
              
              
               <div className="mt-5 md:mt-2 font-Farfetch">
               <p className="text-xl md:text-2xl font-Farfetch"><strong className="text-black font-Farfetch">SKU</strong>  : <span className="font-Farfetch text-[#555]">{product.sku} </span></p>
-              <p className="text-xl text-[#555] font-Farfetch">Brand <span className="font-bold text-xl text-[#555] font-Farfetch"> : {product.brand}</span></p>
-              <p className="text-xl text-[#555] font-Farfetch">Manufacturer <span className="font-Farfetch font-bold text-xl text-[#555]"> : {product.manufacturer}</span></p>
+              <p className="text-xl md:text-2xl font-Farfetch"><strong className="text-black font-Farfetch">Brand</strong>  : <span className="font-Farfetch text-[#555]">{product.brand} </span></p>
+              <p className="text-xl md:text-2xl font-Farfetch"><strong className="text-black font-Farfetch">Manufacturer</strong>  : <span className="font-Farfetch text-[#555]">{product.manufacturer} </span></p>
+              {/* <p className="text-xl text-[#555] font-Farfetch">Brand <span className="font-bold text-xl text-[#555] font-Farfetch"> : {product.brand}</span></p>
+              <p className="text-xl text-[#555] font-Farfetch">Manufacturer <span className="font-Farfetch font-bold text-xl text-[#555]"> : {product.manufacturer}</span></p> */}
                 
               </div>
               <div className="py-2"></div>

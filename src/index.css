@@ -66,6 +66,12 @@
   url("../src/fonts/Farfetch.ttf") format('woff'),
   url("../src/fonts/Farfetch.ttf") format('truetype'),
   url("../src/fonts/Farfetch.ttf") format('svg'),
+  url("assets/fonts/FarFetch/Farfetch\ Basis\ Regular.otf")
+  format("embedded-opentype"),
+url("assets/fonts/FarFetch/Farfetch\ Basis\ Regular.otf") format("woff2"),
+url("assets/fonts/FarFetch/Farfetch\ Basis\ Regular.otf") format("woff"),
+url("assets/fonts/FarFetch/Farfetch\ Basis\ Regular.otf") format("truetype"),
+url("assets/fonts/FarFetch/Farfetch\ Basis\ Regular.otf") format("svg");
 }
 @font-face {
   font-family: 'Farfetch Basis';

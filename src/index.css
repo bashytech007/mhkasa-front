@@ -86,6 +86,18 @@ url("assets/fonts/FarFetch/Farfetch\ Basis\ Regular.otf") format("svg");
   url("../src/fonts/Farfetch.ttf") format('svg'),
 }
 @font-face {
+  font-family: 'Farfetch Basis Bold';
+  font-style:bold;
+  font-display: swap;
+  font-weight:700;
+  src:local("Farfetch"),
+  url("../src/fonts/Farfetch.ttf") format('embedded-opentype'),
+  url("../src/fonts/Farfetch.ttf") format('woff2'),
+  url("../src/fonts/Farfetch.ttf") format('woff'),
+  url("../src/fonts/Farfetch.ttf") format('truetype'),
+  url("../src/fonts/Farfetch.ttf") format('svg'),
+}
+@font-face {
   font-family: 'NimbusSan';
   font-style:normal;
   font-display: swap;

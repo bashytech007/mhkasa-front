@@ -270,9 +270,28 @@ export const Component = () => {
 
   
   {Array.isArray(product.layerWith) && product.layerWith.length > 0 && (
-  <div className="">
+  <div className="flex items-center justify-center">
     <Heading className="mt-3 mb-[-10px]">You can also layer with</Heading>
-    <ListGrid>
+    <div className="hidden md:flex gap-4">
+         <button
+            {...getHandlers("backward")}
+            className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
+          >
+            <Icon icon="fa6-solid:angle-left" style={{ fontSize: 24 }} />
+          </button>
+         
+          <button
+            {...getHandlers("forward")}
+            className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
+          >
+            <Icon icon="fa6-solid:angle-left" hFlip style={{ fontSize: 24 }} />
+          </button> 
+           {/* <LatestProducts/> */}
+        </div>
+
+  </div>
+)}
+ <ListGrid >
       {/* <h2>The cards for We Also Recommend</h2> */}
       {product.layerWith.map((product) => (
         <Product
@@ -285,31 +304,7 @@ export const Component = () => {
         />
       ))}
     </ListGrid>
-  </div>
-)}
-  
-          
-          
-         <div className="hidden">
-         <button
-            {...getHandlers("backward")}
-            className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
-          >
-            <Icon icon="fa6-solid:angle-left" style={{ fontSize: 28 }} />
-          </button>
-         
-          <button
-            {...getHandlers("forward")}
-            className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
-          >
-            <Icon icon="fa6-solid:angle-left" hFlip style={{ fontSize: 28 }} />
-          </button> 
-           {/* <LatestProducts/> */}
-        </div>
-         </div>
-
-       
-      
+       </div>        
 
         <ProductDetail productId={product._id} />
 

@@ -42,7 +42,7 @@
     url("assets/fonts/Montserrat/static/Montserrat-Bold.ttf") format("svg");
 } */
 
- @font-face {
+  @font-face {
   font-family: "Fuzzy Bubbles";
   font-style: normal;
   font-display: swap;
@@ -54,48 +54,99 @@
     url("assets/fonts/Fuzzy_Bubbles/FuzzyBubbles-Bold.ttf") format("woff"),
     url("assets/fonts/Fuzzy_Bubbles/FuzzyBubbles-Bold.ttf") format("truetype"),
     url("assets/fonts/Fuzzy_Bubbles/FuzzyBubbles-Bold.ttf") format("svg");
-  }  
+  }   
+@font-face {
+  font-family: 'FarfetchRegular Basis';
+  font-style:normal;
+  font-display: swap;
+  font-weight:normal;
+  src:local("FarfetchRegular"),
+  url("../src/assets/fonts/FarfetchRegular/FarfetchRegular\ Basis\ Regular.eot")
+  url("../src/assets/fonts/FarfetchRegular/FarfetchRegular\ Basis\ Regular.eot?#iefix") format('embedded-opentype'),
+  url("../src/assets/fonts/FarfetchRegular/FarfetchRegular\ Basis\ Regular.otf") format('woff2'),
+  url("../src/assets/fonts/FarfetchRegular/FarfetchRegular\ Basis\ Regular.otf") format('woff'),
+  url("../src/assets/fonts/FarfetchRegular/FarfetchRegular\ Basis\ Regular.otf") format('truetype'),
+  url("../src/assets/fonts/FarfetchRegular/FarfetchRegular\ Basis\ Regular.otf") format('svg'),
+  url("../src/assets/fonts/FarfetchRegular/ Basis\ Regular.otf")
+  format("embedded-opentype"),
+url("assets/fonts/FarfetchRegular/FarfetchRegular\ Basis\ Regular.otf") format("woff2"),
+url("assets/fonts/FarfetchRegular/FarfetchRegular\ Basis\ Regular.otf") format("woff"),
+url("assets/fonts/FarfetchRegular/FarfetchRegular\ Basis\ Regular.otf") format("truetype"),
+url("assets/fonts/FarfetchRegular/FarfetchRegular\ Basis\ Regular.otf") format("svg");
+}
 @font-face {
   font-family: 'Farfetch Basis';
+  font-style:bold;
+  font-display: swap;
+  font-weight:bold;
+  src:local("FarfetchRegular"),
+  url("../src/fonts/Far.ttf") format('embedded-opentype'),
+  url("../src/fonts/FarfetchRegular.ttf") format('woff2'),
+  url("../src/fonts/FarfetchRegular.ttf") format('woff'),
+  url("../src/fonts/FarfetchRegular.ttf") format('truetype'),
+  url("../src/fonts/FarfetchRegular.ttf") format('svg'),
+}
+/* @font-face {
+  font-family: 'FarfetchRegular Basis Bold';
+  font-style:bold;
+  font-display: swap;
+  font-weight:700;
+  src:local("FarfetchRegular"),
+  url("../src/fonts/FarfetchRegular.ttf") format('embedded-opentype'),
+  url("../src/fonts/FarfetchRegular.ttf") format('woff2'),
+  url("../src/fonts/FarfetchRegular.ttf") format('woff'),
+  url("../src/fonts/FarfetchRegular.ttf") format('truetype'),
+  url("../src/fonts/FarfetchRegular.ttf") format('svg'),
+} */
+/* @font-face {
+  font-family: 'FarfetchRegular Basis';
   font-style:normal;
   font-display: swap;
   font-weight:500;
-  src:local("Farfetch"),
-  url("../src/fonts/Farfetch.ttf") format('embedded-opentype'),
-  url("../src/fonts/Farfetch.ttf") format('woff2'),
-  url("../src/fonts/Farfetch.ttf") format('woff'),
-  url("../src/fonts/Farfetch.ttf") format('truetype'),
-  url("../src/fonts/Farfetch.ttf") format('svg'),
-  url("assets/fonts/FarFetch/Farfetch\ Basis\ Regular.otf")
-  format("embedded-opentype"),
-url("assets/fonts/FarFetch/Farfetch\ Basis\ Regular.otf") format("woff2"),
-url("assets/fonts/FarFetch/Farfetch\ Basis\ Regular.otf") format("woff"),
-url("assets/fonts/FarFetch/Farfetch\ Basis\ Regular.otf") format("truetype"),
-url("assets/fonts/FarFetch/Farfetch\ Basis\ Regular.otf") format("svg");
+  src:local("FarfetchRegular"),
+  url("../src/fonts/FarfetchRegular.otf") format('embedded-opentype'),
+  url("../src/fonts/FarfetchRegular.otf") format('woff2'),
+  url("../src/fonts/FarfetchRegular.otf") format('woff'),
+  url("../src/fonts/FarfetchRegular.otf") format('truetype'),
+  url("../src/fonts/FarfetchRegular.otf") format('svg'),
+} */
+
+@font-face{
+  font-family: "FarfetchRegular Basis Regular";
+  src: url("ccdb598c7dd2100f5f7a8c1296c1dcfe.eot");
+  src: url("ccdb598c7dd2100f5f7a8c1296c1dcfe.eot?#iefix")format("embedded-opentype"),
+      url("ccdb598c7dd2100f5f7a8c1296c1dcfe.woff")format("woff"),
+      url("ccdb598c7dd2100f5f7a8c1296c1dcfe.woff2")format("woff2"),
+      url("ccdb598c7dd2100f5f7a8c1296c1dcfe.ttf")format("truetype"),
+      url("ccdb598c7dd2100f5f7a8c1296c1dcfe.svg#FarfetchRegular Basis Regular")format("svg");
+  font-weight:normal;
+  font-style:normal;
+  font-display:swap;
+}
+
+@font-face {
+  font-family: 'FarfetchRegular';
+  font-style:normal;
+  font-display: swap;
+  font-weight:normal;
+  src:local("SFUIText"),
+  url("../src/fonts/SFUIText-Regular.otf") format('embedded-opentype'),
+  url("../src/fonts/SFUIText-Regular.otf") format('woff2'),
+  url("../src/fonts/SFUIText-Regular.otf") format('woff'),
+  url("../src/fonts/SFUIText-Regular.otf") format('truetype'),
+  url("../src/fonts/SFUIText-Regular.otf") format('svg'),
 }
 @font-face {
-  font-family: 'Farfetch Basis';
+  font-family: 'FarfetchRegular';
   font-style:bold;
-  font-display: swap;
-  font-weight:bold;
-  src:local("Farfetch"),
-  url("../src/fonts/Farfetch.ttf") format('embedded-opentype'),
-  url("../src/fonts/Farfetch.ttf") format('woff2'),
-  url("../src/fonts/Farfetch.ttf") format('woff'),
-  url("../src/fonts/Farfetch.ttf") format('truetype'),
-  url("../src/fonts/Farfetch.ttf") format('svg'),
-}
-@font-face {
-  font-family: 'Farfetch Basis Bold';
-  font-style:bold;
-  font-display: swap;
-  font-weight:700;
-  src:local("Farfetch"),
-  url("../src/fonts/Farfetch.ttf") format('embedded-opentype'),
-  url("../src/fonts/Farfetch.ttf") format('woff2'),
-  url("../src/fonts/Farfetch.ttf") format('woff'),
-  url("../src/fonts/Farfetch.ttf") format('truetype'),
-  url("../src/fonts/Farfetch.ttf") format('svg'),
+  font-display: bold;
+  font-weight:normal;
+  src:local("SFUIText"),
+  url("../src/fonts/SFUIText-Bold.otf")   format('embedded-opentype'),
+  url("../src/fonts/SFUIText-Bold.otf") format('woff2'),
+  url("../src/fonts/SFUIText-Bold.otf") format('woff'),
+  url("../src/fonts/SFUIText-Bold.otf") format('truetype'),
+  url("../src/fonts/SFUIText-Bold.otf") format('svg'),
 }
 @font-face {
   font-family: 'NimbusSan';
@@ -111,6 +162,18 @@ url("assets/fonts/FarFetch/Farfetch\ Basis\ Regular.otf") format("svg");
 }
 @font-face {
   font-family: 'NimbusSan';
+  font-style:normal;
+  font-display: swap;
+  font-weight:700;
+  src:local("NimbusSan"),
+  url("../src/fonts/NimbusSan.otf") format('embedded-opentype'),
+  url("../src/fonts/NimbusSan.otf") format('woff2'),
+  url("../src/fonts/NimbusSan.otf") format('woff'),
+  url("../src/fonts/NimbusSan.otf") format('truetype'),
+  url("../src/fonts/NimbusSan.otf") format('svg'),
+}
+@font-face {
+  font-family: 'NimbusSan';
   font-style:bold;
   font-display: swap;
   font-weight:bold;
@@ -120,6 +183,18 @@ url("assets/fonts/FarFetch/Farfetch\ Basis\ Regular.otf") format("svg");
   url("../src/fonts/NimbusSan.ttf") format('woff'),
   url("../src/fonts/NimbusSan.ttf") format('truetype'),
   url("../src/fonts/NimbusSan.ttf") format('svg'),
+}
+@font-face {
+  font-family: 'NimbusSan';
+  font-style:bold;
+  font-display: swap;
+  font-weight:bold;
+  src:local("NimbusSan"),
+  url("../src/fonts/NimbusSan.otf") format('embedded-opentype'),
+  url("../src/fonts/NimbusSan.otf") format('woff2'),
+  url("../src/fonts/NimbusSan.otf") format('woff'),
+  url("../src/fonts/NimbusSan.otf") format('truetype'),
+  url("../src/fonts/NimbusSan.otf") format('svg'),
 }
 
 @tailwind base;

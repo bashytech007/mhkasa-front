@@ -15,7 +15,7 @@ export const Product = ({
     <Link to={`/products/${id}`}>
     <div
       className={cn(
-        "bg-white rounded-2xl overflow-hidden  h-full @container font-Farfetch",
+        "bg-white rounded-2xl overflow-hidden  h-full @container font-FarfetchRegular",
         className
       )}
     >
@@ -28,10 +28,10 @@ export const Product = ({
       </div>
 
       <div className="px-4 pt-2 pb-4 flex text-sm flex-col h-[calc(100%-6rem)]">
-        <p className="text-[#555] font-medium @[240px]:text-app-ash-2 font-Farfetch">
+        <p className="text-[#555] font-medium @[240px]:text-app-ash-2 font-FarfetchRegular">
           {category}
         </p>
-        <h2 className="text-app-black font-bold text-[16px] pt-1 line-clamp-2 font-Farfetch">
+        <h2 className="text-app-black font-bold text-[16px] pt-1 line-clamp-2 font-FarfetchRegular">
           {product}
         </h2>
         <div className="flex pt-2 gap-y-4 gap-x-3 flex-col @[240px]:flex-row @[240px]:items-center @[240px]:justify-between">
@@ -48,10 +48,10 @@ export const Product = ({
             )}
           </div>
           
-            <Button variant="rectangle" className="md:hidden font-Farfetch block bg-app-black  md:w-full px-8 text-center text-app-ash font-medium text-nowrap text-sm mt-auto @[240px]:bg-app-black">
+            <Button variant="rectangle" className="md:hidden font-FarfetchRegular block bg-app-black  md:w-full px-8 text-center text-app-ash font-medium text-nowrap text-sm mt-auto @[240px]:bg-app-black">
               Buy Now
             </Button>
-            <Button variant="rectangle" className="hidden md:block font-Farfetch">
+            <Button variant="rectangle" className="hidden md:block font-FarfetchRegular">
               Add To Cart
             </Button>
         </div>

@@ -23,7 +23,7 @@ const Navbar = () => {
 
   return (
     <Wrapper className="py-4 relative">
-      <nav className="relative flex items-center justify-between gap-x-8 pb-[56px] md:pb-0 font-farFetch">
+      <nav className="relative flex items-center justify-between gap-x-8 pb-[56px] md:pb-0 font-FarfetchRegular">
         <div className="flex items-center gap-2">
           <button onClick={toggle}>
             {expand ? (
@@ -83,7 +83,7 @@ const MobileNavbar = ({ toggle }) => {
       <nav className="pt-6 min-h-[100vh]">
         <Wrapper>
           <div className="flex items-center justify-between pt-2 pb-6">
-            <h2 className="text-2xl font-bold">Categories</h2>
+            <h2 className="text-2xl font-bold font-FarfetchBold">Categories</h2>
             <button onClick={toggle}>
               <Icon icon="uil:times" style={{ fontSize: 32 }} />
             </button>

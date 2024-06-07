@@ -94,7 +94,7 @@ export const ProductDetail = ({ productId }) => {
   }, [productId]);
 
   return (
-    <div className="bg-white px-6 py-4  mb-6 font-Farfetch mt-2">
+    <div className="bg-white px-6 py-4  mb-6 font-FarfetchRegular mt-2">
       <CategoryPanel />
       <div className="grid grid-cols-2 border-b-2 md:grid-cols-4">
         <button
@@ -189,6 +189,7 @@ export const ProductDetail = ({ productId }) => {
                   <TooltipTrigger className="w-fit">
                     <Button
                       type="submit"
+                      variant="rectangle"
                       className="bg-app-black text-white font-medium w-fit hover:bg-app-black disabled:bg-[#999999] hover:disabled:bg-[#999999]"
                       disabled={!canSubmit}
                     >

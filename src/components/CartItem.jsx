@@ -65,7 +65,7 @@ export const CartItem = ({ item }) => {
               Cancel
             </button>
             <Button
-              className="bg-app-black text-white font-bold"
+              className="bg-app-black text-white font-bold font-FarfetchBold"
               onClick={() => {
                 removeFromCart(item.productId._id);
                 setShowModal(false);

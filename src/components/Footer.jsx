@@ -17,8 +17,8 @@ export const Footer = () => {
 
           </div>
 
-          <div className="md:col-span-3 font-Farfetch">
-            <h2 className="text-lg font-bold text-white text-left">
+          <div className="md:col-span-3 font-FarfetchRegular">
+            <h2 className="text-lg font-bold font-FarfetchBold text-white text-left">
               Explore Mkhasa
             </h2>
             <ul className="text-app-ash-2 mt-4 text-left">
@@ -65,16 +65,16 @@ export const Footer = () => {
             </ul>
           </div>
 
-          <div className="md:col-span-3 font-Farfetch">
-            <h2 className="text-lg font-bold text-white text-left">
+          <div className="md:col-span-3 font-FarfetchRegular">
+            <h2 className="text-lg font-bold font-FarfetchBold text-white text-left">
               CONTACT US
             </h2>
-            <div className="text-app-ash-2 mt-4 text-left font-Farfetch">
+            <div className="text-app-ash-2 mt-4 text-left font-FarfetchRegular">
               {/* <p>House 92, Dele Orisabiyi Street Okota Lagos State</p> */}
               <p>Call Us: <span className="font-NimbusSan"> 09013898261</span></p>
               <p>Email: info@mkhasa.com</p>
 
-              <h3 className="text-lg font-bold text-white mt-4">Support/Sales Team</h3>
+              <h3 className="text-lg font-bold font-FarfetchBold text-white mt-4">Support/Sales Team</h3>
               <p>Call Us: <span className="font-NimbusSan">09131451391 </span></p>
 
               <p>Email: sales@mkhasa.com</p>
@@ -82,8 +82,8 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className="md:col-span-3 font-Farfetch 0">
-            <h2 className="text-lg font-bold text-white text-left md:pr-20 md:text-right">
+          <div className="md:col-span-3 font-FarfetchRegular 0">
+            <h2 className="text-lg font-bold font-FarfetchBold text-white text-left md:pr-20 md:text-right">
               Socials
             </h2>
             <ul className="flex text-app-ash-2 justify-start gap-3 mt-4 md:justify-end">
@@ -164,7 +164,7 @@ export const Footer = () => {
             </div>
           </div>
 
-        <p className="text-app-ash-2 text-sm text-left pt-10 sm:text-right md:text-center font-Farfetch">
+        <p className="text-app-ash-2 text-sm text-left pt-10 sm:text-right md:text-center font-FarfetchRegular">
           &copy; {new Date().getFullYear()} All Rights Reserved
         </p>
       </Wrapper>

@@ -98,7 +98,7 @@ export const Component = () => {
           currentLocationClassName="text-app-black"
         />
 
-        <div className="@container pb-8 font-Farfetch bg-white px-2">
+        <div className="@container pb-8 font-FarfetchRegular bg-white px-2">
           <div className="grid gap-8 @4xl:grid-cols-2">
             <div className="relative min-w-[350px] md:min-w-[550px]">
               <div className="rounded-2xl overflow-hidden w-full aspect-square md:@[460px]:aspect-video">
@@ -146,43 +146,43 @@ export const Component = () => {
             </div>
 
             <div>
-              <div className="flex justify-between items-center flex-wrap gap-2 font-Farfetch">
-                <p className="text-xl font-bold text-[#A40001] font-Farfetch">{product.category}</p>
+              <div className="flex justify-between items-center flex-wrap gap-2 font-FarfetchRegular">
+                <p className="text-xl font-bold text-[#A40001] font-FarfetchRegular">{product.category}</p>
                   {/* <Button className="bg-white text-sm sm:text-[16px] md:bg-app-ash-2">
                   7 Days Return Policy
                 </Button> */}
                
               
               </div>
-             <div className="mt-5 -md:mt-6 font-Farfetch"> 
-             <h3  className="text-[#555] font-bold md:text-4xl text-3xl font-Farfetch">
+             <div className="mt-5 -md:mt-6 font-FarfetchRegular"> 
+             <h3  className="text-[#555] font-bold md:text-4xl text-3xl font-FarfetchRegular">
                   {product.name}
                 </h3>
              </div>
         
-              <div className="mt-5 md:mt-2 font-Farfetch">
-              <p className="md:text-5xl text-5xl font-Farfetch">₦<span>{format(product.price)}</span></p>
+              <div className="mt-5 md:mt-2 font-FarfetchRegular">
+              <p className="md:text-5xl text-5xl font-FarfetchRegular">₦<span>{format(product.price)}</span></p>
               </div>
              
              
-              <div className="mt-5 md:mt-2 font-Farfetch">
-              <p className="font-Farfetch mt-2"><strong className="text-black font-Farfetch Basis font-bold">SKU</strong>: <span className="font-Farfetch text-[#555]">{product.sku}</span></p>
-              <p className="font-Farfetch mt-2"><strong className="text-black font-Farfetch font-bold">Brand</strong>: <span className="font-Farfetch text-[#555]">{product.brand}</span></p>
-               <p className="font-Farfetch mt-2"><strong className="text-black font-Farfetch font-bold">Manufacturer</strong>: <span className="font-Farfetch text-[#555]">{product.manufacturer}</span></p>
+              <div className="mt-5 md:mt-2 font-FarfetchRegular">
+              <p className="font-FarfetchRegular mt-2"><strong className="text-black font-FarfetchRegular Basis font-bold">SKU</strong>: <span className="font-FarfetchRegular text-[#555]">{product.sku}</span></p>
+              <p className="font-FarfetchRegular mt-2"><strong className="text-black font-FarfetchRegular font-bold">Brand</strong>: <span className="font-FarfetchRegular text-[#555]">{product.brand}</span></p>
+               <p className="font-FarfetchRegular mt-2"><strong className="text-black font-FarfetchRegular font-bold">Manufacturer</strong>: <span className="font-FarfetchRegular text-[#555]">{product.manufacturer}</span></p>
 
-              {/* <p className="text-xl text-[#555] font-Farfetch">Brand <span className="font-bold text-xl text-[#555] font-Farfetch"> : {product.brand}</span></p>
-              <p className="text-xl text-[#555] font-Farfetch">Manufacturer <span className="font-Farfetch font-bold text-xl text-[#555]"> : {product.manufacturer}</span></p> */}
+              {/* <p className="text-xl text-[#555] font-FarfetchRegular">Brand <span className="font-bold text-xl text-[#555] font-FarfetchRegular"> : {product.brand}</span></p>
+              <p className="text-xl text-[#555] font-FarfetchRegular">Manufacturer <span className="font-FarfetchRegular font-bold text-xl text-[#555]"> : {product.manufacturer}</span></p> */}
                 
               </div>
               <div className="py-2"></div>
-              <div className="flex gap-x-12 flex-wrap justify-between pb-2 font-Farfetch">
+              <div className="flex gap-x-12 flex-wrap justify-between pb-2 font-FarfetchRegular">
                 {/* <div className="py-2"></div> */}
                 <div className="py-3">
-                  <p className="text-[#555] text-xl font-bold mt-1 pb-2 font-Farfetch">Qty</p>
-                  <div className="flex gap-4 pt-2 items-center font-Farfetch">
+                  <p className="text-[#555] text-xl font-bold mt-1 pb-2 font-FarfetchRegular">Qty</p>
+                  <div className="flex gap-4 pt-2 items-center font-FarfetchRegular">
                     <button
                       onClick={decrease}
-                      className="h-10 font-Farfetch aspect-square rounded-full bg-white grid place-items-center font-medium"
+                      className="h-10 font-FarfetchRegular aspect-square rounded-full bg-white grid place-items-center font-medium"
                     >
                       <Icon icon="ic:round-minus" style={{ fontSize: 30 }} />
                     </button>
@@ -199,7 +199,7 @@ export const Component = () => {
                     </p>
                     <button
                       onClick={increase}
-                      className="h-10 font-Farfetch aspect-square rounded-full bg-white grid place-items-center font-medium"
+                      className="h-10 font-FarfetchRegular aspect-square rounded-full bg-white grid place-items-center font-medium"
                     >
                       <Icon icon="ph:plus-bold" style={{ fontSize: 25 }} />
                     </button>
@@ -251,7 +251,7 @@ export const Component = () => {
          {/* STYLE THE UI APPROPRAITELY */}
          <div className="">
          {/* {Array.isArray(product.layerWith) && product.layerWith.length > 0 && (
-  <div className="md:flex md:flex-col font-Farfetch">
+  <div className="md:flex md:flex-col font-FarfetchRegular">
     <Heading>You can layer with</Heading>
     <ListGrid>
       {product.layerWith.map((product) => (
@@ -269,31 +269,35 @@ export const Component = () => {
 )} */}
 
   
-  {Array.isArray(product.layerWith) && product.layerWith.length > 0 && (
-  <div className="flex items-center justify-center">
-    <Heading className="mt-3 mb-[-10px]">You can also layer with</Heading>
-    <div className="hidden md:flex gap-4">
-         <button
+ 
+{Array.isArray(product.layerWith) && product.layerWith.length > 0 && (
+  <div className="mb-4">
+ <div className="flex justify-between gap-2 mt-8">
+  <Heading className="mt-3 mb-[-10px]">Product you can Layer With  </Heading>
+    <div className="flex" >
+  <button
             {...getHandlers("backward")}
             className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
           >
-            <Icon icon="fa6-solid:angle-left" style={{ fontSize: 24 }} />
+            <Icon icon="fa6-solid:angle-left" style={{ fontSize: 28 }} />
           </button>
-         
           <button
             {...getHandlers("forward")}
             className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
           >
-            <Icon icon="fa6-solid:angle-left" hFlip style={{ fontSize: 24 }} />
-          </button> 
-           {/* <LatestProducts/> */}
-        </div>
-
+            <Icon icon="fa6-solid:angle-left" hFlip style={{ fontSize: 28 }} />
+          </button>
   </div>
-)}
- <ListGrid >
+  </div>
+  
       {/* <h2>The cards for We Also Recommend</h2> */}
-      {product.layerWith.map((product) => (
+      
+      <ul
+        className="pt-8 w-full  gap-6 flex  sm:flex-nowrap overflow-auto sm:no-scrollbar"
+        ref={ref}
+      >
+   {product.layerWith.map((product) => (
+        <li  className="md:flex-shrink-0 grow">
         <Product
           key={product._id}
           id={product._id}
@@ -301,29 +305,69 @@ export const Component = () => {
           category={product.category}
           originalPrice={product.price}
           image={product.productImage || product.mainImage}
+           className="min-w-[11rem]"
         />
+        </li>
       ))}
-    </ListGrid>
-       </div>        
+      
+    
+    </ul>
+  </div>
+)}
+         </div>
+
+       
+      
 
         <ProductDetail productId={product._id} />
 
-        {Array.isArray(product.layerWith) && product.layerWith.length > 0 && (
+        {Array.isArray(recommend) &&recommend.length > 0 && (
   <div className="mb-4">
-    <Heading className="mt-3 mb-[-10px]">We also Recommend : </Heading>
-    <ListGrid>
+  <div className="flex justify-between gap-2 mt-8">
+  <Heading className="mt-3 mb-[-10px]">We also Recommend : </Heading>
+    <div className="flex" >
+  <button
+            {...getHandlers("backward")}
+            className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
+          >
+            <Icon icon="fa6-solid:angle-left" style={{ fontSize: 28 }} />
+          </button>
+          <button
+            {...getHandlers("forward")}
+            className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
+          >
+            <Icon icon="fa6-solid:angle-left" hFlip style={{ fontSize: 28 }} />
+          </button>
+  </div>
+  </div>
+  
       {/* <h2>The cards for We Also Recommend</h2> */}
+      
+      <ul
+        className="pt-8 w-full  gap-6 flex  sm:flex-nowrap overflow-auto sm:no-scrollbar"
+        ref={ref}
+      >
+       
+
+        
       {recommend.map((product) => (
-        <Product
+        <li  className="md:flex-shrink-0 grow">
+ <Product
+ 
           key={product.product._id}
           id={product.product._id}
           product={product.product.name}
           category={product.product.category}
           originalPrice={product.product.price}
           image={product.product.productImage || product.product.mainImage}
+          className="min-w-[11rem]"
         />
+        </li>
+       
       ))}
-    </ListGrid>
+      
+    
+    </ul>
   </div>
 )}
        

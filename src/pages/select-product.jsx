@@ -21,7 +21,7 @@ import axios from "axios";
 
 export const Component = () => {
   const { product } = useLoaderData();
-  console.log(product)
+  // console.log(product)
   const { decreaseItem, increaseItem, addToCart } = useCartContext();
   const [count, setCount] = useState(1);
   const [recommend , setRecommend] = useState([])

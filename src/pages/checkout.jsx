@@ -1058,9 +1058,9 @@ export const Component = () => {
     });
   }, []);
 
-  useEffect(() => {
-    console.log(formik.values.state);
-  }, [formik.values.state]);
+  // useEffect(() => {
+  //   console.log(formik.values.state);
+  // }, [formik.values.state]);
 
   return (
     <main>
@@ -1147,22 +1147,155 @@ const DeliveryDetails = ({ className, formik }) => {
   // add complete list here
   const states = [
     {
-      name: "Lagos",
-      value: "lagos",
+      name: "Abia",
+      value: "abia",
     },
     {
-      name: "Oyo",
-      value: "oyo",
+      name: "Adamawa",
+      value: "adamawa",
     },
     {
       name: "Akwa Ibom",
       value: "akwa_ibom",
     },
     {
+      name: "Anambra",
+      value: "anambra",
+    },
+    {
+      name: "Bauchi",
+      value: "bauchi",
+    },
+    {
+      name: "Bayelsa",
+      value: "bayelsa",
+    },
+    {
+      name: "Benue",
+      value: "benue",
+    },
+    {
+      name: "Borno",
+      value: "borno",
+    },
+    {
       name: "Cross River",
       value: "cross_river",
     },
-  ];
+    {
+      name: "Delta",
+      value: "delta",
+    },
+    {
+      name: "Ebonyi",
+      value: "ebonyi",
+    },
+    {
+      name: "Edo",
+      value: "edo",
+    },
+    {
+      name: "Ekiti",
+      value: "ekiti",
+    },
+    {
+      name: "Enugu",
+      value: "enugu",
+    },
+    {
+      name: "FCT - Abuja",
+      value: "fct_abuja",
+    },
+    {
+      name: "Gombe",
+      value: "gombe",
+    },
+    {
+      name: "Imo",
+      value: "imo",
+    },
+    {
+      name: "Jigawa",
+      value: "jigawa",
+    },
+    {
+      name: "Kaduna",
+      value: "kaduna",
+    },
+    {
+      name: "Kano",
+      value: "kano",
+    },
+    {
+      name: "Katsina",
+      value: "katsina",
+    },
+    {
+      name: "Kebbi",
+      value: "kebbi",
+    },
+    {
+      name: "Kogi",
+      value: "kogi",
+    },
+    {
+      name: "Kwara",
+      value: "kwara",
+    },
+    {
+      name: "Lagos",
+      value: "lagos",
+    },
+    {
+      name: "Nasarawa",
+      value: "nasarawa",
+    },
+    {
+      name: "Niger",
+      value: "niger",
+    },
+    {
+      name: "Ogun",
+      value: "ogun",
+    },
+    {
+      name: "Ondo",
+      value: "ondo",
+    },
+    {
+      name: "Osun",
+      value: "osun",
+    },
+    {
+      name: "Oyo",
+      value: "oyo",
+    },
+    {
+      name: "Plateau",
+      value: "plateau",
+    },
+    {
+      name: "Rivers",
+      value: "rivers",
+    },
+    {
+      name: "Sokoto",
+      value: "sokoto",
+    },
+    {
+      name: "Taraba",
+      value: "taraba",
+    },
+    {
+      name: "Yobe",
+      value: "yobe",
+    },
+    {
+      name: "Zamfara",
+      value: "zamfara",
+    }
+  ]
+  
   return (
     <div className={cn("bg-white rounded-xl p-5", className)}>
       <div className="flex items-center gap-3 border-b-2 pb-4">

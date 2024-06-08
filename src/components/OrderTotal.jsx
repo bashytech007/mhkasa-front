@@ -10,7 +10,16 @@ export const OrderTotal = ({}) => {
   const { data } = useCartQuery();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-
+  const [deliveryFee,SetDeliveryFee]=useState(()=>{
+    console.log(deliveryFee)
+    return (
+      data.subTotal > 100_000? 0: state && state === "lagos" ? 2500 : 5000
+    )
+  });
+  useEffect(()=>{
+    console.log({deliveryFee})
+  },[])
+console.log(deliveryFee)
   const proceed = async () => {
     queryClient.fetchQuery({
       queryKey: ["cart"],
@@ -82,7 +91,7 @@ export const OrderSummary = ({ alignToEnd, state }) => {
               alignToEnd ? "md:justify-end gap-3" : ""
             )}
           >
-            <h2>Delivery Fee:</h2>
+            <h2 className="text-blue-400">Delivery Fee:</h2>
             <p>
               {data.subTotal > 100_000
                 ? formatCurrency(0, userCurrency)

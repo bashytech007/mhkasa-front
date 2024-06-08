@@ -1144,6 +1144,7 @@ const PersonalDetails = ({ className, formik }) => {
 };
 
 const DeliveryDetails = ({ className, formik }) => {
+  // add complete list here
   const states = [
     {
       name: "Lagos",

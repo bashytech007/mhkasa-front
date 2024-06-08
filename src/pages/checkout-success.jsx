@@ -122,7 +122,6 @@
 //           />
 //         )}
 
-
 //   <div className="mb-4">
 //  <div className="flex justify-between gap-2 mt-8">
 //   <Heading className="mt-3 mb-[-10px] font-FarfetchBold font-bold text-app-black">Best Sellers </Heading>
@@ -141,9 +140,9 @@
 //           </button>
 //   </div>
 //   </div>
-  
+
 //       {/* <h2>The cards for We Also Recommend</h2> */}
-      
+
 //       <ul
 //         className="pt-8 w-full  gap-6 flex  sm:flex-nowrap overflow-auto sm:no-scrollbar"
 //         ref={ref}
@@ -167,12 +166,9 @@
 //           )
 //         )}
 
-      
-    
 //     </ul>
 //   </div>
 
-     
 //       </Wrapper>
 //     </>
 //   );
@@ -186,6 +182,8 @@ import { useEffect, useState } from "react";
 import axios from "../utils/axios";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { Error } from "../components/Error";
+import { BestSellers } from "../components/BestSellers";
+import { LatestProducts } from "../components/LatestProducts";
 
 export const Component = () => {
   const [searchParams] = useSearchParams();
@@ -285,6 +283,9 @@ export const Component = () => {
             className="text-center"
           />
         )}
+
+        <BestSellers />
+        <LatestProducts />
       </Wrapper>
     </>
   );

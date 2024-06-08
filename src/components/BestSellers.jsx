@@ -8,7 +8,6 @@ import { useRef, useEffect } from "react";
 
 export const BestSellers = () => {
   const { bestsellers } = useLoaderData();
-
   const ref = useRef();
 
   const { getHandlers, setElement } = useLongPress(ref.current);

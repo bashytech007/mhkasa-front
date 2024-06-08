@@ -10,7 +10,16 @@ export const OrderTotal = ({}) => {
   const { data } = useCartQuery();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-
+  const [deliveryFee,SetDeliveryFee]=useState(()=>{
+    console.log(deliveryFee)
+    return (
+      data.subTotal > 100_000? 0: state && state === "lagos" ? 2500 : 5000
+    )
+  });
+  useEffect(()=>{
+    console.log({deliveryFee})
+  },[])
+console.log(deliveryFee)
   const proceed = async () => {
     queryClient.fetchQuery({
       queryKey: ["cart"],
@@ -43,7 +52,7 @@ export const OrderTotal = ({}) => {
   );
 };
 
-export const OrderSummary = ({ alignToEnd }) => {
+export const OrderSummary = ({ alignToEnd, state }) => {
   const [userCurrency, setUserCurrency] = useState();
 
   const { status, data } = useCartQuery();
@@ -75,6 +84,22 @@ export const OrderSummary = ({ alignToEnd }) => {
           >
             <h2>Discount:</h2>
             <p>{formatCurrency(data?.discount || "", userCurrency)}</p>
+          </div>
+          <div
+            className={cn(
+              `flex items-center justify-between py-1`,
+              alignToEnd ? "md:justify-end gap-3" : ""
+            )}
+          >
+            <h2 className="text-blue-400">Delivery Fee:</h2>
+            <p>
+              {data.subTotal > 100_000
+                ? formatCurrency(0, userCurrency)
+                : formatCurrency(
+                    state && state === "lagos" ? 2500 : 5000,
+                    userCurrency
+                  )}
+            </p>
           </div>
           <div
             className={cn(
@@ -118,3 +143,62 @@ const CouponCode = () => {
     </div>
   );
 };
+
+// import React from "react";
+// import { useNavigate } from "react-router-dom";
+// import { useCartQuery } from "../hooks/query/useCart";
+// import { useQueryClient } from "@tanstack/react-query";
+// import { Button } from "./ui/Button";
+// import { OrderSummary } from "./OrderSummary"; // Correct import
+
+// const CouponCode = () => {
+//   return (
+//     <div className="bg-red-100 rounded-full overflow-hidden relative max-w-lg md:w-[480px]">
+//       <input
+//         type="text"
+//         className="py-2 w-full pl-4 pr-32 outline-none"
+//         placeholder="Enter Discount Code"
+//       />
+//       <button className="bg-app-black absolute right-0 top-0 bottom-0 w-28 text-white">
+//         Apply
+//       </button>
+//     </div>
+//   );
+// };
+
+// export const OrderTotal = ({ address }) => {
+//   const { data } = useCartQuery();
+//   const navigate = useNavigate();
+//   const queryClient = useQueryClient();
+
+//   const proceed = async () => {
+//     queryClient.fetchQuery({
+//       queryKey: ["cart"],
+//       exact: true,
+//     });
+//     navigate("/checkout");
+//   };
+
+//   return (
+//     <div className="py-4 md:flex md:justify-between">
+//       <div>
+//         <CouponCode />
+//       </div>
+//       <div>
+//         <OrderSummary alignToEnd address={address} />
+
+//         <div className="pt-6">
+//           {!data?.items || data.items.length === 0 ? null : (
+//             <Button
+//               onClick={proceed}
+//               variant="rectangle"
+//               className="bg-app-red font-medium w-full text-white md:bg-app-black"
+//             >
+//               Proceed To Checkout
+//             </Button>
+//           )}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };

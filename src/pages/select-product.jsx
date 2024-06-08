@@ -21,7 +21,7 @@ import axios from "axios";
 
 export const Component = () => {
   const { product } = useLoaderData();
-  console.log(product)
+  // console.log(product)
   const { decreaseItem, increaseItem, addToCart } = useCartContext();
   const [count, setCount] = useState(1);
   const [recommend , setRecommend] = useState([])
@@ -268,63 +268,10 @@ export const Component = () => {
   </div>
 )} */}
 
-  
- 
-{Array.isArray(product.layerWith) && product.layerWith.length > 0 && (
-  <div className="mb-4">
- <div className="flex justify-between gap-2 mt-8">
-  <Heading className="mt-3 mb-[-10px]">Product you can Layer With  </Heading>
-    <div className="hidden md:flex gap-2" >
-  <button
-            {...getHandlers("backward")}
-            className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
-          >
-            <Icon icon="fa6-solid:angle-left" style={{ fontSize: 28 }} />
-          </button>
-          <button
-            {...getHandlers("forward")}
-            className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
-          >
-            <Icon icon="fa6-solid:angle-left" hFlip style={{ fontSize: 28 }} />
-          </button>
-  </div>
-  </div>
-  
-      {/* <h2>The cards for We Also Recommend</h2> */}
-      
-      <ul
-        className="pt-8 w-full  gap-6 flex  sm:flex-nowrap overflow-auto sm:no-scrollbar"
-        ref={ref}
-      >
-   {product.layerWith.map((product) => (
-        <li  className="md:flex-shrink-0 grow">
-        <Product
-          key={product._id}
-          id={product._id}
-          product={product.name}
-          category={product.category}
-          originalPrice={product.price}
-          image={product.productImage || product.mainImage}
-           className="min-w-[11rem]"
-        />
-        </li>
-      ))}
-      
-    
-    </ul>
-  </div>
-)}
-         </div>
-
-       
-      
-
-        <ProductDetail productId={product._id} />
-
-        {Array.isArray(recommend) &&recommend.length > 0 && (
+{Array.isArray(recommend) &&recommend.length > 0 && (
   <div className="mb-4">
   <div className="flex justify-between gap-2 mt-8">
-  <Heading className="mt-3 mb-[-10px]">We also Recommend : </Heading>
+  <Heading className="mt-3 mb-[-10px] font-FarfetchBold font-bold text-app-black">We also Recommend</Heading>
     <div className="hidden md:flex gap-2" >
   <button
             {...getHandlers("backward")}
@@ -351,7 +298,7 @@ export const Component = () => {
 
         
       {recommend.map((product) => (
-        <li  className="md:flex-shrink-0 grow">
+        <li  className="md:flex-shrink-0 grow" key={product._id}>
  <Product
  
           key={product.product._id}
@@ -370,7 +317,56 @@ export const Component = () => {
     </ul>
   </div>
 )}
-       
+ 
+{Array.isArray(product.layerWith) && product.layerWith.length > 0 && (
+  <div className="mb-4">
+ <div className="flex justify-between gap-2 mt-8">
+  <Heading className="mt-3 mb-[-10px] font-FarfetchBold font-bold text-app-black">Product you can Layer With  </Heading>
+    <div className="hidden md:flex gap-2" >
+  <button
+            {...getHandlers("backward")}
+            className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
+          >
+            <Icon icon="fa6-solid:angle-left" style={{ fontSize: 28 }} />
+          </button>
+          <button
+            {...getHandlers("forward")}
+            className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
+          >
+            <Icon icon="fa6-solid:angle-left" hFlip style={{ fontSize: 28 }} />
+          </button>
+  </div>
+  </div>
+  
+      {/* <h2>The cards for We Also Recommend</h2> */}
+      
+      <ul
+        className="pt-8 w-full  gap-6 flex  sm:flex-nowrap overflow-auto sm:no-scrollbar"
+        ref={ref}
+      >
+   {product.layerWith.map((product) => (
+        <li  className="md:flex-shrink-0 grow" key={product._id}>
+        <Product
+          key={product._id}
+          id={product._id}
+          product={product.name}
+          category={product.category}
+          originalPrice={product.price}
+          image={product.productImage || product.mainImage}
+           className="min-w-[11rem]"
+        />
+        </li>
+      ))}
+      
+    
+    </ul>
+  </div>
+)}
+         </div>
+
+
+
+        <ProductDetail productId={product._id} />
       </Wrapper>
     </>
   );

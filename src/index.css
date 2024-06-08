@@ -42,6 +42,9 @@
     url("assets/fonts/Montserrat/static/Montserrat-Bold.ttf") format("svg");
 } */
 
+*{
+  scroll-behavior: smooth;
+}
   @font-face {
   font-family: "Fuzzy Bubbles";
   font-style: normal;

@@ -1058,6 +1058,10 @@ export const Component = () => {
     });
   }, []);
 
+  useEffect(() => {
+    console.log(formik.values.state);
+  }, [formik.values.state]);
+
   return (
     <main>
       <Seo
@@ -1140,6 +1144,24 @@ const PersonalDetails = ({ className, formik }) => {
 };
 
 const DeliveryDetails = ({ className, formik }) => {
+  const states = [
+    {
+      name: "Lagos",
+      value: "lagos",
+    },
+    {
+      name: "Oyo",
+      value: "oyo",
+    },
+    {
+      name: "Akwa Ibom",
+      value: "akwa_ibom",
+    },
+    {
+      name: "Cross River",
+      value: "cross_river",
+    },
+  ];
   return (
     <div className={cn("bg-white rounded-xl p-5", className)}>
       <div className="flex items-center gap-3 border-b-2 pb-4">
@@ -1172,13 +1194,32 @@ const DeliveryDetails = ({ className, formik }) => {
 
         <div className="grid gap-3 grid-cols-12">
           <div className="col-span-12 @sm:col-span-6">
-            <Input
+            {/* <Input
               type="text"
               placeholder="State"
               formik={formik}
               name="state"
               className="bg-app-ash-1 rounded-sm"
-            />
+            /> */}
+            <div className="py-2 w-full">
+              <select
+                {...formik.getFieldProps("state")}
+                className="bg-app-ash-1 rounded-sm  w-full py-2 px-6 outline-none"
+                placeholder="State"
+              >
+                <option value="" selected>
+                  Select state
+                </option>
+                {states.map(({ name, value }, i) => (
+                  <option key={i} value={value}>
+                    {name}
+                  </option>
+                ))}
+              </select>
+              {formik.touched.state && formik.errors.state && (
+                <p className="text-app-red"> {formik.errors.state}</p>
+              )}
+            </div>
           </div>
           <div className="col-span-12 @sm:col-span-6">
             <Input

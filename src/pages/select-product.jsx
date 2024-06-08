@@ -274,7 +274,7 @@ export const Component = () => {
   <div className="mb-4">
  <div className="flex justify-between gap-2 mt-8">
   <Heading className="mt-3 mb-[-10px]">Product you can Layer With  </Heading>
-    <div className="flex" >
+    <div className="hidden md:flex gap-2" >
   <button
             {...getHandlers("backward")}
             className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
@@ -325,7 +325,7 @@ export const Component = () => {
   <div className="mb-4">
   <div className="flex justify-between gap-2 mt-8">
   <Heading className="mt-3 mb-[-10px]">We also Recommend : </Heading>
-    <div className="flex" >
+    <div className="hidden md:flex gap-2" >
   <button
             {...getHandlers("backward")}
             className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"

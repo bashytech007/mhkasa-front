@@ -43,7 +43,7 @@ export const OrderTotal = ({}) => {
   );
 };
 
-export const OrderSummary = ({ alignToEnd }) => {
+export const OrderSummary = ({ alignToEnd, state }) => {
   const [userCurrency, setUserCurrency] = useState();
 
   const { status, data } = useCartQuery();
@@ -83,7 +83,14 @@ export const OrderSummary = ({ alignToEnd }) => {
             )}
           >
             <h2>Delivery Fee:</h2>
-            <p>{formatCurrency(data?.discount || "", userCurrency)}</p>
+            <p>
+              {data.subTotal > 100_000
+                ? formatCurrency(0, userCurrency)
+                : formatCurrency(
+                    state && state === "lagos" ? 2500 : 5000,
+                    userCurrency
+                  )}
+            </p>
           </div>
           <div
             className={cn(
@@ -186,4 +193,3 @@ const CouponCode = () => {
 //     </div>
 //   );
 // };
-

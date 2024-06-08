@@ -575,7 +575,7 @@
 //           />
 //           <label htmlFor="flutterwave" className="flex items-center gap-2">
 //             <img src={flutterImg} className="w-18 h-18" alt="flutterwave-logo" />
-            
+
 //           </label>
 //         </div >
 //         <div className="flex items-center gap-2">
@@ -589,7 +589,7 @@
 //           />
 //           <label htmlFor="paystack" className="flex items-center gap-2">
 //             <img src={paystackImg} className="w-18 h-18" alt="paystack-logo" />
-          
+
 //           </label>
 //         </div>
 //       </div>
@@ -632,8 +632,6 @@
 //     </div>
 //   );
 // };
-
-
 
 // import { useState, useEffect } from "react";
 // import { useFormik } from "formik";
@@ -1092,7 +1090,10 @@ export const Component = () => {
             <PaymentMethod setProvider={setProvider} provider={provider} />
           </form>
           <div className="md:col-span-6 lg:col-span-5 xl:col-span-4">
-            <CartSummary isPending={mutation.isPending} />
+            <CartSummary
+              isPending={mutation.isPending}
+              deliveryState={formik.values.state}
+            />
           </div>
         </div>
       </Wrapper>
@@ -1219,7 +1220,11 @@ const PaymentMethod = ({ className, setProvider, provider }) => {
               onChange={handleProviderChange}
             />
             <label htmlFor="flutterwave" className="flex items-center gap-2">
-              <img src={flutterImg} className="w-18 h-18" alt="flutterwave-logo" />
+              <img
+                src={flutterImg}
+                className="w-18 h-18"
+                alt="flutterwave-logo"
+              />
             </label>
           </div>
           <div className="flex items-center gap-2">
@@ -1232,7 +1237,11 @@ const PaymentMethod = ({ className, setProvider, provider }) => {
               onChange={handleProviderChange}
             />
             <label htmlFor="paystack" className="flex items-center gap-2">
-              <img src={paystackImg} className="w-18 h-18" alt="paystack-logo" />
+              <img
+                src={paystackImg}
+                className="w-18 h-18"
+                alt="paystack-logo"
+              />
             </label>
           </div>
         </div>
@@ -1241,7 +1250,7 @@ const PaymentMethod = ({ className, setProvider, provider }) => {
   );
 };
 
-const CartSummary = ({ className, isPending }) => {
+const CartSummary = ({ className, isPending, deliveryState }) => {
   const { data } = useCartQuery();
 
   return (
@@ -1251,7 +1260,7 @@ const CartSummary = ({ className, isPending }) => {
       </div>
       <div>
         <CartItems />
-        <OrderSummary />
+        <OrderSummary state={deliveryState} />
 
         {!data?.items || data.items.length === 0 ? null : (
           <Button

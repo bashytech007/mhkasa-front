@@ -329,7 +329,7 @@ import { Input } from "../components/Input";
 import { useFormik } from "formik";
 import { Modal } from "../components/Modal";
 import paystackImg from "../assets/images/paystack.svg";
-import flutterImg from "../assets/images/flutter.svg";
+import flutterImg from "../assets/images/flutter1.svg";
 
 export const Component = () => {
   const schema = yup.object().shape({
@@ -435,10 +435,10 @@ export const Component = () => {
       {showModal && (
         <Modal title="Confirm Order">
           <p>
-            For orders below ₦100k within Lagos, delivery fee is ₦2.5k. Orders above ₦100k within Lagos are free.
+            For orders below ₦100,000 within Lagos, delivery fee is ₦2,500. Orders above ₦100,000 within Lagos are free.
           </p>
           <p>
-            For orders below ₦100k outside Lagos, delivery fee is ₦5k. Orders above ₦100k outside Lagos are free.
+            For orders below ₦100,000 outside Lagos, delivery fee is ₦5,000. Orders above ₦100,000 outside Lagos are free.
           </p>
           <p>Are you sure you want to proceed?</p>
           <div className="flex justify-center gap-4 mt-4">
@@ -462,7 +462,7 @@ const PersonalDetails = ({ className, formik }) => {
         <p className="bg-app-ash-1 w-8 aspect-square rounded-full grid place-items-center font-bold">
           1
         </p>
-        <Heading>Personal Details</Heading>
+        <Heading className="text-black">Personal Details</Heading>
       </div>
       <div className="@container py-4 grid gap-3">
         <div>
@@ -500,7 +500,7 @@ const DeliveryDetails = ({ className, formik }) => {
         <p className="bg-app-ash-1 w-8 aspect-square rounded-full grid place-items-center font-bold">
           2
         </p>
-        <Heading>Delivery Details</Heading>
+        <Heading className="text-black">Delivery Details</Heading>
       </div>
       <div className="@container py-4 grid gap-3">
         <div className="grid gap-3 grid-cols-12">
@@ -510,7 +510,7 @@ const DeliveryDetails = ({ className, formik }) => {
               placeholder="Address"
               formik={formik}
               name="address"
-              className="bg-app-ash-1"
+              className="bg-app-ash-1 rounded-sm"
             />
           </div>
           <div className="col-span-12 @sm:col-span-4">
@@ -560,7 +560,7 @@ const PaymentMethod = ({ className, setProvider, provider }) => {
         <p className="bg-app-ash-1 w-8 aspect-square rounded-full grid place-items-center font-bold">
           3
         </p>
-        <Heading>Payment Method</Heading>
+        <Heading className="text-black">Payment Method</Heading>
       </div>
       <div className="py-4 grid gap-4">
       <div className="flex">

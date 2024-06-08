@@ -235,7 +235,7 @@ const Rating = ({ rating = 0, onClick = () => {} }) => {
   return (
     <div className="flex gap-[1px] py-1">
       {stars.map((icon, i) => (
-        <button key={i}>
+        <button key={i} >
           <Icon icon={icon} onClick={() => onClick(i + 1)} />
         </button>
       ))}

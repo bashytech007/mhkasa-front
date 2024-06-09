@@ -1335,7 +1335,7 @@ const DeliveryDetails = ({ className, formik }) => {
               name="state"
               className="bg-app-ash-1 rounded-sm"
             /> */}
-            <div className="py-2 w-full">
+            <div className="py-2 w-full bg-app-ash-1">
               <select
                 {...formik.getFieldProps("state")}
                 className="bg-app-ash-1 rounded-sm  w-full py-2 px-6 outline-none"
@@ -1345,7 +1345,7 @@ const DeliveryDetails = ({ className, formik }) => {
                   Select state
                 </option>
                 {states.map(({ name, value }, i) => (
-                  <option key={i} value={value}>
+                  <option key={i} value={value} className="bg-app-ash-1">
                     {name}
                   </option>
                 ))}

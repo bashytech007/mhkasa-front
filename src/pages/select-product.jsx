@@ -272,7 +272,7 @@ export const Component = () => {
   <div className="mb-4">
  <div className="flex justify-between gap-2 mt-8">
   <Heading className="mt-3 mb-[-10px] font-FarfetchBold font-bold text-app-black">Products you can Layer With  </Heading>
-    <div className="hidden md:flex gap-2" >
+    <div className="hidden" >
   <button
             {...getHandlers("backward")}
             className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
@@ -291,11 +291,11 @@ export const Component = () => {
       {/* <h2>The cards for We Also Recommend</h2> */}
       
       <ul
-        className="pt-8 w-full  gap-6 flex  sm:flex-nowrap overflow-auto sm:no-scrollbar"
+        className="pt-8 w-full  gap-6 flex  sm:flex-nowrap overflow-x-auto sm:no-scrollbar"
         ref={ref}
       >
    {product.layerWith.map((product) => (
-        <li  className="md:flex-shrink-0 grow" key={product._id}>
+        <li  className="flex-shrink-0" key={product._id}>
         <Product
           key={product._id}
           id={product._id}
@@ -317,7 +317,7 @@ export const Component = () => {
   <div className="mb-4">
   <div className="flex justify-between gap-2 mt-8">
   <Heading className="mt-3 mb-[-10px] font-FarfetchBold font-bold text-app-black">We also Recommend</Heading>
-    <div className="hidden md:flex gap-2" >
+    <div className="hidden" >
   <button
             {...getHandlers("backward")}
             className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
@@ -336,7 +336,7 @@ export const Component = () => {
       {/* <h2>The cards for We Also Recommend</h2> */}
       
       <ul
-        className="pt-8 w-full  gap-6 flex  sm:flex-nowrap overflow-auto sm:no-scrollbar"
+        className="pt-8 w-full gap-6 flex sm:flex-nowrap overflow-auto sm:no-scrollbar"
         ref={ref}
       >
        

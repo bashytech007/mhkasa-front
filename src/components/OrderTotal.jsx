@@ -96,7 +96,7 @@ export const OrderSummary = ({ alignToEnd, state, partial }) => {
                 alignToEnd ? "md:justify-end gap-3" : ""
               )}
             >
-              <h2>Delivery Fee:</h2>
+              <h2 className="text-blue-300">Delivery Fee:</h2>
               <p>{formatCurrency(deliveryFee, userCurrency)}</p>
             </div>
           )}

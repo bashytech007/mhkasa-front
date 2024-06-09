@@ -53,7 +53,7 @@ export const LatestProducts = ({ horizontalOnSmallScreens = false }) => {
               key={index}
               className={cn(
                 "flex-shrink-0 min-w-[11rem] sm:grow",
-                horizontalOnSmallScreens && index === 0 ? "ml-44" : ""
+                horizontalOnSmallScreens && index === 0 ? "ml-44 md:ml-0" : ""
               )}
             >
               <Product

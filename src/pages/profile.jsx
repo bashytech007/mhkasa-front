@@ -169,7 +169,7 @@ export const Component = () => {
 
           <div className={cn("bg-white rounded-xl p-5")}>
             <div className="flex items-center gap-3 border-b-2 pb-4">
-              <Heading>Reset Passowrd</Heading>
+              <Heading className="bg-app-black">Reset Password</Heading>
             </div>
 
             <form onSubmit={formik.handleSubmit} className="pt-6">

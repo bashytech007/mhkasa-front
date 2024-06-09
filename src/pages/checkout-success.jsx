@@ -284,8 +284,8 @@ export const Component = () => {
           />
         )}
 
-        <BestSellers />
-        <LatestProducts />
+        <BestSellers horizontalOnSmallScreens/>
+        <LatestProducts horizontalOnSmallScreens />
       </Wrapper>
     </>
   );

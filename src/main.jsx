@@ -85,6 +85,7 @@ const router = createBrowserRouter([
             path: "/payment-callback",
             lazy: () => import("./pages/checkout-success"),
             loader: homeLoader(queryClient),
+            // loader: productLoader(queryClient),
           },
           {
             path: "/account/order-history",

@@ -6,20 +6,11 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { cn } from "../utils/cn";
 
-export const OrderTotal = ({}) => {
+export const OrderTotal = () => {
   const { data } = useCartQuery();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  // const [deliveryFee,SetDeliveryFee]=useState(()=>{
-  //   console.log(deliveryFee)
-  //   return (
-  //     data.subTotal > 100_000? 0: state && state === "lagos" ? 2500 : 5000
-  //   )
-  // });
-  // useEffect(()=>{
-  //   console.log({deliveryFee})
-  // },[])
-// console.log(deliveryFee)
+
   const proceed = async () => {
     queryClient.fetchQuery({
       queryKey: ["cart"],
@@ -54,8 +45,21 @@ export const OrderTotal = ({}) => {
 
 export const OrderSummary = ({ alignToEnd, state }) => {
   const [userCurrency, setUserCurrency] = useState();
-
   const { status, data } = useCartQuery();
+  const [deliveryFee, setDeliveryFee] = useState(0);
+
+  useEffect(() => {
+    setDeliveryFee(() => {
+      if (!state) return 0;
+      if (data && data?.subTotal) {
+        return data.subTotal > 100_000
+          ? 0
+          : state && state === "lagos"
+          ? 2500
+          : 5000;
+      }
+    });
+  }, [state, data?.subTotal]);
 
   useEffect(() => {
     setUserCurrency(getUserCountry());
@@ -92,14 +96,7 @@ export const OrderSummary = ({ alignToEnd, state }) => {
             )}
           >
             <h2 className="text-blue-400">Delivery Fee:</h2>
-            <p>
-              {data.subTotal > 100_000
-                ? formatCurrency(0, userCurrency)
-                : formatCurrency(
-                    state && state === "lagos" ? 2500 : 5000,
-                    userCurrency
-                  )}
-            </p>
+            <p>{formatCurrency(deliveryFee, userCurrency)}</p>
           </div>
           <div
             className={cn(
@@ -118,7 +115,7 @@ export const OrderSummary = ({ alignToEnd, state }) => {
             <h2>Total:</h2>
             <p>
               {formatCurrency(
-                data.subTotal - (data?.discount ?? 0),
+                data.subTotal - (data?.discount ?? 0) + deliveryFee,
                 userCurrency
               )}
             </p>

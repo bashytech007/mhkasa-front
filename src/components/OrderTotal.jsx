@@ -10,16 +10,16 @@ export const OrderTotal = ({}) => {
   const { data } = useCartQuery();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const [deliveryFee,SetDeliveryFee]=useState(()=>{
-    console.log(deliveryFee)
-    return (
-      data.subTotal > 100_000? 0: state && state === "lagos" ? 2500 : 5000
-    )
-  });
-  useEffect(()=>{
-    console.log({deliveryFee})
-  },[])
-console.log(deliveryFee)
+  // const [deliveryFee,SetDeliveryFee]=useState(()=>{
+  //   console.log(deliveryFee)
+  //   return (
+  //     data.subTotal > 100_000? 0: state && state === "lagos" ? 2500 : 5000
+  //   )
+  // });
+  // useEffect(()=>{
+  //   console.log({deliveryFee})
+  // },[])
+// console.log(deliveryFee)
   const proceed = async () => {
     queryClient.fetchQuery({
       queryKey: ["cart"],

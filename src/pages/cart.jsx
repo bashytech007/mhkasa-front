@@ -51,7 +51,7 @@ export const Component = () => {
         {getUserId() ? (
           <>
             <Cart />
-            <OrderTotal />
+            <OrderTotal partial />
           </>
         ) : (
           <>

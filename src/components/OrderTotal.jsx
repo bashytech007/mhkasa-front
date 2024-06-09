@@ -6,7 +6,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { cn } from "../utils/cn";
 
-export const OrderTotal = () => {
+export const OrderTotal = ({ partial }) => {
   const { data } = useCartQuery();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
@@ -25,7 +25,7 @@ export const OrderTotal = () => {
         <CouponCode />
       </div>
       <div>
-        <OrderSummary alignToEnd />
+        <OrderSummary alignToEnd partial={partial} />
 
         <div className="pt-6">
           {!data?.items || data.items.length === 0 ? null : (
@@ -43,7 +43,7 @@ export const OrderTotal = () => {
   );
 };
 
-export const OrderSummary = ({ alignToEnd, state }) => {
+export const OrderSummary = ({ alignToEnd, state, partial }) => {
   const [userCurrency, setUserCurrency] = useState();
   const { status, data } = useCartQuery();
   const [deliveryFee, setDeliveryFee] = useState(0);
@@ -89,15 +89,17 @@ export const OrderSummary = ({ alignToEnd, state }) => {
             <h2>Discount:</h2>
             <p>{formatCurrency(data?.discount || "", userCurrency)}</p>
           </div>
-          <div
-            className={cn(
-              `flex items-center justify-between py-1`,
-              alignToEnd ? "md:justify-end gap-3" : ""
-            )}
-          >
-            <h2 className="text-blue-400">Delivery Fee:</h2>
-            <p>{formatCurrency(deliveryFee, userCurrency)}</p>
-          </div>
+          {partial ? null : (
+            <div
+              className={cn(
+                `flex items-center justify-between py-1`,
+                alignToEnd ? "md:justify-end gap-3" : ""
+              )}
+            >
+              <h2>Delivery Fee:</h2>
+              <p>{formatCurrency(deliveryFee, userCurrency)}</p>
+            </div>
+          )}
           <div
             className={cn(
               `flex items-center justify-between py-1 text-app-red`,
@@ -106,20 +108,22 @@ export const OrderSummary = ({ alignToEnd, state }) => {
           >
             <h2>7.5% VAT Inclusive</h2>
           </div>
-          <div
-            className={cn(
-              "flex items-center justify-between pb-1 pt-2 font-bold",
-              alignToEnd ? "md:justify-end gap-3" : ""
-            )}
-          >
-            <h2>Total:</h2>
-            <p>
-              {formatCurrency(
-                data.subTotal - (data?.discount ?? 0) + deliveryFee,
-                userCurrency
+          {partial ? null : (
+            <div
+              className={cn(
+                "flex items-center justify-between pb-1 pt-2 font-bold",
+                alignToEnd ? "md:justify-end gap-3" : ""
               )}
-            </p>
-          </div>
+            >
+              <h2>Total:</h2>
+              <p>
+                {formatCurrency(
+                  data.subTotal - (data?.discount ?? 0) + deliveryFee,
+                  userCurrency
+                )}
+              </p>
+            </div>
+          )}
         </div>
       )}
     </>

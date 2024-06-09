@@ -106,7 +106,7 @@ export const BestSellers = ({ horizontalOnSmallScreens = false }) => {
       <div className="flex items-center justify-between">
         <SectionHeader header="Best Sellers" />
 
-        <div className="hidden md:flex gap-4">
+        <div className="hidden gap-4">
           <button
             {...getHandlers("backward")}
             className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"

@@ -21,7 +21,7 @@ import axios from "axios";
 
 export const Component = () => {
   const { product } = useLoaderData();
-  // console.log(product)
+  console.log(product)
   const { decreaseItem, increaseItem, addToCart } = useCartContext();
   const [count, setCount] = useState(1);
   const [recommend , setRecommend] = useState([])
@@ -105,7 +105,7 @@ export const Component = () => {
                 <img
                   src={product.mainImage}
                   alt=""
-                  className="w-full h-full  object-cover md:object-cover"
+                  className="w-full h-full  object-cover md:object-contain bg-white"
                 />
               </div>
               <div className="flex gap-4 absolute top-6 right-6 z-50">
@@ -125,7 +125,7 @@ export const Component = () => {
                 {!!product.mainImage ?  <img
                   src={product.mainImage}
                   alt="mainImage"
-                  className="w-28 aspect-square "
+                  className="w-28 aspect-square  "
                 />:null}
                 {!!product.firstImage ?  <img
                   src={product.firstImage}
@@ -297,12 +297,12 @@ export const Component = () => {
    {product.layerWith.map((product) => (
         <li  className="flex-shrink-0" key={product._id}>
         <Product
-          key={product._id}
-          id={product._id}
-          product={product.name}
-          category={product.category}
-          originalPrice={product.price}
-          image={product.productImage || product.mainImage}
+          key={product?._id}
+          id={product?._id}
+          product={product?.name}
+          category={product?.category}
+          originalPrice={product?.price}
+          image={product?.productImage || product?.mainImage}
            className="min-w-[11rem]"
         />
         </li>
@@ -342,16 +342,16 @@ export const Component = () => {
        
 
         
-      {recommend.map((product) => (
+      {recommend.map((product,index) => (
         <li  className="md:flex-shrink-0 grow" key={product._id}>
  <Product
  
-          key={product.product._id}
-          id={product.product._id}
-          product={product.product.name}
-          category={product.product.category}
-          originalPrice={product.product.price}
-          image={product.product.productImage || product.product.mainImage}
+          key={product?.product?._id}
+          id={product?.product?._id}
+          product={product?.product?.name}
+          category={product?.product?.category}
+          originalPrice={product?.product?.price}
+          image={product?.product?.productImage || product?.product?.mainImage}
           className="min-w-[11rem]"
         />
         </li>

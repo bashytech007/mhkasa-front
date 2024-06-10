@@ -19,7 +19,7 @@ export const Product = ({
         className
       )}
     >
-      <div className="w-full aspect-[1.25] relative">
+      <div className="w-full aspect-square relative">
         <img
           src={image}
           alt=""

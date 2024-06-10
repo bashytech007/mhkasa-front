@@ -31,7 +31,7 @@ export const Product = ({
         <p className="text-[#555] font-medium @[240px]:text-app-ash-2 font-FarfetchRegular">
           {category}
         </p>
-        <h2 className="text-app-black font-bold text-[16px] text-nowrap pt-1 line-clamp-2 font-FarfetchRegular">
+        <h2 className="text-app-black font-bold text-[16px]  pt-1 line-clamp-2 font-FarfetchRegular">
           {product}
         </h2>
         <div className="flex pt-2 gap-y-4 gap-x-3 flex-col @[240px]:flex-row @[240px]:items-center @[240px]:justify-between">

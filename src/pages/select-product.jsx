@@ -98,7 +98,7 @@ export const Component = () => {
           currentLocationClassName="text-app-black"
         />
 
-        <div className="@container pb-8 font-FarfetchRegular bg-white px-2">
+        <div className="@container pb-8 font-FarfetchRegular bg-white px-6 py-6">
           <div className="grid gap-8 @4xl:grid-cols-2">
             <div className="relative min-w-[350px] md:min-w-[550px]">
               <div className="rounded-2xl overflow-hidden w-full aspect-square md:@[460px]:aspect-video">
@@ -224,14 +224,14 @@ export const Component = () => {
                
            
               ) : (
-                
+                <Link to='/cart' style={{display:"contents"}}>
                 <Button variant="rectangle"  className=" bg-app-black md:px-8 px-10 w-full focus:outline-none font-medium">
-                  <Link to='/cart'>
+                  
                   Go to Cart
-                  </Link>
+                
                  
                   </Button>
-                  
+                  </Link>
 
                
               )}

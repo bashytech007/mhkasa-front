@@ -1293,9 +1293,9 @@ const DeliveryDetails = ({ className, formik }) => {
     {
       name: "Zamfara",
       value: "zamfara",
-    }
-  ]
-  
+    },
+  ];
+
   return (
     <div className={cn("bg-white rounded-xl p-5", className)}>
       <div className="flex items-center gap-3 border-b-2 pb-4">
@@ -1434,7 +1434,7 @@ const CartSummary = ({ className, isPending, deliveryState }) => {
         <Heading className="text-app-black">Item(s)</Heading>
       </div>
       <div>
-        <CartItems />
+        <CartItems isCheckout />
         <OrderSummary state={deliveryState} />
 
         {!data?.items || data.items.length === 0 ? null : (

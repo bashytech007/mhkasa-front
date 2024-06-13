@@ -98,7 +98,7 @@ export const Component = () => {
           currentLocationClassName="text-app-black"
         />
 
-        <div className="@container pb-8 font-FarfetchRegular bg-white md:px-6 md:py-6">
+        <div className="@container pb-8 font-FarfetchRegular bg-white md:px-6 md:py-6 px-2">
           <div className="grid gap-8 @4xl:grid-cols-2">
             <div className="relative min-w-[350px] md:min-w-[550px]">
               <div className="rounded-2xl overflow-hidden w-full aspect-square md:@[460px]:aspect-video">
@@ -342,7 +342,7 @@ export const Component = () => {
        
 
         
-      {recommend.map((product,index) => (
+      {recommend.map((product) => (
         <li  className="md:flex-shrink-0 grow" key={product._id}>
  <Product
  

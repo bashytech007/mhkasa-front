@@ -267,7 +267,7 @@ export const CartItem = ({ item, isCheckout }) => {
             <img
               src={item.productId.mainImage}
               alt="main-image"
-              className="md:w-40 w-full h-full object-cover"
+              className="md:w-44 w-full h-full object-cover"
             />
           </div>
 

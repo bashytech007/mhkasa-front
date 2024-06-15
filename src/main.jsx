@@ -1,7 +1,11 @@
 import React from "react";
 import "./index.css";
 import ReactDOM from "react-dom/client";
-import { RouterProvider, ScrollRestoration, createBrowserRouter } from "react-router-dom";
+import {
+  RouterProvider,
+  ScrollRestoration,
+  createBrowserRouter,
+} from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Layout } from "./components/Layout.jsx";
@@ -18,16 +22,12 @@ import {
   productLoader,
 } from "./utils/loaders.js";
 
-
-
 const queryClient = new QueryClient();
 
-const router = createBrowserRouter(
-  
-  [
+const router = createBrowserRouter([
   {
     path: "/",
-    loader:LayoutLoader(queryClient),
+    loader: LayoutLoader(queryClient),
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
@@ -55,7 +55,7 @@ const router = createBrowserRouter(
           {
             path: "/products/:productId",
             lazy: () => import("./pages/select-product.jsx"),
-            
+
             loader: productLoader(queryClient),
           },
           {
@@ -84,6 +84,8 @@ const router = createBrowserRouter(
           {
             path: "/payment-callback",
             lazy: () => import("./pages/checkout-success"),
+            loader: homeLoader(queryClient),
+            // loader: productLoader(queryClient),
           },
           {
             path: "/account/order-history",
@@ -105,30 +107,24 @@ const router = createBrowserRouter(
           },
           {
             path: "/about",
-            async lazy (){
-
-              let {About}= await import("./pages/about");
-              return{Component:About};
-            } 
-
+            async lazy() {
+              let { About } = await import("./pages/about");
+              return { Component: About };
+            },
           },
           {
             path: "/privacy",
-            async lazy (){
-
-              let {Privacy}= await import("./pages/privacy");
-              return{Component:Privacy};
-            } 
-
+            async lazy() {
+              let { Privacy } = await import("./pages/privacy");
+              return { Component: Privacy };
+            },
           },
           {
             path: "/delivery",
-            async lazy (){
-
-              let {Delivery}= await import("./pages/delivery");
-              return{Component:Delivery};
-            } 
-
+            async lazy() {
+              let { Delivery } = await import("./pages/delivery");
+              return { Component: Delivery };
+            },
           },
           {
             path: "/forgot-password",
@@ -156,20 +152,17 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-   
-          <CategoryProvider>
-    <HelmetProvider>
-    
-      <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={false} />
-        <Auth>
-          <Cart>
-            <RouterProvider router={router} />
-          </Cart>
-        </Auth>
-      </QueryClientProvider>
-    
-    </HelmetProvider>
-            </CategoryProvider>
+    <CategoryProvider>
+      <HelmetProvider>
+        <QueryClientProvider client={queryClient}>
+          <ReactQueryDevtools initialIsOpen={false} />
+          <Auth>
+            <Cart>
+              <RouterProvider router={router} />
+            </Cart>
+          </Auth>
+        </QueryClientProvider>
+      </HelmetProvider>
+    </CategoryProvider>
   </React.StrictMode>
 );

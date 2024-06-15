@@ -5,13 +5,13 @@ export async function getProducts(url) {
     const response = await axios.get(url, {
       headers: { "Content-Type": "application/json" },
     });
-    return response.data.map((x) => {
+    return response?.data?.map((x) => {
       return {
-        id: x._id,
-        product: x.name,
-        category: x.category,
-        originalPrice: x.price,
-        image: x.mainImage,
+        id: x?._id,
+        product: x?.name,
+        category: x?.category,
+        originalPrice: x?.price,
+        image: x?.mainImage,
       };
     });
   } catch (error) {
@@ -25,13 +25,13 @@ export async function getBestSellers(url) {
     const response = await axios.get(url, {
       headers: { "Content-Type": "application/json" },
     });
-    return response.data.map((x) => {
+    return response?.data?.map((x) => {
       return {
-        id: x.product._id,
-        product: x.product.name,
-        category: x.product.category,
-        originalPrice: x.product.price,
-        image: x.product.mainImage,
+        id: x?.product?._id,
+        product: x?.product?.name,
+        category: x?.product?.category,
+        originalPrice: x?.product?.price,
+        image: x?.product?.mainImage,
       };
     });
   } catch (error) {

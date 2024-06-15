@@ -14,15 +14,17 @@ import { Seo } from "../components/Seo";
 import { Product } from "../components/ProductCard";
 import { ListGrid } from "../components/ui/ListGrid";
 import useLongPress from "../hooks/utils/useLongPress";
+import axios from "axios";
 // import  {LatestProducts } from "../components/LatestProducts";
 // import { SectionHeader } from "./ui/SectionHeader";
 
 
 export const Component = () => {
   const { product } = useLoaderData();
-  // console.log(product)
+  console.log(product)
   const { decreaseItem, increaseItem, addToCart } = useCartContext();
   const [count, setCount] = useState(1);
+  const [recommend , setRecommend] = useState([])
   const { data } = useCartQuery();
  const navigate=useNavigate()
 //  const { bestsellers } = useLoaderData();
@@ -59,6 +61,20 @@ export const Component = () => {
    navigate("/checkout")
   }
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('https://mkhasa-bfdb6fabd978.herokuapp.com/api/v1/recommend');
+        console.log({response})
+        setRecommend(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <Seo
@@ -82,14 +98,14 @@ export const Component = () => {
           currentLocationClassName="text-app-black"
         />
 
-        <div className="@container pb-8">
+        <div className="@container pb-8 font-FarfetchRegular bg-white md:px-6 md:py-6 px-2">
           <div className="grid gap-8 @4xl:grid-cols-2">
             <div className="relative min-w-[350px] md:min-w-[550px]">
               <div className="rounded-2xl overflow-hidden w-full aspect-square md:@[460px]:aspect-video">
                 <img
                   src={product.mainImage}
                   alt=""
-                  className="w-full bg-white h-full  object-cover md:object-contain"
+                  className="w-full h-full  object-cover md:object-contain bg-white"
                 />
               </div>
               <div className="flex gap-4 absolute top-6 right-6 z-50">
@@ -109,7 +125,7 @@ export const Component = () => {
                 {!!product.mainImage ?  <img
                   src={product.mainImage}
                   alt="mainImage"
-                  className="w-28 aspect-square "
+                  className="w-28 aspect-square  "
                 />:null}
                 {!!product.firstImage ?  <img
                   src={product.firstImage}
@@ -130,36 +146,47 @@ export const Component = () => {
             </div>
 
             <div>
-              <div className="flex justify-between items-center flex-wrap gap-2">
-                <p  className="text-[#555] font-bold md:text-4xl sm:text-xl">
-                  {product.name}
-                </p>
-                {/* <Button className="bg-white text-sm sm:text-[16px] md:bg-app-ash-2">
+              <div className="flex justify-between items-center flex-wrap gap-2 font-FarfetchRegular">
+                <p className="text-xl font-bold text-[#A40001] font-FarfetchRegular">{product.category}</p>
+                  {/* <Button className="bg-white text-sm sm:text-[16px] md:bg-app-ash-2">
                   7 Days Return Policy
                 </Button> */}
+               
+              
               </div>
-              {/* <p className="font-medium text-xl py-2">{product.category}</p> */}
-              <p className="font-bold md:text-2xl text-xl py-1">₦{format(product.price)}</p>
+             <div className="mt-5 -md:mt-6 font-FarfetchRegular"> 
+             <h3  className="text-[#555] font-bold md:text-4xl text-3xl font-FarfetchRegular">
+                  {product.name}
+                </h3>
+             </div>
+        
+              <div className="mt-5 md:mt-2 font-FarfetchRegular">
+              <p className="md:text-5xl text-5xl font-FarfetchRegular">₦<span>{format(product.price)}</span></p>
+              </div>
              
-              {/* <p className="py-1">{product.description.topnote}</p> */}
-              <p></p>
-              <p className="py-4">
-                  <p className="font-medium text-xl py-2 "> <span className="font-bold">brand:</span>{product.brand}</p>
-                <span className="font-bold">sku:{product.sku}</span>
-              </p>
-              <div className="py-1"></div>
-              <div className="flex gap-x-12 flex-wrap justify-between pb-2">
+             
+              <div className="mt-5 md:mt-2 font-FarfetchRegular">
+              <p className="font-FarfetchRegular mt-2"><strong className="text-black font-FarfetchRegular Basis font-bold">SKU</strong>: <span className="font-FarfetchRegular text-[#555]">{product.sku}</span></p>
+              <p className="font-FarfetchRegular mt-2"><strong className="text-black font-FarfetchRegular font-bold">Brand</strong>: <span className="font-FarfetchRegular text-[#555]">{product.brand}</span></p>
+               <p className="font-FarfetchRegular mt-2"><strong className="text-black font-FarfetchRegular font-bold">Manufacturer</strong>: <span className="font-FarfetchRegular text-[#555]">{product.manufacturer}</span></p>
+
+              {/* <p className="text-xl text-[#555] font-FarfetchRegular">Brand <span className="font-bold text-xl text-[#555] font-FarfetchRegular"> : {product.brand}</span></p>
+              <p className="text-xl text-[#555] font-FarfetchRegular">Manufacturer <span className="font-FarfetchRegular font-bold text-xl text-[#555]"> : {product.manufacturer}</span></p> */}
+                
+              </div>
+              <div className="py-2"></div>
+              <div className="flex gap-x-12 flex-wrap justify-between pb-2 font-FarfetchRegular">
                 {/* <div className="py-2"></div> */}
-                <div className="py-1">
-                  <p className="text-app-grey text-[#555]">Qty</p>
-                  <div className="flex gap-4 pt-2 items-center">
+                <div className="py-3">
+                  <p className="text-[#555] text-xl font-bold mt-1 pb-2 font-FarfetchRegular">Qty</p>
+                  <div className="flex gap-4 pt-2 items-center font-FarfetchRegular">
                     <button
                       onClick={decrease}
-                      className="h-10 aspect-square rounded-full bg-white grid place-items-center font-medium"
+                      className="h-10 font-FarfetchRegular aspect-square rounded-full bg-white grid place-items-center font-medium"
                     >
                       <Icon icon="ic:round-minus" style={{ fontSize: 30 }} />
                     </button>
-                    <p className="text-3xl font-medium">
+                    <p className="text-3xl font-NimbusSan font-normal">
                       {!data?.items
                         ? count
                         : data.items.find(
@@ -172,9 +199,9 @@ export const Component = () => {
                     </p>
                     <button
                       onClick={increase}
-                      className="h-10 aspect-square rounded-full bg-white grid place-items-center font-medium"
+                      className="h-10 font-FarfetchRegular aspect-square rounded-full bg-white grid place-items-center font-medium"
                     >
-                      <Icon icon="ph:plus-bold" style={{ fontSize: 30 }} />
+                      <Icon icon="ph:plus-bold" style={{ fontSize: 25 }} />
                     </button>
                   </div>
                 </div>
@@ -190,24 +217,28 @@ export const Component = () => {
                   disabled={!count}
                   variant="rectangle"
                   onClick={onClick}
-                  className="bg-app-black md:px-8 w-full px-10 disabled:bg-[#848484]"
+                  className="  bg-app-black md:px-8 w-full px-10 disabled:bg-[#848484]"
                 >
                   Add to Cart
                 </Button>
                
            
               ) : (
+                <Link to='/cart' style={{display:"contents"}}>
+                <Button variant="rectangle"  className=" bg-app-black md:px-8 px-10 w-full focus:outline-none font-medium">
+                  
+                  Go to Cart
                 
-                <Link to="/cart" className="w-full md:flex-1">
-                  <Button variant="rectangle" className="bg-app-black md:px-8 px-10 w-full focus:outline-none font-medium">
-                    Go to Cart
+                 
                   </Button>
-                </Link>
+                  </Link>
+
+               
               )}
                 <Button
                  variant="rectangle"
                  onClick={onClickCheckout}
-                 className="bg-green-500 text-white  md:px-8 w-full px-10 focus:outline-none font-medium  disabled:bg-[#848484]"
+                 className="bg-[#27D34C] text-white  md:px-8 w-full px-10 focus:outline-none font-medium  disabled:bg-[#848484]"
                >
                  Buy Now
                </Button>
@@ -218,14 +249,11 @@ export const Component = () => {
         </div>
 
          {/* STYLE THE UI APPROPRAITELY */}
-         <div className="flex flex-col md:flex-row justify-between ">
-         {Array.isArray(product.layerWith) && product.layerWith.length > 0 && (
-  <div className="md:flex md:flex-col">
-    <Heading>We Also Recommend</Heading>
-    <h2>The video will be here</h2>
-    {/* <video src="" alt="nothing yet" /> */}
+         <div className="">
+         {/* {Array.isArray(product.layerWith) && product.layerWith.length > 0 && (
+  <div className="md:flex md:flex-col font-FarfetchRegular">
+    <Heading>You can layer with</Heading>
     <ListGrid>
-      {/* <h2>The cards for We Also Recommend</h2> */}
       {product.layerWith.map((product) => (
         <Product
           key={product._id}
@@ -238,56 +266,106 @@ export const Component = () => {
       ))}
     </ListGrid>
   </div>
-)}
+)} */}
 
-  <div className="md:flex md:flex-col">
-  {Array.isArray(product.layerWith) && product.layerWith.length > 0 && (
-  <div className="md:flex md:flex-col">
-    <Heading>We Also Recommend</Heading>
-    <h2>The video will be here</h2>
-    {/* <video src="" alt="nothing yet" /> */}
-    <ListGrid>
-      {/* <h2>The cards for We Also Recommend</h2> */}
-      {product.layerWith.map((product) => (
-        <Product
-          key={product._id}
-          id={product._id}
-          product={product.name}
-          category={product.category}
-          originalPrice={product.price}
-          image={product.productImage || product.mainImage}
-        />
-      ))}
-    </ListGrid>
-  </div>
-)}
-  
-          </div >
-          
-         <div className="hidden">
-         <button
+{Array.isArray(product.layerWith) && product.layerWith.length > 0 && (
+  <div className="mb-4">
+ <div className="flex justify-between gap-2 mt-8">
+  <Heading className="mt-3 mb-[-10px] font-FarfetchBold font-bold text-app-black">Products you can Layer With  </Heading>
+    <div className="hidden" >
+  <button
             {...getHandlers("backward")}
             className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
           >
             <Icon icon="fa6-solid:angle-left" style={{ fontSize: 28 }} />
           </button>
-         
           <button
             {...getHandlers("forward")}
             className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
           >
             <Icon icon="fa6-solid:angle-left" hFlip style={{ fontSize: 28 }} />
-          </button> 
-           {/* <LatestProducts/> */}
-        </div>
-         </div>
-
-       
+          </button>
+  </div>
+  </div>
+  
+      {/* <h2>The cards for We Also Recommend</h2> */}
       
-
-        <ProductDetail productId={product._id} />
-
+      <ul
+        className="pt-8 w-full  gap-6 flex  sm:flex-nowrap overflow-x-auto sm:no-scrollbar"
+        ref={ref}
+      >
+   {product.layerWith.map((product) => (
+        <li  className="flex-shrink-0" key={product._id}>
+        <Product
+          key={product?._id}
+          id={product?._id}
+          product={product?.name}
+          category={product?.category}
+          originalPrice={product?.price}
+          image={product?.productImage || product?.mainImage}
+           className="min-w-[11rem]"
+        />
+        </li>
+      ))}
+      
+    
+    </ul>
+  </div>
+)}
+<ProductDetail productId={product._id} />
+{Array.isArray(recommend) &&recommend.length > 0 && (
+  <div className="mb-4">
+  <div className="flex justify-between gap-2 mt-8">
+  <Heading className="mt-3 mb-[-10px] font-FarfetchBold font-bold text-app-black">We also Recommend</Heading>
+    <div className="hidden" >
+  <button
+            {...getHandlers("backward")}
+            className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
+          >
+            <Icon icon="fa6-solid:angle-left" style={{ fontSize: 28 }} />
+          </button>
+          <button
+            {...getHandlers("forward")}
+            className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
+          >
+            <Icon icon="fa6-solid:angle-left" hFlip style={{ fontSize: 28 }} />
+          </button>
+  </div>
+  </div>
+  
+      {/* <h2>The cards for We Also Recommend</h2> */}
+      
+      <ul
+        className="pt-8 w-full gap-6 flex sm:flex-nowrap overflow-auto sm:no-scrollbar"
+        ref={ref}
+      >
        
+
+        
+      {recommend.map((product) => (
+        <li  className="md:flex-shrink-0" key={product._id}>
+ <Product
+ 
+          key={product?.product?._id}
+          id={product?.product?._id}
+          product={product?.product?.name}
+          category={product?.product?.category}
+          originalPrice={product?.product?.price}
+          image={product?.product?.productImage || product?.product?.mainImage}
+          className="min-w-[11rem]"
+        />
+        </li>
+       
+      ))}
+      
+    
+    </ul>
+  </div>
+)}
+
+
+ </div>
+ 
       </Wrapper>
     </>
   );

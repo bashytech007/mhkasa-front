@@ -311,7 +311,7 @@ export const Component = () => {
         name=""
       />
       <section>
-        <div className="relative">
+        <div className="relative full">
           <div className="absolute right-0 left-0 top-0 bottom-0 bg-[#3333]" />
           <div className="absolute left-0 w-full top-1/3">
             <Wrapper>
@@ -327,7 +327,7 @@ export const Component = () => {
                 iconClassName="text-2xl"
                 currentLocationClassName="text-white"
               />
-              <h2 className="text-3xl font-bold tracking-tighter text-white md:tracking-normal">
+              <h2 className="text-xl font-bold tracking-tighter text-white md:tracking-normal">
                 Search Results for "{search}"
               </h2>
             </Wrapper>
@@ -335,7 +335,7 @@ export const Component = () => {
           <img
             // src={banner}
             alt=""
-            className="object-cover object-center w-full min-h-48 max-h-60"
+            className="object-cover object-center w-[50%] min-h-48 max-h-60"
           />
         </div>
         <Wrapper className="py-6">

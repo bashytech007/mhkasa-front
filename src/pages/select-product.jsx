@@ -445,10 +445,10 @@ export const Component = () => {
   }, []);
 
   const images = [
-    product.mainImage,
-    product.firstImage,
-    product.secondImage,
-    product.thirdImage,
+    product?.mainImage,
+    product?.firstImage,
+    product?.secondImage,
+    product?.thirdImage,
   ].filter(Boolean); 
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -478,9 +478,9 @@ export const Component = () => {
             { description: "Home", to: "/", title: "Go to Home Page" },
             {
               description: product.category ?? "Perfume",
-              to: `/categories/${product.category ?? "Perfume"}`,
+              to: `/categories/${product?.category ?? "Perfume"}`,
             },
-            { description: product.name ?? "", to: "" },
+            { description: product?.name ?? "", to: "" },
           ]}
           className="text-[#3338] py-5"
           iconClassName="text-[#3339] text-2xl"
@@ -516,30 +516,30 @@ export const Component = () => {
 
             <div>
               <div className="flex justify-between items-center flex-wrap gap-2 font-FarfetchRegular">
-                <p className="text-xl font-bold text-[#A40001] font-FarfetchRegular">{product.category}</p>
+                <p className="text-xl font-bold text-[#A40001] font-FarfetchRegular">{product?.category}</p>
               </div>
               <div className="mt-5 -md:mt-6 font-FarfetchRegular">
                 <h3 className="text-[#555] font-bold md:text-4xl text-3xl font-FarfetchRegular">
-                  {product.name}
+                  {product?.name}
                 </h3>
               </div>
 
               <div className="mt-5 md:mt-2 font-FarfetchRegular">
-                <p className="md:text-5xl text-5xl font-FarfetchRegular">₦<span>{format(product.price)}</span></p>
+                <p className="md:text-5xl text-5xl font-FarfetchRegular">₦<span>{format(product?.price)}</span></p>
               </div>
 
               <div className="mt-5 md:mt-2 font-FarfetchRegular">
                 <p className="font-FarfetchRegular mt-2">
                   <strong className="text-black font-FarfetchRegular Basis font-bold">SKU</strong>:{" "}
-                  <span className="font-FarfetchRegular text-[#555]">{product.sku}</span>
+                  <span className="font-FarfetchRegular text-[#555]">{product?.sku}</span>
                 </p>
                 <p className="font-FarfetchRegular mt-2">
                   <strong className="text-black font-FarfetchRegular font-bold">Brand</strong>:{" "}
-                  <span className="font-FarfetchRegular text-[#555]">{product.brand}</span>
+                  <span className="font-FarfetchRegular text-[#555]">{product?.brand}</span>
                 </p>
                 <p className="font-FarfetchRegular mt-2">
                   <strong className="text-black font-FarfetchRegular font-bold">Manufacturer</strong>:{" "}
-                  <span className="font-FarfetchRegular text-[#555]">{product.manufacturer}</span>
+                  <span className="font-FarfetchRegular text-[#555]">{product?.manufacturer}</span>
                 </p>
               </div>
               <div className="py-2"></div>
@@ -557,10 +557,10 @@ export const Component = () => {
                       {!data?.items
                         ? count
                         : data.items.find(
-                            (item) => item.productId._id === product._id
+                            (item) => item?.productId?._id === product._id
                           )
                         ? data.items.find(
-                            (item) => item.productId._id === product._id
+                            (item) => item?.productId?._id === product._id
                           )?.quantity
                         : count}
                     </p>
@@ -576,7 +576,7 @@ export const Component = () => {
               <div className="flex flex-col md:flex-row gap-8 md:space-x-4 mt-4">
                 {!(
                   data &&
-                  data.items.find((item) => item.productId._id === product._id)
+                  data.items.find((item) => item?.productId?._id === product._id)
                 ) ? (
                   <Button
                     disabled={!count}

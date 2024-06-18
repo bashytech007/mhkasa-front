@@ -311,7 +311,7 @@ export const Component = () => {
         name=""
       />
       <section>
-        <div className="relative full">
+        <div className="relative">
           <div className="absolute right-0 left-0 top-0 bottom-0 bg-[#3333]" />
           <div className="absolute left-0 w-full top-1/3">
             <Wrapper>
@@ -356,7 +356,7 @@ export const Component = () => {
                 </div>
               ) : (
                 <>
-                  <ul className="grid justify-center grid-flow-row grid-cols-2 gap-4 pt-8 auto-rows-fr sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+                  <ul className="grid justify-center grid-flow-row grid-cols-2 gap-1 pt-8 auto-rows-fr sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
                     {data.pages.map((group, i) => (
                       <Fragment key={i}>
                         {group.products.map((product) => (

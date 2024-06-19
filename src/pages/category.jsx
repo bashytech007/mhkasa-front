@@ -20,10 +20,10 @@ export const Component = () => {
   const filterBy = searchParams.get("filter") || "";
 
   const url = filterBy
-    ? `product/category/${category}/appeal/${filterBy}`
+    ? `product/category/${category}/appeal/${filterBy}?`
     : sortBy
-    ? `product/category/${sortBy}/${category}`
-    : `product/category/${category}`;
+    ? `product/category/${sortBy}/${category}?`
+    : `product/category/${category}?`
 
   const {
     data,

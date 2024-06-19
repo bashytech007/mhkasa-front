@@ -94,7 +94,7 @@ export const Component = () => {
             `An error has occurred`
           ) : (
             <>
-              <ul className="grid justify-center grid-flow-row grid-cols-2 gap-4 pt-8 auto-rows-fr sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+              <ul className="grid justify-center grid-flow-row grid-cols-2 gap-1 pt-8 auto-rows-fr sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
                 {data.pages.map((group, i) => (
                   <Fragment key={i}>
                     {group.products.map((product) => (

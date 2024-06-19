@@ -568,7 +568,7 @@ export const Component = () => {
                       onClick={increase}
                       className="h-10 font-FarfetchRegular text-xl aspect-square rounded-full bg-white grid place-items-center font-medium"
                     >
-                      <Icon icon="ph:plus-bold" style={{ fontSize: 25 ,marginTop:-3}} />
+                      <Icon icon="ph:plus-bold" style={{ fontSize: 23 ,marginTop:-6}} />
                     </button>
                   </div>
                 </div>

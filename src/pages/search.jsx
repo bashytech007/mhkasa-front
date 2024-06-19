@@ -454,7 +454,7 @@ export const Component = () => {
         description={`Search For Perfumes On Mkhasa Store`}
         name=""
       />
-      <section>
+      <section className="bg-white">
         <div className="relative">
           <div className="absolute right-0 left-0 top-0 bottom-0 bg-[#3333]" />
           <div className="absolute left-0 w-full top-1/3">
@@ -482,7 +482,7 @@ export const Component = () => {
             className="object-cover object-center w-full min-h-48 max-h-60"
           />
         </div>
-        <Wrapper className="py-6">
+        <Wrapper className="py-6 bg-white">
           <div className="flex items-center justify-between py-4">
             <SectionHeader header="Search" />
             <Sort onClick={onClick} sort={sortBy} />
@@ -495,7 +495,7 @@ export const Component = () => {
             <>
               {isEmpty ? (
                 <div className="text-center">
-                  <p className="md:text-3xl text-xl font-bold font-FarfetchRegular">
+                  <p className="md:text-xl text-lg font-bold font-FarfetchRegular">
                     We don't have what you're looking for this time, but why not take recommendations made for you. Alternatively, shop by category.
                   </p>
                   {/* Add your recommendations and categories here */}

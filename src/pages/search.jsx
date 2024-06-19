@@ -525,6 +525,9 @@ export const Component = () => {
                       <button
                         onClick={() => fetchNextPage()}
                         disabled={isFetchingNextPage}
+                        className={`${
+                          !hasNextPage ? "hidden" : ""
+                        } text-white bg-app-red py-2 px-6 hover:bg-app-red/70 disabled:bg-app-black/50`}
                       >
                         {isFetchingNextPage ? "Loading more..." : "Load More"}
                       </button>

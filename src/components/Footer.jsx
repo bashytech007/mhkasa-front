@@ -18,10 +18,10 @@ export const Footer = () => {
           </div>
 
           <div className="md:col-span-3 font-FarfetchRegular">
-            <h2 className="text-lg font-bold font-FarfetchBold text-white text-left">
+            <h2 className="text-lg font-bold font-FarfetchBold mt-4 text-white text-left">
               Explore Mkhasa
             </h2>
-            <ul className="text-app-ash-2 mt-4 text-left">
+            <ul className="text-app-ash-2   text-left">
               <li>
                 <Link
                   to="/about"
@@ -65,20 +65,20 @@ export const Footer = () => {
             </ul>
           </div>
 
-          <div className="md:col-span-3 font-FarfetchRegular">
+          <div className="md:col-span-3 font-FarfetchRegular mt-4">
             <h2 className="text-lg font-bold font-FarfetchBold text-white text-left">
               CONTACT US
             </h2>
-            <div className="text-app-ash-2 mt-4 text-left font-FarfetchRegular">
+            <div className="text-app-ash-2 mt-4 text-left  font-FarfetchRegular">
               {/* <p>House 92, Dele Orisabiyi Street Okota Lagos State</p> */}
-              <p>Call Us: <span className="font-NimbusSan"> 09013898261</span></p>
-              <p>Email: info@mkhasa.com</p>
+              <p className="py-2">Call Us: <span className="font-NimbusSan"> 09013898261</span></p>
+              <p className="py-2">Email: info@mkhasa.com</p>
 
               <h3 className="text-lg font-bold font-FarfetchBold text-white mt-4">Support/Sales Team</h3>
-              <p>Call Us: <span className="font-NimbusSan">09131451391 </span></p>
+              <p className="py-2">Call Us: <span className="font-NimbusSan">09131451391 </span></p>
 
-              <p>Email: sales@mkhasa.com</p>
-              <p>Email: support@mkhasa.com</p>
+              <p className="py-2">Email: sales@mkhasa.com</p>
+              <p className="py-2">Email: support@mkhasa.com</p>
             </div>
           </div>
 

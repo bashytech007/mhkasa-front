@@ -263,7 +263,7 @@ import { Navigation } from "../components/ui/Navigation";
 import { SectionHeader } from "../components/ui/SectionHeader";
 import { useInfiniteProducts } from "../hooks/query/useProducts";
 import { Product } from "../components/ProductCard";
-import banner from "../assets/images/banner.png";
+// import banner from "../assets/images/banner.png";
 import { Sort } from "../components/Sort";
 import { Seo } from "../components/Seo";
 import { useSearchParams } from "react-router-dom/dist";
@@ -314,7 +314,7 @@ export const Component = () => {
         <div className="relative ">
           <div className="absolute px-20 right-0 left-0 top-0 bottom-0 bg-[#3333]" />
           <div className="absolute left-0 w-full top-1/3">
-            <Wrapper className="-px-28 -py-10">
+            <Wrapper className="-px-60 -py-10">
               <Navigation
                 location={[
                   { description: "Home", to: "/", title: "Go to Home Page" },
@@ -335,11 +335,11 @@ export const Component = () => {
           <img
             // src={banner}
             alt=""
-            className="object-cover object-center w-[50%] min-h-48 max-h-60"
+            className="object-cover object-center w-full min-h-48 max-h-60"
           />
         </div>
         <Wrapper className="py-6">
-          <div className="flex items-center justify-between py-4">
+          <div className="flex items-center bg-white justify-between py-4">
             <SectionHeader header="Search" />
             <Sort onclick={onClick} sort={sortBy} />
           </div>
@@ -350,8 +350,8 @@ export const Component = () => {
           ) : (
             <>
               {isEmpty ? (
-                <div className="text-center">
-                  <p className="md:text-3xl text-xl font-bold font-FarfetchRegular">We don't have what you're looking for this time, but why not take recommendations made for you. Alternatively, shop by category.</p>
+                <div className="text-center bg-white">
+                  <p className="md:text-xl text-base font-bold font-FarfetchRegular">We don't have what you're looking for this time, but why not take recommendations made for you. Alternatively, shop by category.</p>
                   {/* Add your recommendations and categories here */}
                 </div>
               ) : (

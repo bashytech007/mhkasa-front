@@ -553,7 +553,7 @@ export const Component = () => {
                     >
                       <Icon icon="ic:round-minus" style={{ fontSize: 30 }} />
                     </button>
-                    <p className="text-3xl font-NimbusSan font-normal">
+                    <p className="text-3xl mt-1 font-NimbusSan font-normal">
                       {!data?.items
                         ? count
                         : data.items.find(
@@ -568,7 +568,7 @@ export const Component = () => {
                       onClick={increase}
                       className="h-10 font-FarfetchRegular text-xl aspect-square rounded-full bg-white grid place-items-center font-medium"
                     >
-                      <Icon icon="ph:plus-bold" style={{ fontSize: 23 ,marginTop:-6}} />
+                      <Icon icon="ph:plus-bold" style={{ fontSize: 24 ,marginTop:-1}} />
                     </button>
                   </div>
                 </div>

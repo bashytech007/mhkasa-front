@@ -13,7 +13,7 @@ import { BestSellers } from "../components/BestSellers";
 
 export const Component = () => {
   return (
-    <main>
+    <main className="bg-white">
       <Seo title="Mkhasa | Home" type="webapp" name="" />
       <Wrapper>
         <div className="flex flex-col gap-8 py-2 ">

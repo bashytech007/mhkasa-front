@@ -471,7 +471,7 @@ export const Component = () => {
                 iconClassName="text-2xl"
                 currentLocationClassName="text-white"
               />
-              <h2 className="text-3xl font-bold tracking-tighter text-white md:tracking-normal">
+              <h2 className="text-xl font-bold tracking-tighter text-white md:tracking-normal">
                 Search Results for "{search}"
               </h2>
             </Wrapper>

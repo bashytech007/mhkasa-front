@@ -392,7 +392,7 @@ import { fetchRecommendations } from '../services/recommendService';
 
 export const Component = () => {
   const { product } = useLoaderData();
-  console.log(product);
+  // console.log(product);
   const { decreaseItem, increaseItem, addToCart } = useCartContext();
   const [count, setCount] = useState(1);
   const [recommend, setRecommend] = useState([]);
@@ -472,7 +472,7 @@ export const Component = () => {
         type="webapp"
         name=""
       />
-      <Wrapper>
+      <Wrapper className="bg-white">
         <Navigation
           location={[
             { description: "Home", to: "/", title: "Go to Home Page" },
@@ -573,7 +573,7 @@ export const Component = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col md:flex-row gap-8 md:space-x-4 mt-4">
+              <div className="flex flex-col  md:flex-row gap-8 md:space-x-4 mt-4">
                 {!(
                   data &&
                   data.items.find((item) => item?.productId?._id === product._id)

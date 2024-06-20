@@ -78,7 +78,7 @@ export const Product = ({
     <Link to={`/products/${id}`}>
       <div
         className={cn(
-          "bg-white rounded-2xl overflow-hidden h-full flex flex-col justify-between font-FarfetchRegular",
+          "bg-white border-2 border-grey rounded-2xl overflow-hidden h-full flex flex-col justify-between font-FarfetchRegular",
           className
         )}
       >

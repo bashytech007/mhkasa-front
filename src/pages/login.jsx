@@ -70,9 +70,9 @@
 //         name=""
 //       />
 //       <Heading>Login</Heading>
-//       <p className="py-4 text-[#666666] text-center font-FarfetchRegular">
+//       <p className="py-4 text-[#666666] text-center    font-Helvetica">
 //         Your Welcome back don&rsquo;t have an account?
-//         <Link to="/register" className="ml-2 text-app-black  underline hover:underline font-FarfetchRegular z-50">
+//         <Link to="/register" className="ml-2 text-app-black  underline hover:underline    font-Helvetica z-50">
 //           Register Here{" "}
 //         </Link>
 //       </p>
@@ -191,9 +191,9 @@ export const Component = () => {
         name=""
       />
       <Heading>Login</Heading>
-      <p className="py-4 text-[#666666] text-center font-FarfetchRegular">
+      <p className="py-4 text-[#666666] text-center    font-Helvetica">
         Your Welcome back don&rsquo;t have an account?
-        <Link to="/register" className="ml-2 text-app-black underline hover:underline font-FarfetchRegular z-50">
+        <Link to="/register" className="ml-2 text-app-black underline hover:underline    font-Helvetica z-50">
           Register Here{" "}
         </Link>
       </p>

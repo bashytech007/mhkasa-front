@@ -94,7 +94,7 @@
 //   }, [productId]);
 
 //   return (
-//     <div className="bg-white px-6 py-4  mb-6 font-FarfetchRegular mt-2">
+//     <div className="bg-white px-6 py-4  mb-6    font-Helvetica mt-2">
 //       <CategoryPanel />
 //       <div className="grid grid-cols-2 border-b-2 md:grid-cols-4">
 //         <button
@@ -337,7 +337,7 @@
 //   }, [productId]);
 
 //   return (
-//     <div className="bg-white px-6 py-4 mb-6 font-FarfetchRegular mt-2">
+//     <div className="bg-white px-6 py-4 mb-6    font-Helvetica mt-2">
 //       <CategoryPanel />
 //       <div className="grid grid-cols-2 border-b-2 md:grid-cols-4">
 //         <button
@@ -604,7 +604,7 @@ export const ProductDetail = ({ productId }) => {
   }, [productId]);
 
   return (
-    <div className="bg-white px-6 py-4 mb-6 font-FarfetchRegular mt-2">
+    <div className="bg-white px-6 py-4 mb-6    font-Helvetica mt-2">
       <CategoryPanel />
       <div className="grid grid-cols-2 border-b-2 md:grid-cols-4">
         <button
@@ -628,39 +628,39 @@ export const ProductDetail = ({ productId }) => {
       <div className="grid gap-6 pt-5 md:grid-cols-2">
         {tab === "description" ? (
           <div className="">
-            {product.description && (
+            {product?.description && (
               <p className="py-1">
-                <span className="font-bold">Description:</span> {product.description}
+                <span className="font-bold">Description:</span> {product?.description}
               </p>
             )}
-            {product.appeal && (
+            {product?.appeal && (
               <p className="py-1">
-                <span className="font-bold">Orientation:</span> {product.appeal}
+                <span className="font-bold">Orientation:</span> {product?.appeal}
               </p>
             )}
-            {product.type && (
+            {product?.type && (
               <p className="py-1">
-                <span className="font-bold">Type:</span> {product.type}
+                <span className="font-bold">Type:</span> {product?.type}
               </p>
             )}
-            {product.volume && (
+            {product?.volume && (
               <p className="py-1">
-                <span className="font-bold">Volume:</span> {product.volume}
+                <span className="font-bold">Volume:</span> {product?.volume}
               </p>
             )}
-            {product.topNotes && (
+            {product?.topNotes && (
               <p className="py-1">
-                <span className="font-bold">Top Notes:</span> {product.topNotes}
+                <span className="font-bold">Top Notes:</span> {product?.topNotes}
               </p>
             )}
-            {product.middleNotes && (
+            {product?.middleNotes && (
               <p className="py-1">
-                <span className="font-bold">Middle Notes:</span> {product.middleNotes}
+                <span className="font-bold">Middle Notes:</span> {product?.middleNotes}
               </p>
             )}
-            {product.baseNotes && (
+            {product?.baseNotes && (
               <p className="py-1">
-                <span className="font-bold">Base Notes:</span> {product.baseNotes}
+                <span className="font-bold">Base Notes:</span> {product?.baseNotes}
               </p>
             )}
           </div>

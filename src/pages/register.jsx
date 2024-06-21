@@ -71,7 +71,7 @@ export const Component = () => {
 
         <form
           onSubmit={formik.handleSubmit}
-          className="w-full max-w-xl bg-white rounded-3xl p-4 font-FarfetchRegular"
+          className="w-full max-w-xl bg-white rounded-3xl p-4    font-Helvetica"
         >
           <div className="grid gap-x-4 sm:grid-cols-2">
             <Input

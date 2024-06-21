@@ -65,7 +65,7 @@
 //               Cancel
 //             </button>
 //             <Button
-//               className="bg-app-black text-white font-bold font-FarfetchBold"
+//               className="bg-app-black text-white font-bold font-  font-HelveticaBold"
 //               onClick={() => {
 //                 removeFromCart(item.productId._id);
 //                 setShowModal(false);
@@ -156,7 +156,7 @@
 //               Cancel
 //             </button>
 //             <Button
-//               className="bg-app-black text-white py-2 px-4 rounded-full font-bold font-FarfetchBold w-28"
+//               className="bg-app-black text-white py-2 px-4 rounded-full font-bold font-  font-HelveticaBold w-28"
 //               onClick={() => {
 //                 removeFromCart(item.productId._id);
 //                 setShowModal(false);
@@ -228,7 +228,7 @@
 //               Cancel
 //             </button>
 //             <Button
-//               className="bg-app-black text-white py-2 px-4 rounded-full font-bold font-FarfetchBold w-28"
+//               className="bg-app-black text-white py-2 px-4 rounded-full font-bold font-  font-HelveticaBold w-28"
 //               onClick={() => {
 //                 removeFromCart(item.productId._id);
 //                 setShowModal(false);
@@ -337,7 +337,7 @@ export const CartItem = ({ item, isCheckout }) => {
               Cancel
             </button>
             <Button
-              className="bg-app-black text-white py-2 px-4 rounded-full font-bold font-FarfetchBold w-28"
+              className="bg-app-black text-white py-2 px-4 rounded-full font-bold font-  font-HelveticaBold w-28"
               onClick={() => {
                 removeFromCart(item?.productId?._id);
                 setShowModal(false);

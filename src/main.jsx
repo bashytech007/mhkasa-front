@@ -61,6 +61,8 @@ const router = createBrowserRouter([
           {
             path: "/categories/:category",
             lazy: () => import("./pages/category"),
+            // loader: productLoader(queryClient),
+            // loader: homeLoader(queryClient),
             // loader: categoriesLoader(queryClient),
           },
         ],

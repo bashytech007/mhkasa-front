@@ -7,7 +7,7 @@
 //   const { latestProducts } = useLoaderData();
 
 //   return (
-//     <section className="py-8 font-FarfetchRegular">
+//     <section className="py-8    font-Helvetica">
 //       <SectionHeader header="New In" />
 //       <ListGrid>
 //         {latestProducts.map(
@@ -41,7 +41,7 @@ export const LatestProducts = ({ horizontalOnSmallScreens = false }) => {
   const { latestProducts } = useLoaderData();
 
   return (
-    <section className="py-8 font-FarfetchRegular">
+    <section className="py-8    font-Helvetica">
       <SectionHeader header="New In" />
       <ListGrid horizontalOnSmallScreens={horizontalOnSmallScreens}>
         {latestProducts.map(

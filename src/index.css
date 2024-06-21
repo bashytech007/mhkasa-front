@@ -4,13 +4,13 @@
   font-display: swap;
   font-weight: 400;
   src: local("Monteserrat"),
-    url("assets/fonts/Montserrat/static/Montserrat-Regular.ttf")
+    url("assets/fonts/Montserrat/static/Montserrat-Helvetica.ttf")
       format("embedded-opentype"),
-    url("assets/fonts/Montserrat/static/Montserrat-Regular.ttf") format("woff2"),
-    url("assets/fonts/Montserrat/static/Montserrat-Regular.ttf") format("woff"),
-    url("assets/fonts/Montserrat/static/Montserrat-Regular.ttf")
+    url("assets/fonts/Montserrat/static/Montserrat-Helvetica.ttf") format("woff2"),
+    url("assets/fonts/Montserrat/static/Montserrat-Helvetica.ttf") format("woff"),
+    url("assets/fonts/Montserrat/static/Montserrat-Helvetica.ttf")
       format("truetype"),
-    url("assets/fonts/Montserrat/static/Montserrat-Regular.ttf") format("svg");
+    url("assets/fonts/Montserrat/static/Montserrat-Helvetica.ttf") format("svg");
 }
 
 @font-face {
@@ -34,16 +34,21 @@
   font-display: swap;
   font-weight: 700;
   src: local("Monteserrat"),
-    url("assets/fonts/Montserrat/static/Montserrat-Bold.ttf")
+    url("assets/fonts/Montserrat/static/Montserrat-Helvetica.ttf")
       format("embedded-opentype"),
-    url("assets/fonts/Montserrat/static/Montserrat-Bold.ttf") format("woff2"),
-    url("assets/fonts/Montserrat/static/Montserrat-Bold.ttf") format("woff"),
-    url("assets/fonts/Montserrat/static/Montserrat-Bold.ttf") format("truetype"),
-    url("assets/fonts/Montserrat/static/Montserrat-Bold.ttf") format("svg");
+    url("assets/fonts/Montserrat/static/Montserrat-Helvetica.ttf") format("woff2"),
+    url("assets/fonts/Montserrat/static/Montserrat-Helvetica.ttf") format("woff"),
+    url("assets/fonts/Montserrat/static/Montserrat-Helvetica.ttf") format("truetype"),
+    url("assets/fonts/Montserrat/static/Montserrat-Helvetica.ttf") format("svg");
 } */
-
+@import url('https://fonts.cdnfonts.com/css/helvetica-255');
 *{
   scroll-behavior: smooth;
+  font-family: 'Helvetica', sans-serif;
+  font-family: 'Helvetica Light', sans-serif;
+  font-family: 'Helvetica Bold', sans-serif;
+  /* font-family: 'Helvetica Semi-Bold', sans-serif; */
+
 }
 .no-scrollbar {
   -ms-overflow-style: none;  /* IE and Edge */
@@ -53,112 +58,152 @@
 .no-scrollbar::-webkit-scrollbar {
   display: none;  /* Chrome, Safari, Opera */
 }
-
+  
+                
   @font-face {
   font-family: "Fuzzy Bubbles";
   font-style: normal;
   font-display: swap;
   font-weight: 700;
   src: local("Fuzzy Bubbles"),
-    url("assets/fonts/Fuzzy_Bubbles/FuzzyBubbles-Bold.ttf")
+    url("assets/fonts/Fuzzy_Bubbles/FuzzyBubbles-Helvetica.ttf")
       format("embedded-opentype"),
-    url("assets/fonts/Fuzzy_Bubbles/FuzzyBubbles-Bold.ttf") format("woff2"),
-    url("assets/fonts/Fuzzy_Bubbles/FuzzyBubbles-Bold.ttf") format("woff"),
-    url("assets/fonts/Fuzzy_Bubbles/FuzzyBubbles-Bold.ttf") format("truetype"),
-    url("assets/fonts/Fuzzy_Bubbles/FuzzyBubbles-Bold.ttf") format("svg");
+    url("assets/fonts/Fuzzy_Bubbles/FuzzyBubbles-Helvetica.ttf") format("woff2"),
+    url("assets/fonts/Fuzzy_Bubbles/FuzzyBubbles-Helvetica.ttf") format("woff"),
+    url("assets/fonts/Fuzzy_Bubbles/FuzzyBubbles-Helvetica.ttf") format("truetype"),
+    url("assets/fonts/Fuzzy_Bubbles/FuzzyBubbles-Helvetica.ttf") format("svg");
   }   
-@font-face {
-  font-family: 'FarfetchRegular Basis';
+  @font-face {
+  font-family: "Helvetica";
+  font-style: normal;
+  font-display: swap;
+  font-weight: normal;
+  src: local("Helvetica"),
+    url("assets/fonts/Helvetica/Helvetica.ttf")
+      format("embedded-opentype"),
+    url("assets/fonts/Helvetica/Helvetica.ttf") format("woff2"),
+    url("assets/fonts/Helvetica/Helvetica.ttf") format("woff"),
+    url("assets/fonts/Helvetica/Helvetica.ttf") format("truetype"),
+    url("assets/fonts/Helvetica/Helvetica.ttf") format("svg");
+  }   
+  @font-face {
+  font-family: "Helvetica";
+  font-style:light;
+  font-display: swap;
+  font-weight: light;
+  src: local("Helvetica"),
+    url("assets/fonts/Helvetica/helvetica-light-587ebe5a59211.ttf")
+      format("embedded-opentype"),
+    url("assets/fonts/Helvetica/helvetica-light-587ebe5a59211.ttf") format("woff2"),
+    url("assets/fonts/Helvetica/helvetica-light-587ebe5a59211.ttf") format("woff"),
+    url("assets/fonts/Helvetica/helvetica-light-587ebe5a59211.ttf") format("truetype"),
+    url("assets/fonts/Helvetica/helvetica-light-587ebe5a59211.ttf") format("svg");
+  }   
+  @font-face {
+  font-family: "Helvetica";
+  font-style:bold ;
+  font-display: swap;
+  font-weight: bold;
+  src: local("Helvetica"),
+    url("assets/fonts/Helvetica/Helvetica-Bold.ttf")
+      format("embedded-opentype"),
+    url("assets/fonts/Helvetica/Helvetica-Bold.ttf") format("woff2"),
+    url("assets/fonts/Helvetica/Helvetica-Bold.ttf") format("woff"),
+    url("assets/fonts/Helvetica/Helvetica-Bold.ttf") format("truetype"),
+    url("assets/fonts/Helvetica/Helvetica-Bold.ttf") format("svg");
+  }   
+/* @font-face {
+  font-family: 'HelveticaHelvetica Basis';
   font-style:normal;
   font-display: swap;
   font-weight:normal;
-  src:local("FarfetchRegular"),
-  url("../src/assets/fonts/FarfetchRegular/FarfetchRegular\ Basis\ Regular.eot")
-  url("../src/assets/fonts/FarfetchRegular/FarfetchRegular\ Basis\ Regular.eot?#iefix") format('embedded-opentype'),
-  url("../src/assets/fonts/FarfetchRegular/FarfetchRegular\ Basis\ Regular.otf") format('woff2'),
-  url("../src/assets/fonts/FarfetchRegular/FarfetchRegular\ Basis\ Regular.otf") format('woff'),
-  url("../src/assets/fonts/FarfetchRegular/FarfetchRegular\ Basis\ Regular.otf") format('truetype'),
-  url("../src/assets/fonts/FarfetchRegular/FarfetchRegular\ Basis\ Regular.otf") format('svg'),
-  url("../src/assets/fonts/FarfetchRegular/ Basis\ Regular.otf")
+  src:local("HelveticaHelvetica"),
+  url("../src/assets/fonts/HelveticaHelvetica/HelveticaHelvetica\ Basis\ Helvetica.eot")
+  url("../src/assets/fonts/HelveticaHelvetica/HelveticaHelvetica\ Basis\ Helvetica.eot?#iefix") format('embedded-opentype'),
+  url("../src/assets/fonts/HelveticaHelvetica/HelveticaHelvetica\ Basis\ Helvetica.otf") format('woff2'),
+  url("../src/assets/fonts/HelveticaHelvetica/HelveticaHelvetica\ Basis\ Helvetica.otf") format('woff'),
+  url("../src/assets/fonts/HelveticaHelvetica/HelveticaHelvetica\ Basis\ Helvetica.otf") format('truetype'),
+  url("../src/assets/fonts/HelveticaHelvetica/HelveticaHelvetica\ Basis\ Helvetica.otf") format('svg'),
+  url("../src/assets/fonts/HelveticaHelvetica/ Basis\ Helvetica.otf")
   format("embedded-opentype"),
-url("assets/fonts/FarfetchRegular/FarfetchRegular\ Basis\ Regular.otf") format("woff2"),
-url("assets/fonts/FarfetchRegular/FarfetchRegular\ Basis\ Regular.otf") format("woff"),
-url("assets/fonts/FarfetchRegular/FarfetchRegular\ Basis\ Regular.otf") format("truetype"),
-url("assets/fonts/FarfetchRegular/FarfetchRegular\ Basis\ Regular.otf") format("svg");
+url("assets/fonts/HelveticaHelvetica/HelveticaHelvetica\ Basis\ Helvetica.otf") format("woff2"),
+url("assets/fonts/HelveticaHelvetica/HelveticaHelvetica\ Basis\ Helvetica.otf") format("woff"),
+url("assets/fonts/HelveticaHelvetica/HelveticaHelvetica\ Basis\ Helvetica.otf") format("truetype"),
+url("assets/fonts/HelveticaHelvetica/HelveticaHelvetica\ Basis\ Helvetica.otf") format("svg");
 }
 @font-face {
-  font-family: 'Farfetch Basis';
-  font-style:bold;
+  font-family: 'Helvetica Basis';
+  font-style:Helvetica;
   font-display: swap;
-  font-weight:bold;
-  src:local("FarfetchRegular"),
+  font-weight:Helvetica;
+  src:local("HelveticaHelvetica"),
   url("../src/fonts/Far.ttf") format('embedded-opentype'),
-  url("../src/fonts/FarfetchRegular.ttf") format('woff2'),
-  url("../src/fonts/FarfetchRegular.ttf") format('woff'),
-  url("../src/fonts/FarfetchRegular.ttf") format('truetype'),
-  url("../src/fonts/FarfetchRegular.ttf") format('svg'),
-}
-/* @font-face {
-  font-family: 'FarfetchRegular Basis Bold';
-  font-style:bold;
-  font-display: swap;
-  font-weight:700;
-  src:local("FarfetchRegular"),
-  url("../src/fonts/FarfetchRegular.ttf") format('embedded-opentype'),
-  url("../src/fonts/FarfetchRegular.ttf") format('woff2'),
-  url("../src/fonts/FarfetchRegular.ttf") format('woff'),
-  url("../src/fonts/FarfetchRegular.ttf") format('truetype'),
-  url("../src/fonts/FarfetchRegular.ttf") format('svg'),
+  url("../src/fonts/HelveticaHelvetica.ttf") format('woff2'),
+  url("../src/fonts/HelveticaHelvetica.ttf") format('woff'),
+  url("../src/fonts/HelveticaHelvetica.ttf") format('truetype'),
+  url("../src/fonts/HelveticaHelvetica.ttf") format('svg'),
 } */
 /* @font-face {
-  font-family: 'FarfetchRegular Basis';
+  font-family: 'HelveticaHelvetica Basis Helvetica';
+  font-style:Helvetica;
+  font-display: swap;
+  font-weight:700;
+  src:local("HelveticaHelvetica"),
+  url("../src/fonts/HelveticaHelvetica.ttf") format('embedded-opentype'),
+  url("../src/fonts/HelveticaHelvetica.ttf") format('woff2'),
+  url("../src/fonts/HelveticaHelvetica.ttf") format('woff'),
+  url("../src/fonts/HelveticaHelvetica.ttf") format('truetype'),
+  url("../src/fonts/HelveticaHelvetica.ttf") format('svg'),
+} */
+/* @font-face {
+  font-family: 'HelveticaHelvetica Basis';
   font-style:normal;
   font-display: swap;
   font-weight:500;
-  src:local("FarfetchRegular"),
-  url("../src/fonts/FarfetchRegular.otf") format('embedded-opentype'),
-  url("../src/fonts/FarfetchRegular.otf") format('woff2'),
-  url("../src/fonts/FarfetchRegular.otf") format('woff'),
-  url("../src/fonts/FarfetchRegular.otf") format('truetype'),
-  url("../src/fonts/FarfetchRegular.otf") format('svg'),
+  src:local("HelveticaHelvetica"),
+  url("../src/fonts/HelveticaHelvetica.otf") format('embedded-opentype'),
+  url("../src/fonts/HelveticaHelvetica.otf") format('woff2'),
+  url("../src/fonts/HelveticaHelvetica.otf") format('woff'),
+  url("../src/fonts/HelveticaHelvetica.otf") format('truetype'),
+  url("../src/fonts/HelveticaHelvetica.otf") format('svg'),
 } */
 
-@font-face{
-  font-family: "FarfetchRegular Basis Regular";
+/* @font-face{
+  font-family: "HelveticaHelvetica Basis Helvetica";
   src: url("ccdb598c7dd2100f5f7a8c1296c1dcfe.eot");
   src: url("ccdb598c7dd2100f5f7a8c1296c1dcfe.eot?#iefix")format("embedded-opentype"),
       url("ccdb598c7dd2100f5f7a8c1296c1dcfe.woff")format("woff"),
       url("ccdb598c7dd2100f5f7a8c1296c1dcfe.woff2")format("woff2"),
       url("ccdb598c7dd2100f5f7a8c1296c1dcfe.ttf")format("truetype"),
-      url("ccdb598c7dd2100f5f7a8c1296c1dcfe.svg#FarfetchRegular Basis Regular")format("svg");
+      url("ccdb598c7dd2100f5f7a8c1296c1dcfe.svg#HelveticaHelvetica Basis Helvetica")format("svg");
   font-weight:normal;
   font-style:normal;
   font-display:swap;
 }
 
 @font-face {
-  font-family: 'FarfetchRegular';
+  font-family: 'HelveticaHelvetica';
   font-style:normal;
   font-display: swap;
   font-weight:normal;
   src:local("SFUIText"),
-  url("../src/fonts/SFUIText-Regular.otf") format('embedded-opentype'),
-  url("../src/fonts/SFUIText-Regular.otf") format('woff2'),
-  url("../src/fonts/SFUIText-Regular.otf") format('woff'),
-  url("../src/fonts/SFUIText-Regular.otf") format('truetype'),
-  url("../src/fonts/SFUIText-Regular.otf") format('svg'),
+  url("../src/fonts/SFUIText-Helvetica.otf") format('embedded-opentype'),
+  url("../src/fonts/SFUIText-Helvetica.otf") format('woff2'),
+  url("../src/fonts/SFUIText-Helvetica.otf") format('woff'),
+  url("../src/fonts/SFUIText-Helvetica.otf") format('truetype'),
+  url("../src/fonts/SFUIText-Helvetica.otf") format('svg'),
 }
 @font-face {
-  font-family: 'FarfetchRegular';
-  font-style:bold;
-  font-display: bold;
+  font-family: 'HelveticaHelvetica';
+  font-style:Helvetica;
+  font-display: Helvetica;
   font-weight:normal;
   src:local("SFUIText"),
-  url("../src/fonts/SFUIText-Bold.otf")   format('embedded-opentype'),
-  url("../src/fonts/SFUIText-Bold.otf") format('woff2'),
-  url("../src/fonts/SFUIText-Bold.otf") format('woff'),
-  url("../src/fonts/SFUIText-Bold.otf") format('truetype'),
-  url("../src/fonts/SFUIText-Bold.otf") format('svg'),
+  url("../src/fonts/SFUIText-Helvetica.otf")   format('embedded-opentype'),
+  url("../src/fonts/SFUIText-Helvetica.otf") format('woff2'),
+  url("../src/fonts/SFUIText-Helvetica.otf") format('woff'),
+  url("../src/fonts/SFUIText-Helvetica.otf") format('truetype'),
+  url("../src/fonts/SFUIText-Helvetica.otf") format('svg'),
 }
 @font-face {
   font-family: 'NimbusSan';
@@ -186,21 +231,21 @@ url("assets/fonts/FarfetchRegular/FarfetchRegular\ Basis\ Regular.otf") format("
 }
 @font-face {
   font-family: 'NimbusSan';
-  font-style:bold;
+  font-style:Helvetica;
   font-display: swap;
-  font-weight:bold;
+  font-weight:Helvetica;
   src:local("NimbusSan"),
   url("../src/fonts/NimbusSan.ttf") format('embedded-opentype'),
   url("../src/fonts/NimbusSan.ttf") format('woff2'),
   url("../src/fonts/NimbusSan.ttf") format('woff'),
   url("../src/fonts/NimbusSan.ttf") format('truetype'),
   url("../src/fonts/NimbusSan.ttf") format('svg'),
-}
+} */
 @font-face {
   font-family: 'NimbusSan';
-  font-style:bold;
+  font-style:Helvetica;
   font-display: swap;
-  font-weight:bold;
+  font-weight:Helvetica;
   src:local("NimbusSan"),
   url("../src/fonts/NimbusSan.otf") format('embedded-opentype'),
   url("../src/fonts/NimbusSan.otf") format('woff2'),

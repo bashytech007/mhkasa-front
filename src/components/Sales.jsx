@@ -4,7 +4,7 @@ import White from "../assets/images/Ellipse-white.svg";
 import { Wrapper } from "./ui/Wrapper";
 export const Sales = () => {
   return (
-    <div className="w-full h-[180px] bg-sales relative font-FarfetchRegular">
+    <div className="w-full h-[180px] bg-sales relative    font-Helvetica">
       <Wrapper>
         <div className="flex justify-center">
           <div className="flex flex-col items-start md:items-center md:justify-center gap-2 pt-10 relative">

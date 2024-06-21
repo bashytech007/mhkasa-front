@@ -17,7 +17,7 @@
 //   }, [setElement]);
 
 //   return (
-//     <section className="py-8 font-FarfetchRegular">
+//     <section className="py-8    font-Helvetica">
 //       <div className="flex items-center justify-between">
 //         <SectionHeader header="Best Sellers" />
 
@@ -102,7 +102,7 @@ export const BestSellers = ({ horizontalOnSmallScreens = false }) => {
   }, [setElement]);
 
   return (
-    <section className="py-8 font-FarfetchRegular">
+    <section className="py-8    font-Helvetica">
       <div className="flex items-center justify-between">
         <SectionHeader header="Best Sellers" />
 

@@ -7,7 +7,7 @@ export const NewArrivals = () => {
   const { newArrivals } = useLoaderData();
 
   return (
-    <section className="py-8 font-FarfetchRegular">
+    <section className="py-8    font-Helvetica">
       <SectionHeader header="Deals" />
 
       <ListGrid>

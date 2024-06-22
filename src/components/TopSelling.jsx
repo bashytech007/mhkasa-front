@@ -3,20 +3,20 @@ import { SectionHeader } from "./ui/SectionHeader";
 import { Product } from "./ProductCard";
 import axios from "../utils/axios";
 
-export const Recommended = () => {
+export const TopSelling = () => {
   const [recommend, setRecommended] = useState([]);
   const [err, setErr] = useState(null);
 
   async function getRecommended() {
     try {
-      const response = await axios.get("recommend");
+      const response = await axios.get("bestsellers");
       setRecommended(() =>
         response.data.map(({ product }) => {
           return {
             id: product?._id || 0,
             product: product.name,
             category: product.category,
-            price:product?.price,
+            price: product.price,
             image:
               product.mainImage || product.firstImage || product.secondImage,
           };
@@ -33,7 +33,7 @@ export const Recommended = () => {
 
   return (
     <section className="py-8">
-      <SectionHeader header="Recommended" />
+      <SectionHeader header="TopSelling" />
 
       {err ? (
         <p>{err}</p>

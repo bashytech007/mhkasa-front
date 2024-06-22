@@ -301,6 +301,9 @@ import { Seo } from "../components/Seo";
 import { useSearchParams } from "react-router-dom";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { Fragment, useEffect } from "react";
+import { Recommended } from "../components/Recommended";
+import { BestSellers } from "../components/BestSellers";
+import { TopSelling } from "../components/TopSelling";
 
 export const Component = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -455,6 +458,8 @@ const url=`search?name=${search}&sort=${sortBy}`
               )}
             </>
           )}
+          <TopSelling/>
+          <Recommended/>
         </Wrapper>
       </section>
     </>

@@ -168,3 +168,4 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </CategoryProvider>
   </React.StrictMode>
 );
+

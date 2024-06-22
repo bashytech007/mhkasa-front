@@ -45,8 +45,6 @@
 *{
   scroll-behavior: smooth;
   font-family: 'Helvetica', sans-serif;
-  font-family: 'Helvetica Light', sans-serif;
-  font-family: 'Helvetica Bold', sans-serif;
   /* font-family: 'Helvetica Semi-Bold', sans-serif; */
 
 }
@@ -103,7 +101,7 @@
   font-family: "Helvetica";
   font-style:bold ;
   font-display: swap;
-  font-weight: bold;
+  font-weight: 900;
   src: local("Helvetica"),
     url("assets/fonts/Helvetica/Helvetica-Bold.ttf")
       format("embedded-opentype"),

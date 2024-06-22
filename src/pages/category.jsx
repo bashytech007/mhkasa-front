@@ -358,7 +358,7 @@ export const Component = () => {
                 ))}
               </ul>
               <div className="pt-6">
-                <button
+                {/* <button
                   onClick={() => fetchNextPage()}
                   disabled={isFetchingNextPage}
                   className={`${
@@ -369,6 +369,7 @@ export const Component = () => {
                     ? "Loading more..."
                     : "Load More Products"}
                 </button>
+
               </div>
               <div className="flex justify-center">
                 {isFetching && !isFetchingNextPage ? (

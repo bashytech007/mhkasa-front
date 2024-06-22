@@ -1,5 +1,3 @@
-
-
 // import { Wrapper } from "../components/ui/Wrapper";
 // import { Navigation } from "../components/ui/Navigation";
 // import { SectionHeader } from "../components/ui/SectionHeader";
@@ -27,7 +25,7 @@
 //     hasNextPage,
 //     refetch,
 //   } = useInfiniteProducts(`search?name=${search}&sort=${sortBy}`, "search");
-  
+
 //   const onClick = (term) => {
 //     if (typeof term !== "string") return;
 //     if (!term) {
@@ -142,7 +140,7 @@
 //     </>
 //   );
 // };
-// 
+//
 
 // import { Wrapper } from "../components/ui/Wrapper";
 // import { Navigation } from "../components/ui/Navigation";
@@ -325,7 +323,10 @@ const url=`search?name=${search}&sort=${sortBy}`
     isFetching,
     hasNextPage,
     refetch,
-  } = useInfiniteProducts(url,"search", search,{ sortBy, filterBy });
+  } = useInfiniteProducts(`search?name=${search}&sortBy=${sortBy}`, "search", {
+    search,
+    sortBy,
+  });
 
   const onClick = (term) => {
     if (typeof term !== "string") return;
@@ -333,7 +334,10 @@ const url=`search?name=${search}&sort=${sortBy}`
       searchParams.delete("sort");
       setSearchParams(searchParams);
     } else {
-      setSearchParams({ ...Object.fromEntries([...searchParams]), sort: term });
+      setSearchParams({
+        ...Object.fromEntries([...searchParams]),
+        sort: term.split("-")[1],
+      });
     }
   };
 
@@ -352,7 +356,7 @@ const url=`search?name=${search}&sort=${sortBy}`
         description={`Search For Perfumes On Mkhasa Store`}
         name=""
       />
-      <section className="bg-white">
+      <section>
         {/* <div className="relative">
           <div className="absolute right-0 left-0 top-0 bottom-0 bg-[#3333]" />
           <div className="absolute left-0 w-full top-1/3">
@@ -380,10 +384,10 @@ const url=`search?name=${search}&sort=${sortBy}`
             className="object-cover object-center w-full min-h-48 max-h-60"
           />
         </div> */}
-        <Wrapper className="py-6 bg-white">
-        <div className="text-sm text-gray-600">
-              {totalProducts} <strong>results </strong> for {search}
-            </div>
+        <Wrapper className="py-6">
+          <div className="text-sm text-gray-600">
+            {totalProducts} <strong>results </strong> for {search}
+          </div>
           <div className="flex items-center justify-between py-4">
             <SectionHeader header="Search" />
             <Sort onClick={onClick} sort={sortBy} />
@@ -397,14 +401,18 @@ const url=`search?name=${search}&sort=${sortBy}`
               {isEmpty ? (
                 <div className="text-center">
                   <p className="md:text-xl text-lg font- font-Helvetica">
-                    We don't have what you're looking for this time, but why not take recommendations made for you. Alternatively, shop by category.
+                    We don't have what you're looking for this time, but why not
+                    take recommendations made for you. Alternatively, shop by
+                    category.
                   </p>
                   {/* Add your recommendations and categories here */}
                 </div>
               ) : (
                 <>
-                  <ul className="grid justify-center grid-flow-row grid-cols-2 gap-1
-                   pt-8 auto-rows-fr sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+                  <ul
+                    className="grid justify-center grid-flow-row grid-cols-2 gap-1
+                   pt-8 auto-rows-fr sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+                  >
                     {data?.pages?.map((group, i) => (
                       <Fragment key={i}>
                         {group.products.map((product) => (
@@ -429,7 +437,7 @@ const url=`search?name=${search}&sort=${sortBy}`
                         disabled={isFetchingNextPage}
                         className={`${
                           !hasNextPage ? "hidden" : ""
-                        } text-white bg-app-red py-2 px-6 hover:bg-app-red/70 disabled:bg-app-black/50`}
+                        } py-2 px-6 hover:bg-black/5 mt-4`}
                       >
                         {isFetchingNextPage ? "Loading more..." : "Load More"}
                       </button>

@@ -21,7 +21,7 @@
 
 // export const useInfiniteProducts = (url, ...key) => {
 //   const fetchProducts = async (pageParam = 1) => {
-    
+
 //     const res = await axios.get(`${url}&page=`+pageParam);
 //     console.log(res.data)
 //     return res.data;
@@ -45,7 +45,6 @@ import axios from "../../utils/axios";
 export const useInfiniteProducts = (url, ...key) => {
   const fetchProducts = async (pageParam = 1) => {
     const res = await axios.get(`${url}&page=${pageParam}`);
-    console.log(res.data);
     return res.data;
   };
 
@@ -61,10 +60,3 @@ export const useInfiniteProducts = (url, ...key) => {
     },
   });
 };
-
-
-
-
-
-
-

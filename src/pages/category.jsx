@@ -150,6 +150,7 @@ import { Sort } from "../components/Sort";
 import { Seo } from "../components/Seo";
 import { useSearchParams } from "react-router-dom/dist";
 import { LatestProducts } from "../components/LatestProducts";
+import { Recommended } from "../components/Recommended";
 // import { useLoaderData } from "react-router-dom/dist";
 export const Component = () => {
   const { category } = useParams();
@@ -202,11 +203,10 @@ export const Component = () => {
       />
       <section>
         <Wrapper className="py-6">
-         
-            <div className="text-sm text-gray-600">
-              {totalProducts} <strong>results </strong> for {category}
-            </div>
-            <div className="flex items-center justify-between py-4">
+          <div className="text-sm text-gray-600">
+            {totalProducts} <strong>results </strong> for {category}
+          </div>
+          <div className="flex items-center justify-between py-4">
             <SectionHeader header={category} />
             <Sort onClick={onClick} sort={sortBy} />
           </div>
@@ -242,7 +242,9 @@ export const Component = () => {
                     !hasNextPage ? "hidden" : ""
                   } text-white bg-app-red py-2 px-6 hover:bg-app-red/70 disabled:bg-app-black/50`}
                 >
-                  {isFetchingNextPage ? "Loading more..." : "Load More Products"}
+                  {isFetchingNextPage
+                    ? "Loading more..."
+                    : "Load More Products"}
                 </button>
               </div>
               <div className="flex justify-center">
@@ -255,7 +257,9 @@ export const Component = () => {
               </div>
             </>
           )}
+
           {/* <LatestProducts horizontalOnSmallScreens /> */}
+          <Recommended />
         </Wrapper>
       </section>
     </>

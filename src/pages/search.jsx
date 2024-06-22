@@ -309,6 +309,13 @@ export const Component = () => {
   const sortBy = searchParams.get("sort") || "";
   const search = searchParams.get("s") || "";
 
+  if (!search) throw new Error("Invalid search");
+  // const sortBy = searchParams.get("sort") || "";
+  const filterBy = searchParams.get("filter") || "";
+
+const url=`search?name=${search}&sort=${sortBy}` 
+
+
   const {
     data,
     status,
@@ -318,7 +325,7 @@ export const Component = () => {
     isFetching,
     hasNextPage,
     refetch,
-  } = useInfiniteProducts(`search?name=${search}&sort=${sortBy}`, "search");
+  } = useInfiniteProducts(url,"search", search,{ sortBy, filterBy });
 
   const onClick = (term) => {
     if (typeof term !== "string") return;
@@ -330,9 +337,9 @@ export const Component = () => {
     }
   };
 
-  useEffect(() => {
-    refetch();
-  }, [search, sortBy, refetch]);
+  // useEffect(() => {
+  //   refetch();
+  // }, [search, sortBy, refetch]);
 
   const isEmpty = data?.pages?.[0]?.products.length === 0;
   const totalProducts = data?.pages?.[0]?.totalProducts || 0;

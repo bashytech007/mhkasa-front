@@ -46,7 +46,7 @@ const Navbar = () => {
           <input
             id="search"
             type="text"
-            placeholder="Search For item"
+            placeholder="search for item"
             className="w-full px-6 py-2 rounded-full font-Helvetica outline-none peer bg-app-ash md:bg-transparent md:focus-visible:bg-app-ash"
           ></input>
           <button
@@ -83,7 +83,7 @@ const MobileNavbar = ({ toggle }) => {
       <nav className="pt-6 min-h-[100vh]">
         <Wrapper>
           <div className="flex items-center font-Helvetica justify-between pt-2 pb-6">
-            <h2 className="text-2xl font-bold font-Helvetica">Categories</h2>
+            <h2 className="text-2xl font-Helvetica">Categories</h2>
             <button onClick={toggle}>
               <Icon icon="uil:times" style={{ fontSize: 32 }} />
             </button>

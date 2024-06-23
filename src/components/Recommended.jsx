@@ -33,7 +33,7 @@ export const Recommended = () => {
 
   return (
     <section className="py-8">
-      <SectionHeader header="We also recommend" />
+      <SectionHeader header="Recommended" />
 
       {err ? (
         <p>{err}</p>

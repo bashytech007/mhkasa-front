@@ -33,7 +33,7 @@ export const TopSelling = () => {
 
   return (
     <section className="py-8">
-      <SectionHeader header="TopSelling" />
+      <SectionHeader header="Top Selling Products" />
 
       {err ? (
         <p>{err}</p>

@@ -154,7 +154,7 @@ export const Component = () => {
       navigate(decodeURIComponent(redirect));
     },
     onError: (err) => {
-      console.log("Login error response:", err.response);
+      // console.log("Login error response:", err.response);
       if (err.response && err.response.data) {
         const errorMessage = err.response.data.message;
         if (errorMessage.includes("email")) {

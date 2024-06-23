@@ -73,7 +73,7 @@ export const Recommended = ({ horizontalOnSmallScreens = true }) => {
   async function getRecommended() {
     try {
       const response = await axios.get("/recommend"); // Ensure this URL is correct
-      console.log("Fetched data:", response.data); // Debugging: Log the fetched data
+      // console.log("Fetched data:", response.data); // Debugging: Log the fetched data
 
       setRecommended(() =>
         response.data.map(({ product }) => {
@@ -87,7 +87,7 @@ export const Recommended = ({ horizontalOnSmallScreens = true }) => {
           };
         })
       );
-      console.log("Processed recommended products:", recommend); // Debugging: Log the processed products
+      // console.log("Processed recommended products:", recommend); // Debugging: Log the processed products
     } catch (error) {
       console.error("Error fetching data:", error); // Debugging: Log the error
       setErr(error?.message ?? "Error fetching data");

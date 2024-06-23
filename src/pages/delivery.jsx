@@ -1,5 +1,5 @@
 export const Delivery=()=>{
-    console.log("hello")
+    // console.log("hello")
     return(
 
         <div className="bg-white p-6 md:px-28 rounded-lg shadow-md    font-Helvetica">

@@ -83,7 +83,7 @@ const MobileNavbar = ({ toggle }) => {
       <nav className="pt-6 min-h-[100vh]">
         <Wrapper>
           <div className="flex items-center font-Helvetica justify-between pt-2 pb-6">
-            <h2 className="text-2xl font-bold font-Helvetica">Categories</h2>
+            <h2 className="text-2xl font-Helvetica">Categories</h2>
             <button onClick={toggle}>
               <Icon icon="uil:times" style={{ fontSize: 32 }} />
             </button>

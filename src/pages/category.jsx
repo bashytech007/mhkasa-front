@@ -273,6 +273,7 @@ import { Seo } from "../components/Seo";
 import { useSearchParams } from "react-router-dom/dist";
 import { LatestProducts } from "../components/LatestProducts";
 import { Recommended } from "../components/Recommended";
+import { TopSelling } from "../components/TopSelling";
 // import { useLoaderData } from "react-router-dom/dist";
 export const Component = () => {
   const { category } = useParams();
@@ -381,6 +382,7 @@ export const Component = () => {
           )}
 
           {/* <LatestProducts horizontalOnSmallScreens /> */}
+          <TopSelling/>
           <Recommended />
         </Wrapper>
       </section>

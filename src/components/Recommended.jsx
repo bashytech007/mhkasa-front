@@ -38,7 +38,7 @@ export const Recommended = () => {
       {err ? (
         <p>{err}</p>
       ) : recommend.length > 0 ? (
-        <ul className="pt-6 grid gap-4 min-[360px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+        <ul className="pt-6 grid gap-1 min-[360px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
           {recommend.map(({ product, category, price, image, id }, index) => (
             <li key={index} className="md:flex-shrink-0 grow">
               <Product

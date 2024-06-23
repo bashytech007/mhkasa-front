@@ -46,7 +46,7 @@ const Navbar = () => {
           <input
             id="search"
             type="text"
-            placeholder="Search for item"
+            placeholder="search for item"
             className="w-full px-6 py-2 rounded-full font-Helvetica outline-none peer bg-app-ash md:bg-transparent md:focus-visible:bg-app-ash"
           ></input>
           <button

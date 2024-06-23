@@ -199,8 +199,8 @@ export const Component = () => {
       </p>
 
       <form onSubmit={formik.handleSubmit} className="w-full">
-        <Input name="email" formik={formik} placeholder="Email" />
-        <PInput name="password" formik={formik} placeholder="Password" />
+        <Input name="email" formik={formik} placeholder="Email" className="bg-app-ash-1" />
+        <PInput name="password" formik={formik} placeholder="Password"  className="bg-app-ash-1" />
         
         {error && <div className="text-red-500 text-center">{error}</div>}
 

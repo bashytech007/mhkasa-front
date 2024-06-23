@@ -1,15 +1,28 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { SectionHeader } from "./ui/SectionHeader";
 import { Product } from "./ProductCard";
 import axios from "../utils/axios";
+import { ListGrid } from "./ui/ListGrid";
+import useLongPress from "../hooks/utils/useLongPress";
+import { Icon } from "@iconify/react";
+import { cn } from "../utils/cn";
 
-export const TopSelling = () => {
+export const TopSelling = ({ horizontalOnSmallScreens = true }) => {
   const [recommend, setRecommended] = useState([]);
   const [err, setErr] = useState(null);
+  const ref = useRef();
+
+  const { getHandlers, setElement } = useLongPress(ref.current);
+
+  useEffect(() => {
+    setElement(ref.current);
+  }, [setElement]);
 
   async function getRecommended() {
     try {
-      const response = await axios.get("bestsellers");
+      const response = await axios.get("/bestsellers");  // Ensure this URL is correct
+      console.log("Fetched data:", response.data);  // Debugging: Log the fetched data
+
       setRecommended(() =>
         response.data.map(({ product }) => {
           return {
@@ -22,7 +35,9 @@ export const TopSelling = () => {
           };
         })
       );
+      console.log("Processed recommended products:", recommend);  // Debugging: Log the processed products
     } catch (error) {
+      console.error("Error fetching data:", error);  // Debugging: Log the error
       setErr(error?.message ?? "Error fetching data");
     }
   }
@@ -32,29 +47,53 @@ export const TopSelling = () => {
   }, []);
 
   return (
-    <section className="py-8">
-      <SectionHeader header="Top Selling Products" />
+    <section className="py-8 font-Helvetica">
+      <div className="flex items-center justify-between">
+        <SectionHeader header="Top Selling Products" />
+
+        <div className="hidden gap-4">
+          <button
+            {...getHandlers("backward")}
+            className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
+          >
+            <Icon icon="fa6-solid:angle-left" style={{ fontSize: 28 }} />
+          </button>
+          <button
+            {...getHandlers("forward")}
+            className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
+          >
+            <Icon icon="fa6-solid:angle-left" hFlip style={{ fontSize: 28 }} />
+          </button>
+        </div>
+      </div>
 
       {err ? (
         <p>{err}</p>
       ) : recommend.length > 0 ? (
-        <ul className="pt-6 grid gap-1 min-[360px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+        <ListGrid horizontalOnSmallScreens={horizontalOnSmallScreens}>
           {recommend.map(({ product, category, price, image, id }, index) => (
-            <li key={index} className="md:flex-shrink-0 grow">
+            <li
+              key={index}
+              className={cn(
+                "min-w-[11rem] sm:grow",
+                horizontalOnSmallScreens && index === 0 ? "ml-44 md:ml-0" : ""
+              )}
+            >
               <Product
                 product={product}
                 category={category}
-                price={price}
+                originalPrice={price}
                 image={image}
                 id={id}
-                className="min-w-[10rem]"
+                className="h-full flex flex-col justify-between"
               />
             </li>
           ))}
-        </ul>
+        </ListGrid>
       ) : (
         <p>Loading data</p>
       )}
     </section>
   );
 };
+

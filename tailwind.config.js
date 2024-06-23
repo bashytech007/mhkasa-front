@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-import containerPlugin from "@tailwindcss/container-queries";
+import containerPlugin from '@tailwindcss/container-queries'
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {

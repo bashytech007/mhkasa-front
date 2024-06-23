@@ -29,12 +29,8 @@
 //   plugins: [containerPlugin],
 // };
 /** @type {import('tailwindcss').Config} */
-<<<<<<< Updated upstream
-import containerPlugin from "@tailwindcss/container-queries";
-=======
 import containerPlugin from '@tailwindcss/container-queries';
 
->>>>>>> Stashed changes
 export default {
   content: [
     "./index.html",
@@ -42,16 +38,9 @@ export default {
   ],
   theme: {
     fontFamily: {
-<<<<<<< Updated upstream
-      monteserrat: ["Monteserrat", "sans-serif"],
-      Helvetica:["Helvetica","sans-serif"],
-      HelveticaBold:["Helvetica Bold","sans-serif"],
-      NimbusSan:["NimbusSan","sans-serif"],
-=======
-      montserrat: ["Montserrat", "sans-serif"],
+      // montserrat: ["Montserrat", "sans-serif"],
       helvetica: ["Helvetica", "sans-serif"],
-      nimbusSan: ["NimbusSan", "sans-serif"],
->>>>>>> Stashed changes
+      // nimbusSan: ["NimbusSan", "sans-serif"],
       fuzzy: ["Fuzzy Bubbles", "sans-serif"],
     },
     extend: {

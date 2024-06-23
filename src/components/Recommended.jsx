@@ -10,13 +10,14 @@ export const Recommended = () => {
   async function getRecommended() {
     try {
       const response = await axios.get("recommend");
+      console.log(response.data)
       setRecommended(() =>
         response.data.map(({ product }) => {
           return {
             id: product?._id || 0,
-            product: product.name,
+            name: product.name,
             category: product.category,
-            price:product?.price,
+            product:product.price,
             image:
               product.mainImage || product.firstImage || product.secondImage,
           };
@@ -42,7 +43,7 @@ export const Recommended = () => {
           {recommend.map(({ product, category, price, image, id }, index) => (
             <li key={index} className="md:flex-shrink-0 grow">
               <Product
-                product={product}
+                name={product}
                 category={category}
                 price={price}
                 image={image}

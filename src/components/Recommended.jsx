@@ -10,14 +10,13 @@ export const Recommended = () => {
   async function getRecommended() {
     try {
       const response = await axios.get("recommend");
-      console.log(response.data)
       setRecommended(() =>
         response.data.map(({ product }) => {
           return {
             id: product?._id || 0,
-            name: product.name,
+            product: product.name,
             category: product.category,
-            product:product.price,
+            price: product.price,
             image:
               product.mainImage || product.firstImage || product.secondImage,
           };
@@ -34,7 +33,7 @@ export const Recommended = () => {
 
   return (
     <section className="py-8">
-      <SectionHeader header="Recommended" />
+      <SectionHeader header="We also recommend" />
 
       {err ? (
         <p>{err}</p>
@@ -43,7 +42,7 @@ export const Recommended = () => {
           {recommend.map(({ product, category, price, image, id }, index) => (
             <li key={index} className="md:flex-shrink-0 grow">
               <Product
-                name={product}
+                product={product}
                 category={category}
                 price={price}
                 image={image}

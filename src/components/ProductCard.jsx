@@ -91,11 +91,7 @@ export const Product = ({
         </div>
         
         <div className="px-4 pt-2 pb-4 flex text-sm flex-col flex-grow">
-<<<<<<< Updated upstream
-          <p className="text-[#555] font-normal @[240px]:text-app-ash-2  font-Helvetica">
-=======
           <p className="text-[#555] font-light @[240px]:text-app-ash-2    font-Helvetica">
->>>>>>> Stashed changes
             {category}
           </p>
           <h2 className="text-app-black font-bold text-[16px] pt-1 line-clamp-4    font-Helvetica flex-grow">

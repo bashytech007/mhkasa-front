@@ -326,10 +326,12 @@ const url=`search?name=${search}&sort=${sortBy}`
     isFetching,
     hasNextPage,
     refetch,
+
   } = useInfiniteProducts(`search?name=${search}&sortBy=${sortBy}`, "search", {
     search,
     sortBy,
   });
+
 
   const onClick = (term) => {
     if (typeof term !== "string") return;

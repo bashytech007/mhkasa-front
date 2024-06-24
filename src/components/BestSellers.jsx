@@ -92,72 +92,6 @@
 // import { useRef, useEffect } from "react";
 // import {cn} from "../utils/cn.js"
 
-// export const BestSellers = ({ horizontalOnSmallScreens = true }) => {
-//   const { bestsellers } = useLoaderData();
-//   const ref = useRef();
-
-//   const { getHandlers, setElement } = useLongPress(ref.current);
-
-//   useEffect(() => {
-//     setElement(ref.current);
-//   }, [setElement]);
-
-//   return (
-//     <section className="py-8  font-Helvetica">
-//       <div className="flex items-center justify-between">
-//         <SectionHeader header="Best Sellers" />
-
-//         <div className="hidden gap-4">
-//           <button
-//             {...getHandlers("backward")}
-//             className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
-//           >
-//             <Icon icon="fa6-solid:angle-left" style={{ fontSize: 28 }} />
-//           </button>
-//           <button
-//             {...getHandlers("forward")}
-//             className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
-//           >
-//             <Icon icon="fa6-solid:angle-left" hFlip style={{ fontSize: 28 }} />
-//           </button>
-//         </div>
-//       </div>
-
-//       <ListGrid horizontalOnSmallScreens={horizontalOnSmallScreens}>
-//         {bestsellers.map(
-//           (
-//             { product, category, originalPrice, discountedPrice, image, id },
-//             index
-//           ) => (
-//             <li key={index}  className={cn(
-//                 "min-w-[11rem] sm:grow",
-//                 horizontalOnSmallScreens && index === 0 ? "ml-44 md:ml-0" : ""
-//               )}>
-//               <Product
-//                 product={product}
-//                 category={category}
-//                 originalPrice={originalPrice}
-//                 discountedPrice={discountedPrice}
-//                 image={image}
-//                 id={id}
-//               />
-//             </li>
-//           )
-//         )}
-//       </ListGrid>
-//     </section>
-//   );
-// };
-
-import { SectionHeader } from "./ui/SectionHeader";
-import { Product } from "./ProductCard";
-import { ListGrid } from "./ui/ListGrid";
-import { useLoaderData } from "react-router-dom/dist";
-import useLongPress from "../hooks/utils/useLongPress";
-import { Icon } from "@iconify/react";
-import { useRef, useEffect } from "react";
-import { cn } from "../utils/cn.js";
-
 export const BestSellers = ({ horizontalOnSmallScreens = true }) => {
   const { bestsellers } = useLoaderData();
   const ref = useRef();
@@ -169,7 +103,7 @@ export const BestSellers = ({ horizontalOnSmallScreens = true }) => {
   }, [setElement]);
 
   return (
-    <section className="py-8 font-Helvetica">
+    <section className="py-8  font-Helvetica">
       <div className="flex items-center justify-between">
         <SectionHeader header="Best Sellers" />
 
@@ -189,36 +123,102 @@ export const BestSellers = ({ horizontalOnSmallScreens = true }) => {
         </div>
       </div>
 
-      <div
-        className="overflow-x-auto"
-        ref={ref}
-      >
-        <ul className="flex space-x-6 mt-6">
-          {bestsellers.map(
-            (
-              { product, category, originalPrice, discountedPrice, image, id },
-              index
-            ) => (
-              <li
-                key={index}
-                className={cn(
-                  "min-w-[11rem] sm:grow",
-                  horizontalOnSmallScreens && index === 0 ? "ml-6 md:ml-0" : ""
-                )}
-              >
-                <Product
-                  product={product}
-                  category={category}
-                  originalPrice={originalPrice}
-                  discountedPrice={discountedPrice}
-                  image={image}
-                  id={id}
-                />
-              </li>
-            )
-          )}
-        </ul>
-      </div>
+      <ListGrid horizontalOnSmallScreens={horizontalOnSmallScreens}>
+        {bestsellers.map(
+          (
+            { product, category, originalPrice, discountedPrice, image, id },
+            index
+          ) => (
+            <li key={index}  className={cn(
+                "min-w-[11rem] sm:grow",
+                horizontalOnSmallScreens && index === 0 ? "ml-44 md:ml-0" : ""
+              )}>
+              <Product
+                product={product}
+                category={category}
+                originalPrice={originalPrice}
+                discountedPrice={discountedPrice}
+                image={image}
+                id={id}
+              />
+            </li>
+          )
+        )}
+      </ListGrid>
     </section>
   );
 };
+
+// import { SectionHeader } from "./ui/SectionHeader";
+// import { Product } from "./ProductCard";
+// import { ListGrid } from "./ui/ListGrid";
+// import { useLoaderData } from "react-router-dom/dist";
+// import useLongPress from "../hooks/utils/useLongPress";
+// import { Icon } from "@iconify/react";
+// import { useRef, useEffect } from "react";
+// import { cn } from "../utils/cn.js";
+
+// export const BestSellers = ({ horizontalOnSmallScreens = true }) => {
+//   const { bestsellers } = useLoaderData();
+//   const ref = useRef();
+
+//   const { getHandlers, setElement } = useLongPress(ref.current);
+
+//   useEffect(() => {
+//     setElement(ref.current);
+//   }, [setElement]);
+
+//   return (
+//     <section className="py-8 font-Helvetica">
+//       <div className="flex items-center justify-between">
+//         <SectionHeader header="Best Sellers" />
+
+//         <div className="hidden gap-4">
+//           <button
+//             {...getHandlers("backward")}
+//             className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
+//           >
+//             <Icon icon="fa6-solid:angle-left" style={{ fontSize: 28 }} />
+//           </button>
+//           <button
+//             {...getHandlers("forward")}
+//             className="h-10 w-10 bg-white rounded-full grid place-items-center hover:scale-105"
+//           >
+//             <Icon icon="fa6-solid:angle-left" hFlip style={{ fontSize: 28 }} />
+//           </button>
+//         </div>
+//       </div>
+
+//       <div
+//         className="overflow-x-auto"
+//         ref={ref}
+//       >
+//         <ul className="flex space-x-6 mt-6">
+//           {bestsellers.map(
+//             (
+//               { product, category, originalPrice, discountedPrice, image, id },
+//               index
+//             ) => (
+//               <li
+//                 key={index}
+//                 className={cn(
+//                   "min-w-[11rem] sm:grow",
+//                   horizontalOnSmallScreens && index === 0 ? "ml-6 md:ml-0" : ""
+//                 )}
+//               >
+//                 <Product
+//                   product={product}
+//                   category={category}
+//                   originalPrice={originalPrice}
+//                   discountedPrice={discountedPrice}
+//                   image={image}
+//                   id={id}
+//                 />
+//               </li>
+//             )
+//           )}
+//         </ul>
+//       </div>
+//     </section>
+//   );
+// };

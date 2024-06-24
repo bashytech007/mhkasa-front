@@ -453,7 +453,10 @@ export const Component = () => {
                 />
               </div>
               <div className="flex gap-4 absolute top-6 right-6 z-50"></div>
-              <div className="flex gap-4 overflow-x-auto pt-6 md:object-cover object-contain">
+              <div
+  className="flex gap-4 overflow-x-auto pt-6 md:object-cover object-contain [scrollbar-width:none] [-ms-overflow-style:none]"
+  style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+>
                 {images.map((img, index) => (
                   <img
                     key={index}
@@ -467,17 +470,17 @@ export const Component = () => {
             </div>
 
             <div>
-              <div className="flex justify-between items-center flex-wrap gap-2    font-Helvetica">
-                <p className="text-xl font-bold text-[#A40001]    font-Helvetica">{product?.category}</p>
+              <div className="flex justify-between items-center flex-wrap gap-2 font-Helvetica">
+                <p className="text-xl font-bold text-[#A40001] font-Helvetica">{product?.category}</p>
               </div>
               <div className="mt-5 -md:mt-6    font-Helvetica">
-                <h3 className="text-[#555] font-bold md:text-4xl text-3xl    font-Helvetica">
+                <h3 className="text-[#555] font-bold md:text-4xl text-3xl font-Helvetica">
                   {product?.name}
                 </h3>
               </div>
 
               <div className="mt-5 md:mt-2    font-Helvetica">
-                <p className="md:text-5xl text-5xl    font-Helvetica">₦<span>{format(product?.price)}</span></p>
+                <p className="md:text-5xl text-5xl  font-Helvetica">₦<span>{format(product?.price)}</span></p>
               </div>
 
               <div className="mt-5 md:mt-2    font-Helvetica">
@@ -501,13 +504,13 @@ export const Component = () => {
                 )}
               </div>
               <div className="py-2"></div>
-              <div className="flex gap-x-12 flex-wrap justify-between pb-2    font-Helvetica">
+              <div className="flex gap-x-12 flex-wrap justify-between pb-2 font-Helvetica">
                 <div className="py-3">
                   <p className="text-[#555] text-xl font-bold mt-1 pb-2    font-Helvetica">Qty</p>
                   <div className="flex gap-4 pt-2 items-center    font-Helvetica">
                     <button
                       onClick={decrease}
-                      className="h-10    font-Helvetica aspect-square rounded-full bg-white grid place-items-center font-medium"
+                      className="h-10 font-Helvetica aspect-square rounded-full bg-white grid place-items-center font-medium"
                     >
                       <Icon icon="ic:round-minus" style={{ fontSize: 30 }} />
                     </button>
@@ -554,7 +557,7 @@ export const Component = () => {
                 <Button
                   variant="rectangle"
                   onClick={onClickCheckout}
-                  className="bg-[#27D34C] text-white  md:px-8 w-full px-10 focus:outline-none font-medium  disabled:bg-[#848484]"
+                  className="bg-[#27D34C] text-white  md:px-8 w-full px-10 focus:outline-none font-normal  disabled:bg-[#848484]"
                 >
                   Buy Now
                 </Button>

@@ -4,6 +4,7 @@ import { register } from "swiper/element/bundle";
 import { SwiperCard } from "./SwiperCard";
 import { SwiperCard1 } from "./SwiperCard1";
 import { SwiperCard2 } from "./SwiperCard2";
+import { SwiperCard3 } from "./SwiperCard3";
 
 export const SwiperElem = () => {
   const ref = useRef();
@@ -79,6 +80,16 @@ export const SwiperElem = () => {
         >
           <div className="min-h-[250px] h-[40vw] md:h-[559px]">
             <SwiperCard2 />
+          </div>
+        </swiper-slide>
+        <swiper-slide
+          style={{
+            borderRadius: 24,
+            overflow: "hidden",
+          }}
+        >
+          <div className="min-h-[250px] h-[40vw] md:h-[559px]">
+            <SwiperCard3 />
           </div>
         </swiper-slide>
       </swiper-container>

@@ -32,7 +32,7 @@ export const OrderTotal = ({ partial }) => {
             <Button
               onClick={proceed}
               variant="rectangle"
-              className="bg-app-red font-medium w-full text-white md:bg-app-black"
+              className="bg-app-red font-normal w-full text-white md:bg-app-black"
             >
               Proceed To Checkout
             </Button>

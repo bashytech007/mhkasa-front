@@ -83,14 +83,14 @@
 //     </section>
 //   );
 // };
-// import { SectionHeader } from "./ui/SectionHeader";
-// import { Product } from "./ProductCard";
-// import { ListGrid } from "./ui/ListGrid";
-// import { useLoaderData } from "react-router-dom/dist";
-// import useLongPress from "../hooks/utils/useLongPress";
-// import { Icon } from "@iconify/react";
-// import { useRef, useEffect } from "react";
-// import {cn} from "../utils/cn.js"
+import { SectionHeader } from "./ui/SectionHeader";
+import { Product } from "./ProductCard";
+import { ListGrid } from "./ui/ListGrid";
+import { useLoaderData } from "react-router-dom/dist";
+import useLongPress from "../hooks/utils/useLongPress";
+import { Icon } from "@iconify/react";
+import { useRef, useEffect } from "react";
+import {cn} from "../utils/cn.js"
 
 export const BestSellers = ({ horizontalOnSmallScreens = true }) => {
   const { bestsellers } = useLoaderData();

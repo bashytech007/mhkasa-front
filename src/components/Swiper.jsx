@@ -33,8 +33,8 @@ export const SwiperElem = () => {
           }
           const elem = arr.map((val) => {
             return `<li style="background-color:white;height:${
-              val == current ? "10px" : "7px"
-            };width:64px;border-radius:20px"/>`;
+              val == current ? "5px" : "2px"
+            };width:44px;border-radius:10px"/>`;
           });
           return elem.join("");
         },
@@ -54,7 +54,7 @@ export const SwiperElem = () => {
         a11y-prev-slide-message="Previous slide"
         a11y-next-slide-message="Next slide"
         autoplay="true"
-        autoplay-delay="5000"
+        autoplay-delay="4000"
       >
         <swiper-slide
           style={{
@@ -102,7 +102,7 @@ export const SwiperElem = () => {
             overflow: "hidden",
           }}
         >
-          <div className="min-h-[250px] h-[40vw] md:h-[559px]">
+          <div className="min-h-[250px] h-[40vw] md:h-[579px]">
             <SwiperCard4 />
           </div>
         </swiper-slide>
@@ -112,7 +112,7 @@ export const SwiperElem = () => {
             overflow: "hidden",
           }}
         >
-          <div className="min-h-[250px] h-[40vw] md:h-[559px]">
+          <div className="min-h-[250px] h-[40vw] md:h-[579px] ">
             <SwiperCard5 />
           </div>
         </swiper-slide>
@@ -153,7 +153,7 @@ export const SwiperElem = () => {
           color="white"
         />
       </button>
-      <ul className="absolute z-10 w-full flex items-end gap-2 swiper-pagination bottom-4 left-4 md:bottom-8">
+      <ul className="absolute z-10 w-full flex items-end gap-2 swiper-pagination bottom-4 left-0 md:bottom-8">
         
       </ul>
     </div>

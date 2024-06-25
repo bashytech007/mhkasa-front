@@ -26,7 +26,7 @@ export const Component = () => {
         name=""
       />
       <Wrapper className="py-4">
-        <Navigation
+        {/* <Navigation
           location={[
             { description: "Home", to: "/", title: "Go to Home Page" },
             { description: "Cart", to: "/cart" },
@@ -34,7 +34,7 @@ export const Component = () => {
           className="text-[#3338]"
           iconClassName="text-[#3339] text-2xl"
           currentLocationClassName="text-app-black"
-        />
+        /> */}
         <div className="flex items-center justify-between">
           <Heading className="pt-2">Your Shopping Cart</Heading>
           {status === "success" && data.items.length > 0 && (

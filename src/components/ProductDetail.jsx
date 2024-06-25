@@ -531,8 +531,10 @@ import {
 } from "./ui/ToolTip";
 
 export const ProductDetail = ({ productId }) => {
+
   const { getUserId } = useAuth();
   const { product } = useLoaderData();
+  console.log(typeof (product.topNotes))
   const schema = yup.object().shape({
     email: yup.string().email().required(),
     name: yup.string().trim().required(),
@@ -628,37 +630,37 @@ export const ProductDetail = ({ productId }) => {
       <div className="grid gap-6 pt-5 md:grid-cols-2">
         {tab === "description" ? (
           <div className="">
-            {product?.description && (
+            {(product?.description!=="undefined") && (
               <p className="py-1">
                 <span className="font-bold">Description:</span> {product?.description}
               </p>
             )}
-            {product?.appeal && (
+            {(product?.appeal!=="undefined") && (
               <p className="py-1">
                 <span className="font-bold">Orientation:</span> {product?.appeal}
               </p>
             )}
-            {product?.type && (
+            {(product?.type!=="undefined") && (
               <p className="py-1">
                 <span className="font-bold">Type:</span> {product?.type}
               </p>
             )}
-            {product?.volume && (
+            {(product?.volume!=="undefined") && (
               <p className="py-1">
                 <span className="font-bold">Volume:</span> {product?.volume}
               </p>
             )}
-            {product?.topNotes && (
+            {(product?.topNotes!=="undefined") && (
               <p className="py-1">
                 <span className="font-bold">Top Notes:</span> {product?.topNotes}
               </p>
             )}
-            {product?.middleNotes && (
+            {(product?.middleNotes!=="undefined") && (
               <p className="py-1">
                 <span className="font-bold">Middle Notes:</span> {product?.middleNotes}
               </p>
             )}
-            {product?.baseNotes && (
+            {(product?.baseNotes!=="undefined") && (
               <p className="py-1">
                 <span className="font-bold">Base Notes:</span> {product?.baseNotes}
               </p>

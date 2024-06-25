@@ -184,7 +184,7 @@ export const Sort = ({ onClick, sort }) => {
       <Button
         ref={ref}
         onClick={() => setShow(!show)}
-        className="flex items-center justify-between w-full py-2 bg-white"
+        className="flex items-center gap-4 w-full py-2 bg-white"
       >
         Sort By{" "}
         <Icon

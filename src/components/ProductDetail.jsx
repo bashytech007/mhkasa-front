@@ -727,7 +727,7 @@ export const ProductDetail = ({ productId }) => {
                         <Button
                           type="submit"
                           variant="rectangle"
-                          className="bg-app-black text-white font-medium w-fit hover:bg-app-black disabled:bg-[#999999] hover:disabled:bg-[#999999]"
+                          className="bg-app-black text-white font-medium w-fit px-4 hover:bg-app-black disabled:bg-[#999999] hover:disabled:bg-[#999999]"
                           disabled={!canSubmit}
                         >
                           Submit Review

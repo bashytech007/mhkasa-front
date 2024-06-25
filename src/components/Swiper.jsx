@@ -155,7 +155,7 @@ export const SwiperElem = () => {
           color="white"
         />
       </button>
-      <ul className="absolute z-10 w-full flex items-end gap-2 swiper-pagination bottom-4 left-0 md:bottom-8">
+      <ul className="absolute z-10 w-full flex items-center justify-center gap-2 swiper-pagination bottom-4 left-0 md:bottom-8">
         
       </ul>
     </div>

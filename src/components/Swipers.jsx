@@ -179,7 +179,7 @@ export const SwiperElem = () => {
       <button className="swiper-button-prev flex absolute bg-[#3333] w-12 h-12 z-50 left-8 top-1/2 items-center justify-center rounded-full">
         <Icon
           icon="fa6-solid:angle-right"
-          style={{ fontSize: 36 }}
+          style={{ fontSize: 10 }}
           color="white"
           hFlip="true"
         />
@@ -187,7 +187,7 @@ export const SwiperElem = () => {
       <button className="swiper-button-next flex absolute bg-[#3333] w-12 h-12 z-50 right-8 top-1/2 items-center justify-center rounded-full">
         <Icon
           icon="fa6-solid:angle-right"
-          style={{ fontSize: 36 }}
+          style={{ fontSize: 10 }}
           color="green"
         />
       </button>

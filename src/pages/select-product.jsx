@@ -549,7 +549,7 @@ export const Component = () => {
                   </Button>
                 ) : (
                   <Link to="/cart" style={{ display: "contents" }}>
-                    <Button variant="rectangle" className=" bg-app-black md:px-8 px-10 w-full focus:outline-none font-medium">
+                    <Button variant="rectangle" className=" bg-app-black md:px-8 px-10 w-full focus:outline-none font-normal">
                       Go to Cart
                     </Button>
                   </Link>

@@ -353,3 +353,26 @@ input[type="number"] {
   /* background-size: cover; */
 }
 
+.pagination-bullet {
+  background-color: white;
+  height: 8px;
+  width: 28px;
+  border-radius: 16px;
+  margin: 0 1px;
+}
+
+.pagination-bullet.active-bullet {
+  height: 10px;
+}
+
+@media (min-width: 768px) {
+  .pagination-bullet {
+    height: 8px;
+    width: 56px;
+    margin: 0 2px;
+  }
+
+  .pagination-bullet.active-bullet {
+    height: 10px;
+  }
+}

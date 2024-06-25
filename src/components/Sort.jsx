@@ -184,18 +184,18 @@ export const Sort = ({ onClick, sort }) => {
       <Button
         ref={ref}
         onClick={() => setShow(!show)}
-        className="flex justify-between items-center py-2 bg-white"
+        className="flex justify-between items-center gap-2 py-2 bg-white"
       >
-        Sort By
+       <span className="text-nowrap"> Sort By{""}</span>
         <Icon
           icon="fa6-solid:angle-down"
           vFlip={show}
           style={{ fontSize: 24 }}
-          className="text-app-black mr-12"
+          className="text-app-black mr-11"
         />
       </Button>
       <ul
-        className={`bg-white absolute top-full w-full overflow-hidden rounded-3xl ${
+        className={`bg-white absolute top-full md:w-full px-1 overflow-hidden rounded-3xl ${
           show ? "" : "hidden"
         }`}
       >

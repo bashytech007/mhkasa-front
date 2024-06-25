@@ -83,15 +83,16 @@ export const Component = () => {
             >
               CANCEL
             </button>
-            <Button
-              className="bg-app-black text-white font-bold"
+            <button
+            // variant="rectangle"
+              className="bg-app-black px-6 py-2 rounded-full text-white font-bold"
               onClick={() => {
                 clearCart();
                 setShowModal(false);
               }}
             >
               CLEAR
-            </Button>
+            </button>
           </div>
         </Modal>
       )}

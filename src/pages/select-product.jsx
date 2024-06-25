@@ -425,7 +425,7 @@ export const Component = () => {
         name=""
       />
       <Wrapper className="bg-white">
-        <Navigation
+        {/* <Navigation
           location={[
             { description: "Home", to: "/", title: "Go to Home Page" },
             {
@@ -437,7 +437,7 @@ export const Component = () => {
           className="text-[#3338] py-5"
           iconClassName="text-[#3339] text-2xl"
           currentLocationClassName="text-app-black"
-        />
+        /> */}
 
         <div className="@container pb-8    font-Helvetica bg-white md:px-6 md:py-6 px-2">
           <div className="grid gap-8 @4xl:grid-cols-2">
@@ -589,11 +589,11 @@ export const Component = () => {
                 </div>
               </div>
               <ul
-                className="pt-8 w-full gap-6 flex sm:flex-nowrap overflow-x-auto sm:no-scrollbar"
+                className="pt-8 w-full gap-1 flex sm:flex-nowrap overflow-x-auto sm:no-scrollbar"
                 ref={ref}
               >
                 {product.layerWith.map((product) => (
-                  <li className="flex-shrink-0" key={product._id}>
+                  <li className="" key={product._id}>
                     <Product
                       key={product?._id}
                       id={product?._id}
@@ -629,11 +629,11 @@ export const Component = () => {
                 </div>
               </div>
               <ul
-                className="pt-8 w-full gap-6 flex sm:flex-nowrap overflow-auto sm:no-scrollbar"
+                className="pt-8 w-full gap-1 flex sm:flex-nowrap overflow-auto sm:no-scrollbar"
                 ref={ref}
               >
                 {recommend.map((product) => (
-                  <li className="md:flex-shrink-0" key={product._id}>
+                  <li className="" key={product._id}>
                     <Product
                       key={product?.product?._id}
                       id={product?.product?._id}

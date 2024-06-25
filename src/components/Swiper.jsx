@@ -33,8 +33,8 @@ export const SwiperElem = () => {
           }
           const elem = arr.map((val) => {
             return `<li style="background-color:white;height:${
-              val == current ? "5px" : "2px"
-            };width:44px;border-radius:10px"/>`;
+              val == current ? "10px" : "6px"
+            };width:${val == current ? "10px" : "6px"};border-radius:50%;margin:0 2px;"></li>`;
           });
           return elem.join("");
         },
@@ -56,27 +56,9 @@ export const SwiperElem = () => {
         autoplay="true"
         autoplay-delay="4000"
       >
-        <swiper-slide
-          style={{
-            borderRadius: 24,
-            overflow: "hidden",
-          }}
-        >
-          <div className="min-h-[250px] h-[40vw] md:h-[559px]">
-            <SwiperCard />
-          </div>
-        </swiper-slide>
-        <swiper-slide
-          style={{
-            borderRadius: 24,
-            overflow: "hidden",
-          }}
-        >
-          <div className="min-h-[250px] h-[40vw] md:h-[559px]">
-            <SwiperCard1 />
-          </div>
-        </swiper-slide>
-        <swiper-slide
+       
+       
+        {/* <swiper-slide
           style={{
             borderRadius: 24,
             overflow: "hidden",
@@ -85,8 +67,8 @@ export const SwiperElem = () => {
           <div className="min-h-[250px] h-[40vw] md:h-[559px]">
             <SwiperCard2 />
           </div>
-        </swiper-slide>
-        <swiper-slide
+        </swiper-slide> */}
+        {/* <swiper-slide
           style={{
             borderRadius: 24,
             overflow: "hidden",
@@ -95,7 +77,7 @@ export const SwiperElem = () => {
           <div className="min-h-[250px] h-[40vw] md:h-[559px]">
             <SwiperCard3 />
           </div>
-        </swiper-slide>
+        </swiper-slide> */}
         <swiper-slide
           style={{
             borderRadius: 24,
@@ -133,7 +115,27 @@ export const SwiperElem = () => {
           }}
         >
           <div className="min-h-[250px] h-[40vw] md:h-[559px]">
+            <SwiperCard />
+          </div>
+        </swiper-slide>
+        <swiper-slide
+          style={{
+            borderRadius: 24,
+            overflow: "hidden",
+          }}
+        >
+          <div className="min-h-[250px] h-[40vw] md:h-[559px]">
             <SwiperCard7 />
+          </div>
+        </swiper-slide>
+        <swiper-slide
+          style={{
+            borderRadius: 24,
+            overflow: "hidden",
+          }}
+        >
+          <div className="min-h-[250px] h-[40vw] md:h-[559px]">
+            <SwiperCard1 />
           </div>
         </swiper-slide>
       </swiper-container>

@@ -1,4 +1,4 @@
-import clubimg from "../assets/images/club.png";
+import clubimg from "../assets/images/club.webp";
 import { Link } from "react-router-dom";
 export const SwiperCard7 = () => {
   return (
@@ -10,7 +10,7 @@ export const SwiperCard7 = () => {
         <img
           src={clubimg}
           fetchpriority="high"
-          className="block md:hidden cursor-pointer object-cover bg-no-repeat absolute bottom-0 top-0 right-0 sm:bottom-2 sm:right-2 w-[400px]"
+          className="block md:hidden cursor-pointer object-cover bg-no-repeat absolute bottom-0 top-0 right-0 left-0 w-full h-full"
         />
       </Link>
     </div>

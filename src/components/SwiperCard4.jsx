@@ -1,5 +1,5 @@
 import { Button } from "./ui/Button";
-import casaimg from "../assets/images/casablanca.png";
+import casaimg from "../assets/images/casablanca.webp";
 import { Link } from "react-router-dom";
 export const SwiperCard4 = () => {
   return (
@@ -11,7 +11,7 @@ export const SwiperCard4 = () => {
         <img
           src={casaimg}
           fetchpriority="high"
-          className="block md:hidden cursor-pointer object-cover bg-no-repeat absolute bottom-0 -top-12 right-0 sm:bottom-2 sm:right-2 w-[400px]"
+          className="block md:hidden cursor-pointer object-cover bg-no-repeat absolute bottom-0 top-0 right-0 left-0 w-full h-full"
         />
       </Link>
     </div>

@@ -294,7 +294,7 @@ input[type="number"] {
   height: 100%;
 }
 .bg-second-card-image {
-  background-image: url("./assets/images/casablanca.png");
+  background-image: url("./assets/images/casablanca.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -302,15 +302,15 @@ input[type="number"] {
   height: 100%;
 }
 .bg-third-card-image {
-  background-image: url("./assets/images/9pm2.jpeg");
+  background-image: url("./assets/images/9pm.webp");
   background-size: cover;
-  background-position: cover;
+  background-position: bottom;
   background-repeat: no-repeat;
   width: 100%;
   height: 100%;
 }
 .bg-fourth-card-image {
-  background-image: url("./assets/images/armaf2.jpeg");
+  background-image: url("./assets/images/armaf.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -318,7 +318,7 @@ input[type="number"] {
   height: 100%;
 }
 .bg-fifth-card-image {
-  background-image: url("./assets/images/club.png");
+  background-image: url("./assets/images/club.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -353,26 +353,3 @@ input[type="number"] {
   /* background-size: cover; */
 }
 
-.pagination-bullet {
-  background-color: white;
-  height: 8px;
-  width: 28px;
-  border-radius: 16px;
-  margin: 0 1px;
-}
-
-.pagination-bullet.active-bullet {
-  height: 10px;
-}
-
-@media (min-width: 768px) {
-  .pagination-bullet {
-    height: 8px;
-    width: 56px;
-    margin: 0 2px;
-  }
-
-  .pagination-bullet.active-bullet {
-    height: 10px;
-  }
-}

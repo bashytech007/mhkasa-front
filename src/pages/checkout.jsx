@@ -1077,7 +1077,7 @@ export const Component = () => {
           <form
             onSubmit={formik.handleSubmit}
             id="checkout-form"
-            className="grid gap-6 md:col-span-6 lg:col-span-7 xl:col-span-8"
+            className="grid md:col-span-6 lg:col-span-7 xl:col-span-8"
           >
             <PersonalDetails formik={formik} />
             <DeliveryDetails formik={formik} />

@@ -180,7 +180,7 @@ export const Sort = ({ onClick, sort }) => {
   };
 
   return (
-    <div className="relative z-10 px-2 w-40 ml-36 md:w-[48] py-2" ref={dropdownRef}>
+    <div className="relative z-10 w-[5rem] md:w-[48] py-2" ref={dropdownRef}>
       <Button
         ref={ref}
         onClick={() => setShow(!show)}
@@ -195,7 +195,7 @@ export const Sort = ({ onClick, sort }) => {
         />
       </Button>
       <ul
-        className={`bg-white absolute top-full md:w-full px-1 overflow-hidden rounded-3xl ${
+        className={`bg-white absolute top-full w-full text-nowrap overflow-hidden rounded-3xl ${
           show ? "" : "hidden"
         }`}
       >

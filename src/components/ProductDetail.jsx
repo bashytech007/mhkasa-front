@@ -534,7 +534,7 @@ export const ProductDetail = ({ productId }) => {
 
   const { getUserId } = useAuth();
   const { product } = useLoaderData();
-  console.log(product)
+  console.log(product.baseNotes)
   const schema = yup.object().shape({
     email: yup.string().email().required(),
     name: yup.string().trim().required(),
@@ -650,7 +650,7 @@ export const ProductDetail = ({ productId }) => {
                 <span className="font-bold">Volume:</span> {product?.volume}
               </p>
             )}
-            {(product?.topNotes||product?.topNotes==null||product?.topNotes=="undefined") && (
+            {(product?.topNotes||product?.topNotes===null||product?.topNotes==="undefined") && (
               <p className="py-1">
                 <span className="font-bold">Top Notes:</span> {product?.topNotes}
               </p>

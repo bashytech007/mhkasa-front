@@ -676,7 +676,7 @@ import { fetchRecommendations } from '../services/recommendService';
 
 export const Component = () => {
   const { product } = useLoaderData();
-  console.log(product.layerWith);
+  // console.log(product.layerWith);
   const { decreaseItem, increaseItem, addToCart } = useCartContext();
   const [count, setCount] = useState(1);
   const [recommend, setRecommend] = useState([]);
@@ -721,7 +721,7 @@ export const Component = () => {
         const recommendations = await fetchRecommendations();
         setRecommend(recommendations);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        // console.error('Error fetching data:', error);
       }
     };
 

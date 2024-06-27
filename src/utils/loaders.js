@@ -55,10 +55,10 @@ export const homeLoader = (queryClient) => async () => {
 };
 
 export const LayoutLoader = (queryClient) => async () => {
-  // const featuredProductQuery = {
-  //   queryKey: ["product", "featured"],
-  //   queryFn: async () => await getProducts("featured/product"),
-  // };
+  const featuredProductQuery = {
+    queryKey: ["product", "featured"],
+    queryFn: async () => await getProducts("featured/product"),
+  };
 
   // const latestProductQuery = {
   //   queryKey: ["product", "latest"],
@@ -73,9 +73,9 @@ export const LayoutLoader = (queryClient) => async () => {
     queryFn: getCategories,
   };
 
-  // const featuredProducts = await queryClient.ensureQueryData(
-  //   featuredProductQuery
-  // );
+  const featuredProducts = await queryClient.ensureQueryData(
+    featuredProductQuery
+  );
 
   // const latestProducts = await queryClient.ensureQueryData(latestProductQuery);
 

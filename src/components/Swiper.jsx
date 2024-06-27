@@ -54,7 +54,7 @@ export const SwiperElem = () => {
         a11y-prev-slide-message="Previous slide"
         a11y-next-slide-message="Next slide"
         autoplay="true"
-        autoplay-delay="15000"
+        autoplay-delay="4000"
       >
        
        
@@ -99,7 +99,7 @@ export const SwiperElem = () => {
             <SwiperCard6 />
           </div>
         </swiper-slide>
-        <swiper-slide
+        {/* <swiper-slide
           style={{
             borderRadius: 24,
             overflow: "hidden",
@@ -108,7 +108,7 @@ export const SwiperElem = () => {
           <div className="min-h-[250px] h-[40vw] md:h-[559px]">
             <SwiperCard3 />
           </div>
-        </swiper-slide>
+        </swiper-slide> */}
         <swiper-slide
           style={{
             borderRadius: 24,

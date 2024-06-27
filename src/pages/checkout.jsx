@@ -45,7 +45,7 @@ export const Component = () => {
     },
   });
 
-  const [provider, setProvider] = useState("paystack");
+  const [provider, setProvider] = useState("flutterwave");
 
   const { getUserId } = useAuth();
   const mutation = useMutation({
@@ -408,7 +408,7 @@ const PaymentMethod = ({ className, setProvider, provider }) => {
               />
             </label>
           </div>
-          <div className="flex items-center gap-2">
+          {/* <div className="flex items-center gap-2">
             <input
               type="radio"
               id="paystack"
@@ -424,7 +424,7 @@ const PaymentMethod = ({ className, setProvider, provider }) => {
                 alt="paystack-logo"
               />
             </label>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

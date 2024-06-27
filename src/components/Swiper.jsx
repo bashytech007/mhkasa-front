@@ -54,7 +54,7 @@ export const SwiperElem = () => {
         a11y-prev-slide-message="Previous slide"
         a11y-next-slide-message="Next slide"
         autoplay="true"
-        autoplay-delay="4000"
+        autoplay-delay="8000"
       >
        
        

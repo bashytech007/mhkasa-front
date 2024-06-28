@@ -1,12 +1,13 @@
 import elipses from "../assets/images/elipses.svg";
-import white from "../assets/images/white.svg";
+import white from "../assets/images/ads.png";
 import White from "../assets/images/Ellipse-white.svg";
 import { Wrapper } from "./ui/Wrapper";
 export const Sales = () => {
   return (
-    <div className="w-full h-[180px] bg-sales relative    font-Helvetica">
-      <Wrapper>
-        <div className="flex justify-center">
+    <div className="w-full h-full  font-Helvetica">
+      
+      <img src={white} className="object-cover rounded-2xl"/>
+        {/* <div className="flex justify-center">
           <div className="flex flex-col items-start md:items-center md:justify-center gap-2 pt-10 relative">
             <h1 className="text-4xl  md:text-6xl  font-bold text-white md:pl-36">
               NEW SALES
@@ -31,8 +32,8 @@ export const Sales = () => {
         </div>
         <button className="hidden md:block bg-black px-6 py-2 text-white rounded-full text-base absolute right-12 bottom-12">
           Shop now
-        </button>
-      </Wrapper>
+        </button> */}
+      
     </div>
   );
 };

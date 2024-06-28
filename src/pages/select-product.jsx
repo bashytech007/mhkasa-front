@@ -875,13 +875,13 @@ export const Component = () => {
                     disabled={!count}
                     variant="rectangle"
                     onClick={onClick}
-                    className="  bg-app-black md:px-8 disabled:bg-[#848484]"
+                    className="  bg-app-black md:px-8 w-full disabled:bg-[#848484] px-4"
                   >
                     Add to Cart
                   </Button>
                 ) : (
                   <Link to="/cart" style={{ display: "contents" }}>
-                    <Button variant="rectangle" className=" bg-app-black md:px-8 focus:outline-none font-normal">
+                    <Button variant="rectangle" className=" bg-app-black md:px-8 px-4 w-full focus:outline-none font-normal">
                       Go to Cart
                     </Button>
                   </Link>
@@ -889,7 +889,7 @@ export const Component = () => {
                 <Button
                   variant="rectangle"
                   onClick={onClickCheckout}
-                  className="bg-[#27D34C] text-white  md:px-8 w-full px-10 focus:outline-none font-normal  disabled:bg-[#848484]"
+                  className="bg-[#27D34C] text-white  md:px-8 w-full focus:outline-none font-normal  disabled:bg-[#848484]"
                 >
                   Buy Now
                 </Button>

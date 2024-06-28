@@ -112,7 +112,9 @@ export const Recommended = ({ horizontalOnSmallScreens = true }) => {
   return (
     <section className="py-8 font-Helvetica">
       <div className="flex items-center justify-between">
+
         <SectionHeader header="You Might Also Like This" />
+
         <div className="hidden gap-4">
           <button
             {...getHandlers("backward")}
@@ -142,7 +144,9 @@ export const Recommended = ({ horizontalOnSmallScreens = true }) => {
               key={index}
               className={cn(
                 "min-w-[11rem]",
+
                 horizontalOnSmallScreens && index === 0 ? " md:ml-0" : ""
+
               )}
             >
               <Product

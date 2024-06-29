@@ -771,9 +771,9 @@ export const Component = () => {
           currentLocationClassName="text-app-black"
         /> */}
 
-        <div className="@container pb-8    font-Helvetica bg-white md:px-6 md:py-6">
+        <div className="@container pb-8 font-Helvetica bg-white md:px-6 md:py-6">
           <div className="grid gap-8 @4xl:grid-cols-2">
-            <div className="relative min-w-[320px] md:min-w-[550px]">
+            <div className="relative md:min-w-[550px]">
               <div
                 className="rounded-2xl overflow-hidden w-full aspect-square md:@[460px]:aspect-video"
                 {...handlers}
@@ -875,13 +875,13 @@ export const Component = () => {
                     disabled={!count}
                     variant="rectangle"
                     onClick={onClick}
-                    className="  bg-app-black w-full px-4 py-2 disabled:bg-[#848484]"
+                    className="  bg-app-black w-full disabled:bg-[#848484]"
                   >
                     Add to Cart
                   </Button>
                 ) : (
                   <Link to="/cart" style={{ display: "contents" }}>
-                    <Button variant="rectangle"  className=" bg-app-black w-full px-4 py-2 font-normal">
+                    <Button variant="rectangle"  className=" bg-app-black w-full font-normal">
                       Go to Cart
                     </Button>
                   </Link>
@@ -889,7 +889,7 @@ export const Component = () => {
                 <Button
                   variant="rectangle"
                   onClick={onClickCheckout}
-                  className="bg-[#27D34C] text-white  w-full px-4 py-2 font-normaldisabled:bg-[#848484]"
+                  className="bg-[#27D34C] text-white  w-full font-normal disabled:bg-[#848484]"
                 >
                   Buy Now
                 </Button>

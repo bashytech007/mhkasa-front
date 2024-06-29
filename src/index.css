@@ -378,9 +378,9 @@ input[type="number"] {
 }
 
 
-@media (min-width: 376px) {
+@media (min-width: 320px) {
   .my-button {
-    margin-right: 1rem; 
+    /* margin-right: 2rem; */
   }
 }
 
